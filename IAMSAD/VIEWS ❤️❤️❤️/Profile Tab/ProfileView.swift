@@ -77,9 +77,9 @@ extension ProfileView {
     func setter(_ value: Binding<CGPoint>) -> Binding<CGPoint> {
         Binding {
             value.wrappedValue
-        } set: {
-            value.wrappedValue = $0
-            profileTab.contentOffset = $0
+        } set: { newValue in
+            value.wrappedValue = newValue
+            profileTab.contentOffset = newValue
         }
     }
 }
@@ -448,7 +448,7 @@ class ProfileTab: ObservableObject {
             .sink { [weak self] newValue in
                 guard let self = self else { return }
                 
-                let conditionValue: CGFloat = profileContentHeight-coverPhotoFrameStaticMaxY-coverMaxExtraHeight
+                let conditionValue: CGFloat = profileContentHeight - coverPhotoFrameStaticMaxY - coverMaxExtraHeight
                 
                 if newValue.y <= conditionValue {
                     throttledContentOffset = newValue

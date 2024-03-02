@@ -25,7 +25,7 @@ struct Testing123: View {
             contentArray: [
                 .init(content: AnyView(
                     
-                    BBScrollView(.vertical, contentOffset: $contentOffset) {
+                    BBScrollView(.vertical, contentOffset: $contentOffset.handleContentOffset()) {
                         LazyVStack(spacing: 0) {
                             let frameHeight: CGFloat = topContentHeight-contentStaticMinY+horizontalTabHeight
                             Color(colorScheme == .dark ? .black : .white)
@@ -62,7 +62,7 @@ struct Testing123: View {
                 ), label: "Posts"),
                 .init(content: AnyView(
                     
-                    BBScrollView(.vertical, contentOffset: $contentOffset) {
+                    BBScrollView(.vertical, contentOffset: $contentOffset.handleContentOffset()) {
                         LazyVStack(spacing: 0) {
                             let frameHeight: CGFloat = topContentHeight-contentStaticMinY+horizontalTabHeight
                             Color(colorScheme == .dark ? .black : .white)
@@ -110,7 +110,6 @@ struct Testing123: View {
 }
 
 fileprivate struct Preview: View {
-    
     @State var contentOffset: CGPoint = .zero
     @State var tapCoordinates: CGPoint = .zero
     
@@ -120,5 +119,30 @@ fileprivate struct Preview: View {
             tapCoordinates: $tapCoordinates,
             topContentHeight: 450
         )
+    }
+}
+
+extension Binding<CGPoint> {
+    func handleContentOffset() -> Binding<CGPoint> {
+        Binding {
+            self.wrappedValue
+        } set: { newValue in
+            let profileTab: ProfileTab = .shared
+            let conditionValue: CGFloat = profileTab.profileContentHeight -
+            profileTab.coverPhotoFrameStaticMaxY - profileTab.coverMaxExtraHeight
+
+            if self.wrappedValue.y <= conditionValue {
+                DispatchQueue.main.async {
+                    return self.wrappedValue = newValue
+                }
+            }
+            
+            if newValue.y <= conditionValue {
+                DispatchQueue.main.async {
+                    return self.wrappedValue = newValue
+                }
+            }
+            
+        }
     }
 }
