@@ -24,44 +24,6 @@ struct Testing123: View {
             horizontalTabHeight: $horizontalTabHeight,
             contentArray: [
                 .init(content: AnyView(
-                    
-                    BBScrollView(.vertical, contentOffset: $contentOffset.handleContentOffset()) {
-                        LazyVStack(spacing: 0) {
-                            let frameHeight: CGFloat = topContentHeight-contentStaticMinY+horizontalTabHeight
-                            Color(colorScheme == .dark ? .black : .white)
-                                .opacity(0.01)
-                                .frame(height: frameHeight > 0 ? frameHeight : .zero)
-                                .background {
-                                    GeometryReader { geo in
-                                        Color.clear
-                                            .preference(key: CustomCGFloatPreferenceKey.self, value: geo.frame(in: .global).minY)
-                                            .onPreferenceChange(CustomCGFloatPreferenceKey.self) { value in
-                                                if contentStaticMinY == .zero { contentStaticMinY = value }
-                                            }
-                                    }
-                                }
-                                .onTapGesture {
-                                    let correctedY: CGFloat = $0.y + contentStaticMinY - contentOffset.y
-                                    tapCoordinates = .init(x: $0.x, y: correctedY)
-                                }
-                            
-                            LazyVStack(spacing: 50) {
-                                ForEach(0...150, id: \.self) { index in
-                                    Button(index.description) {
-                                        print(index)
-                                    }
-                                    .frame(width: screenWidth)
-                                }
-                                .padding(.top)
-                            }
-                        }
-                        .frame(width: screenWidth)
-                    }
-                        .bb_showsVerticalScrollIndicator(false)
-                    
-                ), label: "Posts"),
-                .init(content: AnyView(
-                    
                     BBScrollView(.vertical, contentOffset: $contentOffset.handleContentOffset()) {
                         LazyVStack(spacing: 0) {
                             let frameHeight: CGFloat = topContentHeight-contentStaticMinY+horizontalTabHeight
@@ -95,12 +57,182 @@ struct Testing123: View {
                         .frame(width: screenWidth)
                     }
                         .bb_showsVerticalScrollIndicator(false)
-                    
-                    
-                    
-                ), label: "Replies")
-                
-                
+                ), label: "Posts"),
+                .init(content: AnyView(
+                    BBScrollView(.vertical, contentOffset: $contentOffset.handleContentOffset()) {
+                        LazyVStack(spacing: 0) {
+                            let frameHeight: CGFloat = topContentHeight-contentStaticMinY+horizontalTabHeight
+                            Color(colorScheme == .dark ? .black : .white)
+                                .opacity(0.01)
+                                .frame(height: frameHeight > 0 ? frameHeight : .zero)
+                                .background {
+                                    GeometryReader { geo in
+                                        Color.clear
+                                            .preference(key: CustomCGFloatPreferenceKey.self, value: geo.frame(in: .global).minY)
+                                            .onPreferenceChange(CustomCGFloatPreferenceKey.self) { value in
+                                                if contentStaticMinY == .zero { contentStaticMinY = value }
+                                            }
+                                    }
+                                }
+                                .onTapGesture {
+                                    let correctedY: CGFloat = $0.y + contentStaticMinY - contentOffset.y
+                                    tapCoordinates = .init(x: $0.x, y: correctedY)
+                                }
+                            
+                            LazyVStack(spacing: 50) {
+                                ForEach(0...100, id: \.self) { index in
+                                    Button(index.description) {
+                                        print(index)
+                                    }
+                                    .frame(width: screenWidth)
+                                }
+                                .padding(.top)
+                            }
+                        }
+                        .frame(width: screenWidth)
+                    }
+                        .bb_showsVerticalScrollIndicator(false)
+                ), label: "Replies"),
+                .init(content: AnyView(
+                    BBScrollView(.vertical, contentOffset: $contentOffset.handleContentOffset()) {
+                        LazyVStack(spacing: 0) {
+                            let frameHeight: CGFloat = topContentHeight-contentStaticMinY+horizontalTabHeight
+                            Color(colorScheme == .dark ? .black : .white)
+                                .opacity(0.01)
+                                .frame(height: frameHeight > 0 ? frameHeight : .zero)
+                                .background {
+                                    GeometryReader { geo in
+                                        Color.clear
+                                            .preference(key: CustomCGFloatPreferenceKey.self, value: geo.frame(in: .global).minY)
+                                            .onPreferenceChange(CustomCGFloatPreferenceKey.self) { value in
+                                                if contentStaticMinY == .zero { contentStaticMinY = value }
+                                            }
+                                    }
+                                }
+                                .onTapGesture {
+                                    let correctedY: CGFloat = $0.y + contentStaticMinY - contentOffset.y
+                                    tapCoordinates = .init(x: $0.x, y: correctedY)
+                                }
+                            
+                            LazyVStack(spacing: 50) {
+                                ForEach(0...100, id: \.self) { index in
+                                    Button(index.description) {
+                                        print(index)
+                                    }
+                                    .frame(width: screenWidth)
+                                }
+                                .padding(.top)
+                            }
+                        }
+                        .frame(width: screenWidth)
+                    }
+                        .bb_showsVerticalScrollIndicator(false)
+                ), label: "Media"),
+                .init(content: AnyView(
+                    BBScrollView(.vertical, contentOffset: $contentOffset.handleContentOffset()) {
+                        LazyVStack(spacing: 0) {
+                            let frameHeight: CGFloat = topContentHeight-contentStaticMinY+horizontalTabHeight
+                            Color(colorScheme == .dark ? .black : .white)
+                                .opacity(0.01)
+                                .frame(height: frameHeight > 0 ? frameHeight : .zero)
+                                .background {
+                                    GeometryReader { geo in
+                                        Color.clear
+                                            .preference(key: CustomCGFloatPreferenceKey.self, value: geo.frame(in: .global).minY)
+                                            .onPreferenceChange(CustomCGFloatPreferenceKey.self) { value in
+                                                if contentStaticMinY == .zero { contentStaticMinY = value }
+                                            }
+                                    }
+                                }
+                                .onTapGesture {
+                                    let correctedY: CGFloat = $0.y + contentStaticMinY - contentOffset.y
+                                    tapCoordinates = .init(x: $0.x, y: correctedY)
+                                }
+                            
+                            LazyVStack(spacing: 50) {
+                                ForEach(0...100, id: \.self) { index in
+                                    Button(index.description) {
+                                        print(index)
+                                    }
+                                    .frame(width: screenWidth)
+                                }
+                                .padding(.top)
+                            }
+                        }
+                        .frame(width: screenWidth)
+                    }
+                        .bb_showsVerticalScrollIndicator(false)
+                ), label: "Likes"),
+                .init(content: AnyView(
+                    BBScrollView(.vertical, contentOffset: $contentOffset.handleContentOffset()) {
+                        LazyVStack(spacing: 0) {
+                            let frameHeight: CGFloat = topContentHeight-contentStaticMinY+horizontalTabHeight
+                            Color(colorScheme == .dark ? .black : .white)
+                                .opacity(0.01)
+                                .frame(height: frameHeight > 0 ? frameHeight : .zero)
+                                .background {
+                                    GeometryReader { geo in
+                                        Color.clear
+                                            .preference(key: CustomCGFloatPreferenceKey.self, value: geo.frame(in: .global).minY)
+                                            .onPreferenceChange(CustomCGFloatPreferenceKey.self) { value in
+                                                if contentStaticMinY == .zero { contentStaticMinY = value }
+                                            }
+                                    }
+                                }
+                                .onTapGesture {
+                                    let correctedY: CGFloat = $0.y + contentStaticMinY - contentOffset.y
+                                    tapCoordinates = .init(x: $0.x, y: correctedY)
+                                }
+                            
+                            LazyVStack(spacing: 50) {
+                                ForEach(0...100, id: \.self) { index in
+                                    Button(index.description) {
+                                        print(index)
+                                    }
+                                    .frame(width: screenWidth)
+                                }
+                                .padding(.top)
+                            }
+                        }
+                        .frame(width: screenWidth)
+                    }
+                        .bb_showsVerticalScrollIndicator(false)
+                ), label: "Bookmarks"),
+                .init(content: AnyView(
+                    BBScrollView(.vertical, contentOffset: $contentOffset.handleContentOffset()) {
+                        LazyVStack(spacing: 0) {
+                            let frameHeight: CGFloat = topContentHeight-contentStaticMinY+horizontalTabHeight
+                            Color(colorScheme == .dark ? .black : .white)
+                                .opacity(0.01)
+                                .frame(height: frameHeight > 0 ? frameHeight : .zero)
+                                .background {
+                                    GeometryReader { geo in
+                                        Color.clear
+                                            .preference(key: CustomCGFloatPreferenceKey.self, value: geo.frame(in: .global).minY)
+                                            .onPreferenceChange(CustomCGFloatPreferenceKey.self) { value in
+                                                if contentStaticMinY == .zero { contentStaticMinY = value }
+                                            }
+                                    }
+                                }
+                                .onTapGesture {
+                                    let correctedY: CGFloat = $0.y + contentStaticMinY - contentOffset.y
+                                    tapCoordinates = .init(x: $0.x, y: correctedY)
+                                }
+                            
+                            LazyVStack(spacing: 50) {
+                                ForEach(0...100, id: \.self) { index in
+                                    Button(index.description) {
+                                        print(index)
+                                    }
+                                    .frame(width: screenWidth)
+                                }
+                                .padding(.top)
+                            }
+                        }
+                        .frame(width: screenWidth)
+                    }
+                        .bb_showsVerticalScrollIndicator(false)
+                ), label: "Achievements"),
             ], horizontalTabOffsetY: topContentHeight - profileTab.throttledContentOffset.y)
     }
 }
@@ -130,7 +262,7 @@ extension Binding<CGPoint> {
             let profileTab: ProfileTab = .shared
             let conditionValue: CGFloat = profileTab.profileContentHeight -
             profileTab.coverPhotoFrameStaticMaxY - profileTab.coverMaxExtraHeight
-
+            
             if self.wrappedValue.y <= conditionValue {
                 DispatchQueue.main.async {
                     return self.wrappedValue = newValue

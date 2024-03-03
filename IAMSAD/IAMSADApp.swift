@@ -25,7 +25,7 @@ struct IAMSADApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ProfileView()
+            TabTesting()
                 .dynamicTypeSize(...DynamicTypeSize.xLarge)
                 .environmentObject(avatar)
                 .environmentObject(avatarSheetVM)

@@ -29,6 +29,7 @@ struct ProfileCoverContentView: View {
     let coverExtraHeight: CGFloat // +/- max value is controlled
     let coverMaxExtraHeight: CGFloat
     let maxCoverBlur: CGFloat = 8
+    let safeBlurFrameSize: CGFloat = 20 /// to avoid image corners getting ugly when blurring
     
     // Arrow + Progress
     let arrowIconAngle: CGFloat
@@ -96,6 +97,7 @@ struct ProfileCoverContentView: View {
             case .color: coverColor
             }
         }
+        .frame(width: screenWidth + safeBlurFrameSize, height: getCoverHeight() + safeBlurFrameSize)
         .blur(radius: getCoverBlurOnScrollUp() + getCoverBlurOnScrollDown())
         .frame(width: screenWidth, height: getCoverHeight())
         .overlay {
@@ -168,7 +170,7 @@ extension ProfileCoverContentView {
             options: [.highPriority, .scaleDownLargeImages]
         )
         .resizable()
-        .placeholder { coverColor }
+        .placeholder { Color(uiColor: .systemGray6) }
         .scaledToFill()
     }
     
@@ -180,14 +182,14 @@ extension ProfileCoverContentView {
             .fontWeight(.medium)
             .rotationEffect(.degrees(arrowIconAngle))
             .foregroundStyle(.white)
-            .opacity(/*arrowIconOpacity*/0)
+            .opacity(arrowIconOpacity)
     }
     
     // MARK: - progressIndicator
     private var progressIndicator: some View {
         ProgressView()
             .tint(.white)
-            .opacity(/*progressIndicatorOpacity*/0)
+            .opacity(progressIndicatorOpacity)
     }
     
     // MARK: - coverText

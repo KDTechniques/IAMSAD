@@ -9,28 +9,28 @@ import SwiftUI
 import BBSwiftUIKit
 import Combine
 
-// this is what i wanted.
-
 struct ProfileView: View {
     // MARK: - PROPERTIES
     @Environment(\.colorScheme) private var colorScheme
     @State private var arrowDownAngle: CGFloat = .zero
     @State private var arrowDownOpacity: CGFloat = .zero
     @State private var progressIndicatorOpacity: CGFloat = .zero
-    @State private var tabSelection: Int = 1
     @State var contentOffset: CGPoint = .zero
     @State var topToolbarStaticMidY: CGFloat = .zero
     @State var topToolbarStaticMaxY: CGFloat = .zero
     @State var topToolbarLeadingItemStaticMaxX: CGFloat = .zero
     let topToolbarIconsFrameSize: CGFloat = 14
     let maxArrowOpacityCoverHeight: CGFloat = 10
-    @State var profileInfoTopContentDynamicMinY: CGFloat = .zero
     let secondaryProfilePhotoFrameSize: CGFloat = 75
-    var secondaryProfilePhotoSize: CGFloat { secondaryProfilePhotoFrameSize - 7 }
+    let secondaryProfilePhotoBorderSize: CGFloat = 7
+    var secondaryProfilePhotoSize: CGFloat {
+        secondaryProfilePhotoFrameSize - secondaryProfilePhotoBorderSize
+    }
     let profilePhotoOffsetFraction: CGFloat = 1 - 1/3
     @State var coverTextOffsetY: CGFloat = .zero
     @State var tapRegisteredEventsArray: [TapRegisterModel<ProfileTabEventTypes>] = []
     @State var tapCoordinates: CGPoint = .zero
+    let horizontalTabsExtraTopPadding: CGFloat = 10
     
     @State var profileTab: ProfileTab = .shared
     
@@ -73,17 +73,6 @@ struct ProfileView: View {
     }
 }
 
-extension ProfileView {
-    func setter(_ value: Binding<CGPoint>) -> Binding<CGPoint> {
-        Binding {
-            value.wrappedValue
-        } set: { newValue in
-            value.wrappedValue = newValue
-            profileTab.contentOffset = newValue
-        }
-    }
-}
-
 // MARK: - PREVIEWS
 #Preview("ProfileView") { ProfileView().previewViewModifier }
 
@@ -113,7 +102,15 @@ extension ProfileView {
                     
                     joinedDateNBioTexts
                 }
-                .geometryReaderDimensionViewModifier($profileTab.profileContentHeight, dimension: .height)
+                .background {
+                    GeometryReader { geo in
+                        Color.clear
+                            .preference(key: CustomCGFloatPreferenceKey.self, value: geo.size.height)
+                            .onPreferenceChange(CustomCGFloatPreferenceKey.self) {
+                                profileTab.profileContentHeight = $0 + horizontalTabsExtraTopPadding
+                            }
+                    }
+                }
                 
                 Color.clear
                     .frame(height: screenHeight*3)
@@ -136,19 +133,22 @@ extension ProfileView {
             topToolbarStaticMidY: topToolbarStaticMidY,
             coverTextOffsetY: coverTextOffsetY,
             iconFrameSize: topToolbarIconsFrameSize,
-            coverPhotoURL: URL(string: "https://cdn.pixabay.com/photo/2012/08/27/14/19/mountains-55067_1280.png"),
+            coverPhotoURL: URL(string: "https://api2.iloveimg.com/v1/download/r595swl8b0pkfAczvmg8m6nyAjmj1v6lcww6wqAnlb525khsw48hch9jbdpv89w5wdzqz5710twj3szc1wg3pw86jctn6nAbqrqx1x6bd88rp10j5w004qgs6y7h8Ab4nwfwpj1bth2g58kph6ftg5wpbw6j248wh8vmglzq0p5b17011q91"),
             coverType: .photo,
             coverMaxExtraHeight: profileTab.coverMaxExtraHeight,
             coverExtraHeight: -profileTab.throttledContentOffset.y,
-            arrowIconAngle: 0, // add a property <------
-            arrowIconOpacity: 1, // add a property <-----
-            progressIndicatorOpacity: 1, // add a property <------
+            arrowIconAngle: .zero, // add a property <------
+            arrowIconOpacity: .zero, // add a property <-----
+            progressIndicatorOpacity: .zero, // add a property <------
             profilePhotoFrameSize: secondaryProfilePhotoFrameSize,
             profilePhotoSize: secondaryProfilePhotoSize,
             profilePhotoOffsetFraction: profilePhotoOffsetFraction
         )
         .ignoresSafeArea(edges: .top)
         .allowsHitTesting(false)
+        .onAppear {
+            print(screenWidth)
+        }
     }
     
     // MARK: - profileInfoTopContent
@@ -388,6 +388,16 @@ extension ProfileView {
     }
     
     // MARK: - FUNCTIONS
+    
+    // MARK: - setter
+    private func setter(_ value: Binding<CGPoint>) -> Binding<CGPoint> {
+        Binding {
+            value.wrappedValue
+        } set: { newValue in
+            value.wrappedValue = newValue
+            profileTab.contentOffset = newValue
+        }
+    }
     
     // MARK: - getProfilePhotoOpacity
     private func getProfilePhotoOpacity() -> CGFloat {
