@@ -9,10 +9,8 @@ import SwiftUI
 
 @main
 struct IAMSADApp: App {
-    
     final class AppDelegate: NSObject, UIApplicationDelegate {
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-            
             Utilities().setTabBarColor()
             return true
         }
@@ -22,6 +20,7 @@ struct IAMSADApp: App {
     
     let avatar: Avatar = .shared
     @StateObject private var avatarSheetVM: AvatarSheetVM = .shared
+    @StateObject private var profileVM: ProfileViewModel = .shared
     
     var body: some Scene {
         WindowGroup {
@@ -29,6 +28,7 @@ struct IAMSADApp: App {
                 .dynamicTypeSize(...DynamicTypeSize.xLarge)
                 .environmentObject(avatar)
                 .environmentObject(avatarSheetVM)
+                .environmentObject(profileVM)
         }
     }
 }

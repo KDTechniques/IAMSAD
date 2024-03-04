@@ -3,22 +3,4 @@
    uuid = "5C7C19FF-CAF5-4516-8A4E-7689E4EE55B1"
    type = "1"
    version = "2.0">
-   <Breakpoints>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3D997CE0-E8F5-4BD0-A3D0-E5968519B2CD"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IAMSAD/VIEWS &#x2764;&#xfe0f;&#x2764;&#xfe0f;&#x2764;&#xfe0f;/Testing/Testing123.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-   </Breakpoints>
 </Bucket>

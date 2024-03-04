@@ -10,7 +10,6 @@
 		0B00D1DE2B5334A900CE721C /* OnboardingPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00D1DD2B5334A900CE721C /* OnboardingPhoneNumberView.swift */; };
 		0B00D1E02B540CBF00CE721C /* PhoneNumberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00D1DF2B540CBF00CE721C /* PhoneNumberModel.swift */; };
 		0B00D1E22B54192B00CE721C /* CustomCountryCodeSearchSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00D1E12B54192B00CE721C /* CustomCountryCodeSearchSheetView.swift */; };
-		0B1F76A82B8F8538004535F1 /* BBSwiftUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0B1F76A72B8F8538004535F1 /* BBSwiftUIKit */; };
 		0B2622FE2B4B4E120063D71C /* IAMSADApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2622FD2B4B4E120063D71C /* IAMSADApp.swift */; };
 		0B2623002B4B4E120063D71C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2622FF2B4B4E120063D71C /* ContentView.swift */; };
 		0B2623022B4B4E140063D71C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B2623012B4B4E140063D71C /* Assets.xcassets */; };
@@ -96,6 +95,7 @@
 		0B729F712B667B16009BDFD2 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B729F702B667B16009BDFD2 /* AvatarImageView.swift */; };
 		0B729F732B668084009BDFD2 /* AvatarImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B729F722B668084009BDFD2 /* AvatarImageModel.swift */; };
 		0B8544022B948D7F00FAF90F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8544012B948D7F00FAF90F /* ProfileViewModel.swift */; };
+		0B8F37912B952CE0003D0824 /* CustomUIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8F37902B952CE0003D0824 /* CustomUIScrollView.swift */; };
 		0B9071EF2B6EC164008D5AF4 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9071EE2B6EC164008D5AF4 /* LaunchScreen.swift */; };
 		0B9071F22B6EC8E7008D5AF4 /* CustomPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9071F12B6EC8E7008D5AF4 /* CustomPopUpView.swift */; };
 		0B931DFB2B779CFC00EB8F2E /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 0B931DFA2B779CFC00EB8F2E /* Algorithms */; };
@@ -478,6 +478,7 @@
 		0B729F702B667B16009BDFD2 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		0B729F722B668084009BDFD2 /* AvatarImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageModel.swift; sourceTree = "<group>"; };
 		0B8544012B948D7F00FAF90F /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		0B8F37902B952CE0003D0824 /* CustomUIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIScrollView.swift; sourceTree = "<group>"; };
 		0B9071EE2B6EC164008D5AF4 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		0B9071F12B6EC8E7008D5AF4 /* CustomPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUpView.swift; sourceTree = "<group>"; };
 		0B9974682B55D682001AD3F6 /* UIApplication+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+EXT.swift"; sourceTree = "<group>"; };
@@ -776,7 +777,6 @@
 				0B931E072B779EAB00EB8F2E /* SDWebImageSwiftUI in Frameworks */,
 				0B931DFE2B779D1900EB8F2E /* PopupView in Frameworks */,
 				0B931DFB2B779CFC00EB8F2E /* Algorithms in Frameworks */,
-				0B1F76A82B8F8538004535F1 /* BBSwiftUIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -948,6 +948,7 @@
 		0B2623622B4C9F130063D71C /* Reusable */ = {
 			isa = PBXGroup;
 			children = (
+				0B8F37902B952CE0003D0824 /* CustomUIScrollView.swift */,
 				0B9071F12B6EC8E7008D5AF4 /* CustomPopUpView.swift */,
 				0B58AE922B6CEFF00057CCFE /* Post Buttons */,
 				0B729F6F2B667A0C009BDFD2 /* Custom Avatar Image */,
@@ -1458,7 +1459,6 @@
 				0B931DFA2B779CFC00EB8F2E /* Algorithms */,
 				0B931DFD2B779D1900EB8F2E /* PopupView */,
 				0B931E062B779EAB00EB8F2E /* SDWebImageSwiftUI */,
-				0B1F76A72B8F8538004535F1 /* BBSwiftUIKit */,
 			);
 			productName = IAMSAD;
 			productReference = 0B2622FA2B4B4E120063D71C /* IAMSAD.app */;
@@ -1492,7 +1492,6 @@
 				0B931DF92B779CFC00EB8F2E /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 				0B931DFC2B779D1900EB8F2E /* XCRemoteSwiftPackageReference "PopupView" */,
 				0B931E052B779EAB00EB8F2E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
-				0B1F76A62B8F8538004535F1 /* XCRemoteSwiftPackageReference "BBSwiftUIKit" */,
 			);
 			productRefGroup = 0B2622FB2B4B4E120063D71C /* Products */;
 			projectDirPath = "";
@@ -1891,6 +1890,7 @@
 				0B26239F2B4DD9280063D71C /* CustomSelectableAvatarView.swift in Sources */,
 				0B2623A52B4E81530063D71C /* CustomColorSliderView.swift in Sources */,
 				0B729F712B667B16009BDFD2 /* AvatarImageView.swift in Sources */,
+				0B8F37912B952CE0003D0824 /* CustomUIScrollView.swift in Sources */,
 				0B27C3FD2B52A6E700680676 /* AvatarCollectionModel.swift in Sources */,
 				0B2623A12B4E61460063D71C /* CustomAvatarView.swift in Sources */,
 			);
@@ -2120,14 +2120,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0B1F76A62B8F8538004535F1 /* XCRemoteSwiftPackageReference "BBSwiftUIKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/KDTechniques/BBSwiftUIKit.git";
-			requirement = {
-				branch = "For-IAMSAD-iOS-App";
-				kind = branch;
-			};
-		};
 		0B931DF92B779CFC00EB8F2E /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-algorithms.git";
@@ -2155,11 +2147,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0B1F76A72B8F8538004535F1 /* BBSwiftUIKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0B1F76A62B8F8538004535F1 /* XCRemoteSwiftPackageReference "BBSwiftUIKit" */;
-			productName = BBSwiftUIKit;
-		};
 		0B931DFA2B779CFC00EB8F2E /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0B931DF92B779CFC00EB8F2E /* XCRemoteSwiftPackageReference "swift-algorithms" */;

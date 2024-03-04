@@ -10,7 +10,7 @@ import SDWebImageSwiftUI
 
 struct OnboardingAvatarView: View {
     // MARK: - PROPERTIES
-    @EnvironmentObject var avatarSheetVM: AvatarSheetVM
+    @EnvironmentObject private var avatarSheetVM: AvatarSheetVM
     
     // MARK: - BODY
     var body: some View {

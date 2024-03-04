@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
-import BBSwiftUIKit
 
 struct Testing123: View {
+    // MARK: - PROPERTIES
     @Environment(\.colorScheme) private var colorScheme
+    @EnvironmentObject private var profileVM: ProfileViewModel
+    
     @Binding var contentOffset: CGPoint
     @Binding var tapCoordinates: CGPoint
     let topContentHeight: CGFloat
@@ -17,14 +19,13 @@ struct Testing123: View {
     @State var horizontalTabHeight: CGFloat = .zero
     @State var contentStaticMinY: CGFloat = .zero
     
-    let profileTab: ProfileTab = .shared
-    
+    // MARK: - BODY
     var body: some View {
         CustomStripTabView(
             horizontalTabHeight: $horizontalTabHeight,
             contentArray: [
                 .init(content: AnyView(
-                    BBScrollView(.vertical, contentOffset: $contentOffset.handleContentOffset()) {
+                    CustomUIScrollView(.vertical, contentOffset: $contentOffset.handleContentOffset()) {
                         LazyVStack(spacing: 0) {
                             let frameHeight: CGFloat = topContentHeight-contentStaticMinY+horizontalTabHeight
                             Color(colorScheme == .dark ? .black : .white)
@@ -56,10 +57,10 @@ struct Testing123: View {
                         }
                         .frame(width: screenWidth)
                     }
-                        .bb_showsVerticalScrollIndicator(false)
+                        .showsVerticalScrollIndicator(false)
                 ), label: "Posts"),
                 .init(content: AnyView(
-                    BBScrollView(.vertical, contentOffset: $contentOffset.handleContentOffset()) {
+                    CustomUIScrollView(.vertical, contentOffset: $contentOffset.handleContentOffset()) {
                         LazyVStack(spacing: 0) {
                             let frameHeight: CGFloat = topContentHeight-contentStaticMinY+horizontalTabHeight
                             Color(colorScheme == .dark ? .black : .white)
@@ -91,10 +92,10 @@ struct Testing123: View {
                         }
                         .frame(width: screenWidth)
                     }
-                        .bb_showsVerticalScrollIndicator(false)
+                        .showsVerticalScrollIndicator(false)
                 ), label: "Replies"),
                 .init(content: AnyView(
-                    BBScrollView(.vertical, contentOffset: $contentOffset.handleContentOffset()) {
+                    CustomUIScrollView(.vertical, contentOffset: $contentOffset.handleContentOffset()) {
                         LazyVStack(spacing: 0) {
                             let frameHeight: CGFloat = topContentHeight-contentStaticMinY+horizontalTabHeight
                             Color(colorScheme == .dark ? .black : .white)
@@ -126,10 +127,10 @@ struct Testing123: View {
                         }
                         .frame(width: screenWidth)
                     }
-                        .bb_showsVerticalScrollIndicator(false)
+                        .showsVerticalScrollIndicator(false)
                 ), label: "Media"),
                 .init(content: AnyView(
-                    BBScrollView(.vertical, contentOffset: $contentOffset.handleContentOffset()) {
+                    CustomUIScrollView(.vertical, contentOffset: $contentOffset.handleContentOffset()) {
                         LazyVStack(spacing: 0) {
                             let frameHeight: CGFloat = topContentHeight-contentStaticMinY+horizontalTabHeight
                             Color(colorScheme == .dark ? .black : .white)
@@ -161,10 +162,10 @@ struct Testing123: View {
                         }
                         .frame(width: screenWidth)
                     }
-                        .bb_showsVerticalScrollIndicator(false)
+                        .showsVerticalScrollIndicator(false)
                 ), label: "Likes"),
                 .init(content: AnyView(
-                    BBScrollView(.vertical, contentOffset: $contentOffset.handleContentOffset()) {
+                    CustomUIScrollView(.vertical, contentOffset: $contentOffset.handleContentOffset()) {
                         LazyVStack(spacing: 0) {
                             let frameHeight: CGFloat = topContentHeight-contentStaticMinY+horizontalTabHeight
                             Color(colorScheme == .dark ? .black : .white)
@@ -196,10 +197,10 @@ struct Testing123: View {
                         }
                         .frame(width: screenWidth)
                     }
-                        .bb_showsVerticalScrollIndicator(false)
+                        .showsVerticalScrollIndicator(false)
                 ), label: "Bookmarks"),
                 .init(content: AnyView(
-                    BBScrollView(.vertical, contentOffset: $contentOffset.handleContentOffset()) {
+                    CustomUIScrollView(.vertical, contentOffset: $contentOffset.handleContentOffset()) {
                         LazyVStack(spacing: 0) {
                             let frameHeight: CGFloat = topContentHeight-contentStaticMinY+horizontalTabHeight
                             Color(colorScheme == .dark ? .black : .white)
@@ -231,14 +232,15 @@ struct Testing123: View {
                         }
                         .frame(width: screenWidth)
                     }
-                        .bb_showsVerticalScrollIndicator(false)
+                        .showsVerticalScrollIndicator(false)
                 ), label: "Achievements"),
-            ], horizontalTabOffsetY: topContentHeight - profileTab.throttledContentOffset.y)
+            ], horizontalTabOffsetY: topContentHeight - profileVM.throttledContentOffset.y)
     }
 }
 
 #Preview {
     Preview()
+        .previewViewModifier
 }
 
 fileprivate struct Preview: View {
@@ -259,22 +261,19 @@ extension Binding<CGPoint> {
         Binding {
             self.wrappedValue
         } set: { newValue in
-            let profileTab: ProfileTab = .shared
-            let conditionValue: CGFloat = profileTab.profileContentHeight -
-            profileTab.coverPhotoFrameStaticMaxY - profileTab.coverMaxExtraHeight
-            
-            if self.wrappedValue.y <= conditionValue {
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                let profileVM: ProfileViewModel = .shared
+                let conditionValue: CGFloat = profileVM.profileContentHeight -
+                profileVM.coverPhotoFrameStaticMaxY - profileVM.coverMaxExtraHeight
+                
+                if self.wrappedValue.y <= conditionValue {
+                    return self.wrappedValue = newValue
+                }
+                
+                if newValue.y <= conditionValue {
                     return self.wrappedValue = newValue
                 }
             }
-            
-            if newValue.y <= conditionValue {
-                DispatchQueue.main.async {
-                    return self.wrappedValue = newValue
-                }
-            }
-            
         }
     }
 }

@@ -122,6 +122,7 @@ extension SeeAllAvatarSheetContentView {
 fileprivate struct AvatarSheetCollectionRowView: View {
     // MARK: - PROPERTIES
     @EnvironmentObject private var avatar: Avatar
+    
     let collectionName: AvatarCollectionTypes
     
     // MARK: - INITILIZER

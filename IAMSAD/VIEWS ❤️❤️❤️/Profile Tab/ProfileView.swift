@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
-import BBSwiftUIKit
 import Combine
 
 struct ProfileView: View {
     // MARK: - PROPERTIES
     @Environment(\.colorScheme) private var colorScheme
+    @EnvironmentObject private var profileVM: ProfileViewModel
+    
     @State private var arrowDownAngle: CGFloat = .zero
     @State private var arrowDownOpacity: CGFloat = .zero
     @State private var progressIndicatorOpacity: CGFloat = .zero
@@ -28,11 +29,9 @@ struct ProfileView: View {
     }
     let profilePhotoOffsetFraction: CGFloat = 1 - 1/3
     @State var coverTextOffsetY: CGFloat = .zero
-    @State var tapRegisteredEventsArray: [TapRegisterModel<ProfileTabEventTypes>] = []
+    @State private var tapRegisteredEventsArray: [TapRegisterModel<ProfileTabEventTypes>] = []
     @State var tapCoordinates: CGPoint = .zero
     let horizontalTabsExtraTopPadding: CGFloat = 10
-    
-    @State var profileTab: ProfileTab = .shared
     
     // MARK: - BODY
     var body: some View {
@@ -44,7 +43,7 @@ struct ProfileView: View {
                 Testing123(
                     contentOffset: setter($contentOffset),
                     tapCoordinates: $tapCoordinates,
-                    topContentHeight: profileTab.profileContentHeight
+                    topContentHeight: profileVM.profileContentHeight
                 )
                 
                 coverContent
@@ -74,9 +73,10 @@ struct ProfileView: View {
 }
 
 // MARK: - PREVIEWS
-#Preview("ProfileView") { ProfileView().previewViewModifier }
-
-enum ProfilePhotoTypes { case onCover, inScrollView }
+#Preview("ProfileView") {
+    ProfileView()
+        .previewViewModifier
+}
 
 // MARK: - EXTENSIONS
 @MainActor
@@ -89,11 +89,11 @@ extension ProfileView {
     
     // MARK: - profileInfoContent
     private var profileInfoContent: some View {
-        BBScrollView(.vertical, contentOffset: setter($contentOffset)) {
+        CustomUIScrollView(.vertical, contentOffset: setter($contentOffset)) {
             VStack(alignment: .leading, spacing: 0) {
                 VStack(alignment: .leading, spacing: 0) {
                     Color.clear
-                        .frame(height: profileTab.coverPhotoFrameStaticMaxY)
+                        .frame(height: profileVM.coverPhotoFrameStaticMaxY)
                     
                     VStack(alignment: .leading, spacing: 8) {
                         profileInfoTopContent
@@ -107,7 +107,7 @@ extension ProfileView {
                         Color.clear
                             .preference(key: CustomCGFloatPreferenceKey.self, value: geo.size.height)
                             .onPreferenceChange(CustomCGFloatPreferenceKey.self) {
-                                profileTab.profileContentHeight = $0 + horizontalTabsExtraTopPadding
+                                profileVM.profileContentHeight = $0 + horizontalTabsExtraTopPadding
                             }
                     }
                 }
@@ -120,7 +120,7 @@ extension ProfileView {
             .padding(.horizontal)
             .frame(width: screenWidth)
         }
-        .bb_showsVerticalScrollIndicator(false)
+        .showsVerticalScrollIndicator(false)
         .ignoresSafeArea(edges: .top)
     }
     
@@ -135,8 +135,8 @@ extension ProfileView {
             iconFrameSize: topToolbarIconsFrameSize,
             coverPhotoURL: URL(string: "https://api2.iloveimg.com/v1/download/r595swl8b0pkfAczvmg8m6nyAjmj1v6lcww6wqAnlb525khsw48hch9jbdpv89w5wdzqz5710twj3szc1wg3pw86jctn6nAbqrqx1x6bd88rp10j5w004qgs6y7h8Ab4nwfwpj1bth2g58kph6ftg5wpbw6j248wh8vmglzq0p5b17011q91"),
             coverType: .photo,
-            coverMaxExtraHeight: profileTab.coverMaxExtraHeight,
-            coverExtraHeight: -profileTab.throttledContentOffset.y,
+            coverMaxExtraHeight: profileVM.coverMaxExtraHeight,
+            coverExtraHeight: -profileVM.throttledContentOffset.y,
             arrowIconAngle: .zero, // add a property <------
             arrowIconOpacity: .zero, // add a property <-----
             progressIndicatorOpacity: .zero, // add a property <------
@@ -258,7 +258,7 @@ extension ProfileView {
                     Color.clear
                         .preference(key: CustomCGFloatPreferenceKey.self, value: geo.frame(in: .global).minY)
                         .onPreferenceChange(CustomCGFloatPreferenceKey.self) { value in
-                            let triggerLine: CGFloat = profileTab.coverPhotoFrameStaticMaxY + profileTab.coverMaxExtraHeight
+                            let triggerLine: CGFloat = profileVM.coverPhotoFrameStaticMaxY + profileVM.coverMaxExtraHeight
                             coverTextOffsetY = value - triggerLine
                         }
                 }
@@ -395,13 +395,13 @@ extension ProfileView {
             value.wrappedValue
         } set: { newValue in
             value.wrappedValue = newValue
-            profileTab.contentOffset = newValue
+            profileVM.contentOffset = newValue
         }
     }
     
     // MARK: - getProfilePhotoOpacity
     private func getProfilePhotoOpacity() -> CGFloat {
-        -contentOffset.y <= profileTab.coverMaxExtraHeight ? 1 : 0
+        -contentOffset.y <= profileVM.coverMaxExtraHeight ? 1 : 0
     }
     
     // MARK: - registerEventCoordinates
@@ -436,40 +436,6 @@ extension ProfileView {
     }
 }
 
-class ProfileTab: ObservableObject {
-    let coverPhotoFrameStaticMaxY: CGFloat = 140
-    let coverMaxExtraHeight: CGFloat = -43
-    
-    @Published var contentOffset: CGPoint = .zero
-    @Published var throttledContentOffset: CGPoint = .zero
-    @Published var profileContentHeight: CGFloat = .zero
-    
-    var cancellable: Set<AnyCancellable> = []
-    
-    static let shared: ProfileTab = .init()
-    
-    init() {
-        contentOffsetSubscriber()
-    }
-    
-    func contentOffsetSubscriber() {
-        $contentOffset
-            .subscribe(on: DispatchQueue.main)
-            .sink { [weak self] newValue in
-                guard let self = self else { return }
-                
-                let conditionValue: CGFloat = profileContentHeight - coverPhotoFrameStaticMaxY - coverMaxExtraHeight
-                
-                if newValue.y <= conditionValue {
-                    throttledContentOffset = newValue
-                } else {
-                    throttledContentOffset.y = conditionValue
-                }
-            }
-            .store(in: &cancellable)
-    }
-}
-
-enum ProfileTabEventTypes {
+private enum ProfileTabEventTypes {
     case general, share, more, followers, link
 }

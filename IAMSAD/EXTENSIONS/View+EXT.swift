@@ -15,6 +15,7 @@ extension View {
             .dynamicTypeSize(...DynamicTypeSize.xLarge)
             .environmentObject(Avatar.shared)
             .environmentObject(AvatarSheetVM.shared)
+            .environmentObject(ProfileViewModel.shared)
     }
     
     // MARK: - standardAccentColorBottomButtonViewModifier
