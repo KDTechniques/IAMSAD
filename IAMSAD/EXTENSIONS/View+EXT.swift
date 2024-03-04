@@ -146,9 +146,7 @@ extension View {
     }
     
     // MARK: - registerProfileTapEvent
-    @ViewBuilder
     func registerProfileTapEvent(event: ProfileTabEventTypes, action: @escaping () -> Void) -> some View {
-        let profileVM: ProfileViewModel = .shared
         self
             .background {
                 GeometryReader { geo in
@@ -158,7 +156,7 @@ extension View {
                             value: geo.frame(in: .global)
                         )
                         .onPreferenceChange(CustomCGRectPreferenceKey.self) {
-                            profileVM.registerEventCoordinates(event: event, frame: $0) {
+                            ProfileViewModel.shared.registerEventCoordinates(event: event, frame: $0) {
                                 action()
                             }
                         }

@@ -171,7 +171,7 @@ extension ProfileCoverContentView {
             options: [.highPriority, .scaleDownLargeImages]
         )
         .resizable()
-        .placeholder { Color(uiColor: .systemGray6) }
+        .defaultBColorPlaceholder
         .scaledToFill()
     }
     
