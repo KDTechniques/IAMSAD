@@ -110,6 +110,7 @@ struct ProfileCoverContentView: View {
         .overlay(alignment: .bottomLeading) { coverText }
         .clipped()
         .overlay(alignment: .bottomLeading) { profilePhoto }
+        .ignoresSafeArea(edges: .top)
     }
 }
 

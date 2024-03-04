@@ -201,5 +201,5 @@ enum PopupLeadingContentTypes {
 // MARK: - PopupTrailingContentTypes
 enum PopupTrailingButtonTypes {
     case navigation(label: String, destination: AnyView)
-    case action(label: String, action: () -> ())
+    case action(label: String, action: () -> Void)
 }

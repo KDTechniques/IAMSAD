@@ -116,7 +116,7 @@ extension View {
     }
     
     // MARK: - sheetTopTrailingCloseButtonViewModifier
-    func sheetTopTrailingCloseButtonViewModifier(color xmarkColor: Color = .primary, isVisible: Bool = true, action: @escaping () -> ()) -> some View {
+    func sheetTopTrailingCloseButtonViewModifier(color xmarkColor: Color = .primary, isVisible: Bool = true, action: @escaping () -> Void) -> some View {
         self
             .overlay(alignment: .topTrailing) {
                 if isVisible {
@@ -143,6 +143,27 @@ extension View {
             self
                 .presentationBackground(material)
         } else { self }
+    }
+    
+    // MARK: - registerProfileTapEvent
+    @ViewBuilder
+    func registerProfileTapEvent(event: ProfileTabEventTypes, action: @escaping () -> Void) -> some View {
+        let profileVM: ProfileViewModel = .shared
+        self
+            .background {
+                GeometryReader { geo in
+                    Color.clear
+                        .preference(
+                            key: CustomCGRectPreferenceKey.self,
+                            value: geo.frame(in: .global)
+                        )
+                        .onPreferenceChange(CustomCGRectPreferenceKey.self) {
+                            profileVM.registerEventCoordinates(event: event, frame: $0) {
+                                action()
+                            }
+                        }
+                }
+            }
     }
 }
 
