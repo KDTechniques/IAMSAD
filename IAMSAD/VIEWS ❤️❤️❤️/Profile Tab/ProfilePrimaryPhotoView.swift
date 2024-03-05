@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ProfilePrimaryPhotoView: View {
     // MARK: - PROPERTIES
@@ -20,21 +21,26 @@ struct ProfilePrimaryPhotoView: View {
                 height: profileVM.primaryProfilePhotoFrameSize
             )
             .overlay {
-                Image(.profilePhoto)
-                    .resizable()
-                    .scaledToFill()
-                    .clipShape(Circle())
-                    .frame(
-                        width: profileVM.primaryProfilePhotoSize,
-                        height: profileVM.primaryProfilePhotoSize
-                    )
+                WebImage(
+                    url: profileVM.profilePhotoURL,
+                    options: [.highPriority, .scaleDownLargeImages]
+                )
+                .resizable()
+                .defaultBColorPlaceholder
+                .scaledToFill()
+                .clipShape(Circle())
+                .frame(
+                    width: profileVM.primaryProfilePhotoSize,
+                    height: profileVM.primaryProfilePhotoSize
+                )
             }
             .opacity(profileVM.getProfilePhotoOpacity())
+//            .background(Color.debug)
     }
 }
 
 // MARK: - PREVIEWS
-#Preview {
+#Preview("ProfilePrimaryPhotoView") {
     ProfilePrimaryPhotoView()
         .previewViewModifier
 }

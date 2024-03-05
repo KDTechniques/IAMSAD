@@ -9,18 +9,11 @@ import SwiftUI
 
 struct ProfileGeneralButtonView: View {
     // MARK: - PROPERTIES
-    @EnvironmentObject private var profileVM: ProfileViewModel
-    
-    let buttonType: ProfileGeneralButtonTypes
-    
-    // MARK: - INITIALIZER
-    init(buttonType: ProfileGeneralButtonTypes) {
-        self.buttonType = buttonType
-    }
+    @EnvironmentObject private var profileGeneralNShareButtonsVM: ProfileGeneralNShareButtonsVM
     
     // MARK: - BODY
     var body: some View {
-        Text(buttonType.rawValue.capitalized)
+        Text(profileGeneralNShareButtonsVM.buttonType.rawValue.capitalized)
             .font(.footnote.weight(.semibold))
             .foregroundStyle(Color.primary)
             .frame(width: 130, height: 32)
@@ -34,11 +27,12 @@ struct ProfileGeneralButtonView: View {
                 // follow/unfollow/edit profile action goes here...
                 print("general - follow/unfollow/edit profile action got triggered...")
             }
+        //            .background(Color.debug)
     }
 }
 
 // MARK: - PREVIEWS
 #Preview("ProfileGeneralButtonView") {
-    ProfileGeneralButtonView(buttonType: .editProfile)
+    ProfileGeneralButtonView()
         .previewViewModifier
 }

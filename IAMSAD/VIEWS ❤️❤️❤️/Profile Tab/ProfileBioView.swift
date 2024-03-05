@@ -9,18 +9,13 @@ import SwiftUI
 
 struct ProfileBioView: View {
     // MARK: - PROPERTIES
-    let bio: String
-    
-    // MARK: - INITIALIZER
-    init(bio: String) {
-        self.bio = bio
-    }
+    @EnvironmentObject private var profileBioVM: ProfileBioVM
     
     // MARK: - BODY
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack(alignment: .bottom) {
-                Text(bio)
+                Text(profileBioVM.bioText)
                     .lineSpacing(5)
                 
                 Text("more")
@@ -34,10 +29,12 @@ struct ProfileBioView: View {
             }
             .font(.subheadline)
         }
+        //        .background(Color.debug)
     }
 }
 
 // MARK: - PREVIEWS
 #Preview("ProfileBioView") {
-    ProfileBioView(bio: "Sajee's Hubby 👩🏻‍❤️‍👨🏻\n1st Class Honours Graduate 👨🏻‍🎓\nUI/UX Designer/Engineer 👨🏻‍💻\nFront-End SwiftUI iOS Develoer 👨🏻‍💻")
+    ProfileBioView()
+        .previewViewModifier
 }

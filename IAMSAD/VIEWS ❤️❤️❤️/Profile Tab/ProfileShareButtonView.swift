@@ -25,10 +25,12 @@ struct ProfileShareButtonView: View {
                 // share action goes here...
                 print("share action got triggered...")
             }
+        //            .background(Color.debug)
     }
 }
 
 // MARK: - PREVIEWS
 #Preview("ProfileShareButtonView") {
     ProfileShareButtonView()
+        .previewViewModifier
 }

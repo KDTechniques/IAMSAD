@@ -11,8 +11,7 @@ import SwiftUI
 struct IAMSADApp: App {
     final class AppDelegate: NSObject, UIApplicationDelegate {
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-            Utilities().setTabBarColor()
-            
+
             return true
         }
     }
@@ -22,6 +21,15 @@ struct IAMSADApp: App {
     let avatar: Avatar = .shared
     @StateObject private var avatarSheetVM: AvatarSheetVM = .shared
     @StateObject private var profileVM: ProfileViewModel = .shared
+    @StateObject private var profileCoverVM: ProfileCoverVM = .shared
+    @StateObject private var profileGeneralNShareButtonsVM: ProfileGeneralNShareButtonsVM = .shared
+    @StateObject private var profileNameGenderNJoinedDateVM: ProfileNameGenderNJoinedDateVM = .shared
+    @StateObject private var profileBioVM: ProfileBioVM = .shared
+    @StateObject private var profileFollowersNLinkVM: ProfileFollowersNLinkVM = .shared
+    
+    init() {
+        Utilities().setTabBarColor()
+    }
     
     var body: some Scene {
         WindowGroup {
@@ -30,6 +38,11 @@ struct IAMSADApp: App {
                 .environmentObject(avatar)
                 .environmentObject(avatarSheetVM)
                 .environmentObject(profileVM)
+                .environmentObject(profileCoverVM)
+                .environmentObject(profileGeneralNShareButtonsVM)
+                .environmentObject(profileNameGenderNJoinedDateVM)
+                .environmentObject(profileBioVM)
+                .environmentObject(profileFollowersNLinkVM)
         }
     }
 }

@@ -21,6 +21,8 @@ final class ProfileViewModel: ObservableObject {
     // MARK: - PRORPERTIES
     
     // MARK: Common
+    let profileCoverVM: ProfileCoverVM = .shared
+    
     @Published var tapRegisteredEventsArray: [TapRegisterModel<ProfileTabEventTypes>] = []
     @Published var tapCoordinates: CGPoint = .zero
     @Published var contentOffset: CGPoint = .zero
@@ -44,26 +46,12 @@ final class ProfileViewModel: ObservableObject {
     var primaryProfilePhotoSize: CGFloat {
         secondaryProfilePhotoSize * profilePhotoOffsetFraction
     }
-    
-    // MARK: Cover
-    let coverPhotoFrameStaticMaxY: CGFloat = 140
-    let coverMaxExtraHeight: CGFloat = -43
-    @Published var coverTextOffsetY: CGFloat = .zero
+    @Published var profilePhotoURL: URL? = .init(string: "https://scontent.fcmb6-1.fna.fbcdn.net/v/t39.30808-6/406267007_1193865175350483_2919837257462168261_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeGOldSQG18thI5isD-6m267s13hywPgx--zXeHLA-DH79wKxI1PB4CO7RN-2XCSBM3VDX0TVfwMcXViPTPbo71d&_nc_ohc=R1yaIRs2sSoAX8tysfD&_nc_zt=23&_nc_ht=scontent.fcmb6-1.fna&oh=00_AfDFKMOJPGHGDWEy0Ipu0LB6ufpX1GpUKWE4f-aKf7P7qg&oe=65ECD15C")
     
     // MARK: Refreshable
     @Published var arrowDownAngle: CGFloat = .zero
     @Published var arrowDownOpacity: CGFloat = .zero
     @Published var progressIndicatorOpacity: CGFloat = .zero
-    
-    // MARK: Followers + Link
-    @Published var _3FollowersArray: [String] = [
-        "https://picsum.photos/50/50",
-        "https://picsum.photos/51/51",
-        "https://picsum.photos/52/52"
-    ]
-    @Published var followersCount: Int = 1200
-    @Published var linkText: String? = "kd_techniques/sleepi.com"
-    @Published var linkURL: String? = "https://exmaple.com/"
     
     // MARK: Singleton
     static let shared: ProfileViewModel = .init()
@@ -79,17 +67,21 @@ final class ProfileViewModel: ObservableObject {
     // MARK: Common
     
     // MARK: - contentOffsetSubscriber
-    func contentOffsetSubscriber() {
+    private func contentOffsetSubscriber() {
         $contentOffset
             .subscribe(on: DispatchQueue.main)
             .sink { [weak self] newValue in
                 guard let self = self else { return }
-                let conditionValue: CGFloat = profileContentHeight - coverPhotoFrameStaticMaxY - coverMaxExtraHeight
+                
+                let conditionValue: CGFloat = profileContentHeight -
+                profileCoverVM.coverPhotoFrameStaticMaxY - profileCoverVM.coverMaxExtraHeight
                 
                 if newValue.y <= conditionValue {
                     throttledContentOffset = newValue
+                    profileCoverVM.coverExtraHeight = -newValue.y
                 } else {
                     throttledContentOffset.y = conditionValue
+                    profileCoverVM.coverExtraHeight = -conditionValue
                 }
             }
             .store(in: &cancellable)
@@ -145,12 +137,6 @@ final class ProfileViewModel: ObservableObject {
     
     // MARK: - getProfilePhotoOpacity
     func getProfilePhotoOpacity() -> CGFloat {
-        -contentOffset.y <= coverMaxExtraHeight ? 1 : 0
-    }
-    
-    // MARK: - setCoverOffsetY
-    func setCoverTextOffsetY(_ value: CGFloat) {
-        let triggerLine: CGFloat = coverPhotoFrameStaticMaxY + coverMaxExtraHeight
-        coverTextOffsetY = value - triggerLine
+        -contentOffset.y <= profileCoverVM.coverMaxExtraHeight ? 1 : 0
     }
 }

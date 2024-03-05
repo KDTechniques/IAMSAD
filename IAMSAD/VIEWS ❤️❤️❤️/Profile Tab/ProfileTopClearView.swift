@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ProfileTopClearView: View {
     // MARK: - PROPERTIES
-    @EnvironmentObject private var profileVM: ProfileViewModel
+    @EnvironmentObject private var profileCoverVM: ProfileCoverVM
     
     // MARK: - BODY
     var body: some View {
         Color.clear
-            .frame(height: profileVM.coverPhotoFrameStaticMaxY)
+            .frame(height: profileCoverVM.coverPhotoFrameStaticMaxY)
     }
 }
 

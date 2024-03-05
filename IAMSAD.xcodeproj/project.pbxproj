@@ -10,6 +10,7 @@
 		0B00D1DE2B5334A900CE721C /* OnboardingPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00D1DD2B5334A900CE721C /* OnboardingPhoneNumberView.swift */; };
 		0B00D1E02B540CBF00CE721C /* PhoneNumberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00D1DF2B540CBF00CE721C /* PhoneNumberModel.swift */; };
 		0B00D1E22B54192B00CE721C /* CustomCountryCodeSearchSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00D1E12B54192B00CE721C /* CustomCountryCodeSearchSheetView.swift */; };
+		0B16863C2B97640F00A1DD50 /* ProfileCoverVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B16863B2B97640F00A1DD50 /* ProfileCoverVM.swift */; };
 		0B20D7D72B96067300B71C10 /* ProfileGeneralButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7D62B96067300B71C10 /* ProfileGeneralButtonView.swift */; };
 		0B20D7D92B960E6300B71C10 /* ProfileShareButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7D82B960E6300B71C10 /* ProfileShareButtonView.swift */; };
 		0B20D7DB2B960F5300B71C10 /* ProfilePrimaryPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7DA2B960F5300B71C10 /* ProfilePrimaryPhotoView.swift */; };
@@ -107,6 +108,10 @@
 		0B729F712B667B16009BDFD2 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B729F702B667B16009BDFD2 /* AvatarImageView.swift */; };
 		0B729F732B668084009BDFD2 /* AvatarImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B729F722B668084009BDFD2 /* AvatarImageModel.swift */; };
 		0B8544022B948D7F00FAF90F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8544012B948D7F00FAF90F /* ProfileViewModel.swift */; };
+		0B8BFF1A2B97159200F3443B /* ProfileFollowersNLinkVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BFF192B97159200F3443B /* ProfileFollowersNLinkVM.swift */; };
+		0B8BFF1C2B97195D00F3443B /* ProfileBioVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BFF1B2B97195D00F3443B /* ProfileBioVM.swift */; };
+		0B8BFF1E2B971D9600F3443B /* ProfileNameGenderNJoinedDateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BFF1D2B971D9600F3443B /* ProfileNameGenderNJoinedDateVM.swift */; };
+		0B8BFF202B97217300F3443B /* ProfileGeneralNShareButtonsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BFF1F2B97217300F3443B /* ProfileGeneralNShareButtonsVM.swift */; };
 		0B8F37912B952CE0003D0824 /* CustomUIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8F37902B952CE0003D0824 /* CustomUIScrollView.swift */; };
 		0B9071EF2B6EC164008D5AF4 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9071EE2B6EC164008D5AF4 /* LaunchScreen.swift */; };
 		0B9071F22B6EC8E7008D5AF4 /* CustomPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9071F12B6EC8E7008D5AF4 /* CustomPopUpView.swift */; };
@@ -404,6 +409,7 @@
 		0B00D1DD2B5334A900CE721C /* OnboardingPhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPhoneNumberView.swift; sourceTree = "<group>"; };
 		0B00D1DF2B540CBF00CE721C /* PhoneNumberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberModel.swift; sourceTree = "<group>"; };
 		0B00D1E12B54192B00CE721C /* CustomCountryCodeSearchSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCountryCodeSearchSheetView.swift; sourceTree = "<group>"; };
+		0B16863B2B97640F00A1DD50 /* ProfileCoverVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoverVM.swift; sourceTree = "<group>"; };
 		0B20D7D62B96067300B71C10 /* ProfileGeneralButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGeneralButtonView.swift; sourceTree = "<group>"; };
 		0B20D7D82B960E6300B71C10 /* ProfileShareButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileShareButtonView.swift; sourceTree = "<group>"; };
 		0B20D7DA2B960F5300B71C10 /* ProfilePrimaryPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePrimaryPhotoView.swift; sourceTree = "<group>"; };
@@ -502,6 +508,10 @@
 		0B729F702B667B16009BDFD2 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		0B729F722B668084009BDFD2 /* AvatarImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageModel.swift; sourceTree = "<group>"; };
 		0B8544012B948D7F00FAF90F /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		0B8BFF192B97159200F3443B /* ProfileFollowersNLinkVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFollowersNLinkVM.swift; sourceTree = "<group>"; };
+		0B8BFF1B2B97195D00F3443B /* ProfileBioVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBioVM.swift; sourceTree = "<group>"; };
+		0B8BFF1D2B971D9600F3443B /* ProfileNameGenderNJoinedDateVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNameGenderNJoinedDateVM.swift; sourceTree = "<group>"; };
+		0B8BFF1F2B97217300F3443B /* ProfileGeneralNShareButtonsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGeneralNShareButtonsVM.swift; sourceTree = "<group>"; };
 		0B8F37902B952CE0003D0824 /* CustomUIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIScrollView.swift; sourceTree = "<group>"; };
 		0B9071EE2B6EC164008D5AF4 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		0B9071F12B6EC8E7008D5AF4 /* CustomPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUpView.swift; sourceTree = "<group>"; };
@@ -1109,6 +1119,11 @@
 			isa = PBXGroup;
 			children = (
 				0B8544012B948D7F00FAF90F /* ProfileViewModel.swift */,
+				0B8BFF192B97159200F3443B /* ProfileFollowersNLinkVM.swift */,
+				0B8BFF1B2B97195D00F3443B /* ProfileBioVM.swift */,
+				0B8BFF1D2B971D9600F3443B /* ProfileNameGenderNJoinedDateVM.swift */,
+				0B8BFF1F2B97217300F3443B /* ProfileGeneralNShareButtonsVM.swift */,
+				0B16863B2B97640F00A1DD50 /* ProfileCoverVM.swift */,
 			);
 			path = "Profile Tab";
 			sourceTree = "<group>";
@@ -1894,9 +1909,11 @@
 				0B20D7E52B9618D000B71C10 /* ProfileTopClearView.swift in Sources */,
 				0B26237A2B4D422D0063D71C /* OnboardingListItemView.swift in Sources */,
 				0B99746B2B55D6DE001AD3F6 /* CustomSearchBarView.swift in Sources */,
+				0B16863C2B97640F00A1DD50 /* ProfileCoverVM.swift in Sources */,
 				0B26238B2B4D5F710063D71C /* Binding+EXT.swift in Sources */,
 				0B8544022B948D7F00FAF90F /* ProfileViewModel.swift in Sources */,
 				0B4392FC2B4EF2B30075E5D1 /* ColorPaletteModel.swift in Sources */,
+				0B8BFF1A2B97159200F3443B /* ProfileFollowersNLinkVM.swift in Sources */,
 				0B5FBB802B7C90DC00669034 /* Testing123.swift in Sources */,
 				0B2830412B8CA495006061BF /* ToolbarTopTrailingItemsView.swift in Sources */,
 				0B2623162B4BD4200063D71C /* ViewThatFitsTypes.swift in Sources */,
@@ -1909,6 +1926,7 @@
 				0B00D1E22B54192B00CE721C /* CustomCountryCodeSearchSheetView.swift in Sources */,
 				0B2623A32B4E789A0063D71C /* DimensionTypes.swift in Sources */,
 				0B58AE982B6D340E0057CCFE /* Int+EXT.swift in Sources */,
+				0B8BFF1E2B971D9600F3443B /* ProfileNameGenderNJoinedDateVM.swift in Sources */,
 				0B2623742B4D35F70063D71C /* GenderTypes.swift in Sources */,
 				0B28303F2B8C97C6006061BF /* ToolbarTopLeadingItemView.swift in Sources */,
 				0B00D1DE2B5334A900CE721C /* OnboardingPhoneNumberView.swift in Sources */,
@@ -1926,6 +1944,7 @@
 				0B58AE962B6CF5730057CCFE /* String+EXT.swift in Sources */,
 				0B20D7DF2B96134B00B71C10 /* VerifiedBadgeTypes.swift in Sources */,
 				0B6E745D2B5AA21D008B4CFB /* CustomContentNotAvailableView.swift in Sources */,
+				0B8BFF202B97217300F3443B /* ProfileGeneralNShareButtonsVM.swift in Sources */,
 				0B26231E2B4BD8570063D71C /* HapticFeedbackGenerator.swift in Sources */,
 				0B20D7DB2B960F5300B71C10 /* ProfilePrimaryPhotoView.swift in Sources */,
 				0BE0F7EF2B71414B00BD01BB /* RepliesTestingView.swift in Sources */,
@@ -1937,6 +1956,7 @@
 				0BD9457F2B743D7F0091E845 /* TabTesting.swift in Sources */,
 				0B26239F2B4DD9280063D71C /* CustomSelectableAvatarView.swift in Sources */,
 				0B2623A52B4E81530063D71C /* CustomColorSliderView.swift in Sources */,
+				0B8BFF1C2B97195D00F3443B /* ProfileBioVM.swift in Sources */,
 				0B729F712B667B16009BDFD2 /* AvatarImageView.swift in Sources */,
 				0B8F37912B952CE0003D0824 /* CustomUIScrollView.swift in Sources */,
 				0B27C3FD2B52A6E700680676 /* AvatarCollectionModel.swift in Sources */,

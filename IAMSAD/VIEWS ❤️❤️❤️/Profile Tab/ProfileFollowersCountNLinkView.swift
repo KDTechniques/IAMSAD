@@ -10,20 +10,20 @@ import SDWebImageSwiftUI
 
 struct ProfileFollowersCountNLinkView: View {
     // MARK: - PROPERTIES
-    @EnvironmentObject private var profileVM: ProfileViewModel
+    @EnvironmentObject private var profileFollowersNLinkVM: ProfileFollowersNLinkVM
     
     // MARK: - BODY
     var body: some View {
         HStack(spacing: 5) {
             followers
             
-            if let linkText: String = profileVM.linkText {
+            if let linkText: String = profileFollowersNLinkVM.linkText {
                 link(linkText)
             }
         }
         .foregroundStyle(.secondary)
         .font(.subheadline)
-        .background(Color.debug)
+        //        .background(Color.debug)
     }
 }
 
@@ -38,7 +38,7 @@ extension ProfileFollowersCountNLinkView {
     // MARK: - _3Followers
     private var _3Followers: some View {
         HStack(spacing: -8) {
-            ForEach(profileVM._3FollowersArray, id: \.self) { followerImageURL in
+            ForEach(profileFollowersNLinkVM._3FollowersArray, id: \.self) { followerImageURL in
                 Circle()
                     .fill(.tabBarNSystemBackground)
                     .frame(width: 22, height: 22)
@@ -61,16 +61,15 @@ extension ProfileFollowersCountNLinkView {
     // MARK: - followers
     private var followers: some View {
         HStack(spacing: 5) {
-            if profileVM.followersCount != .zero {
+            if profileFollowersNLinkVM.followersCount != .zero {
                 _3Followers
             }
             
-            Text("\(profileVM.followersCount.intToKMString()) follower\(getPlural())")
+            Text("\(profileFollowersNLinkVM.followersCount.intToKMString()) follower\(profileFollowersNLinkVM.getPlural())")
         }
         .registerProfileTapEvent(event: .followers) {
             // followers action goes here...
             print("followers action got triggered...")
-            profileVM.followersCount = Int.random(in: 100...1000)
         }
     }
     
@@ -85,17 +84,11 @@ extension ProfileFollowersCountNLinkView {
         Text(linkText)
             .tint(.secondary)
             .registerProfileTapEvent(event: .link) {
-                guard let urlString: String = profileVM.linkURL,
+                guard let urlString: String = profileFollowersNLinkVM.linkURL,
                       let url: URL = .init(string: urlString) else { return }
                 
                 UIApplication.shared.open(url)
                 print("link action got triggered...")
-                profileVM.followersCount = Int.random(in: 100...1000)
             }
-    }
-    
-    // MARK: - FUNCTIONS
-    private func getPlural() -> String {
-        profileVM.followersCount == 0 || profileVM.followersCount > 1 ? "s" : ""
     }
 }

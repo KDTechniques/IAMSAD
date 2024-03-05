@@ -10,10 +10,11 @@ import SwiftUI
 struct ProfileInfoView: View {
     // MARK: - PROPERTIES
     @EnvironmentObject private var profileVM: ProfileViewModel
+    @EnvironmentObject private var profileBioVM: ProfileBioVM
     
     // MARK: - BODY
     var body: some View {
-        CustomUIScrollView(.vertical, contentOffset: $profileVM.contentOffset) {
+        CustomUIScrollView(.vertical, contentOffset: .constant(profileVM.contentOffset)) {
             VStack(alignment: .leading, spacing: 0) {
                 VStack(alignment: .leading, spacing: 0) {
                     ProfileTopClearView()
@@ -25,21 +26,18 @@ struct ProfileInfoView: View {
                             Spacer()
                             
                             HStack(spacing: 15) {
-                                ProfileGeneralButtonView(buttonType: .editProfile)
+                                ProfileGeneralButtonView()
                                 ProfileShareButtonView()
                             }
                         }
                         
-                        ProfileNameGenderNJoinedDateView(
-                            name: "Kavinda Dilshan",
-                            badgeType: .orange,
-                            gender: .male,
-                            joinedDate: "December 2023"
-                        )
+                        ProfileNameGenderNJoinedDateView()
                     }
                     
-                    ProfileBioView(bio: "Sajee's Hubby 👩🏻‍❤️‍👨🏻\n1st Class Honours Graduate 👨🏻‍🎓\nUI/UX Designer/Engineer 👨🏻‍💻\nFront-End SwiftUI iOS Develoer 👨🏻‍💻")
-                        .padding(.top)
+                    if !profileBioVM.bioText.isEmpty {
+                        ProfileBioView()
+                            .padding(.top)
+                    }
                     
                     ProfileFollowersCountNLinkView()
                         .padding(.top)
