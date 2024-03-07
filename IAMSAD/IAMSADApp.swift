@@ -13,10 +13,6 @@ struct IAMSADApp: App {
     let avatar: Avatar = .shared
     @StateObject private var avatarSheetVM: AvatarSheetVM = .shared
     @StateObject private var profileVM: ProfileViewModel = .shared
-    @StateObject private var profileGeneralNShareButtonsVM: ProfileGeneralNShareButtonsVM = .shared
-    @StateObject private var profileNameGenderNJoinedDateVM: ProfileNameGenderNJoinedDateVM = .shared
-    @StateObject private var profileBioVM: ProfileBioVM = .shared
-    @StateObject private var profileFollowersNLinkVM: ProfileFollowersNLinkVM = .shared
     
     init() {
         Utilities().setTabBarColor()
@@ -29,10 +25,6 @@ struct IAMSADApp: App {
                 .environmentObject(avatar)
                 .environmentObject(avatarSheetVM)
                 .environmentObject(profileVM)
-                .environmentObject(profileGeneralNShareButtonsVM)
-                .environmentObject(profileNameGenderNJoinedDateVM)
-                .environmentObject(profileBioVM)
-                .environmentObject(profileFollowersNLinkVM)
         }
     }
 }

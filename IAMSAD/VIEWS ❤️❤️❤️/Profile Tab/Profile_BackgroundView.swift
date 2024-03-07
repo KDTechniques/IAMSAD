@@ -1,5 +1,5 @@
 //
-//  ProfileBackgroundView.swift
+//  Profile_BackgroundView.swift
 //  IAMSAD
 //
 //  Created by Mr. Kavinda Dilshan on 2024-03-04.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProfileBackgroundView: View {
+struct Profile_BackgroundView: View {
     // MARK: - BODY
     var body: some View {
         Color.tabBarNSystemBackground
@@ -16,6 +16,6 @@ struct ProfileBackgroundView: View {
 }
 
 // MARK: - PREVIEWS
-#Preview("ProfileBackgroundView") {
-    ProfileBackgroundView()
+#Preview("Profile_BackgroundView") {
+    Profile_BackgroundView()
 }

@@ -1,5 +1,5 @@
 //
-//  ProfileFollowersCountNLinkView.swift
+//  Profile_FollowersCountNLinkView.swift
 //  IAMSAD
 //
 //  Created by Mr. Kavinda Dilshan on 2024-03-04.
@@ -8,37 +8,59 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct ProfileFollowersCountNLinkView: View {
+@MainActor
+struct Profile_FollowersCountNLinkView: View {
     // MARK: - PROPERTIES
-    @EnvironmentObject private var profileFollowersNLinkVM: ProfileFollowersNLinkVM
+    let _3FollowersArray: [String]
+    let followersCount: Int
+    let linkText: String?
+    let linkURL: String?
+    
+    let profileVM: ProfileViewModel = .shared
+    
+    // MARK: - INITIALIZER
+    init(_3FollowersArray: [String], followersCount: Int, linkText: String?, linkURL: String?) {
+        self._3FollowersArray = _3FollowersArray
+        self.followersCount = followersCount
+        self.linkText = linkText
+        self.linkURL = linkURL
+    }
     
     // MARK: - BODY
     var body: some View {
         HStack(spacing: 5) {
             followers
             
-            if let linkText: String = profileFollowersNLinkVM.linkText {
+            if let linkText: String = linkText {
                 link(linkText)
             }
         }
         .foregroundStyle(.secondary)
         .font(.subheadline)
-        //        .background(Color.debug)
     }
 }
 
 // MARK: - PREVIEWS
-#Preview("ProfileFollowersCountNLinkView") {
-    ProfileFollowersCountNLinkView()
-        .previewViewModifier
+#Preview("Profile_FollowersCountNLinkView") {
+    Profile_FollowersCountNLinkView(
+        _3FollowersArray: [
+            "https://picsum.photos/50/50",
+            "https://picsum.photos/51/51",
+            "https://picsum.photos/52/52"
+        ],
+        followersCount: 1400,
+        linkText: "kd_techniques/sleepi.com",
+        linkURL: "https://exmaple.com/"
+    )
+    .previewViewModifier
 }
 
 // MARK: - EXTENSIONS
-extension ProfileFollowersCountNLinkView {
+extension Profile_FollowersCountNLinkView {
     // MARK: - _3Followers
     private var _3Followers: some View {
         HStack(spacing: -8) {
-            ForEach(profileFollowersNLinkVM._3FollowersArray, id: \.self) { followerImageURL in
+            ForEach(_3FollowersArray, id: \.self) { followerImageURL in
                 Circle()
                     .fill(.tabBarNSystemBackground)
                     .frame(width: 22, height: 22)
@@ -61,11 +83,11 @@ extension ProfileFollowersCountNLinkView {
     // MARK: - followers
     private var followers: some View {
         HStack(spacing: 5) {
-            if profileFollowersNLinkVM.followersCount != .zero {
+            if followersCount != .zero {
                 _3Followers
             }
             
-            Text("\(profileFollowersNLinkVM.followersCount.intToKMString()) follower\(profileFollowersNLinkVM.getPlural())")
+            Text("\(followersCount.intToKMString()) follower\(profileVM.getPlural())")
         }
         .registerProfileTapEvent(event: .followers) {
             // followers action goes here...
@@ -84,7 +106,7 @@ extension ProfileFollowersCountNLinkView {
         Text(linkText)
             .tint(.secondary)
             .registerProfileTapEvent(event: .link) {
-                guard let urlString: String = profileFollowersNLinkVM.linkURL,
+                guard let urlString: String = linkURL,
                       let url: URL = .init(string: urlString) else { return }
                 
                 UIApplication.shared.open(url)

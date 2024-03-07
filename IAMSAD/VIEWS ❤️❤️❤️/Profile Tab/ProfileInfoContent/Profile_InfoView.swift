@@ -1,5 +1,5 @@
 //
-//  ProfileInfoView.swift
+//  Profile_InfoView.swift
 //  IAMSAD
 //
 //  Created by Mr. Kavinda Dilshan on 2024-03-04.
@@ -7,40 +7,44 @@
 
 import SwiftUI
 
-struct ProfileInfoView: View {
+struct Profile_InfoView: View {
     // MARK: - PROPERTIES
     @EnvironmentObject private var profileVM: ProfileViewModel
-    @EnvironmentObject private var profileBioVM: ProfileBioVM
     
     // MARK: - BODY
     var body: some View {
         CustomUIScrollView(.vertical, contentOffset: .constant(profileVM.contentOffset)) {
             VStack(alignment: .leading, spacing: 0) {
                 VStack(alignment: .leading, spacing: 0) {
-                    ProfileTopClearView()
+                    Profile_TopClearView()
                     
                     VStack(alignment: .leading, spacing: 8) {
                         HStack {
                             ProfilePrimaryPhotoView()
-                            
                             Spacer()
-                            
-                            HStack(spacing: 15) {
-                                ProfileGeneralButtonView()
-                                ProfileShareButtonView()
-                            }
+                            Profile_GeneralNShareButtonsView(buttonType: profileVM.buttonType)
                         }
                         
-                        ProfileNameGenderNJoinedDateView()
+                        Profile_NameGenderNJoinedDateView(
+                            name: profileVM.name,
+                            badgeType: profileVM.badgeType,
+                            gender: profileVM.gender,
+                            joinedDate: profileVM.joinedDate
+                        )
                     }
                     
-                    if !profileBioVM.bioText.isEmpty {
-                        ProfileBioView()
+                    if !profileVM.bioText.isEmpty {
+                        Profile_BioView(bioText: profileVM.bioText)
                             .padding(.top)
                     }
                     
-                    ProfileFollowersCountNLinkView()
-                        .padding(.top)
+                    Profile_FollowersCountNLinkView(
+                        _3FollowersArray: profileVM._3FollowersArray,
+                        followersCount: profileVM.followersCount,
+                        linkText: profileVM.linkText,
+                        linkURL: profileVM.linkURL
+                    )
+                    .padding(.top)
                 }
                 .background {
                     GeometryReader { geo in
@@ -63,8 +67,8 @@ struct ProfileInfoView: View {
 }
 
 // MARK: - PREVIEWS
-#Preview("ProfileInfoView") {
-    ProfileInfoView()
+#Preview("Profile_InfoView") {
+    Profile_InfoView()
         .previewViewModifier
 }
 

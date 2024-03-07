@@ -1,5 +1,5 @@
 //
-//  ProfileBioView.swift
+//  Profile_BioView.swift
 //  IAMSAD
 //
 //  Created by Mr. Kavinda Dilshan on 2024-03-04.
@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct ProfileBioView: View {
+struct Profile_BioView: View {
     // MARK: - PROPERTIES
-    @EnvironmentObject private var profileBioVM: ProfileBioVM
+    let bioText: String
     
     // MARK: - BODY
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack(alignment: .bottom) {
-                Text(profileBioVM.bioText)
+                Text(bioText)
                     .lineSpacing(5)
                 
                 Text("more")
@@ -29,12 +29,11 @@ struct ProfileBioView: View {
             }
             .font(.subheadline)
         }
-        //        .background(Color.debug)
     }
 }
 
 // MARK: - PREVIEWS
-#Preview("ProfileBioView") {
-    ProfileBioView()
+#Preview("Profile_BioView") {
+    Profile_BioView(bioText: "Sajee's Hubby 👩🏻‍❤️‍👨🏻\n1st Class Honours Graduate 👨🏻‍🎓\nUI/UX Designer/Engineer 👨🏻‍💻\nFront-End SwiftUI iOS Develoer 👨🏻‍💻")
         .previewViewModifier
 }

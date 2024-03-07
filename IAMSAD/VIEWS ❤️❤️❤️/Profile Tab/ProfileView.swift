@@ -19,9 +19,9 @@ struct ProfileView: View {
     var body: some View {
         NavigationStack {
             ZStack(alignment: .top) {
-                ProfileBackgroundView()
+                Profile_BackgroundView()
                 
-                ProfileInfoView()
+                Profile_InfoView()
                 
                 Testing123(
                     contentOffset: $profileVM.contentOffset,
@@ -29,17 +29,7 @@ struct ProfileView: View {
                     topContentHeight: profileVM.profileContentHeight
                 )
                 
-                ProfileCoverContentView(
-                    coverType: profileVM.coverType,
-                    coverPhotoURL: profileVM.coverPhotoURL,
-                    arrowIconAngle: profileVM.arrowIconAngle,
-                    arrowIconOpacity: profileVM.arrowIconOpacity,
-                    progressIndicatorOpacity: profileVM.progressIndicatorOpacity,
-                    subHeadlineText: profileVM.subHeadlineText,
-                    coverExtraHeight: profileVM.coverExtraHeight,
-                    coverTextOffsetY: profileVM.coverTextOffsetY,
-                    profilePhotoURL: profileVM.profilePhotoURL
-                )
+                Profile_CoverContentView()
             }
             .toolbarBackground(.hidden, for: .navigationBar)
         }

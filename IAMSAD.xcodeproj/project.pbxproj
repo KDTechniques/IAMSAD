@@ -10,16 +10,15 @@
 		0B00D1DE2B5334A900CE721C /* OnboardingPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00D1DD2B5334A900CE721C /* OnboardingPhoneNumberView.swift */; };
 		0B00D1E02B540CBF00CE721C /* PhoneNumberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00D1DF2B540CBF00CE721C /* PhoneNumberModel.swift */; };
 		0B00D1E22B54192B00CE721C /* CustomCountryCodeSearchSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00D1E12B54192B00CE721C /* CustomCountryCodeSearchSheetView.swift */; };
-		0B20D7D72B96067300B71C10 /* ProfileGeneralButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7D62B96067300B71C10 /* ProfileGeneralButtonView.swift */; };
-		0B20D7D92B960E6300B71C10 /* ProfileShareButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7D82B960E6300B71C10 /* ProfileShareButtonView.swift */; };
+		0B20D7D72B96067300B71C10 /* Profile_GeneralNShareButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7D62B96067300B71C10 /* Profile_GeneralNShareButtonsView.swift */; };
 		0B20D7DB2B960F5300B71C10 /* ProfilePrimaryPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7DA2B960F5300B71C10 /* ProfilePrimaryPhotoView.swift */; };
-		0B20D7DD2B96126400B71C10 /* ProfileNameGenderNJoinedDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7DC2B96126400B71C10 /* ProfileNameGenderNJoinedDateView.swift */; };
+		0B20D7DD2B96126400B71C10 /* Profile_NameGenderNJoinedDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7DC2B96126400B71C10 /* Profile_NameGenderNJoinedDateView.swift */; };
 		0B20D7DF2B96134B00B71C10 /* VerifiedBadgeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7DE2B96134B00B71C10 /* VerifiedBadgeTypes.swift */; };
-		0B20D7E12B9616A500B71C10 /* ProfileBioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7E02B9616A500B71C10 /* ProfileBioView.swift */; };
-		0B20D7E32B96182B00B71C10 /* ProfileFollowersCountNLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7E22B96182B00B71C10 /* ProfileFollowersCountNLinkView.swift */; };
-		0B20D7E52B9618D000B71C10 /* ProfileTopClearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7E42B9618D000B71C10 /* ProfileTopClearView.swift */; };
-		0B20D7E72B961C3C00B71C10 /* ProfileBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7E62B961C3C00B71C10 /* ProfileBackgroundView.swift */; };
-		0B20D7E92B961DA500B71C10 /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7E82B961DA500B71C10 /* ProfileInfoView.swift */; };
+		0B20D7E12B9616A500B71C10 /* Profile_BioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7E02B9616A500B71C10 /* Profile_BioView.swift */; };
+		0B20D7E32B96182B00B71C10 /* Profile_FollowersCountNLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7E22B96182B00B71C10 /* Profile_FollowersCountNLinkView.swift */; };
+		0B20D7E52B9618D000B71C10 /* Profile_TopClearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7E42B9618D000B71C10 /* Profile_TopClearView.swift */; };
+		0B20D7E72B961C3C00B71C10 /* Profile_BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7E62B961C3C00B71C10 /* Profile_BackgroundView.swift */; };
+		0B20D7E92B961DA500B71C10 /* Profile_InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7E82B961DA500B71C10 /* Profile_InfoView.swift */; };
 		0B2622FE2B4B4E120063D71C /* IAMSADApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2622FD2B4B4E120063D71C /* IAMSADApp.swift */; };
 		0B2623002B4B4E120063D71C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2622FF2B4B4E120063D71C /* ContentView.swift */; };
 		0B2623022B4B4E140063D71C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B2623012B4B4E140063D71C /* Assets.xcassets */; };
@@ -107,10 +106,6 @@
 		0B729F712B667B16009BDFD2 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B729F702B667B16009BDFD2 /* AvatarImageView.swift */; };
 		0B729F732B668084009BDFD2 /* AvatarImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B729F722B668084009BDFD2 /* AvatarImageModel.swift */; };
 		0B8544022B948D7F00FAF90F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8544012B948D7F00FAF90F /* ProfileViewModel.swift */; };
-		0B8BFF1A2B97159200F3443B /* ProfileFollowersNLinkVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BFF192B97159200F3443B /* ProfileFollowersNLinkVM.swift */; };
-		0B8BFF1C2B97195D00F3443B /* ProfileBioVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BFF1B2B97195D00F3443B /* ProfileBioVM.swift */; };
-		0B8BFF1E2B971D9600F3443B /* ProfileNameGenderNJoinedDateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BFF1D2B971D9600F3443B /* ProfileNameGenderNJoinedDateVM.swift */; };
-		0B8BFF202B97217300F3443B /* ProfileGeneralNShareButtonsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BFF1F2B97217300F3443B /* ProfileGeneralNShareButtonsVM.swift */; };
 		0B8F37912B952CE0003D0824 /* CustomUIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8F37902B952CE0003D0824 /* CustomUIScrollView.swift */; };
 		0B9071EF2B6EC164008D5AF4 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9071EE2B6EC164008D5AF4 /* LaunchScreen.swift */; };
 		0B9071F22B6EC8E7008D5AF4 /* CustomPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9071F12B6EC8E7008D5AF4 /* CustomPopUpView.swift */; };
@@ -396,9 +391,14 @@
 		0BC505A42B56A0B800A96C3C /* Skull.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BC505A32B56A0B800A96C3C /* Skull.png */; };
 		0BC505A62B56B2A700A96C3C /* Telephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BC505A52B56B2A700A96C3C /* Telephone.png */; };
 		0BD00C1B2B6294A4000C3236 /* SeeAllAvatarSheetContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD00C1A2B6294A4000C3236 /* SeeAllAvatarSheetContentView.swift */; };
-		0BD876A72B8CC1DB00E66184 /* ProfileCoverContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD876A62B8CC1DB00E66184 /* ProfileCoverContentView.swift */; };
+		0BD876A72B8CC1DB00E66184 /* Profile_CoverContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD876A62B8CC1DB00E66184 /* Profile_CoverContentView.swift */; };
 		0BD9457F2B743D7F0091E845 /* TabTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD9457E2B743D7F0091E845 /* TabTesting.swift */; };
 		0BE0F7EF2B71414B00BD01BB /* RepliesTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0F7EE2B71414B00BD01BB /* RepliesTestingView.swift */; };
+		0BE75A662B99F741003C43DA /* Profile_CoverPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE75A652B99F741003C43DA /* Profile_CoverPhotoView.swift */; };
+		0BE75A682B99F88E003C43DA /* Profile_ProfilePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE75A672B99F88E003C43DA /* Profile_ProfilePhotoView.swift */; };
+		0BE75A6A2B99FA09003C43DA /* Profile_ArrowIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE75A692B99FA09003C43DA /* Profile_ArrowIconView.swift */; };
+		0BE75A6C2B99FAAB003C43DA /* Profile_ProgressIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE75A6B2B99FAAB003C43DA /* Profile_ProgressIndicatorView.swift */; };
+		0BE75A6E2B99FB2B003C43DA /* Profile_CoverTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE75A6D2B99FB2B003C43DA /* Profile_CoverTextView.swift */; };
 		0BFB38112B56FDB300227CB2 /* OnboardingLastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFB38102B56FDB300227CB2 /* OnboardingLastView.swift */; };
 		0BFB38132B56FEDC00227CB2 /* ThumbsUpLightSkinTone.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BFB38122B56FEDC00227CB2 /* ThumbsUpLightSkinTone.png */; };
 		0BFEFEA12B91E9130005DE9B /* TapRegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFEFEA02B91E9130005DE9B /* TapRegisterModel.swift */; };
@@ -408,16 +408,15 @@
 		0B00D1DD2B5334A900CE721C /* OnboardingPhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPhoneNumberView.swift; sourceTree = "<group>"; };
 		0B00D1DF2B540CBF00CE721C /* PhoneNumberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberModel.swift; sourceTree = "<group>"; };
 		0B00D1E12B54192B00CE721C /* CustomCountryCodeSearchSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCountryCodeSearchSheetView.swift; sourceTree = "<group>"; };
-		0B20D7D62B96067300B71C10 /* ProfileGeneralButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGeneralButtonView.swift; sourceTree = "<group>"; };
-		0B20D7D82B960E6300B71C10 /* ProfileShareButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileShareButtonView.swift; sourceTree = "<group>"; };
+		0B20D7D62B96067300B71C10 /* Profile_GeneralNShareButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_GeneralNShareButtonsView.swift; sourceTree = "<group>"; };
 		0B20D7DA2B960F5300B71C10 /* ProfilePrimaryPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePrimaryPhotoView.swift; sourceTree = "<group>"; };
-		0B20D7DC2B96126400B71C10 /* ProfileNameGenderNJoinedDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNameGenderNJoinedDateView.swift; sourceTree = "<group>"; };
+		0B20D7DC2B96126400B71C10 /* Profile_NameGenderNJoinedDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_NameGenderNJoinedDateView.swift; sourceTree = "<group>"; };
 		0B20D7DE2B96134B00B71C10 /* VerifiedBadgeTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifiedBadgeTypes.swift; sourceTree = "<group>"; };
-		0B20D7E02B9616A500B71C10 /* ProfileBioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBioView.swift; sourceTree = "<group>"; };
-		0B20D7E22B96182B00B71C10 /* ProfileFollowersCountNLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFollowersCountNLinkView.swift; sourceTree = "<group>"; };
-		0B20D7E42B9618D000B71C10 /* ProfileTopClearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTopClearView.swift; sourceTree = "<group>"; };
-		0B20D7E62B961C3C00B71C10 /* ProfileBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBackgroundView.swift; sourceTree = "<group>"; };
-		0B20D7E82B961DA500B71C10 /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
+		0B20D7E02B9616A500B71C10 /* Profile_BioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_BioView.swift; sourceTree = "<group>"; };
+		0B20D7E22B96182B00B71C10 /* Profile_FollowersCountNLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_FollowersCountNLinkView.swift; sourceTree = "<group>"; };
+		0B20D7E42B9618D000B71C10 /* Profile_TopClearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_TopClearView.swift; sourceTree = "<group>"; };
+		0B20D7E62B961C3C00B71C10 /* Profile_BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_BackgroundView.swift; sourceTree = "<group>"; };
+		0B20D7E82B961DA500B71C10 /* Profile_InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_InfoView.swift; sourceTree = "<group>"; };
 		0B2622FA2B4B4E120063D71C /* IAMSAD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IAMSAD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B2622FD2B4B4E120063D71C /* IAMSADApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAMSADApp.swift; sourceTree = "<group>"; };
 		0B2622FF2B4B4E120063D71C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -506,10 +505,6 @@
 		0B729F702B667B16009BDFD2 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		0B729F722B668084009BDFD2 /* AvatarImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageModel.swift; sourceTree = "<group>"; };
 		0B8544012B948D7F00FAF90F /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
-		0B8BFF192B97159200F3443B /* ProfileFollowersNLinkVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFollowersNLinkVM.swift; sourceTree = "<group>"; };
-		0B8BFF1B2B97195D00F3443B /* ProfileBioVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBioVM.swift; sourceTree = "<group>"; };
-		0B8BFF1D2B971D9600F3443B /* ProfileNameGenderNJoinedDateVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNameGenderNJoinedDateVM.swift; sourceTree = "<group>"; };
-		0B8BFF1F2B97217300F3443B /* ProfileGeneralNShareButtonsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGeneralNShareButtonsVM.swift; sourceTree = "<group>"; };
 		0B8F37902B952CE0003D0824 /* CustomUIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIScrollView.swift; sourceTree = "<group>"; };
 		0B9071EE2B6EC164008D5AF4 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		0B9071F12B6EC8E7008D5AF4 /* CustomPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUpView.swift; sourceTree = "<group>"; };
@@ -792,9 +787,14 @@
 		0BC505A32B56A0B800A96C3C /* Skull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Skull.png; sourceTree = "<group>"; };
 		0BC505A52B56B2A700A96C3C /* Telephone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Telephone.png; sourceTree = "<group>"; };
 		0BD00C1A2B6294A4000C3236 /* SeeAllAvatarSheetContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllAvatarSheetContentView.swift; sourceTree = "<group>"; };
-		0BD876A62B8CC1DB00E66184 /* ProfileCoverContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoverContentView.swift; sourceTree = "<group>"; };
+		0BD876A62B8CC1DB00E66184 /* Profile_CoverContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_CoverContentView.swift; sourceTree = "<group>"; };
 		0BD9457E2B743D7F0091E845 /* TabTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTesting.swift; sourceTree = "<group>"; };
 		0BE0F7EE2B71414B00BD01BB /* RepliesTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepliesTestingView.swift; sourceTree = "<group>"; };
+		0BE75A652B99F741003C43DA /* Profile_CoverPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_CoverPhotoView.swift; sourceTree = "<group>"; };
+		0BE75A672B99F88E003C43DA /* Profile_ProfilePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_ProfilePhotoView.swift; sourceTree = "<group>"; };
+		0BE75A692B99FA09003C43DA /* Profile_ArrowIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_ArrowIconView.swift; sourceTree = "<group>"; };
+		0BE75A6B2B99FAAB003C43DA /* Profile_ProgressIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_ProgressIndicatorView.swift; sourceTree = "<group>"; };
+		0BE75A6D2B99FB2B003C43DA /* Profile_CoverTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_CoverTextView.swift; sourceTree = "<group>"; };
 		0BEE056A2B51A05D002478D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0BFB38102B56FDB300227CB2 /* OnboardingLastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingLastView.swift; sourceTree = "<group>"; };
 		0BFB38122B56FEDC00227CB2 /* ThumbsUpLightSkinTone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ThumbsUpLightSkinTone.png; sourceTree = "<group>"; };
@@ -1117,10 +1117,6 @@
 			isa = PBXGroup;
 			children = (
 				0B8544012B948D7F00FAF90F /* ProfileViewModel.swift */,
-				0B8BFF192B97159200F3443B /* ProfileFollowersNLinkVM.swift */,
-				0B8BFF1B2B97195D00F3443B /* ProfileBioVM.swift */,
-				0B8BFF1D2B971D9600F3443B /* ProfileNameGenderNJoinedDateVM.swift */,
-				0B8BFF1F2B97217300F3443B /* ProfileGeneralNShareButtonsVM.swift */,
 			);
 			path = "Profile Tab";
 			sourceTree = "<group>";
@@ -1130,16 +1126,10 @@
 			children = (
 				0BB6173C2B758CB400BABB89 /* ProfileView.swift */,
 				0B28303B2B8C977D006061BF /* Toolbar Items */,
-				0BD876A62B8CC1DB00E66184 /* ProfileCoverContentView.swift */,
-				0B20D7E42B9618D000B71C10 /* ProfileTopClearView.swift */,
-				0B20D7D62B96067300B71C10 /* ProfileGeneralButtonView.swift */,
-				0B20D7D82B960E6300B71C10 /* ProfileShareButtonView.swift */,
-				0B20D7DA2B960F5300B71C10 /* ProfilePrimaryPhotoView.swift */,
-				0B20D7DC2B96126400B71C10 /* ProfileNameGenderNJoinedDateView.swift */,
-				0B20D7E02B9616A500B71C10 /* ProfileBioView.swift */,
-				0B20D7E22B96182B00B71C10 /* ProfileFollowersCountNLinkView.swift */,
-				0B20D7E62B961C3C00B71C10 /* ProfileBackgroundView.swift */,
-				0B20D7E82B961DA500B71C10 /* ProfileInfoView.swift */,
+				0BE75A642B99F5F9003C43DA /* ProfileCoverContent */,
+				0B20D7E42B9618D000B71C10 /* Profile_TopClearView.swift */,
+				0BE75A6F2B9A1BC0003C43DA /* ProfileInfoContent */,
+				0B20D7E62B961C3C00B71C10 /* Profile_BackgroundView.swift */,
 			);
 			path = "Profile Tab";
 			sourceTree = "<group>";
@@ -1476,6 +1466,32 @@
 				0BC364842B66CC6B008BD184 /* Super Heroes_40.png */,
 			);
 			path = "Super Heroes";
+			sourceTree = "<group>";
+		};
+		0BE75A642B99F5F9003C43DA /* ProfileCoverContent */ = {
+			isa = PBXGroup;
+			children = (
+				0BD876A62B8CC1DB00E66184 /* Profile_CoverContentView.swift */,
+				0BE75A652B99F741003C43DA /* Profile_CoverPhotoView.swift */,
+				0BE75A672B99F88E003C43DA /* Profile_ProfilePhotoView.swift */,
+				0BE75A692B99FA09003C43DA /* Profile_ArrowIconView.swift */,
+				0BE75A6B2B99FAAB003C43DA /* Profile_ProgressIndicatorView.swift */,
+				0BE75A6D2B99FB2B003C43DA /* Profile_CoverTextView.swift */,
+			);
+			path = ProfileCoverContent;
+			sourceTree = "<group>";
+		};
+		0BE75A6F2B9A1BC0003C43DA /* ProfileInfoContent */ = {
+			isa = PBXGroup;
+			children = (
+				0B20D7E82B961DA500B71C10 /* Profile_InfoView.swift */,
+				0B20D7D62B96067300B71C10 /* Profile_GeneralNShareButtonsView.swift */,
+				0B20D7DA2B960F5300B71C10 /* ProfilePrimaryPhotoView.swift */,
+				0B20D7DC2B96126400B71C10 /* Profile_NameGenderNJoinedDateView.swift */,
+				0B20D7E02B9616A500B71C10 /* Profile_BioView.swift */,
+				0B20D7E22B96182B00B71C10 /* Profile_FollowersCountNLinkView.swift */,
+			);
+			path = ProfileInfoContent;
 			sourceTree = "<group>";
 		};
 		0BFB380F2B56F4E900227CB2 /* OnboardingPhoneNumber */ = {
@@ -1873,11 +1889,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BBF76852B679A73000D3D40 /* CGFloat+EXT.swift in Sources */,
-				0B20D7D92B960E6300B71C10 /* ProfileShareButtonView.swift in Sources */,
 				0B2623982B4D82C70063D71C /* OnboardingAvatarView.swift in Sources */,
 				0B27C4012B52AE4200680676 /* AvatarSheetVM.swift in Sources */,
 				0B2623682B4CA1D50063D71C /* UIDevice+EXT.swift in Sources */,
-				0B20D7E12B9616A500B71C10 /* ProfileBioView.swift in Sources */,
+				0B20D7E12B9616A500B71C10 /* Profile_BioView.swift in Sources */,
 				0B27C3F72B52A61C00680676 /* AvatarSelectionView.swift in Sources */,
 				0B26239D2B4DB38A0063D71C /* AvatarSheetView.swift in Sources */,
 				0B00D1E02B540CBF00CE721C /* PhoneNumberModel.swift in Sources */,
@@ -1896,51 +1911,53 @@
 				0B2623952B4D80850063D71C /* UserNameTextFieldView.swift in Sources */,
 				0B26236A2B4CB4CF0063D71C /* Color+EXT.swift in Sources */,
 				0B2623662B4CA0F70063D71C /* View+EXT.swift in Sources */,
+				0BE75A6C2B99FAAB003C43DA /* Profile_ProgressIndicatorView.swift in Sources */,
+				0BE75A682B99F88E003C43DA /* Profile_ProfilePhotoView.swift in Sources */,
 				0B28C9FE2B6B076E00AC4725 /* CustomLikeHeartAnimationView.swift in Sources */,
 				0B2623582B4C92FB0063D71C /* OnboardingWelcomeView.swift in Sources */,
 				0B26237C2B4D43810063D71C /* OnboardingListView.swift in Sources */,
 				0B4392FF2B4F0DE90075E5D1 /* CustomPageIndexIndicatorView.swift in Sources */,
-				0B20D7E92B961DA500B71C10 /* ProfileInfoView.swift in Sources */,
+				0B20D7E92B961DA500B71C10 /* Profile_InfoView.swift in Sources */,
 				0B2623832B4D4F340063D71C /* OnboardingUserNameView.swift in Sources */,
 				0B9974692B55D683001AD3F6 /* UIApplication+EXT.swift in Sources */,
-				0B20D7E52B9618D000B71C10 /* ProfileTopClearView.swift in Sources */,
+				0B20D7E52B9618D000B71C10 /* Profile_TopClearView.swift in Sources */,
 				0B26237A2B4D422D0063D71C /* OnboardingListItemView.swift in Sources */,
 				0B99746B2B55D6DE001AD3F6 /* CustomSearchBarView.swift in Sources */,
 				0B26238B2B4D5F710063D71C /* Binding+EXT.swift in Sources */,
 				0B8544022B948D7F00FAF90F /* ProfileViewModel.swift in Sources */,
+				0BE75A6A2B99FA09003C43DA /* Profile_ArrowIconView.swift in Sources */,
 				0B4392FC2B4EF2B30075E5D1 /* ColorPaletteModel.swift in Sources */,
-				0B8BFF1A2B97159200F3443B /* ProfileFollowersNLinkVM.swift in Sources */,
+				0BE75A6E2B99FB2B003C43DA /* Profile_CoverTextView.swift in Sources */,
 				0B5FBB802B7C90DC00669034 /* Testing123.swift in Sources */,
 				0B2830412B8CA495006061BF /* ToolbarTopTrailingItemsView.swift in Sources */,
 				0B2623162B4BD4200063D71C /* ViewThatFitsTypes.swift in Sources */,
 				0B2623202B4BD8CC0063D71C /* NetworkManager.swift in Sources */,
 				0B2623222B4BD9730063D71C /* UserDefaultsManager.swift in Sources */,
-				0B20D7D72B96067300B71C10 /* ProfileGeneralButtonView.swift in Sources */,
+				0B20D7D72B96067300B71C10 /* Profile_GeneralNShareButtonsView.swift in Sources */,
 				0B27C3FB2B52A68B00680676 /* AvatarBackgroundColorSelectionView.swift in Sources */,
 				0B7204C32B9676CD00C705B8 /* TestingClass.swift in Sources */,
-				0B20D7E32B96182B00B71C10 /* ProfileFollowersCountNLinkView.swift in Sources */,
+				0B20D7E32B96182B00B71C10 /* Profile_FollowersCountNLinkView.swift in Sources */,
 				0B00D1E22B54192B00CE721C /* CustomCountryCodeSearchSheetView.swift in Sources */,
 				0B2623A32B4E789A0063D71C /* DimensionTypes.swift in Sources */,
 				0B58AE982B6D340E0057CCFE /* Int+EXT.swift in Sources */,
-				0B8BFF1E2B971D9600F3443B /* ProfileNameGenderNJoinedDateVM.swift in Sources */,
 				0B2623742B4D35F70063D71C /* GenderTypes.swift in Sources */,
 				0B28303F2B8C97C6006061BF /* ToolbarTopLeadingItemView.swift in Sources */,
 				0B00D1DE2B5334A900CE721C /* OnboardingPhoneNumberView.swift in Sources */,
 				0B9071EF2B6EC164008D5AF4 /* LaunchScreen.swift in Sources */,
 				0B729F732B668084009BDFD2 /* AvatarImageModel.swift in Sources */,
 				0B2623642B4C9F3D0063D71C /* CustomStandardAccentBottomButtonView.swift in Sources */,
-				0BD876A72B8CC1DB00E66184 /* ProfileCoverContentView.swift in Sources */,
+				0BD876A72B8CC1DB00E66184 /* Profile_CoverContentView.swift in Sources */,
 				0BD00C1B2B6294A4000C3236 /* SeeAllAvatarSheetContentView.swift in Sources */,
 				0B26231C2B4BD6550063D71C /* ConfirmationDialogModel.swift in Sources */,
-				0B20D7DD2B96126400B71C10 /* ProfileNameGenderNJoinedDateView.swift in Sources */,
-				0B20D7E72B961C3C00B71C10 /* ProfileBackgroundView.swift in Sources */,
+				0B20D7DD2B96126400B71C10 /* Profile_NameGenderNJoinedDateView.swift in Sources */,
+				0B20D7E72B961C3C00B71C10 /* Profile_BackgroundView.swift in Sources */,
 				0B2623262B4BDA1B0063D71C /* AnalyticsManager.swift in Sources */,
 				0BFEFEA12B91E9130005DE9B /* TapRegisterModel.swift in Sources */,
 				0B2622FE2B4B4E120063D71C /* IAMSADApp.swift in Sources */,
 				0B58AE962B6CF5730057CCFE /* String+EXT.swift in Sources */,
 				0B20D7DF2B96134B00B71C10 /* VerifiedBadgeTypes.swift in Sources */,
 				0B6E745D2B5AA21D008B4CFB /* CustomContentNotAvailableView.swift in Sources */,
-				0B8BFF202B97217300F3443B /* ProfileGeneralNShareButtonsVM.swift in Sources */,
+				0BE75A662B99F741003C43DA /* Profile_CoverPhotoView.swift in Sources */,
 				0B26231E2B4BD8570063D71C /* HapticFeedbackGenerator.swift in Sources */,
 				0B20D7DB2B960F5300B71C10 /* ProfilePrimaryPhotoView.swift in Sources */,
 				0BE0F7EF2B71414B00BD01BB /* RepliesTestingView.swift in Sources */,
@@ -1952,7 +1969,6 @@
 				0BD9457F2B743D7F0091E845 /* TabTesting.swift in Sources */,
 				0B26239F2B4DD9280063D71C /* CustomSelectableAvatarView.swift in Sources */,
 				0B2623A52B4E81530063D71C /* CustomColorSliderView.swift in Sources */,
-				0B8BFF1C2B97195D00F3443B /* ProfileBioVM.swift in Sources */,
 				0B729F712B667B16009BDFD2 /* AvatarImageView.swift in Sources */,
 				0B8F37912B952CE0003D0824 /* CustomUIScrollView.swift in Sources */,
 				0B27C3FD2B52A6E700680676 /* AvatarCollectionModel.swift in Sources */,
