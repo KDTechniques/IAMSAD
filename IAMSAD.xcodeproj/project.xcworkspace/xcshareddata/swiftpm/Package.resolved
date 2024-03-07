@@ -1,15 +1,6 @@
 {
-  "originHash" : "ad1d6080ea0fdb95c4441cdb52444ea7c7825ea5b3d3366e5dbc62e0788362c7",
+  "originHash" : "efd19d4b2e9362b6736af552da43aeb2fdeb2b2450d32940da866783cccf5e2b",
   "pins" : [
-    {
-      "identity" : "bbswiftuikit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/KDTechniques/BBSwiftUIKit.git",
-      "state" : {
-        "branch" : "For-IAMSAD-iOS-App",
-        "revision" : "d4981f4a3053a86ebc9e79204656322ed7edcf09"
-      }
-    },
     {
       "identity" : "popupview",
       "kind" : "remoteSourceControl",

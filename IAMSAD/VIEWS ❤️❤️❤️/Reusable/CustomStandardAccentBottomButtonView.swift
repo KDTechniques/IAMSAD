@@ -13,7 +13,7 @@ struct CustomStandardPrimaryBottomButtonView<T: View>: View {
     let pText: String
     let showProgressIndicator: Bool
     let text: T
-    let action: () -> ()
+    let action: () -> Void
     
     // MARK: - INITIALIZER
     init(
@@ -63,8 +63,8 @@ struct CustomStandardPrimaryNSecondaryBottomButtonsView: View {
     let psText: String?
     let sText: String
     let showProgressIndicator: Bool
-    let pAction: () -> ()
-    let sAction: () -> ()
+    let pAction: () -> Void
+    let sAction: () -> Void
     
     // MARK: - INITIALIZER
     init(
@@ -129,7 +129,7 @@ struct CustomStandardPrimaryNSecondaryBottomButtonsView: View {
 struct CustomStandardSecondaryBottomButtonsView: View {
     // MARK: - PROPERTIES
     let sText: String
-    let sAction: () -> ()
+    let sAction: () -> Void
     
     // MARK: - INITIALIZER
     init(sText: String, sAction: @escaping () -> Void) {

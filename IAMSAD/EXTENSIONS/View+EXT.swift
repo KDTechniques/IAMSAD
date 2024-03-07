@@ -15,6 +15,7 @@ extension View {
             .dynamicTypeSize(...DynamicTypeSize.xLarge)
             .environmentObject(Avatar.shared)
             .environmentObject(AvatarSheetVM.shared)
+            .environmentObject(ProfileViewModel.shared)
     }
     
     // MARK: - standardAccentColorBottomButtonViewModifier
@@ -115,7 +116,7 @@ extension View {
     }
     
     // MARK: - sheetTopTrailingCloseButtonViewModifier
-    func sheetTopTrailingCloseButtonViewModifier(color xmarkColor: Color = .primary, isVisible: Bool = true, action: @escaping () -> ()) -> some View {
+    func sheetTopTrailingCloseButtonViewModifier(color xmarkColor: Color = .primary, isVisible: Bool = true, action: @escaping () -> Void) -> some View {
         self
             .overlay(alignment: .topTrailing) {
                 if isVisible {
@@ -142,6 +143,25 @@ extension View {
             self
                 .presentationBackground(material)
         } else { self }
+    }
+    
+    // MARK: - registerProfileTapEvent
+    func registerProfileTapEvent(event: ProfileTabEventTypes, action: @escaping () -> Void) -> some View {
+        self
+            .background {
+                GeometryReader { geo in
+                    Color.clear
+                        .preference(
+                            key: CustomCGRectPreferenceKey.self,
+                            value: geo.frame(in: .global)
+                        )
+                        .onPreferenceChange(CustomCGRectPreferenceKey.self) {
+                            ProfileViewModel.shared.registerEventCoordinates(event: event, frame: $0) {
+                                action()
+                            }
+                        }
+                }
+            }
     }
 }
 
