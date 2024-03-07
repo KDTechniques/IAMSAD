@@ -263,9 +263,8 @@ extension Binding<CGPoint> {
         } set: { newValue in
             DispatchQueue.main.async {
                 let profileVM: ProfileViewModel = .shared
-                let profileCoverVM: ProfileCoverVM = .shared
                 let conditionValue: CGFloat = profileVM.profileContentHeight -
-                profileCoverVM.coverPhotoFrameStaticMaxY - profileCoverVM.coverMaxExtraHeight
+                profileVM.coverPhotoFrameStaticMaxY - profileVM.coverMaxExtraHeight
                 
                 if self.wrappedValue.y <= conditionValue {
                     return self.wrappedValue = newValue

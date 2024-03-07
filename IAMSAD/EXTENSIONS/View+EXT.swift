@@ -16,7 +16,6 @@ extension View {
             .environmentObject(Avatar.shared)
             .environmentObject(AvatarSheetVM.shared)
             .environmentObject(ProfileViewModel.shared)
-            .environmentObject(ProfileCoverVM.shared)
             .environmentObject(ProfileGeneralNShareButtonsVM.shared)
             .environmentObject(ProfileNameGenderNJoinedDateVM.shared)
             .environmentObject(ProfileBioVM.shared)

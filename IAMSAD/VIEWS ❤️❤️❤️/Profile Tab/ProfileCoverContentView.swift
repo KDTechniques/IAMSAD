@@ -9,10 +9,21 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct ProfileCoverContentView: View {
-    @EnvironmentObject private var profileCoverVM: ProfileCoverVM
     @EnvironmentObject private var profileNameGenderNJoinedDateVM: ProfileNameGenderNJoinedDateVM
     
-    // MARK: - PROPERTIES
+    // MARK: - PARAMETER PROPERTIES
+    let coverType: ProfileCoverTypes
+    let coverPhotoURL: URL?
+    let arrowIconAngle: CGFloat
+    let arrowIconOpacity: CGFloat
+    let progressIndicatorOpacity: CGFloat
+    let subHeadlineText: String
+    let coverExtraHeight: CGFloat
+    let coverTextOffsetY: CGFloat
+    let profilePhotoURL: URL?
+    
+    // MARK: - PRIVATE PROPERTIES
+    let profileVM: ProfileViewModel = .shared
     
     // Toolbar
     @State var topToolbarStaticMidY: CGFloat = .zero
@@ -38,16 +49,21 @@ struct ProfileCoverContentView: View {
     var coverTextMaxOffsetY: CGFloat {
         -(
             coverStaticHeight +
-            ProfileCoverVM.shared.coverMaxExtraHeight -
+            profileVM.coverMaxExtraHeight -
             topToolbarStaticMidY +
             coverTextHeight/2
         )
     }
     
+    // Profile Photo
+    var profilePhotoOffsetY: CGFloat {
+        profileVM.secondaryProfilePhotoFrameSize * profileVM.profilePhotoOffsetFraction
+    }
+    
     // MARK: - BODY
     var body: some View {
         Group {
-            switch profileCoverVM.coverType {
+            switch coverType {
             case .photo: coverPhoto
             case .color: coverColor
             }
@@ -64,7 +80,7 @@ struct ProfileCoverContentView: View {
         }
         .overlay(alignment: .bottomLeading) { coverText }
         .clipped()
-        .overlay(alignment: .bottomLeading) { ProfilePhoto() }
+        .overlay(alignment: .bottomLeading) { profilePhoto }
         .ignoresSafeArea(edges: .top)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
@@ -90,9 +106,19 @@ struct ProfileCoverContentView: View {
 // MARK: - PREVIEWS
 #Preview("ProfileCoverContentView") {
     NavigationStack {
-        ProfileCoverContentView()
-            .frame(height: screenHeight, alignment: .top)
-            .ignoresSafeArea()
+        ProfileCoverContentView(
+            coverType: .photo,
+            coverPhotoURL: .init(string: "https://scontent.fcmb12-1.fna.fbcdn.net/v/t39.30808-6/428378921_1244897360247264_364892912709717832_n.jpg?stp=cp6_dst-jpg&_nc_cat=107&ccb=1-7&_nc_sid=783fdb&_nc_eui2=AeH7JFeN8qN22XlIyzzLGuBEO2wghYP6jM07bCCFg_qMzQ8uHwV4d6og5_TjSTKSD6tKsW-7cTrD_1PggLl5aIzX&_nc_ohc=8d-xKDes9ssAX-JCgn6&_nc_zt=23&_nc_ht=scontent.fcmb12-1.fna&oh=00_AfBn2lcCI3RxToCyWDuiygGmueeN0Yp7RslK5JqbmCBuXQ&oe=65EBA772"),
+            arrowIconAngle: 0,
+            arrowIconOpacity: 0,
+            progressIndicatorOpacity: 0,
+            subHeadlineText: "trusted by 123 people",
+            coverExtraHeight: 0,
+            coverTextOffsetY: 0,
+            profilePhotoURL: .init(string: "https://scontent.fcmb6-1.fna.fbcdn.net/v/t39.30808-6/406267007_1193865175350483_2919837257462168261_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeGOldSQG18thI5isD-6m267s13hywPgx--zXeHLA-DH79wKxI1PB4CO7RN-2XCSBM3VDX0TVfwMcXViPTPbo71d&_nc_ohc=R1yaIRs2sSoAX8tysfD&_nc_zt=23&_nc_ht=scontent.fcmb6-1.fna&oh=00_AfDFKMOJPGHGDWEy0Ipu0LB6ufpX1GpUKWE4f-aKf7P7qg&oe=65ECD15C")
+        )
+        .frame(height: screenHeight, alignment: .top)
+        .ignoresSafeArea()
     }
     .previewViewModifier
 }
@@ -102,12 +128,40 @@ extension ProfileCoverContentView {
     // MARK: - coverPhoto
     private var coverPhoto: some View {
         WebImage(
-            url: profileCoverVM.coverPhotoURL,
+            url: coverPhotoURL,
             options: [.highPriority, .scaleDownLargeImages]
         )
         .resizable()
         .defaultBColorPlaceholder
         .scaledToFill()
+    }
+    
+    // MARK: - profilePhoto
+    private var profilePhoto: some View {
+        Circle()
+            .fill(.tabBarNSystemBackground)
+            .frame(
+                width: profileVM.secondaryProfilePhotoFrameSize,
+                height: profileVM.secondaryProfilePhotoFrameSize
+            )
+            .overlay {
+                WebImage(
+                    url: profilePhotoURL,
+                    options: [.highPriority, .scaleDownLargeImages]
+                )
+                .resizable()
+                .defaultBColorPlaceholder
+                .scaledToFill()
+                .clipShape(Circle())
+                .frame(
+                    width: profileVM.secondaryProfilePhotoSize,
+                    height: profileVM.secondaryProfilePhotoSize
+                )
+            }
+            .scaleEffect(profileVM.getProfilePhotoScale(), anchor: .bottomLeading)
+            .offset(y: profilePhotoOffsetY)
+            .padding(.leading)
+            .opacity(profileVM.getCoverProfilePhotoOpacity())
     }
     
     // MARK: - arrowIcon
@@ -116,16 +170,16 @@ extension ProfileCoverContentView {
             .resizable()
             .scaledToFit()
             .fontWeight(.medium)
-            .rotationEffect(.degrees(profileCoverVM.arrowIconAngle))
+            .rotationEffect(.degrees(arrowIconAngle))
             .foregroundStyle(.white)
-            .opacity(profileCoverVM.arrowIconOpacity)
+            .opacity(arrowIconOpacity)
     }
     
     // MARK: - progressIndicator
     private var progressIndicator: some View {
         ProgressView()
             .tint(.white)
-            .opacity(profileCoverVM.progressIndicatorOpacity)
+            .opacity(progressIndicatorOpacity)
     }
     
     // MARK: - coverText
@@ -135,7 +189,7 @@ extension ProfileCoverContentView {
             Text(profileNameGenderNJoinedDateVM.name)
                 .font(.title3.weight(.heavy))
             
-            Text(profileCoverVM.subHeadlineText)
+            Text(subHeadlineText)
                 .font(.footnote)
         }
         .foregroundStyle(.white)
@@ -153,9 +207,9 @@ extension ProfileCoverContentView {
         /// this limits the cover height when it reaches its controlled minimum value.
         coverStaticHeight +
         (
-            profileCoverVM.coverExtraHeight > profileCoverVM.coverMaxExtraHeight
-            ? profileCoverVM.coverExtraHeight
-            : profileCoverVM.coverMaxExtraHeight
+            coverExtraHeight > profileVM.coverMaxExtraHeight
+            ? coverExtraHeight
+            : profileVM.coverMaxExtraHeight
         )
     }
     
@@ -163,10 +217,10 @@ extension ProfileCoverContentView {
     private func getCoverBlurOnScrollDown() -> CGFloat {
         let maxBlurHeight: CGFloat = 30
         
-        if profileCoverVM.coverExtraHeight > 0 {
-            return profileCoverVM.coverExtraHeight > maxBlurHeight
+        if coverExtraHeight > 0 {
+            return coverExtraHeight > maxBlurHeight
             ? maxCoverBlur
-            : profileCoverVM.coverExtraHeight/maxBlurHeight*maxCoverBlur
+            : coverExtraHeight/maxBlurHeight*maxCoverBlur
         }
         
         return .zero
@@ -174,9 +228,9 @@ extension ProfileCoverContentView {
     
     // MARK: - getCoverBlurOnScrollUp
     private func getCoverBlurOnScrollUp() -> CGFloat {
-        if profileCoverVM.coverTextOffsetY < 0 {
-            return profileCoverVM.coverTextOffsetY > coverTextMaxOffsetY
-            ? profileCoverVM.coverTextOffsetY / coverTextMaxOffsetY * maxCoverBlur
+        if coverTextOffsetY < 0 {
+            return coverTextOffsetY > coverTextMaxOffsetY
+            ? coverTextOffsetY / coverTextMaxOffsetY * maxCoverBlur
             : maxCoverBlur
         }
         
@@ -185,54 +239,14 @@ extension ProfileCoverContentView {
     
     // MARK: -  getCOverTextOffset
     private func getCoverTextOffset() -> CGFloat {
-        profileCoverVM.coverTextOffsetY > coverTextMaxOffsetY
-        ? (profileCoverVM.coverTextOffsetY < 0) ? profileCoverVM.coverTextOffsetY : .zero
+        coverTextOffsetY > coverTextMaxOffsetY
+        ? (coverTextOffsetY < 0) ? coverTextOffsetY : .zero
         : coverTextMaxOffsetY
     }
     
     // MARK: - getCoverTextOpacity
     private func getCoverTextOpacity() -> CGFloat {
         let preSmoothingValue: CGFloat = 10 /// this will give little bit more prior opacity before offset hits max offset Y.
-        return 1 / (coverTextMaxOffsetY + preSmoothingValue) * profileCoverVM.coverTextOffsetY
-    }
-}
-
-// MARK: - SUBVIEWS
-fileprivate struct ProfilePhoto: View {
-    // MARK: - PROPERTIES
-    @EnvironmentObject private var profileVM: ProfileViewModel
-    @EnvironmentObject private var profileCoverVM: ProfileCoverVM
-    
-    var profilePhotoOffsetY: CGFloat {
-        ProfileViewModel.shared.secondaryProfilePhotoFrameSize *
-        ProfileViewModel.shared.profilePhotoOffsetFraction
-    }
-    
-    // MARK: - BODY
-    var body: some View {
-        Circle()
-            .fill(.tabBarNSystemBackground)
-            .frame(
-                width: profileVM.secondaryProfilePhotoFrameSize,
-                height: profileVM.secondaryProfilePhotoFrameSize
-            )
-            .overlay {
-                WebImage(
-                    url: profileVM.profilePhotoURL,
-                    options: [.highPriority, .scaleDownLargeImages]
-                )
-                .resizable()
-                .defaultBColorPlaceholder
-                .scaledToFill()
-                .clipShape(Circle())
-                .frame(
-                    width: profileVM.secondaryProfilePhotoSize,
-                    height: profileVM.secondaryProfilePhotoSize
-                )
-            }
-            .scaleEffect(profileCoverVM.getProfilePhotoScale(), anchor: .bottomLeading)
-            .offset(y: profilePhotoOffsetY)
-            .padding(.leading)
-            .opacity(profileCoverVM.getProfilePhotoOpacity())
+        return 1 / (coverTextMaxOffsetY + preSmoothingValue) * coverTextOffsetY
     }
 }

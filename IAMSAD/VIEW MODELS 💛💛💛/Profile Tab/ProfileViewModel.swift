@@ -8,6 +8,10 @@
 import SwiftUI
 import Combine
 
+enum ProfileCoverTypes {
+    case photo, color
+}
+
 enum ProfileGeneralButtonTypes: String {
     case editProfile = "edit profile", follow, following, pending
 }
@@ -21,8 +25,6 @@ final class ProfileViewModel: ObservableObject {
     // MARK: - PRORPERTIES
     
     // MARK: Common
-    let profileCoverVM: ProfileCoverVM = .shared
-    
     @Published var tapRegisteredEventsArray: [TapRegisterModel<ProfileTabEventTypes>] = []
     @Published var tapCoordinates: CGPoint = .zero
     @Published var contentOffset: CGPoint = .zero
@@ -30,6 +32,22 @@ final class ProfileViewModel: ObservableObject {
     @Published var profileContentHeight: CGFloat = .zero
     let horizontalTabsExtraTopPadding: CGFloat = 10
     var cancellable: Set<AnyCancellable> = []
+    
+    // MARK: Cover
+    let coverPhotoFrameStaticMaxY: CGFloat = 140
+    let coverMaxExtraHeight: CGFloat = -43
+    @Published var coverType: ProfileCoverTypes = .photo
+    @Published var coverPhotoURL: URL? = .init(string: "https://scontent.fcmb12-1.fna.fbcdn.net/v/t39.30808-6/428378921_1244897360247264_364892912709717832_n.jpg?stp=cp6_dst-jpg&_nc_cat=107&ccb=1-7&_nc_sid=783fdb&_nc_eui2=AeH7JFeN8qN22XlIyzzLGuBEO2wghYP6jM07bCCFg_qMzQ8uHwV4d6og5_TjSTKSD6tKsW-7cTrD_1PggLl5aIzX&_nc_ohc=8d-xKDes9ssAX-JCgn6&_nc_zt=23&_nc_ht=scontent.fcmb12-1.fna&oh=00_AfBn2lcCI3RxToCyWDuiygGmueeN0Yp7RslK5JqbmCBuXQ&oe=65EBA772")
+    @Published var coverExtraHeight: CGFloat = .zero
+    
+    // MARK: Cover Texts
+    @Published var coverTextOffsetY: CGFloat = .zero
+    @Published var subHeadlineText: String = "trusted by 123 people"
+    
+    // MARK: Refreshable
+    @Published var arrowIconAngle: CGFloat = .zero
+    @Published var arrowIconOpacity: CGFloat = .zero
+    @Published var progressIndicatorOpacity: CGFloat = .zero
     
     // MARK: Profile Photo
     let profilePhotoOffsetFraction: CGFloat = 1 - 1/3
@@ -47,11 +65,6 @@ final class ProfileViewModel: ObservableObject {
         secondaryProfilePhotoSize * profilePhotoOffsetFraction
     }
     @Published var profilePhotoURL: URL? = .init(string: "https://scontent.fcmb6-1.fna.fbcdn.net/v/t39.30808-6/406267007_1193865175350483_2919837257462168261_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeGOldSQG18thI5isD-6m267s13hywPgx--zXeHLA-DH79wKxI1PB4CO7RN-2XCSBM3VDX0TVfwMcXViPTPbo71d&_nc_ohc=R1yaIRs2sSoAX8tysfD&_nc_zt=23&_nc_ht=scontent.fcmb6-1.fna&oh=00_AfDFKMOJPGHGDWEy0Ipu0LB6ufpX1GpUKWE4f-aKf7P7qg&oe=65ECD15C")
-    
-    // MARK: Refreshable
-    @Published var arrowDownAngle: CGFloat = .zero
-    @Published var arrowDownOpacity: CGFloat = .zero
-    @Published var progressIndicatorOpacity: CGFloat = .zero
     
     // MARK: Singleton
     static let shared: ProfileViewModel = .init()
@@ -74,14 +87,14 @@ final class ProfileViewModel: ObservableObject {
                 guard let self = self else { return }
                 
                 let conditionValue: CGFloat = profileContentHeight -
-                profileCoverVM.coverPhotoFrameStaticMaxY - profileCoverVM.coverMaxExtraHeight
+                coverPhotoFrameStaticMaxY - coverMaxExtraHeight
                 
                 if newValue.y <= conditionValue {
                     throttledContentOffset = newValue
-                    profileCoverVM.coverExtraHeight = -newValue.y
+                    coverExtraHeight = -newValue.y
                 } else {
                     throttledContentOffset.y = conditionValue
-                    profileCoverVM.coverExtraHeight = -conditionValue
+                    coverExtraHeight = -conditionValue
                 }
             }
             .store(in: &cancellable)
@@ -133,10 +146,32 @@ final class ProfileViewModel: ObservableObject {
         profileContentHeight = value + horizontalTabsExtraTopPadding
     }
     
+    // MARK: - Profile Cover
+    
+    // MARK: - setCoverOffsetY
+    func setCoverTextOffsetY(_ value: CGFloat) {
+        let triggerLine: CGFloat = coverPhotoFrameStaticMaxY + coverMaxExtraHeight
+        coverTextOffsetY = value - triggerLine
+    }
+    
+    // MARK: - getProfilePhotoScale
+    func getProfilePhotoScale() -> CGFloat {
+        let calculation1: CGFloat = 1 - ProfileViewModel.shared.profilePhotoOffsetFraction
+        let calculation2: CGFloat = coverExtraHeight / coverMaxExtraHeight * calculation1
+        let calculation3: CGFloat = 1 - (calculation2 >= .zero ? calculation2 : .zero)
+        
+        return calculation3 > .zero ? calculation3 : .zero
+    }
+    
+    // MARK: - getCoverProfilePhotoOpacity
+    func getCoverProfilePhotoOpacity() -> CGFloat {
+        coverExtraHeight <= coverMaxExtraHeight ? 0 : 1
+    }
+    
     // MARK: Profile Photo
     
     // MARK: - getProfilePhotoOpacity
     func getProfilePhotoOpacity() -> CGFloat {
-        -contentOffset.y <= profileCoverVM.coverMaxExtraHeight ? 1 : 0
+        -contentOffset.y <= coverMaxExtraHeight ? 1 : 0
     }
 }

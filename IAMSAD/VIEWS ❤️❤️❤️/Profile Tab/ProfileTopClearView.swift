@@ -7,14 +7,15 @@
 
 import SwiftUI
 
+@MainActor
 struct ProfileTopClearView: View {
     // MARK: - PROPERTIES
-    @EnvironmentObject private var profileCoverVM: ProfileCoverVM
+    let profileVM: ProfileViewModel = .shared
     
     // MARK: - BODY
     var body: some View {
         Color.clear
-            .frame(height: profileCoverVM.coverPhotoFrameStaticMaxY)
+            .frame(height: profileVM.coverPhotoFrameStaticMaxY)
     }
 }
 

@@ -20,6 +20,7 @@ struct ProfileView: View {
         NavigationStack {
             ZStack(alignment: .top) {
                 ProfileBackgroundView()
+                
                 ProfileInfoView()
                 
                 Testing123(
@@ -28,7 +29,17 @@ struct ProfileView: View {
                     topContentHeight: profileVM.profileContentHeight
                 )
                 
-                ProfileCoverContentView()
+                ProfileCoverContentView(
+                    coverType: profileVM.coverType,
+                    coverPhotoURL: profileVM.coverPhotoURL,
+                    arrowIconAngle: profileVM.arrowIconAngle,
+                    arrowIconOpacity: profileVM.arrowIconOpacity,
+                    progressIndicatorOpacity: profileVM.progressIndicatorOpacity,
+                    subHeadlineText: profileVM.subHeadlineText,
+                    coverExtraHeight: profileVM.coverExtraHeight,
+                    coverTextOffsetY: profileVM.coverTextOffsetY,
+                    profilePhotoURL: profileVM.profilePhotoURL
+                )
             }
             .toolbarBackground(.hidden, for: .navigationBar)
         }

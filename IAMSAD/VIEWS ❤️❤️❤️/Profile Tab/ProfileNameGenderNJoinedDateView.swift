@@ -11,6 +11,8 @@ struct ProfileNameGenderNJoinedDateView: View {
     // MARK: - PROPERTIES
     @EnvironmentObject private var profileNameGenderNJoinedDateVM: ProfileNameGenderNJoinedDateVM
     
+    let profileVM: ProfileViewModel = .shared
+    
     // MARK: - BODY
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -23,7 +25,7 @@ struct ProfileNameGenderNJoinedDateView: View {
                     Color.clear
                         .preference(key: CustomCGFloatPreferenceKey.self, value: geo.frame(in: .global).minY)
                         .onPreferenceChange(CustomCGFloatPreferenceKey.self) {
-                            ProfileCoverVM.shared.setCoverTextOffsetY($0)
+                            profileVM.setCoverTextOffsetY($0)
                         }
                 }
             }
