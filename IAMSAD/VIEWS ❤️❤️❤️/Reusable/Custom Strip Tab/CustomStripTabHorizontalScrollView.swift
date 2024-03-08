@@ -27,8 +27,8 @@ struct CustomStripTabHorizontalScrollView: View {
     let capsuleHeight: CGFloat = 3
     let minimumTabLabelOpacity: CGFloat = 0.6
     var tabCount: Int { tabLabelsArray.count }
-    
     @State var contentOffset: CGPoint = .zero
+    @State var animatedContentOffset: CGPoint? = nil
     @State var horizontalScrollViewStaticWidth: CGFloat = .zero
     
     // MARK: - INITIALIZER
@@ -75,6 +75,7 @@ struct CustomStripTabHorizontalScrollView: View {
                         .onTapGesture {
                             currentGesture = .tap
                             tabSelection = index
+                            setContentOffsetX(true)
                             DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
                                 currentGesture = .drag
                             }
@@ -86,6 +87,7 @@ struct CustomStripTabHorizontalScrollView: View {
             .padding(.vertical, labelToStripSpacing)
             .background { getHorizontalScrollViewHeight }
         }
+        .contentOffsetToScrollAnimated($animatedContentOffset)
         .showsHorizontalScrollIndicator(false)
         .overlay { capsule }
         .overlay(alignment: .bottom) { Divider().opacity(showDivider ? 1 : 0) }
@@ -222,7 +224,7 @@ extension CustomStripTabHorizontalScrollView {
     }
     
     // MARK: - setContentOffsetX
-    private func setContentOffsetX() {
+    private func setContentOffsetX(_ isAnimated: Bool = false) {
         let tabsCount: CGFloat = CGFloat(tabContentMinXArray.count-1)
         let calculation1: CGFloat = (horizontalScrollViewStaticWidth - screenWidth) / tabsCount
         var tabIndex: Int {
@@ -233,7 +235,12 @@ extension CustomStripTabHorizontalScrollView {
             }
         }
         let calculation2: CGFloat = CGFloat(tabIndex) + (tabContentMinXArray[tabIndex] / screenWidth)
+        let calculation3: CGFloat = calculation1 * (calculation2 > tabsCount ? tabsCount : calculation2)
         
-        contentOffset.x = calculation1 * (calculation2 > tabsCount ? tabsCount : calculation2)
+        if !isAnimated {
+            contentOffset.x = calculation3
+        } else {
+            animatedContentOffset = .init(x: calculation3, y: 0)
+        }
     }
 }
