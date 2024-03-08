@@ -28,6 +28,9 @@ struct CustomStripTabHorizontalScrollView: View {
     let minimumTabLabelOpacity: CGFloat = 0.6
     var tabCount: Int { tabLabelsArray.count }
     
+    @State var contentOffset: CGPoint = .zero
+    @State var horizontalScrollViewStaticWidth: CGFloat = .zero
+    
     // MARK: - INITIALIZER
     init(
         tabSelection: Binding<Int>,
@@ -60,33 +63,34 @@ struct CustomStripTabHorizontalScrollView: View {
     
     // MARK: - BODY
     var body: some View {
-        ScrollViewReader { proxy in
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: labelSpacing) {
-                    ForEach(tabLabelsArray.indices, id: \.self) { index in
-                        // MARK: TAB LABEL
-                        Text(tabLabelsArray[index])
-                            .font(font)
-                            .opacity(getTabLabelOpacity(index))
-                            .background { assignTabLabelMidX(index) }
-                            .background { assignTabLabelWidth(index) }
-                            .id(index)
-                            .onTapGesture {
-                                currentGesture = .tap
-                                tabSelection = index
-                                DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-                                    currentGesture = .drag
-                                }
+        CustomUIScrollView(.horizontal, contentOffset: $contentOffset) {
+            HStack(spacing: labelSpacing) {
+                ForEach(tabLabelsArray.indices, id: \.self) { index in
+                    // MARK: TAB LABEL
+                    Text(tabLabelsArray[index])
+                        .font(font)
+                        .opacity(getTabLabelOpacity(index))
+                        .background { assignTabLabelMidX(index) }
+                        .background { assignTabLabelWidth(index) }
+                        .onTapGesture {
+                            currentGesture = .tap
+                            tabSelection = index
+                            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                                currentGesture = .drag
                             }
-                    }
+                        }
                 }
-                .padding(.horizontal, horizontalSpacing)
-                .padding(.vertical, labelToStripSpacing)
-                .background { getHorizontalScrollViewHeight }
             }
-            .overlay { capsule }
-            .overlay(alignment: .bottom) { Divider().opacity(showDivider ? 1 : 0) }
-            .onChange(of: tabSelection) { handleTabSelectionScroll(proxy: proxy, value: $0) }
+            .padding(.horizontal, horizontalSpacing)
+            .geometryReaderDimensionViewModifier($horizontalScrollViewStaticWidth, dimension: .width)
+            .padding(.vertical, labelToStripSpacing)
+            .background { getHorizontalScrollViewHeight }
+        }
+        .showsHorizontalScrollIndicator(false)
+        .overlay { capsule }
+        .overlay(alignment: .bottom) { Divider().opacity(showDivider ? 1 : 0) }
+        .onChange(of: tabContentMinXArray) { _, _ in
+            setContentOffsetX()
         }
     }
 }
@@ -215,5 +219,21 @@ extension CustomStripTabHorizontalScrollView {
     // MARK: - handleTabSelectionScroll
     private func handleTabSelectionScroll(proxy: ScrollViewProxy, value: Int) {
         withAnimation { proxy.scrollTo(value, anchor: .center) }
+    }
+    
+    // MARK: - setContentOffsetX
+    private func setContentOffsetX() {
+        let tabsCount: CGFloat = CGFloat(tabContentMinXArray.count-1)
+        let calculation1: CGFloat = (horizontalScrollViewStaticWidth - screenWidth) / tabsCount
+        var tabIndex: Int {
+            if let firstIndex: Int = tabContentMinXArray.firstIndex(where: { $0 > 0 }) {
+                return firstIndex
+            } else {
+                return tabSelection
+            }
+        }
+        let calculation2: CGFloat = CGFloat(tabIndex) + (tabContentMinXArray[tabIndex] / screenWidth)
+        
+        contentOffset.x = calculation1 * (calculation2 > tabsCount ? tabsCount : calculation2)
     }
 }
