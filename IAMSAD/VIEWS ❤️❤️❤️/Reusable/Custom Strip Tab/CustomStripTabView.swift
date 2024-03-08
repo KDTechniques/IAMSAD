@@ -111,6 +111,16 @@ struct CustomStripTabView_Preview: View {
                         }
                         .frame(width: screenWidth)
                     }), label: "Media"),
+                .init(content: AnyView(Color.debug), label: "Likes"),
+                .init(content: AnyView(
+                    ScrollView {
+                        VStack(spacing: 150) {
+                            ForEach(0...100, id: \.self) {
+                                Text($0.description)
+                            }
+                        }
+                        .frame(width: screenWidth)
+                    }), label: "Bookmarks"),
                 .init(content: AnyView(Color.debug), label: "Achievements"),
             ],
             horizontalTabOffsetY: 300
