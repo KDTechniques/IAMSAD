@@ -234,7 +234,9 @@ struct Testing123: View {
                     }
                         .showsVerticalScrollIndicator(false)
                 ), label: "Achievements"),
-            ], horizontalTabOffsetY: topContentHeight - profileVM.throttledContentOffset.y)
+            ],
+            horizontalTabOffsetY: topContentHeight - profileVM.throttledContentOffset.y
+        )
     }
 }
 
@@ -256,23 +258,23 @@ fileprivate struct Preview: View {
     }
 }
 
-extension Binding<CGPoint> {
+@MainActor
+fileprivate extension Binding<CGPoint> {
+    // MARK: - handleContentOffset
     func handleContentOffset() -> Binding<CGPoint> {
-        Binding {
+        let profileVM: ProfileViewModel = .shared
+        let conditionValue: CGFloat = profileVM.profileContentHeight -
+        profileVM.coverStaticHeight - profileVM.coverMaxExtraHeight
+        
+        return Binding {
             self.wrappedValue
         } set: { newValue in
-            DispatchQueue.main.async {
-                let profileVM: ProfileViewModel = .shared
-                let conditionValue: CGFloat = profileVM.profileContentHeight -
-                profileVM.coverStaticHeight - profileVM.coverMaxExtraHeight
-                
-                if self.wrappedValue.y <= conditionValue {
-                    return self.wrappedValue = newValue
-                }
-                
-                if newValue.y <= conditionValue {
-                    return self.wrappedValue = newValue
-                }
+            if self.wrappedValue.y <= conditionValue {
+                return self.wrappedValue = newValue
+            }
+            
+            if newValue.y <= conditionValue {
+                return self.wrappedValue = newValue
             }
         }
     }
