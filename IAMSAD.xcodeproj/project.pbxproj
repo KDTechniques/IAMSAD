@@ -94,6 +94,7 @@
 		0B4392FC2B4EF2B30075E5D1 /* ColorPaletteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4392FB2B4EF2B30075E5D1 /* ColorPaletteModel.swift */; };
 		0B4392FF2B4F0DE90075E5D1 /* CustomPageIndexIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4392FE2B4F0DE90075E5D1 /* CustomPageIndexIndicatorView.swift */; };
 		0B4434662B527C200041E8BF /* OTPVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4434652B527C200041E8BF /* OTPVerificationView.swift */; };
+		0B576E342B9CF70A009CD3CA /* TestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B576E332B9CF70A009CD3CA /* TestingView.swift */; };
 		0B58AE942B6CF0360057CCFE /* CustomTransitioningCounterTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B58AE932B6CF0360057CCFE /* CustomTransitioningCounterTextView.swift */; };
 		0B58AE962B6CF5730057CCFE /* String+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B58AE952B6CF5730057CCFE /* String+EXT.swift */; };
 		0B58AE982B6D340E0057CCFE /* Int+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B58AE972B6D340E0057CCFE /* Int+EXT.swift */; };
@@ -103,7 +104,6 @@
 		0B6E745B2B5A9A87008B4CFB /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E745A2B5A9A87008B4CFB /* Utilities.swift */; };
 		0B6E745D2B5AA21D008B4CFB /* CustomContentNotAvailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E745C2B5AA21D008B4CFB /* CustomContentNotAvailableView.swift */; };
 		0B7204C12B9662B200C705B8 /* SDWebImage+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7204C02B9662B200C705B8 /* SDWebImage+EXT.swift */; };
-		0B7204C32B9676CD00C705B8 /* TestingClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7204C22B9676CD00C705B8 /* TestingClass.swift */; };
 		0B729F712B667B16009BDFD2 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B729F702B667B16009BDFD2 /* AvatarImageView.swift */; };
 		0B729F732B668084009BDFD2 /* AvatarImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B729F722B668084009BDFD2 /* AvatarImageModel.swift */; };
 		0B8544022B948D7F00FAF90F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8544012B948D7F00FAF90F /* ProfileViewModel.swift */; };
@@ -494,6 +494,7 @@
 		0B4392FB2B4EF2B30075E5D1 /* ColorPaletteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPaletteModel.swift; sourceTree = "<group>"; };
 		0B4392FE2B4F0DE90075E5D1 /* CustomPageIndexIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageIndexIndicatorView.swift; sourceTree = "<group>"; };
 		0B4434652B527C200041E8BF /* OTPVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVerificationView.swift; sourceTree = "<group>"; };
+		0B576E332B9CF70A009CD3CA /* TestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingView.swift; sourceTree = "<group>"; };
 		0B58AE932B6CF0360057CCFE /* CustomTransitioningCounterTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransitioningCounterTextView.swift; sourceTree = "<group>"; };
 		0B58AE952B6CF5730057CCFE /* String+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+EXT.swift"; sourceTree = "<group>"; };
 		0B58AE972B6D340E0057CCFE /* Int+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+EXT.swift"; sourceTree = "<group>"; };
@@ -503,7 +504,6 @@
 		0B6E745A2B5A9A87008B4CFB /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		0B6E745C2B5AA21D008B4CFB /* CustomContentNotAvailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContentNotAvailableView.swift; sourceTree = "<group>"; };
 		0B7204C02B9662B200C705B8 /* SDWebImage+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SDWebImage+EXT.swift"; sourceTree = "<group>"; };
-		0B7204C22B9676CD00C705B8 /* TestingClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingClass.swift; sourceTree = "<group>"; };
 		0B729F702B667B16009BDFD2 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		0B729F722B668084009BDFD2 /* AvatarImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageModel.swift; sourceTree = "<group>"; };
 		0B8544012B948D7F00FAF90F /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -1082,7 +1082,7 @@
 				0BD9457E2B743D7F0091E845 /* TabTesting.swift */,
 				0BE0F7EE2B71414B00BD01BB /* RepliesTestingView.swift */,
 				0B5FBB7F2B7C90DC00669034 /* Testing123.swift */,
-				0B7204C22B9676CD00C705B8 /* TestingClass.swift */,
+				0B576E332B9CF70A009CD3CA /* TestingView.swift */,
 			);
 			path = Testing;
 			sourceTree = "<group>";
@@ -1912,6 +1912,7 @@
 				0B7204C12B9662B200C705B8 /* SDWebImage+EXT.swift in Sources */,
 				0B5B0EA02B7B3129001A950C /* CustomStripTabHorizontalScrollView.swift in Sources */,
 				0B2623952B4D80850063D71C /* UserNameTextFieldView.swift in Sources */,
+				0B576E342B9CF70A009CD3CA /* TestingView.swift in Sources */,
 				0B26236A2B4CB4CF0063D71C /* Color+EXT.swift in Sources */,
 				0B2623662B4CA0F70063D71C /* View+EXT.swift in Sources */,
 				0BE75A6C2B99FAAB003C43DA /* Profile_ProgressIndicatorView.swift in Sources */,
@@ -1939,7 +1940,6 @@
 				0B2623222B4BD9730063D71C /* UserDefaultsManager.swift in Sources */,
 				0B20D7D72B96067300B71C10 /* Profile_GeneralNShareButtonsView.swift in Sources */,
 				0B27C3FB2B52A68B00680676 /* AvatarBackgroundColorSelectionView.swift in Sources */,
-				0B7204C32B9676CD00C705B8 /* TestingClass.swift in Sources */,
 				0B20D7E32B96182B00B71C10 /* Profile_FollowersCountNLinkView.swift in Sources */,
 				0B00D1E22B54192B00CE721C /* CustomCountryCodeSearchSheetView.swift in Sources */,
 				0B2623A32B4E789A0063D71C /* DimensionTypes.swift in Sources */,
