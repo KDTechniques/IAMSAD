@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 let screenWidth: CGFloat = UIScreen.main.bounds.size.width
 let screenHeight: CGFloat = UIScreen.main.bounds.size.height

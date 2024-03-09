@@ -12,7 +12,7 @@ struct TapRegisterModel<T: Hashable>: Identifiable, Equatable {
     let id: String = UUID().uuidString
     private(set) var frame: CGRect
     let event: T
-    let action: ()->()
+    let action: () -> Void
     
     // MARK: - INITIALIZER
     init(frame: CGRect, event: T, action: @escaping () -> Void) {
@@ -23,6 +23,13 @@ struct TapRegisterModel<T: Hashable>: Identifiable, Equatable {
     
     // MARK: Equatable Confirmation
     static func == (lhs: TapRegisterModel<T>, rhs: TapRegisterModel<T>) -> Bool {
+        /// We update the frame because we don't have to update anything else.
+        /// In that case, we can use 'id' for equitability as it remains the same even when we update the frame.
+        /// So, what actually changes is the frame, not anything else. Therefore, we use the frame for equitability.
+        /// Otherwise, if we use 'id' or anything else, the changes of the frame won't be updated to the view.
+        /// Equitability, in this sense, checks which value changed to update the view.
+        /// If equitability checks with the frame, SwiftUI knows how to update the view accordingly when we change the frame.
+        /// However, if we use 'id', nothing happens.
         lhs.frame == rhs.frame
     }
     
