@@ -24,7 +24,7 @@ struct Profile_GeneralNShareButtonsView: View {
                     RoundedRectangle(cornerRadius: 9)
                         .stroke(Color(uiColor: .systemGray4), lineWidth: 1)
                 )
-                .registerProfileTapEvent(event: .general) {
+                .registerProfileTapEvent(event: Profile_TapEventTypes.general) {
                     // follow/unfollow/edit profile action goes here...
                     print("general - follow/unfollow/edit profile action got triggered...")
                 }
@@ -40,7 +40,7 @@ struct Profile_GeneralNShareButtonsView: View {
                         .padding(10)
                 }
                 .tint(.primary)
-                .registerProfileTapEvent(event: .share) {
+                .registerProfileTapEvent(event: Profile_TapEventTypes.share) {
                     // share action goes here...
                     print("share action got triggered...")
                 }

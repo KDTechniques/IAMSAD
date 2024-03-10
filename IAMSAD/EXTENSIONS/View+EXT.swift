@@ -146,7 +146,7 @@ extension View {
     }
     
     // MARK: - registerProfileTapEvent
-    func registerProfileTapEvent(event: ProfileTabEventTypes, action: @escaping () -> Void) -> some View {
+    func registerProfileTapEvent(event: Profile_TapEventTypes, action: @escaping () -> Void) -> some View {
         self
             .background {
                 GeometryReader { geo in

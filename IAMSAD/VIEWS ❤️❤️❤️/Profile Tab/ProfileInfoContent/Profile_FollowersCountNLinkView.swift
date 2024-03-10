@@ -89,7 +89,7 @@ extension Profile_FollowersCountNLinkView {
             
             Text("\(followersCount.intToKMString()) follower\(profileVM.getPlural())")
         }
-        .registerProfileTapEvent(event: .followers) {
+        .registerProfileTapEvent(event: Profile_TapEventTypes.followers) {
             // followers action goes here...
             print("followers action got triggered...")
         }
@@ -105,7 +105,7 @@ extension Profile_FollowersCountNLinkView {
         
         Text(linkText)
             .tint(.secondary)
-            .registerProfileTapEvent(event: .link) {
+            .registerProfileTapEvent(event: Profile_TapEventTypes.link) {
                 guard let urlString: String = linkURL,
                       let url: URL = .init(string: urlString) else { return }
                 
