@@ -93,11 +93,15 @@ struct Profile_TabContentsView: View {
 
 // MARK: - MOCKS
 fileprivate struct MockView: View {
+    
+    @State var array: [Int] = Array(0...100)
+    
     var body: some View {
         LazyVStack(spacing: 50) {
-            ForEach(0...100, id: \.self) { index in
+            ForEach(array, id: \.self) { index in
                 Button(index.description) {
-                    print(index)
+                    let last = array.last!
+                    array.append(last+1)
                 }
                 .frame(width: screenWidth)
             }

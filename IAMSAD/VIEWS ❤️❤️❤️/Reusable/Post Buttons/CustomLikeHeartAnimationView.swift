@@ -65,7 +65,9 @@ struct CustomLikeHeartAnimationView: View {
             .frame(width: size, height: size)
             .clipShape(Rectangle())
             .onAppear { handleOnAppear() }
-            .onChange(of: like) { animate($0) }
+            .onChange(of: like) { oldValue, newValue in
+                animate(newValue)
+            }
         }
     }
 }

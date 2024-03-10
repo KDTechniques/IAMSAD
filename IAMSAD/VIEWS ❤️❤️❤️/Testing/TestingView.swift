@@ -8,13 +8,30 @@
 import SwiftUI
 
 struct TestingView: View {
+    
+    @EnvironmentObject var profileVM: ProfileViewModel
+    
+    @State var contentOffset: CGPoint = .zero
+    @State var array: [Int] = Array(0...100)
+    
     var body: some View {
-        VStack {
-            
+        CustomUIScrollView(.vertical, contentOffset: $profileVM.contentOffset) {
+            LazyVStack {
+                ForEach(array, id: \.self) { index in
+                    Button(index.description) {
+                        let last = array.last!
+                        array.append(last+1)
+                        profileVM.bioText = ""
+                    }
+                    .frame(width: screenWidth)
+                }
+                .padding(.top)
+            }
         }
     }
 }
 
 #Preview {
     TestingView()
+        .previewViewModifier
 }
