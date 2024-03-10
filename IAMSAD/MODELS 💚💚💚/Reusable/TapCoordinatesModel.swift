@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Profile_TapEventTypes {
+enum Profile_TapEventTypes: CaseIterable {
     case general, share, more, followers, link
 }
 

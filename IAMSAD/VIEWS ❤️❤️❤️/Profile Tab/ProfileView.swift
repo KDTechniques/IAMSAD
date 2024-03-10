@@ -20,25 +20,12 @@ struct ProfileView: View {
         NavigationStack {
             ZStack(alignment: .top) {
                 Profile_BackgroundView()
-                
                 Profile_InfoView()
-                
-                Testing123(
-                    contentOffset: $profileVM.contentOffset,
-                    tapCoordinates: $profileVM.tapCoordinates,
-                    topContentHeight: profileVM.profileContentHeight
-                )
-                
+                Profile_TabContentsView()
                 Profile_CoverContentView()
             }
             .toolbarBackground(.hidden, for: .navigationBar)
-            .onTapGesture {
-                /// Handles all touch gestures for the profile tab view.
-                /// Uses the profileVM class to manage touch events and register untouchable events in an array.
-                /// The untouchable events are specified using a model.
-                /// Checks the array when a tap occurs and executes relevant actions.
-                profileVM.tapCoordinates = $0
-            }
+            .onTapGesture { handleTap($0) }
         }
     }
 }
@@ -47,4 +34,18 @@ struct ProfileView: View {
 #Preview("ProfileView") {
     ProfileView()
         .previewViewModifier
+}
+
+// MARK: - EXTENSIONS
+extension ProfileView {
+    // MARK: - FUNCTIONS
+    
+    //  MARK: - handleTap
+    /// Handles all touch gestures for the profile tab view.
+    /// Uses the profileVM class to manage touch events and register untouchable events in an array.
+    /// The untouchable events are specified using a model.
+    /// Checks the array when a tap occurs and executes relevant actions.
+    private func handleTap(_ coordinates: CGPoint) {
+        profileVM.tapCoordinates = coordinates
+    }
 }
