@@ -10,7 +10,6 @@
 		0B00D1DE2B5334A900CE721C /* OnboardingPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00D1DD2B5334A900CE721C /* OnboardingPhoneNumberView.swift */; };
 		0B00D1E02B540CBF00CE721C /* PhoneNumberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00D1DF2B540CBF00CE721C /* PhoneNumberModel.swift */; };
 		0B00D1E22B54192B00CE721C /* CustomCountryCodeSearchSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00D1E12B54192B00CE721C /* CustomCountryCodeSearchSheetView.swift */; };
-		0B0D05E12B9CB97C00E70B51 /* TapEventTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0D05E02B9CB97C00E70B51 /* TapEventTypes.swift */; };
 		0B20D7D72B96067300B71C10 /* Profile_GeneralNShareButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7D62B96067300B71C10 /* Profile_GeneralNShareButtonsView.swift */; };
 		0B20D7DB2B960F5300B71C10 /* ProfilePrimaryPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7DA2B960F5300B71C10 /* ProfilePrimaryPhotoView.swift */; };
 		0B20D7DD2B96126400B71C10 /* Profile_NameGenderNJoinedDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7DC2B96126400B71C10 /* Profile_NameGenderNJoinedDateView.swift */; };
@@ -402,14 +401,13 @@
 		0BE75A6E2B99FB2B003C43DA /* Profile_CoverTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE75A6D2B99FB2B003C43DA /* Profile_CoverTextView.swift */; };
 		0BFB38112B56FDB300227CB2 /* OnboardingLastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFB38102B56FDB300227CB2 /* OnboardingLastView.swift */; };
 		0BFB38132B56FEDC00227CB2 /* ThumbsUpLightSkinTone.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BFB38122B56FEDC00227CB2 /* ThumbsUpLightSkinTone.png */; };
-		0BFEFEA12B91E9130005DE9B /* TapRegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFEFEA02B91E9130005DE9B /* TapRegisterModel.swift */; };
+		0BFEFEA12B91E9130005DE9B /* TapCoordinatesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFEFEA02B91E9130005DE9B /* TapCoordinatesModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0B00D1DD2B5334A900CE721C /* OnboardingPhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPhoneNumberView.swift; sourceTree = "<group>"; };
 		0B00D1DF2B540CBF00CE721C /* PhoneNumberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberModel.swift; sourceTree = "<group>"; };
 		0B00D1E12B54192B00CE721C /* CustomCountryCodeSearchSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCountryCodeSearchSheetView.swift; sourceTree = "<group>"; };
-		0B0D05E02B9CB97C00E70B51 /* TapEventTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapEventTypes.swift; sourceTree = "<group>"; };
 		0B20D7D62B96067300B71C10 /* Profile_GeneralNShareButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_GeneralNShareButtonsView.swift; sourceTree = "<group>"; };
 		0B20D7DA2B960F5300B71C10 /* ProfilePrimaryPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePrimaryPhotoView.swift; sourceTree = "<group>"; };
 		0B20D7DC2B96126400B71C10 /* Profile_NameGenderNJoinedDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_NameGenderNJoinedDateView.swift; sourceTree = "<group>"; };
@@ -800,7 +798,7 @@
 		0BEE056A2B51A05D002478D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0BFB38102B56FDB300227CB2 /* OnboardingLastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingLastView.swift; sourceTree = "<group>"; };
 		0BFB38122B56FEDC00227CB2 /* ThumbsUpLightSkinTone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ThumbsUpLightSkinTone.png; sourceTree = "<group>"; };
-		0BFEFEA02B91E9130005DE9B /* TapRegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRegisterModel.swift; sourceTree = "<group>"; };
+		0BFEFEA02B91E9130005DE9B /* TapCoordinatesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCoordinatesModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -941,8 +939,7 @@
 				0B729F722B668084009BDFD2 /* AvatarImageModel.swift */,
 				0B00D1DF2B540CBF00CE721C /* PhoneNumberModel.swift */,
 				0B20D7DE2B96134B00B71C10 /* VerifiedBadgeTypes.swift */,
-				0BFEFEA02B91E9130005DE9B /* TapRegisterModel.swift */,
-				0B0D05E02B9CB97C00E70B51 /* TapEventTypes.swift */,
+				0BFEFEA02B91E9130005DE9B /* TapCoordinatesModel.swift */,
 			);
 			path = Reusable;
 			sourceTree = "<group>";
@@ -1925,7 +1922,6 @@
 				0B2623832B4D4F340063D71C /* OnboardingUserNameView.swift in Sources */,
 				0B9974692B55D683001AD3F6 /* UIApplication+EXT.swift in Sources */,
 				0B20D7E52B9618D000B71C10 /* Profile_TopClearView.swift in Sources */,
-				0B0D05E12B9CB97C00E70B51 /* TapEventTypes.swift in Sources */,
 				0B26237A2B4D422D0063D71C /* OnboardingListItemView.swift in Sources */,
 				0B99746B2B55D6DE001AD3F6 /* CustomSearchBarView.swift in Sources */,
 				0B26238B2B4D5F710063D71C /* Binding+EXT.swift in Sources */,
@@ -1956,7 +1952,7 @@
 				0B20D7DD2B96126400B71C10 /* Profile_NameGenderNJoinedDateView.swift in Sources */,
 				0B20D7E72B961C3C00B71C10 /* Profile_BackgroundView.swift in Sources */,
 				0B2623262B4BDA1B0063D71C /* AnalyticsManager.swift in Sources */,
-				0BFEFEA12B91E9130005DE9B /* TapRegisterModel.swift in Sources */,
+				0BFEFEA12B91E9130005DE9B /* TapCoordinatesModel.swift in Sources */,
 				0B2622FE2B4B4E120063D71C /* IAMSADApp.swift in Sources */,
 				0B58AE962B6CF5730057CCFE /* String+EXT.swift in Sources */,
 				0B20D7DF2B96134B00B71C10 /* VerifiedBadgeTypes.swift in Sources */,

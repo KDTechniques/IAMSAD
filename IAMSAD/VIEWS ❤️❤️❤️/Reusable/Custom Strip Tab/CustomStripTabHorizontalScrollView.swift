@@ -72,14 +72,7 @@ struct CustomStripTabHorizontalScrollView: View {
                         .opacity(getTabLabelOpacity(index))
                         .background { assignTabLabelMidX(index) }
                         .background { assignTabLabelWidth(index) }
-                        .onTapGesture {
-                            currentGesture = .tap
-                            tabSelection = index
-                            setContentOffsetX(true)
-                            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-                                currentGesture = .drag
-                            }
-                        }
+                        .onTapGesture { handleTap(index) }
                 }
             }
             .padding(.horizontal, horizontalSpacing)
@@ -241,6 +234,16 @@ extension CustomStripTabHorizontalScrollView {
             contentOffset.x = calculation3
         } else {
             animatedContentOffset = .init(x: calculation3, y: 0)
+        }
+    }
+    
+    // MARK: - handleTap
+    private func handleTap(_ index: Int) {
+        currentGesture = .tap
+        tabSelection = index
+        setContentOffsetX(true)
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+            currentGesture = .drag
         }
     }
 }

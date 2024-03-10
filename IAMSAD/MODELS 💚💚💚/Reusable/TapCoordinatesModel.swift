@@ -1,5 +1,5 @@
 //
-//  TapRegisterModel.swift
+//  TapCoordinatesModel.swift
 //  IAMSAD
 //
 //  Created by Mr. Kavinda Dilshan on 2024-03-01.
@@ -7,22 +7,26 @@
 
 import Foundation
 
-struct TapRegisterModel<T: Hashable>: Identifiable, Equatable {
+enum Profile_TapEventTypes {
+    case general, share, more, followers, link
+}
+
+struct TapCoordinatesModel: Identifiable, Equatable {
     // MARK: - PROPERTIES
     let id: String = UUID().uuidString
     private(set) var frame: CGRect
-    let event: T
+    let event: Profile_TapEventTypes
     let action: () -> Void
     
     // MARK: - INITIALIZER
-    init(frame: CGRect, event: T, action: @escaping () -> Void) {
+    init(frame: CGRect, event: Profile_TapEventTypes, action: @escaping () -> Void) {
         self.frame = frame
         self.event = event
         self.action = action
     }
     
     // MARK: Equatable Confirmation
-    static func == (lhs: TapRegisterModel<T>, rhs: TapRegisterModel<T>) -> Bool {
+    static func == (lhs: TapCoordinatesModel, rhs: TapCoordinatesModel) -> Bool {
         /// We update the frame because we don't have to update anything else.
         /// In that case, we can use 'id' for equitability as it remains the same even when we update the frame.
         /// So, what actually changes is the frame, not anything else. Therefore, we use the frame for equitability.

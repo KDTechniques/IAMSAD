@@ -40,10 +40,6 @@ struct Testing123: View {
                                             }
                                     }
                                 }
-                                .onTapGesture {
-                                    let correctedY: CGFloat = $0.y + contentStaticMinY - contentOffset.y
-                                    tapCoordinates = .init(x: $0.x, y: correctedY)
-                                }
                             
                             LazyVStack(spacing: 50) {
                                 ForEach(0...100, id: \.self) { index in
@@ -74,10 +70,6 @@ struct Testing123: View {
                                                 if contentStaticMinY == .zero { contentStaticMinY = value }
                                             }
                                     }
-                                }
-                                .onTapGesture {
-                                    let correctedY: CGFloat = $0.y + contentStaticMinY - contentOffset.y
-                                    tapCoordinates = .init(x: $0.x, y: correctedY)
                                 }
                             
                             LazyVStack(spacing: 50) {
@@ -110,10 +102,6 @@ struct Testing123: View {
                                             }
                                     }
                                 }
-                                .onTapGesture {
-                                    let correctedY: CGFloat = $0.y + contentStaticMinY - contentOffset.y
-                                    tapCoordinates = .init(x: $0.x, y: correctedY)
-                                }
                             
                             LazyVStack(spacing: 50) {
                                 ForEach(0...100, id: \.self) { index in
@@ -144,10 +132,6 @@ struct Testing123: View {
                                                 if contentStaticMinY == .zero { contentStaticMinY = value }
                                             }
                                     }
-                                }
-                                .onTapGesture {
-                                    let correctedY: CGFloat = $0.y + contentStaticMinY - contentOffset.y
-                                    tapCoordinates = .init(x: $0.x, y: correctedY)
                                 }
                             
                             LazyVStack(spacing: 50) {
@@ -180,10 +164,6 @@ struct Testing123: View {
                                             }
                                     }
                                 }
-                                .onTapGesture {
-                                    let correctedY: CGFloat = $0.y + contentStaticMinY - contentOffset.y
-                                    tapCoordinates = .init(x: $0.x, y: correctedY)
-                                }
                             
                             LazyVStack(spacing: 50) {
                                 ForEach(0...100, id: \.self) { index in
@@ -214,10 +194,6 @@ struct Testing123: View {
                                                 if contentStaticMinY == .zero { contentStaticMinY = value }
                                             }
                                     }
-                                }
-                                .onTapGesture {
-                                    let correctedY: CGFloat = $0.y + contentStaticMinY - contentOffset.y
-                                    tapCoordinates = .init(x: $0.x, y: correctedY)
                                 }
                             
                             LazyVStack(spacing: 50) {

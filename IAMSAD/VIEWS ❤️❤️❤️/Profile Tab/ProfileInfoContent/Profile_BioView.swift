@@ -22,7 +22,7 @@ struct Profile_BioView: View {
                     .fontWeight(.medium)
                     .foregroundStyle(.secondary)
                     .padding(.leading, 6)
-                    .registerProfileTapEvent(event: .more) {
+                    .registerProfileTapEvent(event: Profile_TapEventTypes.more) {
                         // more action goes here...
                         print("more action got triggered...")
                     }

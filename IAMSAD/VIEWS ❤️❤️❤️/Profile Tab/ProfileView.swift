@@ -33,13 +33,11 @@ struct ProfileView: View {
             }
             .toolbarBackground(.hidden, for: .navigationBar)
             .onTapGesture {
-                print($0)
-                /// take care of all the touch gesture from here...
-                /// to  do that create a separate class to handle touch gestures on profile tab view.
-                /// register all the untouchable events in one array using that Model created previously.
-                /// then check the array when tap occurs and execute where relevant.
-                /// don't for get to create a property to disable touch executions when ever needed.
-                /// for example, if a popup occurs on the view, disable touch executions until the popup dismisses, other wise eve though you click on a button on the popup, a button on the bottom get executed unnecessarily.
+                /// Handles all touch gestures for the profile tab view.
+                /// Uses the profileVM class to manage touch events and register untouchable events in an array.
+                /// The untouchable events are specified using a model.
+                /// Checks the array when a tap occurs and executes relevant actions.
+                profileVM.tapCoordinates = $0
             }
         }
     }

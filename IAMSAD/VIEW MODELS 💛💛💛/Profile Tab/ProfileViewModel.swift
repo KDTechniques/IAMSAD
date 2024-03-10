@@ -16,16 +16,12 @@ enum ProfileGeneralButtonTypes: String {
     case editProfile = "edit profile", follow, following, pending
 }
 
-enum ProfileTabEventTypes {
-    case general, share, more, followers, link
-}
-
 @MainActor
 final class ProfileViewModel: ObservableObject {
     // MARK: - PRORPERTIES
     
     // MARK: - Common
-    @Published var tapRegisteredEventsArray: [TapRegisterModel<ProfileTabEventTypes>] = []
+    @Published var tapCoordinatesArray: [TapCoordinatesModel] = []
     @Published var tapCoordinates: CGPoint = .zero
     @Published var contentOffset: CGPoint = .zero
     @Published var throttledContentOffset: CGPoint = .zero
@@ -146,12 +142,12 @@ final class ProfileViewModel: ObservableObject {
     
     // MARK: registerEventCoordinates
     func registerEventCoordinates(
-        event: ProfileTabEventTypes,
+        event: Profile_TapEventTypes,
         frame: CGRect,
         action: @escaping ()->()
     ) {
-        guard let index: Int = tapRegisteredEventsArray.firstIndex(where: { $0.event == event}) else {
-            tapRegisteredEventsArray.append(.init(
+        guard let index: Int = tapCoordinatesArray.firstIndex(where: { $0.event == event}) else {
+            tapCoordinatesArray.append(.init(
                 frame: frame,
                 event: event,
                 action: action
@@ -160,15 +156,15 @@ final class ProfileViewModel: ObservableObject {
             return
         }
         
-        tapRegisteredEventsArray[index].setFrame(frame)
+        tapCoordinatesArray[index].setFrame(frame)
     }
     
     // MARK: executeTapEvent
-    func executeTapEvent(_ coordinates: CGPoint) {
+    private func executeTapEvent(_ coordinates: CGPoint) {
         let x: CGFloat = coordinates.x
         let y: CGFloat = coordinates.y
         
-        guard let item: TapRegisterModel = tapRegisteredEventsArray.first(where: {
+        guard let item: TapCoordinatesModel = tapCoordinatesArray.first(where: {
             ($0.frame.minX <= x && $0.frame.maxX >= x) && ($0.frame.minY <= y && $0.frame.maxY >= y)
         }) else { return }
         
@@ -176,7 +172,7 @@ final class ProfileViewModel: ObservableObject {
     }
     
     // MARK: tapCoordinatesSubscriber
-    func tapCoordinatesSubscriber() {
+    private func tapCoordinatesSubscriber() {
         $tapCoordinates
             .sink { [weak self] newValue in
                 guard let self = self else { return }
