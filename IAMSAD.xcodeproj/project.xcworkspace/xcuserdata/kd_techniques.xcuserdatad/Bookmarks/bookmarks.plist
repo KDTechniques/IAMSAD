@@ -3,6 +3,189 @@
 <plist version="1.0">
 <dict>
 	<key>top-level-items</key>
-	<array/>
+	<array>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>27</string>
+					<key>EndingLineNumber</key>
+					<string>144</string>
+					<key>StartingColumnNumber</key>
+					<string>27</string>
+					<key>StartingLineNumber</key>
+					<string>144</string>
+					<key>Timestamp</key>
+					<string>731979793.05628</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/VIEW MODELS 💛💛💛/Profile Tab/ProfileViewModel.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string></string>
+				<key>leading</key>
+				<string>                
+                if newValue.y &lt;= conditionValue2 {
+                    // here</string>
+				<key>trailing</key>
+				<string>..
+                }
+            }
+</string>
+			</dict>
+			<key>title</key>
+			<string>store in an array of content offset y, the whole array has the same value all the time except for the tabType ex: tabType = Posts, offsetY = 100 | tabType ex: tabType = Replies, offsetY = 100</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>64</string>
+					<key>EndingLineNumber</key>
+					<string>29</string>
+					<key>StartingColumnNumber</key>
+					<string>64</string>
+					<key>StartingLineNumber</key>
+					<string>29</string>
+					<key>Timestamp</key>
+					<string>731979949.840171</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/VIEWS ❤️❤️❤️/Profile Tab/ProfileTabsContent/Profile_PostsTabView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string></string>
+				<key>leading</key>
+				<string>            }
+        }
+        .introspect(.scrollView, on: .iOS(.v17)) { scrollView in</string>
+				<key>trailing</key>
+				<string>
+            /// We use this closure to set ContentOffset and then assign nil value to it.
+            /// There's an model array where we can store content offset and make them nil.
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>133</string>
+					<key>EndingLineNumber</key>
+					<string>26</string>
+					<key>StartingColumnNumber</key>
+					<string>133</string>
+					<key>StartingLineNumber</key>
+					<string>26</string>
+					<key>Timestamp</key>
+					<string>731980442.716256</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/VIEW MODELS 💛💛💛/Profile Tab/ProfileViewModel.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string></string>
+				<key>leading</key>
+				<string>    @Published var tapCoordinates: CGPoint = .zero
+    @Published var contentOffset: CGPoint = .zero
+    @Published var contentOffsetYArray: [CGFloat?] = []</string>
+				<key>trailing</key>
+				<string>
+    @Published var profileContentHeight: CGFloat = .zero
+    @Published var horizontalTabHeight: CGFloat = .zero
+</string>
+			</dict>
+			<key>title</key>
+			<string> initialize this array the time of assigning tab labels in its initializer</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>8</string>
+					<key>EndingLineNumber</key>
+					<string>62</string>
+					<key>StartingColumnNumber</key>
+					<string>8</string>
+					<key>StartingLineNumber</key>
+					<string>62</string>
+					<key>Timestamp</key>
+					<string>731980531.7979881</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/VIEWS ❤️❤️❤️/Reusable/Custom Strip Tab/CustomStripTabHorizontalScrollView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string></string>
+				<key>leading</key>
+				<string>        self.tabLabelWidthArray = tempArray
+        
+        </string>
+				<key>trailing</key>
+				<string>
+    }
+    
+</string>
+			</dict>
+			<key>title</key>
+			<string>if the contentOffsetYArray is empty assign it here.</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+	</array>
 </dict>
 </plist>

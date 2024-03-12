@@ -24,6 +24,7 @@ final class ProfileViewModel: ObservableObject {
     @Published var tapCoordinatesArray: [TapCoordinatesModel] = []
     @Published var tapCoordinates: CGPoint = .zero
     @Published var contentOffset: CGPoint = .zero
+    @Published var contentOffsetYArray: [CGFloat?] = []
     @Published var profileContentHeight: CGFloat = .zero
     @Published var horizontalTabHeight: CGFloat = .zero
     let horizontalTabsExtraTopPadding: CGFloat = 10
@@ -129,12 +130,20 @@ final class ProfileViewModel: ObservableObject {
         $contentOffset
             .sink { [weak self] newValue in
                 guard let self = self else { return }
-                let conditionValue: CGFloat = profileContentHeight -
+                
+                let conditionValue1: CGFloat = profileContentHeight -
                 coverStaticHeight - coverMaxExtraHeight
                 
-                coverExtraHeight = newValue.y <= conditionValue
+                let conditionValue2: CGFloat = profileContentHeight -
+                coverStaticHeight - coverMaxExtraHeight
+                
+                coverExtraHeight = newValue.y <= conditionValue1
                 ?  -newValue.y
-                : -conditionValue
+                : -conditionValue1
+                
+                if newValue.y <= conditionValue2 {
+                    // here..
+                }
             }
             .store(in: &cancellable)
     }

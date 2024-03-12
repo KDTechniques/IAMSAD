@@ -12,7 +12,6 @@ struct Profile_PostsTabView: View {
     // MARK: - PROPERTIES
     @EnvironmentObject private var profileVM: ProfileViewModel
     
-    @State var value: CGFloat?
     // MARK: - BODY
     var body: some View {
         ScrollView(.vertical) {
@@ -29,9 +28,14 @@ struct Profile_PostsTabView: View {
             }
         }
         .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
-            // Only use this closure to set ContentOffset and then assign nil.
+            /// We use this closure to set ContentOffset and then assign nil value to it.
+            /// There's an model array where we can store content offset and make them nil.
+            /// if the view is equal to selected tab, we don't set the content offset here
         }
         .ignoresSafeArea()
+        .onAppear {
+            print("Appeared")
+        }
     }
 }
 

@@ -59,6 +59,8 @@ struct CustomStripTabHorizontalScrollView: View {
         for _ in 1...tabLabelsArray.count { tempArray.append(.zero) }
         self.tabLabelMidXArray = tempArray
         self.tabLabelWidthArray = tempArray
+        
+        
     }
     
     // MARK: - BODY
