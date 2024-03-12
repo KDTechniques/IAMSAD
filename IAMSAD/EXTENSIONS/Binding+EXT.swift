@@ -17,3 +17,26 @@ extension Binding<String> {
         return self
     }
 }
+
+@MainActor
+extension Binding<CGPoint> {
+    // MARK: - handleContentOffset
+    func handleContentOffset() -> Binding<CGPoint> {
+        let profileVM: ProfileViewModel = .shared
+        let conditionValue: CGFloat = profileVM.profileContentHeight -
+        profileVM.coverStaticHeight - profileVM.coverMaxExtraHeight
+        
+        return Binding {
+            self.wrappedValue
+        } set: { newValue in
+            if self.wrappedValue.y <= conditionValue {
+                return self.wrappedValue = newValue
+            }
+            
+            if newValue.y <= conditionValue {
+                return self.wrappedValue = newValue
+            }
+        }
+    }
+}
+
