@@ -50,7 +50,7 @@ struct CustomTransitioningCounterTextView: View {
     var body: some View {
         ZStack {
             Text(dynamicText ?? count)
-                .id(previousCount, count)
+                .id(dynamicText)
                 .foregroundStyle(textColor)
                 .transition(transition)
                 .animation(.smooth(duration: 0.2), value: dynamicText)
@@ -84,7 +84,7 @@ struct PreviewModel {
 }
 
 // MARK: - Preview1
-/*fileprivate*/ struct Preview1: View {
+fileprivate struct Preview1: View {
     
     @State private var item: PreviewModel = .init(like: false, count: "100")
     @State private var item2: PreviewModel = .init(count: "999")
@@ -203,14 +203,5 @@ fileprivate struct Preview2: View {
                 )
             }
         }
-    }
-}
-
-// MARK: - EXTENSIONS
-fileprivate extension View {
-    // MARK: - id
-    @ViewBuilder
-    func id(_ previousCount: String, _ count: String) -> some View {
-        if previousCount == count { self } else { self.id(UUID()) }
     }
 }
