@@ -32,27 +32,42 @@ struct CustomStripTabContentView: View {
     
     // MARK: - BODY
     var body: some View {
-        TabView(selection: $tabSelection) {
-            ForEach(contentArray.indices, id: \.self) { index in
-                contentArray[index].content
-                    .frame(width: screenWidth)
-                    .background { assignTabContentMinX(index) }
-                    .tag(index)
+        ScrollViewReader { proxy in
+            ScrollView(.horizontal, showsIndicators: false) {
+                LazyHStack(spacing: 0) {
+                    ForEach(contentArray.indices, id: \.self) { index in
+                        contentArray[index].content
+                            .frame(width: screenWidth)
+                    }
+                }
+                .background { assignTabContentMinX() }
+                .scrollTargetLayout()
+            }
+            .scrollTargetBehavior(.paging)
+            .onChange(of: tabSelection) {
+                if currentGesture == .tap {
+                    handleScrollProxy(proxy: proxy, index: $1)
+                }
             }
         }
-        .tabViewStyle(.page(indexDisplayMode: .never))
-        .animation(.default, value: tabSelection)
-        .onChange(of: tabSelection) { setSelectedTab($1) }
     }
 }
 
 // MARK: - PREVIEWS
-#Preview("CustomStripTabView") { CustomStripTabView_Preview() }
+#Preview("CustomStripTabView") {
+    CustomStripTabView_Preview()
+        .previewViewModifier
+}
+
+#Preview("ProfileView") {
+    ProfileView()
+        .previewViewModifier
+}
 
 // MARK: - EXTENSIONS
 extension CustomStripTabContentView {
     // MARK: - assignTabContentMinX
-    private func assignTabContentMinX(_ index: Int) -> some View {
+    private func assignTabContentMinX() -> some View {
         GeometryReader { geo in
             Color.clear
                 .preference(
@@ -62,17 +77,27 @@ extension CustomStripTabContentView {
             
         }
         .onPreferenceChange(CustomCGFloatPreferenceKey.self) { value in
+            let index: Int = Int(abs(value/screenWidth))
+            let absValue: CGFloat = abs(value + (screenWidth*CGFloat(index)))
+            
+            tabContentMinXArray.indices.forEach({
+                if index != $0 {
+                    tabContentMinXArray[$0] = 0
+                }
+            })
+            
             if value <= 0 {
-                let value: CGFloat = abs(value)
-                tabContentMinXArray.indices.forEach({
-                    if $0 != index {
-                        tabContentMinXArray[$0] = .zero
-                    } else {
-                        if currentGesture == .drag {
-                            tabContentMinXArray[index] = value
-                        }
+                if absValue == 0 {
+                    if index-1 >= 0 {
+                        tabContentMinXArray[index-1] = screenWidth
                     }
-                })
+                }
+                
+                tabContentMinXArray[index] = absValue
+            }
+            
+            if currentGesture == .drag {
+                tabSelection = index
             }
         }
     }
@@ -81,5 +106,14 @@ extension CustomStripTabContentView {
     @MainActor
     private func setSelectedTab(_ index: Int) {
         ProfileViewModel.shared.selectedTabType = tabsArray[index]
+    }
+    
+    // MARK: - FUNCTIONS
+    
+    // MARK: - handleScrollProxy
+    private func handleScrollProxy(proxy: ScrollViewProxy, index: Int) {
+        withAnimation {
+            proxy.scrollTo(index)
+        }
     }
 }

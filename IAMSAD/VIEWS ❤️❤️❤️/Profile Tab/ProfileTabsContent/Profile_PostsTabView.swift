@@ -28,7 +28,9 @@ struct Profile_PostsTabView: View {
                 .padding(.top)
             }
         }
-        .profile_introspectViewModifier(for: .posts)
+        .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
+//            scrollView.contentOffset.y = profileVM.contentOffset.y
+        }
         .ignoresSafeArea()
     }
 }
@@ -81,29 +83,5 @@ struct MockModel: Identifiable {
     
     mutating func updateText(_ text: String) {
         self.text =  text
-    }
-}
-
-
-extension View {
-    @MainActor @ViewBuilder
-    func profile_introspectViewModifier(for type: Profile_TabLabelTypes) -> some View {
-        let profileVM: ProfileViewModel = .shared
-        self
-            .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
-                
-                
-                
-                
-//                guard let index: Int = profileVM.contentOffsetYArray.firstIndex(where: { $0.tab == type }),
-//                      let offsetY: CGFloat = profileVM.contentOffsetYArray[index].offsetY
-//                      /*profileVM.selectedTabType == type*/ else { return }
-//                
-//                
-//                scrollView.contentOffset.y = offsetY
-////                profileVM.contentOffsetYArray[index].setToNil()
-//                
-//                print("hello")
-            }
     }
 }

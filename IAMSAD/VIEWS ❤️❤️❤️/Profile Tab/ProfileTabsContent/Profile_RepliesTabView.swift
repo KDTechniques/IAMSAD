@@ -27,7 +27,9 @@ struct Profile_RepliesTabView: View {
                 .padding(.top)
             }
         }
-        .profile_introspectViewModifier(for: .replies)
+        .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
+//            scrollView.contentOffset.y = profileVM.contentOffset.y
+        }
         .ignoresSafeArea()
     }
 }

@@ -27,7 +27,9 @@ struct Profile_BookmarksTabView: View {
                 .padding(.top)
             }
         }
-        .profile_introspectViewModifier(for: .bookmarks)
+        .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
+//            scrollView.contentOffset.y = profileVM.contentOffset.y
+        }
         .ignoresSafeArea()
     }
 }
