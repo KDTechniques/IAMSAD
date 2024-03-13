@@ -12,7 +12,7 @@ struct CustomStripTabHorizontalScrollView: View {
     @Binding var tabSelection: Int
     @Binding var currentGesture: CustomStripTabGestureTypes
     let tabContentMinXArray: [CGFloat]
-    let tabLabelsArray: [String]
+    let tabLabelsArray: [Profile_TabLabelTypes]
     let font: Font
     let showDivider: Bool
     let stripExtraWidth: CGFloat
@@ -36,7 +36,7 @@ struct CustomStripTabHorizontalScrollView: View {
         tabSelection: Binding<Int>,
         currentGesture: Binding<CustomStripTabGestureTypes>,
         tabContentMinXArray: [CGFloat],
-        tabLabelsArray: [String],
+        tabLabelsArray: [Profile_TabLabelTypes],
         font: Font,
         showDivider: Bool,
         stripExtraWidth: CGFloat,
@@ -44,8 +44,8 @@ struct CustomStripTabHorizontalScrollView: View {
         horizontalSpacing: CGFloat,
         labelSpacing: CGFloat
     ) {
-        _tabSelection = tabSelection
-        _currentGesture = currentGesture
+        self._tabSelection = tabSelection
+        self._currentGesture = currentGesture
         self.tabContentMinXArray = tabContentMinXArray
         self.tabLabelsArray = tabLabelsArray
         self.font = font
@@ -67,7 +67,7 @@ struct CustomStripTabHorizontalScrollView: View {
             HStack(spacing: labelSpacing) {
                 ForEach(tabLabelsArray.indices, id: \.self) { index in
                     // MARK: TAB LABEL
-                    Text(tabLabelsArray[index])
+                    Text(tabLabelsArray[index].rawValue.capitalized)
                         .font(font)
                         .opacity(getTabLabelOpacity(index))
                         .background { assignTabLabelMidX(index) }
@@ -211,11 +211,6 @@ extension CustomStripTabHorizontalScrollView {
         return calculation.isNaN ? .zero : calculation
     }
     
-    // MARK: - handleTabSelectionScroll
-    private func handleTabSelectionScroll(proxy: ScrollViewProxy, value: Int) {
-        withAnimation { proxy.scrollTo(value, anchor: .center) }
-    }
-    
     // MARK: - setContentOffsetX
     private func setContentOffsetX(_ isAnimated: Bool = false) {
         let tabsCount: CGFloat = CGFloat(tabContentMinXArray.count-1)
@@ -240,10 +235,10 @@ extension CustomStripTabHorizontalScrollView {
     // MARK: - handleTap
     private func handleTap(_ index: Int) {
         currentGesture = .tap
-        tabSelection = index
-        setContentOffsetX(true)
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.55) {
             currentGesture = .drag
         }
+        tabSelection = index
+        setContentOffsetX(true)
     }
 }

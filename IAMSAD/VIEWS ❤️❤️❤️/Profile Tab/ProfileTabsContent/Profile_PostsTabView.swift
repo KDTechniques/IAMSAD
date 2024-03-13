@@ -12,7 +12,6 @@ struct Profile_PostsTabView: View {
     // MARK: - PROPERTIES
     @EnvironmentObject private var profileVM: ProfileViewModel
     
-    @State var value: CGFloat?
     // MARK: - BODY
     var body: some View {
         ScrollView(.vertical) {
@@ -24,12 +23,13 @@ struct Profile_PostsTabView: View {
                 
                 ForEach(profileVM.array) { item in
                     MockText(item: item)
+                        .padding(.bottom, 100)
                 }
                 .padding(.top)
             }
         }
         .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
-            // Only use this closure to set ContentOffset and then assign nil.
+//            scrollView.contentOffset.y = profileVM.contentOffset.y
         }
         .ignoresSafeArea()
     }
@@ -41,17 +41,17 @@ struct Profile_PostsTabView: View {
         .previewViewModifier
 }
 
-fileprivate struct MockText: View {
+struct MockText: View {
     let item: MockModel
     @State var like: Bool = false
     var body: some View {
         HStack {
             MockView(item: item)
             
-            CustomLikeHeartAnimationView(like: like, size: 60)
-                .onTapGesture {
-                    like.toggle()
-                }
+//            CustomLikeHeartAnimationView(like: like, size: 60)
+//                .onTapGesture {
+//                    like.toggle()
+//                }
         }
     }
 }

@@ -100,8 +100,8 @@ struct CustomStripTabView_Preview: View {
                             }
                         }
                         .frame(width: screenWidth)
-                    }), label: "Posts"),
-                .init(content: AnyView(Color.debug), label: "Replies"),
+                    }), label: .posts),
+                .init(content: AnyView(Color.debug), label: .replies),
                 .init(content: AnyView(
                     ScrollView {
                         VStack(spacing: 150) {
@@ -110,8 +110,8 @@ struct CustomStripTabView_Preview: View {
                             }
                         }
                         .frame(width: screenWidth)
-                    }), label: "Media"),
-                .init(content: AnyView(Color.debug), label: "Likes"),
+                    }), label: .media),
+                .init(content: AnyView(Color.debug), label: .likes),
                 .init(content: AnyView(
                     ScrollView {
                         VStack(spacing: 150) {
@@ -120,8 +120,8 @@ struct CustomStripTabView_Preview: View {
                             }
                         }
                         .frame(width: screenWidth)
-                    }), label: "Bookmarks"),
-                .init(content: AnyView(Color.debug), label: "Achievements"),
+                    }), label: .bookmarks),
+                .init(content: AnyView(Color.debug), label: .achievements),
             ],
             horizontalTabOffsetY: 300
         )
@@ -136,5 +136,5 @@ enum CustomStripTabGestureTypes { case tap, drag }
 struct CustomStripTabModel: Identifiable {
     let id: String = UUID().uuidString
     let content: AnyView
-    let label: String
+    let label: Profile_TabLabelTypes
 }

@@ -8,22 +8,17 @@
 import SwiftUI
 import Combine
 
-enum ProfileCoverTypes {
-    case photo, color
-}
-
-enum ProfileGeneralButtonTypes: String {
-    case editProfile = "edit profile", follow, following, pending
-}
-
 @MainActor
 final class ProfileViewModel: ObservableObject {
     // MARK: - PRORPERTIES
     @Published var array: [MockModel] = []
     // MARK: - Common
+    @Published var isScrolling: Bool = false
     @Published var tapCoordinatesArray: [TapCoordinatesModel] = []
     @Published var tapCoordinates: CGPoint = .zero
     @Published var contentOffset: CGPoint = .zero
+    @Published var contentOffsetYArray: [Profile_TabContentOffsetModel] = []
+    @Published var selectedTabType: Profile_TabLabelTypes = .posts
     @Published var profileContentHeight: CGFloat = .zero
     @Published var horizontalTabHeight: CGFloat = .zero
     let horizontalTabsExtraTopPadding: CGFloat = 10
@@ -47,7 +42,7 @@ final class ProfileViewModel: ObservableObject {
     let maxCoverBlur: CGFloat = 8
     let safeBlurFrameSize: CGFloat = 20 /// to avoid image corners getting ugly when blurring
     let coverMaxExtraHeight: CGFloat = -43
-    @Published var coverType: ProfileCoverTypes = .photo
+    @Published var coverType: Profile_CoverTypes = .photo
     @Published var coverPhotoURL: URL? = .init(string: "https://www.tomerazabi.com/wp-content/uploads/2020/12/IMG_7677-7751-1000px-SJPEG-V3.jpg")
     @Published var coverExtraHeight: CGFloat = .zero
     
@@ -93,7 +88,7 @@ final class ProfileViewModel: ObservableObject {
     @Published var joinedDate: String = "June 2023"
     
     // MARK: - Buttons + Link
-    @Published var buttonType: ProfileGeneralButtonTypes = .following
+    @Published var buttonType: Profile_GeneralButtonTypes = .following
     @Published var _3FollowersArray: [String] = [
         "https://picsum.photos/50/50",
         "https://picsum.photos/51/51",
@@ -113,6 +108,8 @@ final class ProfileViewModel: ObservableObject {
     init() {
         tapCoordinatesSubscriber()
         contentOffsetSubscriber()
+        contentOffsetDebouncedSubscriber()
+        initializeTabLabelContentOffsetsArray()
         
         for _ in 0...100 {
             self.array.append(.init(text: UUID().uuidString))
@@ -124,17 +121,54 @@ final class ProfileViewModel: ObservableObject {
     
     // MARK: - Common
     
+    // MARK: - initializeTabLabelContentOffsetsArray
+    private func initializeTabLabelContentOffsetsArray() {
+        if contentOffsetYArray.isEmpty {
+            Profile_TabLabelTypes.allCases.forEach {
+                contentOffsetYArray.append(.init(tab: $0))
+            }
+        }
+    }
+    
+    // MARK: - setTabLabelContentOffsetY
+    private func setTabLabelContentOffsetY(_ offsetY: CGFloat) {
+        for index in contentOffsetYArray.indices {
+            contentOffsetYArray[index].setOffsetY(offsetY)
+        }
+    }
+    
     // MARK: contentOffsetSubscriber
     private func contentOffsetSubscriber() {
         $contentOffset
             .sink { [weak self] newValue in
                 guard let self = self else { return }
-                let conditionValue: CGFloat = profileContentHeight -
+                
+                isScrolling = true
+                
+                let conditionValue1: CGFloat = profileContentHeight -
                 coverStaticHeight - coverMaxExtraHeight
                 
-                coverExtraHeight = newValue.y <= conditionValue
+                let conditionValue2: CGFloat = profileContentHeight -
+                coverStaticHeight - coverMaxExtraHeight
+                
+                coverExtraHeight = newValue.y <= conditionValue1
                 ?  -newValue.y
-                : -conditionValue
+                : -conditionValue1
+                
+                if newValue.y <= conditionValue2 {
+                    setTabLabelContentOffsetY(newValue.y)
+                }
+            }
+            .store(in: &cancellable)
+    }
+    
+    // MARK: contentOffsetDebouncedSubscriber
+    private func contentOffsetDebouncedSubscriber() {
+        $contentOffset
+            .debounce(for: 0.3, scheduler: DispatchQueue.main)
+            .sink { [weak self] newValue in
+                guard let self = self else { return }
+                isScrolling = false
             }
             .store(in: &cancellable)
     }

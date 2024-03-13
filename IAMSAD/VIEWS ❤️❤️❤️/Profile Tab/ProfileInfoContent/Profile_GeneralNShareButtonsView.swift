@@ -9,7 +9,14 @@ import SwiftUI
 
 struct Profile_GeneralNShareButtonsView: View {
     // MARK: - PROPERTIES
-    let buttonType: ProfileGeneralButtonTypes
+    let buttonType: Profile_GeneralButtonTypes
+    let isScrolling: Bool
+    
+    // MARK: - INITIALIZER
+    init(buttonType: Profile_GeneralButtonTypes, isScrolling: Bool) {
+        self.buttonType = buttonType
+        self.isScrolling = isScrolling
+    }
     
     // MARK: - BODY
     var body: some View {
@@ -24,10 +31,7 @@ struct Profile_GeneralNShareButtonsView: View {
                     RoundedRectangle(cornerRadius: 9)
                         .stroke(Color(uiColor: .systemGray4), lineWidth: 1)
                 )
-                .registerProfileTapEvent(event: Profile_TapEventTypes.general) {
-                    // follow/unfollow/edit profile action goes here...
-                    print("general - follow/unfollow/edit profile action got triggered...")
-                }
+                .generalTapRegistration(isScrolling: isScrolling)
             
             Circle()
                 .stroke(Color(uiColor: .systemGray4), lineWidth: 1)
@@ -40,16 +44,47 @@ struct Profile_GeneralNShareButtonsView: View {
                         .padding(10)
                 }
                 .tint(.primary)
-                .registerProfileTapEvent(event: Profile_TapEventTypes.share) {
-                    // share action goes here...
-                    print("share action got triggered...")
-                }
+                .shareTapRegistration(isScrolling: isScrolling)
         }
     }
 }
 
 // MARK: - PREVIEWS
 #Preview("Profile_GeneralNShareButtonsView") {
-    Profile_GeneralNShareButtonsView(buttonType: .pending)
+    Profile_GeneralNShareButtonsView(buttonType: .pending, isScrolling: false)
         .previewViewModifier
+}
+
+// MARK: - EXTENSIONS
+@MainActor
+fileprivate extension View {
+    // MARK: - generalTapRegistration
+    func generalTapRegistration(isScrolling: Bool) -> some View {
+        return Group {
+            if isScrolling {
+                self
+            } else {
+                self
+                    .registerProfileTapEvent(event: Profile_TapEventTypes.general) {
+                        // follow/unfollow/edit profile action goes here...
+                        print("general - follow/unfollow/edit profile action got triggered...")
+                    }
+            }
+        }
+    }
+    
+    // MARK: - shareTapRegistration
+    func shareTapRegistration(isScrolling: Bool) -> some View {
+        return Group {
+            if isScrolling {
+                self
+            } else {
+                self
+                    .registerProfileTapEvent(event: Profile_TapEventTypes.share) {
+                        // share action goes here...
+                        print("share action got triggered...")
+                    }
+            }
+        }
+    }
 }
