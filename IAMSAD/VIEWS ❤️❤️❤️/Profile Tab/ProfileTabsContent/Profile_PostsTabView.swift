@@ -23,19 +23,13 @@ struct Profile_PostsTabView: View {
                 
                 ForEach(profileVM.array) { item in
                     MockText(item: item)
+                        .padding(.bottom, 100)
                 }
                 .padding(.top)
             }
         }
-        .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
-            /// We use this closure to set ContentOffset and then assign nil value to it.
-            /// There's an model array where we can store content offset and make them nil.
-            /// if the view is equal to selected tab, we don't set the content offset here
-        }
+        .profile_introspectViewModifier(for: .posts)
         .ignoresSafeArea()
-        .onAppear {
-            print("Appeared")
-        }
     }
 }
 
@@ -45,17 +39,17 @@ struct Profile_PostsTabView: View {
         .previewViewModifier
 }
 
-fileprivate struct MockText: View {
+struct MockText: View {
     let item: MockModel
     @State var like: Bool = false
     var body: some View {
         HStack {
             MockView(item: item)
             
-            CustomLikeHeartAnimationView(like: like, size: 60)
-                .onTapGesture {
-                    like.toggle()
-                }
+//            CustomLikeHeartAnimationView(like: like, size: 60)
+//                .onTapGesture {
+//                    like.toggle()
+//                }
         }
     }
 }
@@ -87,5 +81,29 @@ struct MockModel: Identifiable {
     
     mutating func updateText(_ text: String) {
         self.text =  text
+    }
+}
+
+
+extension View {
+    @MainActor @ViewBuilder
+    func profile_introspectViewModifier(for type: Profile_TabLabelTypes) -> some View {
+        let profileVM: ProfileViewModel = .shared
+        self
+            .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
+                
+                
+                
+                
+//                guard let index: Int = profileVM.contentOffsetYArray.firstIndex(where: { $0.tab == type }),
+//                      let offsetY: CGFloat = profileVM.contentOffsetYArray[index].offsetY
+//                      /*profileVM.selectedTabType == type*/ else { return }
+//                
+//                
+//                scrollView.contentOffset.y = offsetY
+////                profileVM.contentOffsetYArray[index].setToNil()
+//                
+//                print("hello")
+            }
     }
 }

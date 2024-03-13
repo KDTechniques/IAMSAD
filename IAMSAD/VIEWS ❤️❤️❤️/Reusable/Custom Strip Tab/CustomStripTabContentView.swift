@@ -13,6 +13,9 @@ struct CustomStripTabContentView: View {
     @Binding var tabContentMinXArray: [CGFloat]
     let currentGesture: CustomStripTabGestureTypes
     let contentArray: [CustomStripTabModel]
+    var tabsArray: [Profile_TabLabelTypes] {
+        contentArray.map({ $0.label })
+    }
     
     // MARK: - INITIALIZER
     init(
@@ -39,6 +42,7 @@ struct CustomStripTabContentView: View {
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
         .animation(.default, value: tabSelection)
+        .onChange(of: tabSelection) { setSelectedTab($1) }
     }
 }
 
@@ -71,5 +75,11 @@ extension CustomStripTabContentView {
                 })
             }
         }
+    }
+    
+    // MARK: - setSelectedTab
+    @MainActor
+    private func setSelectedTab(_ index: Int) {
+        ProfileViewModel.shared.selectedTabType = tabsArray[index]
     }
 }

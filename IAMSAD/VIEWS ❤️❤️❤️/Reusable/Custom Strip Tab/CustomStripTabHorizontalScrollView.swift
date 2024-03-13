@@ -12,7 +12,7 @@ struct CustomStripTabHorizontalScrollView: View {
     @Binding var tabSelection: Int
     @Binding var currentGesture: CustomStripTabGestureTypes
     let tabContentMinXArray: [CGFloat]
-    let tabLabelsArray: [String]
+    let tabLabelsArray: [Profile_TabLabelTypes]
     let font: Font
     let showDivider: Bool
     let stripExtraWidth: CGFloat
@@ -36,7 +36,7 @@ struct CustomStripTabHorizontalScrollView: View {
         tabSelection: Binding<Int>,
         currentGesture: Binding<CustomStripTabGestureTypes>,
         tabContentMinXArray: [CGFloat],
-        tabLabelsArray: [String],
+        tabLabelsArray: [Profile_TabLabelTypes],
         font: Font,
         showDivider: Bool,
         stripExtraWidth: CGFloat,
@@ -59,8 +59,6 @@ struct CustomStripTabHorizontalScrollView: View {
         for _ in 1...tabLabelsArray.count { tempArray.append(.zero) }
         self.tabLabelMidXArray = tempArray
         self.tabLabelWidthArray = tempArray
-        
-        
     }
     
     // MARK: - BODY
@@ -69,7 +67,7 @@ struct CustomStripTabHorizontalScrollView: View {
             HStack(spacing: labelSpacing) {
                 ForEach(tabLabelsArray.indices, id: \.self) { index in
                     // MARK: TAB LABEL
-                    Text(tabLabelsArray[index])
+                    Text(tabLabelsArray[index].rawValue.capitalized)
                         .font(font)
                         .opacity(getTabLabelOpacity(index))
                         .background { assignTabLabelMidX(index) }

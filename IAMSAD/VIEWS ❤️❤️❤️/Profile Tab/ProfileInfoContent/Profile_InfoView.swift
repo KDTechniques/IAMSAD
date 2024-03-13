@@ -7,62 +7,66 @@
 
 import SwiftUI
 
+@MainActor
 struct Profile_InfoView: View {
     // MARK: - PROPERTIES
     @EnvironmentObject private var profileVM: ProfileViewModel
     
     // MARK: - BODY
     var body: some View {
-        CustomUIScrollView(.vertical, contentOffset: .constant(profileVM.contentOffset)) {
+        VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading, spacing: 0) {
-                VStack(alignment: .leading, spacing: 0) {
-                    Profile_TopClearView()
-                    
-                    VStack(alignment: .leading, spacing: 8) {
-                        HStack {
-                            ProfilePrimaryPhotoView()
-                            Spacer()
-                            Profile_GeneralNShareButtonsView(buttonType: profileVM.buttonType)
-                        }
-                        
-                        Profile_NameGenderNJoinedDateView(
-                            name: profileVM.name,
-                            badgeType: profileVM.badgeType,
-                            gender: profileVM.gender,
-                            joinedDate: profileVM.joinedDate
+                Profile_TopClearView()
+                
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack {
+                        ProfilePrimaryPhotoView()
+                        Spacer()
+                        Profile_GeneralNShareButtonsView(
+                            buttonType: profileVM.buttonType,
+                            isScrolling: profileVM.isScrolling
                         )
                     }
                     
-                    if !profileVM.bioText.isEmpty {
-                        Profile_BioView(bioText: profileVM.bioText)
-                            .padding(.top)
-                    }
-                    
-                    Profile_FollowersCountNLinkView(
-                        _3FollowersArray: profileVM._3FollowersArray,
-                        followersCount: profileVM.followersCount,
-                        linkText: profileVM.linkText,
-                        linkURL: profileVM.linkURL
+                    Profile_NameGenderNJoinedDateView(
+                        name: profileVM.name,
+                        badgeType: profileVM.badgeType,
+                        gender: profileVM.gender,
+                        joinedDate: profileVM.joinedDate
+                    )
+                }
+                
+                if !profileVM.bioText.isEmpty {
+                    Profile_BioView(
+                        bioText: profileVM.bioText,
+                        isScrolling: profileVM.isScrolling
                     )
                     .padding(.top)
                 }
-                .background {
-                    GeometryReader { geo in
-                        Color.clear
-                            .preference(key: CustomCGFloatPreferenceKey.self, value: geo.size.height)
-                            .onPreferenceChange(CustomCGFloatPreferenceKey.self) {
-                                profileVM.setProfileContentHeight($0)
-                            }
-                    }
-                }
                 
-                BottomClearView()
+                Profile_FollowersCountNLinkView(
+                    _3FollowersArray: profileVM._3FollowersArray,
+                    followersCount: profileVM.followersCount,
+                    linkText: profileVM.linkText,
+                    linkURL: profileVM.linkURL,
+                    isScrolling: profileVM.isScrolling
+                )
+                .padding(.top)
             }
-            .padding(.horizontal)
-            .frame(width: screenWidth)
         }
-        .showsVerticalScrollIndicator(false)
-        .ignoresSafeArea(edges: .top)
+        .background {
+            GeometryReader { geo in
+                Color.clear
+                    .preference(key: CustomCGFloatPreferenceKey.self, value: geo.size.height)
+                    .onPreferenceChange(CustomCGFloatPreferenceKey.self) {
+                        profileVM.setProfileContentHeight($0)
+                    }
+            }
+        }
+        .padding(.horizontal)
+        .frame(width: screenWidth)
+        .offset(y: -profileVM.contentOffset.y)
+        .ignoresSafeArea()
     }
 }
 
