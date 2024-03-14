@@ -44,11 +44,7 @@ struct CustomStripTabContentView: View {
                 .scrollTargetLayout()
             }
             .scrollTargetBehavior(.paging)
-            .onChange(of: tabSelection) {
-                if currentGesture == .tap {
-                    handleScrollProxy(proxy: proxy, index: $1)
-                }
-            }
+            .onChange(of: tabSelection) { handleScrollProxy(proxy: proxy, index: $1) }
         }
     }
 }
@@ -59,14 +55,10 @@ struct CustomStripTabContentView: View {
         .previewViewModifier
 }
 
-#Preview("ProfileView") {
-    ProfileView()
-        .previewViewModifier
-}
-
 // MARK: - EXTENSIONS
 extension CustomStripTabContentView {
     // MARK: - assignTabContentMinX
+    @MainActor
     private func assignTabContentMinX() -> some View {
         GeometryReader { geo in
             Color.clear
@@ -97,15 +89,12 @@ extension CustomStripTabContentView {
             }
             
             if currentGesture == .drag {
-                tabSelection = index
+                if Int(abs(value)).isMultiple(of: Int(screenWidth)) {
+                    tabSelection = index
+                    ProfileViewModel.shared.selectedTabType = contentArray.map({ $0.label })[index]
+                }
             }
         }
-    }
-    
-    // MARK: - setSelectedTab
-    @MainActor
-    private func setSelectedTab(_ index: Int) {
-        ProfileViewModel.shared.selectedTabType = tabsArray[index]
     }
     
     // MARK: - FUNCTIONS

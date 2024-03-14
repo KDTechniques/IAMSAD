@@ -17,7 +17,9 @@ struct Profile_BookmarksTabView: View {
             LazyVStack {
                 Profile_TabContentTopClearView(
                     topContentHeight: profileVM.profileContentHeight,
-                    horizontalTabHeight: profileVM.horizontalTabHeight
+                    horizontalTabHeight: profileVM.horizontalTabHeight,
+                    tab: .bookmarks,
+                    selectedTab: profileVM.selectedTabType
                 )
                 
                 ForEach(profileVM.array) { item in
@@ -27,10 +29,8 @@ struct Profile_BookmarksTabView: View {
                 .padding(.top)
             }
         }
-        .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
-//            scrollView.contentOffset.y = profileVM.contentOffset.y
-        }
-        .ignoresSafeArea()
+        .profileTabContentsIntrospect(vm: profileVM, tab: .bookmarks)
+        .ignoresSafeArea(edges: .top)
     }
 }
 

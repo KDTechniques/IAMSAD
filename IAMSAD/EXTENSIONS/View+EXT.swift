@@ -163,6 +163,25 @@ extension View {
                 }
             }
     }
+    
+    // MARK: - profileTabContentsIntrospect
+    func profileTabContentsIntrospect(vm profileVM: ProfileViewModel, tab: Profile_TabLabelTypes) -> some View {
+        self
+            .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
+                let condition1: Bool = profileVM.selectedTabType != tab
+                let condition2: Bool = scrollView.contentOffset.y <= profileVM.contentOffsetMaxY
+                let condition3: Bool = profileVM.contentOffset.y < profileVM.contentOffsetMaxY
+                let condition4: Bool = condition2 || condition3
+                
+                if profileVM.currentGestureType == .drag {
+                    if condition1, condition4 {
+                        scrollView.contentOffset.y = profileVM.contentOffset.y
+                    }
+                } else if condition4 {
+                    scrollView.contentOffset.y = profileVM.contentOffset.y
+                }
+            }
+    }
 }
 
 // MARK: - OTHER

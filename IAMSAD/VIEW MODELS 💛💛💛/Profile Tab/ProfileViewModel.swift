@@ -19,9 +19,14 @@ final class ProfileViewModel: ObservableObject {
     @Published var contentOffset: CGPoint = .zero
     @Published var contentOffsetYArray: [Profile_TabContentOffsetModel] = []
     @Published var selectedTabType: Profile_TabLabelTypes = .posts
+    @Published var currentGestureType: CustomStripTabGestureTypes = .drag
     @Published var profileContentHeight: CGFloat = .zero
     @Published var horizontalTabHeight: CGFloat = .zero
     let horizontalTabsExtraTopPadding: CGFloat = 10
+    var contentOffsetMaxY: CGFloat {
+        profileContentHeight - coverStaticHeight - 
+        coverMaxExtraHeight
+    }
     var cancellable: Set<AnyCancellable> = []
     
     // MARK: - Toolbar
@@ -111,8 +116,8 @@ final class ProfileViewModel: ObservableObject {
         contentOffsetDebouncedSubscriber()
         initializeTabLabelContentOffsetsArray()
         
-        for _ in 0...100 {
-            self.array.append(.init(text: UUID().uuidString))
+        for index in 0...100 {
+            self.array.append(.init(text: index.description))
         }
         
     }
@@ -120,7 +125,7 @@ final class ProfileViewModel: ObservableObject {
     // MARK: - FUNCTIONS
     
     // MARK: - Common
-    
+   
     // MARK: - initializeTabLabelContentOffsetsArray
     private func initializeTabLabelContentOffsetsArray() {
         if contentOffsetYArray.isEmpty {
@@ -145,17 +150,11 @@ final class ProfileViewModel: ObservableObject {
                 
                 isScrolling = true
                 
-                let conditionValue1: CGFloat = profileContentHeight -
-                coverStaticHeight - coverMaxExtraHeight
-                
-                let conditionValue2: CGFloat = profileContentHeight -
-                coverStaticHeight - coverMaxExtraHeight
-                
-                coverExtraHeight = newValue.y <= conditionValue1
+                coverExtraHeight = newValue.y <= contentOffsetMaxY
                 ?  -newValue.y
-                : -conditionValue1
+                : -contentOffsetMaxY
                 
-                if newValue.y <= conditionValue2 {
+                if newValue.y <= contentOffsetMaxY {
                     setTabLabelContentOffsetY(newValue.y)
                 }
             }

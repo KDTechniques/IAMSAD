@@ -18,7 +18,9 @@ struct Profile_PostsTabView: View {
             LazyVStack {
                 Profile_TabContentTopClearView(
                     topContentHeight: profileVM.profileContentHeight,
-                    horizontalTabHeight: profileVM.horizontalTabHeight
+                    horizontalTabHeight: profileVM.horizontalTabHeight,
+                    tab: .posts,
+                    selectedTab: profileVM.selectedTabType
                 )
                 
                 ForEach(profileVM.array) { item in
@@ -28,10 +30,8 @@ struct Profile_PostsTabView: View {
                 .padding(.top)
             }
         }
-        .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
-//            scrollView.contentOffset.y = profileVM.contentOffset.y
-        }
-        .ignoresSafeArea()
+        .profileTabContentsIntrospect(vm: profileVM, tab: .posts)
+        .ignoresSafeArea(edges: .top)
     }
 }
 
@@ -48,10 +48,10 @@ struct MockText: View {
         HStack {
             MockView(item: item)
             
-//            CustomLikeHeartAnimationView(like: like, size: 60)
-//                .onTapGesture {
-//                    like.toggle()
-//                }
+            CustomLikeHeartAnimationView(like: like, size: 60)
+                .onTapGesture {
+                    like.toggle()
+                }
         }
     }
 }

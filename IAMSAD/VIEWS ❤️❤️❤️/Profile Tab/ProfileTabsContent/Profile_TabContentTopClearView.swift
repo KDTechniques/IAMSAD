@@ -7,11 +7,15 @@
 
 import SwiftUI
 
+@MainActor
 struct Profile_TabContentTopClearView: View {
     // MARK: - PROPERTIES
     let topContentHeight: CGFloat
     let horizontalTabHeight: CGFloat
+    let tab: Profile_TabLabelTypes
+    let selectedTab: Profile_TabLabelTypes
     
+    let profileVM: ProfileViewModel = .shared
     var frameHeight: CGFloat { topContentHeight + horizontalTabHeight }
     
     // MARK: - BODY
@@ -19,22 +23,19 @@ struct Profile_TabContentTopClearView: View {
         Color.clear
             .frame(height: frameHeight > 0 ? frameHeight : .zero)
             .background {
-                GeometryReader { geo in
-                    Color.clear
-                        .preference(
-                            key: CustomCGFloatPreferenceKey.self,
-                            value: geo.frame(in: .global).minY
-                        )
-                        .onPreferenceChange(CustomCGFloatPreferenceKey.self) { value in
-                            let profileVM: ProfileViewModel = .shared
-                            let conditionValue: CGFloat = topContentHeight -
-                            profileVM.coverStaticHeight -
-                            profileVM.coverMaxExtraHeight
-                            
-                            profileVM.contentOffset.y = -value < conditionValue
-                            ? -value
-                            : conditionValue
-                        }
+                if tab == selectedTab {
+                    GeometryReader { geo in
+                        Color.clear
+                            .preference(
+                                key: CustomCGFloatPreferenceKey.self,
+                                value: geo.frame(in: .global).minY
+                            )
+                            .onPreferenceChange(CustomCGFloatPreferenceKey.self) { value in
+                                profileVM.contentOffset.y = -value < profileVM.contentOffsetMaxY
+                                ? -value
+                                : profileVM.contentOffsetMaxY
+                            }
+                    }
                 }
             }
     }
@@ -42,5 +43,11 @@ struct Profile_TabContentTopClearView: View {
 
 // MARK: - PREVIEWS
 #Preview("Profile_TabContentTopClearView") {
-    Profile_TabContentTopClearView(topContentHeight: 400, horizontalTabHeight: 100)
+    Profile_TabContentTopClearView(
+        topContentHeight: 400,
+        horizontalTabHeight: 100,
+        tab: .posts,
+        selectedTab: .posts
+    )
+    .previewViewModifier
 }
