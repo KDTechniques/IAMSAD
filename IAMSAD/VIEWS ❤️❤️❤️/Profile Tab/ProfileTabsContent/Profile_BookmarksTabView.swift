@@ -17,7 +17,9 @@ struct Profile_BookmarksTabView: View {
             LazyVStack {
                 Profile_TabContentTopClearView(
                     topContentHeight: profileVM.profileContentHeight,
-                    horizontalTabHeight: profileVM.horizontalTabHeight
+                    horizontalTabHeight: profileVM.horizontalTabHeight,
+                    tab: .bookmarks,
+                    selectedTab: profileVM.selectedTabType
                 )
                 
                 ForEach(profileVM.array) { item in
@@ -30,7 +32,6 @@ struct Profile_BookmarksTabView: View {
                 if profileVM.selectedTabType != .bookmarks ,
                    profileVM.contentOffset.y <= profileVM.contentOffsetMaxY {
                     scrollView.contentOffset.y = profileVM.contentOffset.y
-                    print(profileVM.contentOffsetMaxY)
                 }
             }
         }

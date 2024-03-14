@@ -17,7 +17,9 @@ struct Profile_LikesTabView: View {
             LazyVStack {
                 Profile_TabContentTopClearView(
                     topContentHeight: profileVM.profileContentHeight,
-                    horizontalTabHeight: profileVM.horizontalTabHeight
+                    horizontalTabHeight: profileVM.horizontalTabHeight,
+                    tab: .likes,
+                    selectedTab: profileVM.selectedTabType
                 )
                 
                 ForEach(profileVM.array) { item in
@@ -30,7 +32,6 @@ struct Profile_LikesTabView: View {
                 if profileVM.selectedTabType != .likes ,
                    profileVM.contentOffset.y <= profileVM.contentOffsetMaxY {
                     scrollView.contentOffset.y = profileVM.contentOffset.y
-                    print(profileVM.contentOffsetMaxY)
                 }
             }
         }

@@ -18,7 +18,9 @@ struct Profile_AchievementsTabView: View {
             LazyVStack {
                 Profile_TabContentTopClearView(
                     topContentHeight: profileVM.profileContentHeight,
-                    horizontalTabHeight: profileVM.horizontalTabHeight
+                    horizontalTabHeight: profileVM.horizontalTabHeight,
+                    tab: .achievements,
+                    selectedTab: profileVM.selectedTabType
                 )
                 
                 ForEach(profileVM.array) { item in
@@ -31,7 +33,6 @@ struct Profile_AchievementsTabView: View {
                 if profileVM.selectedTabType != .achievements ,
                    profileVM.contentOffset.y <= profileVM.contentOffsetMaxY {
                     scrollView.contentOffset.y = profileVM.contentOffset.y
-                    print(profileVM.contentOffsetMaxY)
                 }
             }
         }

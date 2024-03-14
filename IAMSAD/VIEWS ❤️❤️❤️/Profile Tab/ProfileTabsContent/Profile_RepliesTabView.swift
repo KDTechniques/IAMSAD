@@ -17,7 +17,9 @@ struct Profile_RepliesTabView: View {
             LazyVStack {
                 Profile_TabContentTopClearView(
                     topContentHeight: profileVM.profileContentHeight,
-                    horizontalTabHeight: profileVM.horizontalTabHeight
+                    horizontalTabHeight: profileVM.horizontalTabHeight,
+                    tab: .replies,
+                    selectedTab: profileVM.selectedTabType
                 )
                 
                 ForEach(profileVM.array) { item in
@@ -26,16 +28,13 @@ struct Profile_RepliesTabView: View {
                 }
                 .padding(.top)
             }
-            .introspect(.scrollView, on: .iOS(.v17), scope: .ancestor) { scrollView in
-               
-                if profileVM.selectedTabType != .replies ,
-                   profileVM.contentOffset.y <= profileVM.contentOffsetMaxY {
-                    scrollView.contentOffset.y = profileVM.contentOffset.y
-                    print("Replies Introspect: \(profileVM.selectedTabType.rawValue)")
-                }
+        }
+        .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
+            if profileVM.selectedTabType != .replies,
+               profileVM.contentOffset.y <= profileVM.contentOffsetMaxY {
+                scrollView.contentOffset.y = profileVM.contentOffset.y
             }
         }
-        
         .ignoresSafeArea()
     }
 }
@@ -43,4 +42,5 @@ struct Profile_RepliesTabView: View {
 // MARK: - PREVIEWS
 #Preview("Profile_RepliesTabView") {
     Profile_RepliesTabView()
+        .previewViewModifier
 }

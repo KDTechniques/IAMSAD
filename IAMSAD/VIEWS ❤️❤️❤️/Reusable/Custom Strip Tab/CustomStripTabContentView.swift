@@ -44,11 +44,7 @@ struct CustomStripTabContentView: View {
                 .scrollTargetLayout()
             }
             .scrollTargetBehavior(.paging)
-            .onChange(of: tabSelection) {
-                if currentGesture == .tap {
-                    handleScrollProxy(proxy: proxy, index: $1)
-                }
-            }
+            .onChange(of: tabSelection) { handleScrollProxy(proxy: proxy, index: $1) }
         }
     }
 }
@@ -62,6 +58,7 @@ struct CustomStripTabContentView: View {
 // MARK: - EXTENSIONS
 extension CustomStripTabContentView {
     // MARK: - assignTabContentMinX
+    @MainActor
     private func assignTabContentMinX() -> some View {
         GeometryReader { geo in
             Color.clear
@@ -94,6 +91,7 @@ extension CustomStripTabContentView {
             if currentGesture == .drag {
                 if Int(abs(value)).isMultiple(of: Int(screenWidth)) {
                     tabSelection = index
+                    ProfileViewModel.shared.selectedTabType = contentArray.map({ $0.label })[index]
                 }
             }
         }

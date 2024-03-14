@@ -17,7 +17,9 @@ struct Profile_MediaTabView: View {
             LazyVStack {
                 Profile_TabContentTopClearView(
                     topContentHeight: profileVM.profileContentHeight,
-                    horizontalTabHeight: profileVM.horizontalTabHeight
+                    horizontalTabHeight: profileVM.horizontalTabHeight,
+                    tab: .media,
+                    selectedTab: profileVM.selectedTabType
                 )
                 
                 ForEach(profileVM.array) { item in
@@ -26,16 +28,13 @@ struct Profile_MediaTabView: View {
                 }
                 .padding(.top)
             }
-            .introspect(.scrollView, on: .iOS(.v17), scope: .ancestor) { scrollView in
-                
-                if profileVM.selectedTabType != .media ,
-                   profileVM.contentOffset.y <= profileVM.contentOffsetMaxY {
-                    scrollView.contentOffset.y = profileVM.contentOffset.y
-                    print("Media Introspect: \(profileVM.selectedTabType.rawValue)")
-                }
+        }
+        .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
+            if profileVM.selectedTabType != .media,
+               profileVM.contentOffset.y <= profileVM.contentOffsetMaxY {
+                scrollView.contentOffset.y = profileVM.contentOffset.y
             }
         }
-        
         .ignoresSafeArea()
     }
 }
@@ -43,4 +42,5 @@ struct Profile_MediaTabView: View {
 // MARK: - PREVIEWS
 #Preview("Profile_MediaTabView") {
     Profile_MediaTabView()
+        .previewViewModifier
 }

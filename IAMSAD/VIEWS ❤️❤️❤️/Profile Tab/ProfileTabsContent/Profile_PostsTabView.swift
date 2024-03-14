@@ -18,7 +18,9 @@ struct Profile_PostsTabView: View {
             LazyVStack {
                 Profile_TabContentTopClearView(
                     topContentHeight: profileVM.profileContentHeight,
-                    horizontalTabHeight: profileVM.horizontalTabHeight
+                    horizontalTabHeight: profileVM.horizontalTabHeight,
+                    tab: .posts,
+                    selectedTab: profileVM.selectedTabType
                 )
                 
                 ForEach(profileVM.array) { item in
@@ -27,12 +29,11 @@ struct Profile_PostsTabView: View {
                 }
                 .padding(.top)
             }
-            .introspect(.scrollView, on: .iOS(.v17), scope: .ancestor) { scrollView in
-                if profileVM.selectedTabType != .posts,
-                   profileVM.contentOffset.y <= profileVM.contentOffsetMaxY {
-                    scrollView.contentOffset.y = profileVM.contentOffset.y
-                    print("Posts Introspect: \(profileVM.selectedTabType.rawValue)")
-                }
+        }
+        .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
+            if profileVM.selectedTabType != .posts,
+               profileVM.contentOffset.y <= profileVM.contentOffsetMaxY {
+                scrollView.contentOffset.y = profileVM.contentOffset.y
             }
         }
         .ignoresSafeArea()

@@ -114,6 +114,7 @@ final class ProfileViewModel: ObservableObject {
         contentOffsetSubscriber()
         contentOffsetDebouncedSubscriber()
         initializeTabLabelContentOffsetsArray()
+        testingSubscriber() // remove later...
         
         for index in 0...100 {
             self.array.append(.init(text: index.description))
@@ -124,6 +125,14 @@ final class ProfileViewModel: ObservableObject {
     // MARK: - FUNCTIONS
     
     // MARK: - Common
+    func testingSubscriber() {
+        $selectedTabType
+            .sink {
+               print("Selected tab: \($0)")
+            }
+            .store(in: &cancellable)
+        
+    }
     
     // MARK: - initializeTabLabelContentOffsetsArray
     private func initializeTabLabelContentOffsetsArray() {
