@@ -29,18 +29,8 @@ struct Profile_MediaTabView: View {
                 .padding(.top)
             }
         }
-        .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
-            let condition: Bool = profileVM.contentOffset.y <= profileVM.contentOffsetMaxY
-            
-            if profileVM.currentGestureType == .drag {
-                if profileVM.selectedTabType != .media, condition {
-                    scrollView.contentOffset.y = profileVM.contentOffset.y
-                }
-            } else if condition {
-                scrollView.contentOffset.y = profileVM.contentOffset.y
-            }
-        }
-        .ignoresSafeArea()
+        .profileTabContentsIntrospect(vm: profileVM, tab: .media)
+        .ignoresSafeArea(edges: .top)
     }
 }
 
