@@ -31,8 +31,13 @@ struct Profile_PostsTabView: View {
             }
         }
         .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
-            if profileVM.selectedTabType != .posts,
-               profileVM.contentOffset.y <= profileVM.contentOffsetMaxY {
+            let condition: Bool = profileVM.contentOffset.y <= profileVM.contentOffsetMaxY
+            
+            if profileVM.currentGestureType == .drag {
+                if profileVM.selectedTabType != .posts, condition {
+                    scrollView.contentOffset.y = profileVM.contentOffset.y
+                }
+            } else if condition {
                 scrollView.contentOffset.y = profileVM.contentOffset.y
             }
         }

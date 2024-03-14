@@ -233,10 +233,13 @@ extension CustomStripTabHorizontalScrollView {
     }
     
     // MARK: - handleTap
+    @MainActor
     private func handleTap(_ index: Int) {
+        ProfileViewModel.shared.currentGestureType = .tap
         currentGesture = .tap
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.55) {
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.6) {
             currentGesture = .drag
+            ProfileViewModel.shared.currentGestureType = .drag
         }
         tabSelection = index
         setContentOffsetX(true)

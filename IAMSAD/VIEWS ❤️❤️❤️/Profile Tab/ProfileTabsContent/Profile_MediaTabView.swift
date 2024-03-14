@@ -30,8 +30,13 @@ struct Profile_MediaTabView: View {
             }
         }
         .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
-            if profileVM.selectedTabType != .media,
-               profileVM.contentOffset.y <= profileVM.contentOffsetMaxY {
+            let condition: Bool = profileVM.contentOffset.y <= profileVM.contentOffsetMaxY
+            
+            if profileVM.currentGestureType == .drag {
+                if profileVM.selectedTabType != .media, condition {
+                    scrollView.contentOffset.y = profileVM.contentOffset.y
+                }
+            } else if condition {
                 scrollView.contentOffset.y = profileVM.contentOffset.y
             }
         }
