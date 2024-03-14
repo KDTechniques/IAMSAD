@@ -27,9 +27,13 @@ struct Profile_PostsTabView: View {
                 }
                 .padding(.top)
             }
-        }
-        .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
-//            scrollView.contentOffset.y = profileVM.contentOffset.y
+            .introspect(.scrollView, on: .iOS(.v17), scope: .ancestor) { scrollView in
+                if profileVM.selectedTabType != .posts,
+                   profileVM.contentOffset.y <= profileVM.contentOffsetMaxY {
+                    scrollView.contentOffset.y = profileVM.contentOffset.y
+                    print("Posts Introspect: \(profileVM.selectedTabType.rawValue)")
+                }
+            }
         }
         .ignoresSafeArea()
     }
@@ -48,10 +52,10 @@ struct MockText: View {
         HStack {
             MockView(item: item)
             
-//            CustomLikeHeartAnimationView(like: like, size: 60)
-//                .onTapGesture {
-//                    like.toggle()
-//                }
+            CustomLikeHeartAnimationView(like: like, size: 60)
+                .onTapGesture {
+                    like.toggle()
+                }
         }
     }
 }

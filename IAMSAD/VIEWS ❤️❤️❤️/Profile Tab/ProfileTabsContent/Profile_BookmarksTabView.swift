@@ -26,9 +26,13 @@ struct Profile_BookmarksTabView: View {
                 }
                 .padding(.top)
             }
-        }
-        .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
-//            scrollView.contentOffset.y = profileVM.contentOffset.y
+            .introspect(.scrollView, on: .iOS(.v17), scope: .ancestor) { scrollView in
+                if profileVM.selectedTabType != .bookmarks ,
+                   profileVM.contentOffset.y <= profileVM.contentOffsetMaxY {
+                    scrollView.contentOffset.y = profileVM.contentOffset.y
+                    print(profileVM.contentOffsetMaxY)
+                }
+            }
         }
         .ignoresSafeArea()
     }

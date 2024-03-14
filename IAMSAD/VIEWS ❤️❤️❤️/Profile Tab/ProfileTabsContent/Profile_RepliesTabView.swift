@@ -26,10 +26,16 @@ struct Profile_RepliesTabView: View {
                 }
                 .padding(.top)
             }
+            .introspect(.scrollView, on: .iOS(.v17), scope: .ancestor) { scrollView in
+               
+                if profileVM.selectedTabType != .replies ,
+                   profileVM.contentOffset.y <= profileVM.contentOffsetMaxY {
+                    scrollView.contentOffset.y = profileVM.contentOffset.y
+                    print("Replies Introspect: \(profileVM.selectedTabType.rawValue)")
+                }
+            }
         }
-        .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
-//            scrollView.contentOffset.y = profileVM.contentOffset.y
-        }
+        
         .ignoresSafeArea()
     }
 }

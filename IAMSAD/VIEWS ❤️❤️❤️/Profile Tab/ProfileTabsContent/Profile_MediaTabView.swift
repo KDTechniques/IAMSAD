@@ -26,10 +26,16 @@ struct Profile_MediaTabView: View {
                 }
                 .padding(.top)
             }
+            .introspect(.scrollView, on: .iOS(.v17), scope: .ancestor) { scrollView in
+                
+                if profileVM.selectedTabType != .media ,
+                   profileVM.contentOffset.y <= profileVM.contentOffsetMaxY {
+                    scrollView.contentOffset.y = profileVM.contentOffset.y
+                    print("Media Introspect: \(profileVM.selectedTabType.rawValue)")
+                }
+            }
         }
-        .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
-//            scrollView.contentOffset.y = profileVM.contentOffset.y
-        }
+        
         .ignoresSafeArea()
     }
 }

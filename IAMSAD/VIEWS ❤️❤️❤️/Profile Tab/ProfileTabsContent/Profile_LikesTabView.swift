@@ -26,10 +26,15 @@ struct Profile_LikesTabView: View {
                 }
                 .padding(.top)
             }
+            .introspect(.scrollView, on: .iOS(.v17), scope: .ancestor) { scrollView in
+                if profileVM.selectedTabType != .likes ,
+                   profileVM.contentOffset.y <= profileVM.contentOffsetMaxY {
+                    scrollView.contentOffset.y = profileVM.contentOffset.y
+                    print(profileVM.contentOffsetMaxY)
+                }
+            }
         }
-        .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
-//            scrollView.contentOffset.y = profileVM.contentOffset.y
-        }
+        
         .ignoresSafeArea()
     }
 }

@@ -81,6 +81,7 @@ struct CustomStripTabView: View {
         }
         .frame(width: screenWidth, height: screenHeight)
         .ignoresSafeArea()
+        .onChange(of: tabSelection) { setSelectedTab($1) }
     }
 }
 
@@ -126,6 +127,15 @@ struct CustomStripTabView_Preview: View {
             horizontalTabOffsetY: 300
         )
         .previewViewModifier
+    }
+}
+
+// MARK: - EXTENSIONS
+extension CustomStripTabView {
+    // MARK: - setSelectedTab
+    @MainActor
+    private func setSelectedTab(_ index: Int) {
+        ProfileViewModel.shared.selectedTabType = contentArray.map({ $0.label })[index]
     }
 }
 

@@ -59,11 +59,6 @@ struct CustomStripTabContentView: View {
         .previewViewModifier
 }
 
-#Preview("ProfileView") {
-    ProfileView()
-        .previewViewModifier
-}
-
 // MARK: - EXTENSIONS
 extension CustomStripTabContentView {
     // MARK: - assignTabContentMinX
@@ -97,15 +92,11 @@ extension CustomStripTabContentView {
             }
             
             if currentGesture == .drag {
-                tabSelection = index
+                if Int(abs(value)).isMultiple(of: Int(screenWidth)) {
+                    tabSelection = index
+                }
             }
         }
-    }
-    
-    // MARK: - setSelectedTab
-    @MainActor
-    private func setSelectedTab(_ index: Int) {
-        ProfileViewModel.shared.selectedTabType = tabsArray[index]
     }
     
     // MARK: - FUNCTIONS
