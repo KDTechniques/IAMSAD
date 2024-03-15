@@ -15,23 +15,20 @@ struct Profile_FollowersCountNLinkView: View {
     let followersCount: Int
     let linkText: String?
     let linkURL: String?
-    let isScrolling: Bool
     
-    let profileVM: ProfileViewModel = .shared
+    let profileVM: ProfileVM = .shared
     
     // MARK: - INITIALIZER
     init(
         _3FollowersArray: [String],
         followersCount: Int,
         linkText: String?,
-        linkURL: String?,
-        isScrolling: Bool
+        linkURL: String?
     ) {
         self._3FollowersArray = _3FollowersArray
         self.followersCount = followersCount
         self.linkText = linkText
         self.linkURL = linkURL
-        self.isScrolling = isScrolling
     }
     
     // MARK: - BODY
@@ -58,8 +55,7 @@ struct Profile_FollowersCountNLinkView: View {
         ],
         followersCount: 1400,
         linkText: "kd_techniques/sleepi.com",
-        linkURL: "https://exmaple.com/",
-        isScrolling: false
+        linkURL: "https://exmaple.com/"
     )
     .previewViewModifier
 }
@@ -98,7 +94,10 @@ extension Profile_FollowersCountNLinkView {
             
             Text("\(followersCount.intToKMString()) follower\(profileVM.getPlural())")
         }
-        .followersTapRegistration(isScrolling: isScrolling)
+        .registerProfileTapEvent(event: Profile_TapEventTypes.followers) {
+            // followers action goes here...
+            print("followers action got triggered...")
+        }
     }
     
     // MARK: - link
@@ -111,42 +110,12 @@ extension Profile_FollowersCountNLinkView {
         
         Text(linkText)
             .tint(.secondary)
-            .linkTapRegistration(isScrolling: isScrolling, linkURL: linkURL)
-    }
-}
-
-@MainActor
-fileprivate extension View {
-    // MARK: - followersTapRegistration
-    func followersTapRegistration(isScrolling: Bool) -> some View {
-        return Group {
-            if isScrolling {
-                self
-            } else {
-                self
-                    .registerProfileTapEvent(event: Profile_TapEventTypes.followers) {
-                        // followers action goes here...
-                        print("followers action got triggered...")
-                    }
+            .registerProfileTapEvent(event: Profile_TapEventTypes.link) {
+                guard let urlString: String = linkURL,
+                      let url: URL = .init(string: urlString) else { return }
+                
+                UIApplication.shared.open(url)
+                print("link action got triggered...")
             }
-        }
-    }
-    
-    // MARK: - linkTapRegistration
-    func linkTapRegistration(isScrolling: Bool, linkURL: String?) -> some View {
-        return Group {
-            if isScrolling {
-                self
-            } else {
-                self
-                    .registerProfileTapEvent(event: Profile_TapEventTypes.link) {
-                        guard let urlString: String = linkURL,
-                              let url: URL = .init(string: urlString) else { return }
-                        
-                        UIApplication.shared.open(url)
-                        print("link action got triggered...")
-                    }
-            }
-        }
     }
 }

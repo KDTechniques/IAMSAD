@@ -9,7 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct Profile_CoverContentView: View {
-    @EnvironmentObject private var profileVM: ProfileViewModel
+    @EnvironmentObject private var profileVM: ProfileVM
     
     // MARK: - BODY
     var body: some View {

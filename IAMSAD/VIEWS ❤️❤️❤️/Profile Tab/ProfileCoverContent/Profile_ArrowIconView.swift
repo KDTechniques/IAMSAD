@@ -27,6 +27,7 @@ struct Profile_ArrowIconView: View {
             .rotationEffect(.degrees(arrowIconAngle))
             .foregroundStyle(.white)
             .opacity(arrowIconOpacity)
+            .animation(.smooth(duration: 0.3), value: arrowIconAngle)
     }
 }
 

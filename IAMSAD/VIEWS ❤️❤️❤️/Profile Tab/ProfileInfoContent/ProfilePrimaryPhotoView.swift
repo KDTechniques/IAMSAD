@@ -10,7 +10,7 @@ import SDWebImageSwiftUI
 
 struct ProfilePrimaryPhotoView: View {
     // MARK: - PROPERTIES
-    @EnvironmentObject private var profileVM: ProfileViewModel
+    @EnvironmentObject private var profileVM: ProfileVM
     
     // MARK: - BODY
     var body: some View {

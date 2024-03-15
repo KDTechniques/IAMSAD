@@ -15,7 +15,7 @@ extension View {
             .dynamicTypeSize(...DynamicTypeSize.xLarge)
             .environmentObject(Avatar.shared)
             .environmentObject(AvatarSheetVM.shared)
-            .environmentObject(ProfileViewModel.shared)
+            .environmentObject(ProfileVM.shared)
     }
     
     // MARK: - standardAccentColorBottomButtonViewModifier
@@ -156,7 +156,7 @@ extension View {
                             value: geo.frame(in: .global)
                         )
                         .onPreferenceChange(CustomCGRectPreferenceKey.self) {
-                            ProfileViewModel.shared.registerEventCoordinates(event: event, frame: $0) {
+                            ProfileVM.shared.registerEventCoordinates(event: event, frame: $0) {
                                 action()
                             }
                         }
@@ -165,20 +165,27 @@ extension View {
     }
     
     // MARK: - profileTabContentsIntrospect
-    func profileTabContentsIntrospect(vm profileVM: ProfileViewModel, tab: Profile_TabLabelTypes) -> some View {
+    func profileTabContentsIntrospect(vm profileVM: ProfileVM, tab: Profile_TabLabelTypes) -> some View {
         self
             .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
                 let condition1: Bool = profileVM.selectedTabType != tab
                 let condition2: Bool = scrollView.contentOffset.y <= profileVM.contentOffsetMaxY
-                let condition3: Bool = profileVM.contentOffset.y < profileVM.contentOffsetMaxY
+                let condition3: Bool = profileVM.contentOffsetY < profileVM.contentOffsetMaxY
                 let condition4: Bool = condition2 || condition3
                 
                 if profileVM.currentGestureType == .drag {
                     if condition1, condition4 {
-                        scrollView.contentOffset.y = profileVM.contentOffset.y
+                        scrollView.contentOffset.y = profileVM.contentOffsetY
                     }
                 } else if condition4 {
-                    scrollView.contentOffset.y = profileVM.contentOffset.y
+                    scrollView.contentOffset.y = profileVM.contentOffsetY
+                }
+                
+                if let OffsetY: CGFloat = profileVM.scrollToTopContentOffsetY {
+                    if scrollView.contentOffset.y < profileVM.contentOffsetMaxY {
+                        scrollView.setContentOffset(.init(x: 0, y: OffsetY), animated: true)
+                    }
+                    profileVM.scrollToTopContentOffsetY = nil
                 }
             }
     }
@@ -187,7 +194,7 @@ extension View {
 // MARK: - OTHER
 // MARK: - CustomCGFloatPreferenceKey
 struct CustomCGFloatPreferenceKey: PreferenceKey {
-    static var defaultValue: CGFloat = .zero
+    static var defaultValue: CGFloat = 0
     
     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
         value = nextValue()

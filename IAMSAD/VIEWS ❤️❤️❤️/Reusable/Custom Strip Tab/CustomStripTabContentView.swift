@@ -91,7 +91,7 @@ extension CustomStripTabContentView {
             if currentGesture == .drag {
                 if Int(abs(value)).isMultiple(of: Int(screenWidth)) {
                     tabSelection = index
-                    ProfileViewModel.shared.selectedTabType = contentArray.map({ $0.label })[index]
+                    ProfileVM.shared.selectedTabType = contentArray.map({ $0.label })[index]
                 }
             }
         }

@@ -12,7 +12,7 @@ struct IAMSADApp: App {
     
     let avatar: Avatar = .shared
     @StateObject private var avatarSheetVM: AvatarSheetVM = .shared
-    @StateObject private var profileVM: ProfileViewModel = .shared
+    @StateObject private var profileVM: ProfileVM = .shared
     
     init() {
         Utilities().setTabBarColor()

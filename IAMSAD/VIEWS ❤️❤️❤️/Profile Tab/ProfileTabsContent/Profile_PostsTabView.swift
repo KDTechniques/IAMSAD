@@ -10,7 +10,7 @@ import SwiftUIIntrospect
 
 struct Profile_PostsTabView: View {
     // MARK: - PROPERTIES
-    @EnvironmentObject private var profileVM: ProfileViewModel
+    @EnvironmentObject private var profileVM: ProfileVM
     
     // MARK: - BODY
     var body: some View {
@@ -61,13 +61,13 @@ fileprivate struct MockView: View {
     var body: some View {
         Button(item.text) {
             updateItem(item: item)
-            ProfileViewModel.shared.array.append(.init(text: UUID().uuidString))
+            ProfileVM.shared.array.append(.init(text: UUID().uuidString))
         }
     }
     
     @MainActor
     func updateItem(item: MockModel) {
-        let profileVM: ProfileViewModel = ProfileViewModel.shared
+        let profileVM: ProfileVM = ProfileVM.shared
         
         if let index: Int = profileVM
             .array.firstIndex(where: { $0.id == item.id }) {

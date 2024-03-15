@@ -12,8 +12,8 @@ struct OnboardingWelcomeView: View {
     // MARK: - PROPERTIES
     @Environment(\.colorScheme) private var colorScheme
     
-    @State private var minY: CGFloat = .zero
-    @State private var maxY: CGFloat = .zero
+    @State private var minY: CGFloat = 0
+    @State private var maxY: CGFloat = 0
     @State private var showBackgroundEffect: Bool = false
     
     // MARK: - BODY

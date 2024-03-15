@@ -32,7 +32,7 @@ final class AvatarSheetVM: ObservableObject {
     
     // MARK: - AvatarSelectionView
     @Published var selectedTabCollection: AvatarCollectionTypes = .featured
-    @Published var lazyVGridHeight: CGFloat = .zero
+    @Published var lazyVGridHeight: CGFloat = 0
     @Published var isPresentedSeeAllSheet: Bool = false
     
     // MARK: - AvatarBackgroundColorSelectionView

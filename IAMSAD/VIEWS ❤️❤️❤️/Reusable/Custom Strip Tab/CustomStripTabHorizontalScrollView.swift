@@ -23,13 +23,13 @@ struct CustomStripTabHorizontalScrollView: View {
     @State private var tabLabelWidthArray: [CGFloat]
     @State private var tabLabelMidXArray: [CGFloat]
     
-    @State private var horizontalScrollViewHeight: CGFloat = .zero
+    @State private var horizontalScrollViewHeight: CGFloat = 0
     let capsuleHeight: CGFloat = 3
     let minimumTabLabelOpacity: CGFloat = 0.6
     var tabCount: Int { tabLabelsArray.count }
     @State var contentOffset: CGPoint = .zero
     @State var animatedContentOffset: CGPoint? = nil
-    @State var horizontalScrollViewStaticWidth: CGFloat = .zero
+    @State var horizontalScrollViewStaticWidth: CGFloat = 0
     
     // MARK: - INITIALIZER
     init(
@@ -149,9 +149,9 @@ extension CustomStripTabHorizontalScrollView {
     // MARK: - getTabLabelOpacity
     private func getTabLabelOpacity(_ tabIndex: Int) -> CGFloat {
         let index: Int = tabContentMinXArray.firstIndex(where: { $0 != .zero }) ?? tabSelection
-        var staticDif: CGFloat = .zero
-        var dynamicDif: CGFloat = .zero
-        var calculation: CGFloat = .zero
+        var staticDif: CGFloat = 0
+        var dynamicDif: CGFloat = 0
+        var calculation: CGFloat = 0
         
         if index == tabCount-1 {
             staticDif = tabLabelMidXArray[index].rounded()
@@ -192,9 +192,9 @@ extension CustomStripTabHorizontalScrollView {
     // MARK: - getCapsuleWidth
     private func getCapsuleWidth() -> CGFloat {
         let index: Int = tabContentMinXArray.firstIndex(where: { $0 != .zero }) ?? tabSelection
-        var staticDif: CGFloat = .zero
-        var dynamicDif: CGFloat = .zero
-        var calculation: CGFloat = .zero
+        var staticDif: CGFloat = 0
+        var dynamicDif: CGFloat = 0
+        var calculation: CGFloat = 0
         
         if index == tabCount-1 {
             staticDif = tabLabelMidXArray[index].rounded()
@@ -235,11 +235,11 @@ extension CustomStripTabHorizontalScrollView {
     // MARK: - handleTap
     @MainActor
     private func handleTap(_ index: Int) {
-        ProfileViewModel.shared.currentGestureType = .tap
+        ProfileVM.shared.currentGestureType = .tap
         currentGesture = .tap
         DispatchQueue.main.asyncAfter(deadline: .now()+0.6) {
             currentGesture = .drag
-            ProfileViewModel.shared.currentGestureType = .drag
+            ProfileVM.shared.currentGestureType = .drag
         }
         tabSelection = index
         setContentOffsetX(true)
