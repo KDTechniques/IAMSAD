@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Profile_TabContentsView: View {
     // MARK: - PROPERTIES
-    @EnvironmentObject private var profileVM: ProfileViewModel
+    @EnvironmentObject private var profileVM: ProfileVM
     
     // MARK: - BODY
     var body: some View {
@@ -23,8 +23,9 @@ struct Profile_TabContentsView: View {
                 .init(content: AnyView(Profile_BookmarksTabView()), label: .bookmarks),
                 .init(content: AnyView(Profile_AchievementsTabView()), label: .achievements)
             ],
-            horizontalTabOffsetY: profileVM.profileContentHeight - profileVM.contentOffset.y
+            horizontalTabOffsetY: profileVM.profileContentHeight - profileVM.contentOffsetY
         )
+        .onTapGesture { handleTap($0) }
     }
 }
 
@@ -32,4 +33,18 @@ struct Profile_TabContentsView: View {
 #Preview("Profile_TabContentsView") {
     Profile_TabContentsView()
         .previewViewModifier
+}
+
+// MARK: - EXTENSIONS
+extension Profile_TabContentsView {
+    // MARK: - FUNCTIONS
+    
+    //  MARK: - handleTap
+    /// Handles all touch gestures for the profile info view.
+    /// Uses the profileVM class to manage touch events and register untouchable events in an array.
+    /// The untouchable events are specified using a model.
+    /// Checks the array when a tap occurs and executes relevant actions.
+    private func handleTap(_ coordinates: CGPoint) {
+        profileVM.tapCoordinates = coordinates
+    }
 }

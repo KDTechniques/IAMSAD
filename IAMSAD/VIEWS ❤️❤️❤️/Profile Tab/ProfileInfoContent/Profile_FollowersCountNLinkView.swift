@@ -17,7 +17,7 @@ struct Profile_FollowersCountNLinkView: View {
     let linkURL: String?
     let isScrolling: Bool
     
-    let profileVM: ProfileViewModel = .shared
+    let profileVM: ProfileVM = .shared
     
     // MARK: - INITIALIZER
     init(

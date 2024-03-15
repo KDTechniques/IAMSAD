@@ -13,9 +13,9 @@ struct CustomSearchBarView: View {
     let placeholder: String
     
     @FocusState private var isFocused: Bool
-    @State private var searchBarTrailingPadding: CGFloat = .zero
+    @State private var searchBarTrailingPadding: CGFloat = 0
     @State private var cancelButtonOffsetX: CGFloat = 55.0
-    @State private var cancelButtonOpacity: CGFloat = .zero
+    @State private var cancelButtonOpacity: CGFloat = 0
     
     // MARK: - INITIALIZER
     init(searchBarText: Binding<String>, placeholder: String) {

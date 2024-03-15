@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Profile_LikesTabView: View {
     // MARK: - PROPERTIES
-    @EnvironmentObject private var profileVM: ProfileViewModel
+    @EnvironmentObject private var profileVM: ProfileVM
     
     // MARK: - BODY
     var body: some View {

@@ -10,7 +10,7 @@ import SwiftUI
 @MainActor
 struct Profile_TopClearView: View {
     // MARK: - PROPERTIES
-    let profileVM: ProfileViewModel = .shared
+    let profileVM: ProfileVM = .shared
     
     // MARK: - BODY
     var body: some View {

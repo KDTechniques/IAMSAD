@@ -1,5 +1,5 @@
 //
-//  ProfileViewModel.swift
+//  ProfileVM.swift
 //  IAMSAD
 //
 //  Created by Mr. Kavinda Dilshan on 2024-03-03.
@@ -9,19 +9,19 @@ import SwiftUI
 import Combine
 
 @MainActor
-final class ProfileViewModel: ObservableObject {
+final class ProfileVM: ObservableObject {
     // MARK: - PRORPERTIES
     @Published var array: [MockModel] = []
     // MARK: - Common
     @Published var isScrolling: Bool = false
     @Published var tapCoordinatesArray: [TapCoordinatesModel] = []
     @Published var tapCoordinates: CGPoint = .zero
-    @Published var contentOffset: CGPoint = .zero
+    @Published var contentOffsetY: CGFloat = 0
     @Published var contentOffsetYArray: [Profile_TabContentOffsetModel] = []
     @Published var selectedTabType: Profile_TabLabelTypes = .posts
     @Published var currentGestureType: CustomStripTabGestureTypes = .drag
-    @Published var profileContentHeight: CGFloat = .zero
-    @Published var horizontalTabHeight: CGFloat = .zero
+    @Published var profileContentHeight: CGFloat = 0
+    @Published var horizontalTabHeight: CGFloat = 0
     let horizontalTabsExtraTopPadding: CGFloat = 10
     var contentOffsetMaxY: CGFloat {
         profileContentHeight - coverStaticHeight - 
@@ -30,9 +30,9 @@ final class ProfileViewModel: ObservableObject {
     var cancellable: Set<AnyCancellable> = []
     
     // MARK: - Toolbar
-    @Published var topToolbarStaticMidY: CGFloat = .zero
-    @Published var topToolbarStaticMaxY: CGFloat = .zero
-    @Published var topToolbarLeadingItemStaticMaxX: CGFloat = .zero
+    @Published var topToolbarStaticMidY: CGFloat = 0
+    @Published var topToolbarStaticMaxY: CGFloat = 0
+    @Published var topToolbarLeadingItemStaticMaxX: CGFloat = 0
     let topToolbarIconsFrameSize: CGFloat = 14
     
     // MARK: - Icons
@@ -49,10 +49,10 @@ final class ProfileViewModel: ObservableObject {
     let coverMaxExtraHeight: CGFloat = -43
     @Published var coverType: Profile_CoverTypes = .photo
     @Published var coverPhotoURL: URL? = .init(string: "https://www.tomerazabi.com/wp-content/uploads/2020/12/IMG_7677-7751-1000px-SJPEG-V3.jpg")
-    @Published var coverExtraHeight: CGFloat = .zero
+    @Published var coverExtraHeight: CGFloat = 0
     
     // MARK: - Cover Texts
-    @Published var coverTextStaticHeight: CGFloat = .zero
+    @Published var coverTextStaticHeight: CGFloat = 0
     var coverTextMaxOffsetY: CGFloat {
         -(
             coverStaticHeight +
@@ -61,13 +61,13 @@ final class ProfileViewModel: ObservableObject {
             coverTextStaticHeight/2
         )
     }
-    @Published var coverTextOffsetY: CGFloat = .zero
+    @Published var coverTextOffsetY: CGFloat = 0
     @Published var subHeadlineText: String = "trusted by 123 people"
     
     // MARK: - Refreshable
-    @Published var arrowIconAngle: CGFloat = .zero
-    @Published var arrowIconOpacity: CGFloat = .zero
-    @Published var progressIndicatorOpacity: CGFloat = .zero
+    @Published var arrowIconAngle: CGFloat = 0
+    @Published var arrowIconOpacity: CGFloat = 0
+    @Published var progressIndicatorOpacity: CGFloat = 0
     
     // MARK: - Profile Photo
     let profilePhotoOffsetFraction: CGFloat = 1 - 1/3
@@ -107,7 +107,7 @@ final class ProfileViewModel: ObservableObject {
     @Published var bioText: String = "Sajee's Hubby 👩🏻‍❤️‍👨🏻\n1st Class Honours Graduate 👨🏻‍🎓\nUI/UX Designer/Engineer 👨🏻‍💻\nFront-End SwiftUI iOS Develoer 👨🏻‍💻"
     
     // MARK: Singleton
-    static let shared: ProfileViewModel = .init()
+    static let shared: ProfileVM = .init()
     
     // MARK: - INITIALAIER
     init() {
@@ -144,26 +144,28 @@ final class ProfileViewModel: ObservableObject {
     
     // MARK: contentOffsetSubscriber
     private func contentOffsetSubscriber() {
-        $contentOffset
+        $contentOffsetY
             .sink { [weak self] newValue in
                 guard let self = self else { return }
                 
                 isScrolling = true
                 
-                coverExtraHeight = newValue.y <= contentOffsetMaxY
-                ?  -newValue.y
+                coverExtraHeight = newValue <= contentOffsetMaxY
+                ?  -newValue
                 : -contentOffsetMaxY
                 
-                if newValue.y <= contentOffsetMaxY {
-                    setTabLabelContentOffsetY(newValue.y)
+                if newValue <= contentOffsetMaxY {
+                    setTabLabelContentOffsetY(newValue)
                 }
+                
+                handleRefreshable(newValue)
             }
             .store(in: &cancellable)
     }
     
     // MARK: contentOffsetDebouncedSubscriber
     private func contentOffsetDebouncedSubscriber() {
-        $contentOffset
+        $contentOffsetY
             .debounce(for: 0.3, scheduler: DispatchQueue.main)
             .sink { [weak self] newValue in
                 guard let self = self else { return }
@@ -288,11 +290,18 @@ final class ProfileViewModel: ObservableObject {
         return 1 / (coverTextMaxOffsetY + preSmoothingValue) * coverTextOffsetY
     }
     
+    // MARK: - Refreshable
+    
+    // MARK: - handleRefreshable
+    private func handleRefreshable(_ offsetY: CGFloat) {
+        
+    }
+    
     // MARK: - Profile Photo
     
     // MARK: getProfilePhotoOpacity
     func getProfilePhotoOpacity() -> CGFloat {
-        -contentOffset.y <= coverMaxExtraHeight ? 1 : 0
+        -contentOffsetY <= coverMaxExtraHeight ? 1 : 0
     }
     
     // MARK: - Profile Bio

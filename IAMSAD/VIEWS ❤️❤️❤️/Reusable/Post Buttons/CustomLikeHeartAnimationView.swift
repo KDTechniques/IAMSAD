@@ -18,15 +18,15 @@ struct CustomLikeHeartAnimationView: View {
     @State private var primaryHeartImageScaleEffect: CGFloat = 1
     
     // primaryCircle
-    @State private var primaryCircleRadius: CGFloat = .zero
+    @State private var primaryCircleRadius: CGFloat = 0
     let maxPrimaryCircleRadius: CGFloat = 40
     
     // secondaryCircle
-    @State private var secondaryCircleSize: CGFloat = .zero
+    @State private var secondaryCircleSize: CGFloat = 0
     
     // secondaryHeartImage
     @State private var secondaryHeartImageSize: CGFloat = 4
-    @State private var secondaryHeartImageOpacity: CGFloat = .zero
+    @State private var secondaryHeartImageOpacity: CGFloat = 0
     
     // invisibleCircle1
     @State private var invisibleCircle1Radius: CGFloat = 28
@@ -36,7 +36,7 @@ struct CustomLikeHeartAnimationView: View {
     
     // tinyBubbles
     let tinyBubblesSize: CGFloat = 5
-    @State private var tinyBubblesOpacity: CGFloat = .zero
+    @State private var tinyBubblesOpacity: CGFloat = 0
     @State private var tinyBubble1ScaleEffect: CGFloat = 1
     @State private var tinyBubble2ScaleEffect: CGFloat = 1
     

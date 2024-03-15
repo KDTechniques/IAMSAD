@@ -15,7 +15,7 @@ struct Profile_TabContentTopClearView: View {
     let tab: Profile_TabLabelTypes
     let selectedTab: Profile_TabLabelTypes
     
-    let profileVM: ProfileViewModel = .shared
+    let profileVM: ProfileVM = .shared
     var frameHeight: CGFloat { topContentHeight + horizontalTabHeight }
     
     // MARK: - BODY
@@ -31,7 +31,7 @@ struct Profile_TabContentTopClearView: View {
                                 value: geo.frame(in: .global).minY
                             )
                             .onPreferenceChange(CustomCGFloatPreferenceKey.self) { value in
-                                profileVM.contentOffset.y = -value < profileVM.contentOffsetMaxY
+                                profileVM.contentOffsetY = -value < profileVM.contentOffsetMaxY
                                 ? -value
                                 : profileVM.contentOffsetMaxY
                             }

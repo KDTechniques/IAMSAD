@@ -135,7 +135,7 @@ extension CustomStripTabView {
     // MARK: - setSelectedTab
     @MainActor
     private func setSelectedTab(_ index: Int) {
-        ProfileViewModel.shared.selectedTabType = contentArray.map({ $0.label })[index]
+        ProfileVM.shared.selectedTabType = contentArray.map({ $0.label })[index]
     }
 }
 

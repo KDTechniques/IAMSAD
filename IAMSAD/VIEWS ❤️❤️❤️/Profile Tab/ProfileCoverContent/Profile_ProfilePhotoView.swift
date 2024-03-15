@@ -14,7 +14,7 @@ struct Profile_ProfilePhotoView: View {
     let profilePhotoURL: URL?
     let refreshBy: Any
     
-    let profileVM: ProfileViewModel = .shared
+    let profileVM: ProfileVM = .shared
     var profilePhotoOffsetY: CGFloat {
         profileVM.secondaryProfilePhotoFrameSize * profileVM.profilePhotoOffsetFraction
     }

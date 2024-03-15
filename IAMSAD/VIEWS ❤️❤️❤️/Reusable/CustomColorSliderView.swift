@@ -13,8 +13,8 @@ struct CustomColorSliderView: View {
     @Binding var sliderValue: CGFloat
     @Binding var sliderValueWithAnimation: CGFloat
     
-    @State private var offsetX: CGFloat = .zero
-    @State private var sliderWidth: CGFloat = .zero
+    @State private var offsetX: CGFloat = 0
+    @State private var sliderWidth: CGFloat = 0
     let thumbCircleWidth: CGFloat = 32
     let maxSliderValue: CGFloat = 0.5
     

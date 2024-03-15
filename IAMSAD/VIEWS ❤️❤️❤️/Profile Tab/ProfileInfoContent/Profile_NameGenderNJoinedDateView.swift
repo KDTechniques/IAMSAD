@@ -15,7 +15,7 @@ struct Profile_NameGenderNJoinedDateView: View {
     let gender: GenderTypes
     let joinedDate: String
     
-    let profileVM: ProfileViewModel = .shared
+    let profileVM: ProfileVM = .shared
     
     // MARK: - INITIALIZER
     init(name: String, badgeType: VerifiedBadgeTypes?, gender: GenderTypes, joinedDate: String) {

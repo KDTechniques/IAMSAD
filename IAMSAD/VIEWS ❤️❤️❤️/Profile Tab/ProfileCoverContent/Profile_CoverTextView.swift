@@ -15,7 +15,7 @@ struct Profile_CoverTextView: View {
     let subHeadlineText: String
     let topToolbarLeadingItemStaticMaxX: CGFloat
     
-    let profileVM: ProfileViewModel = .shared
+    let profileVM: ProfileVM = .shared
     let coverTextExtraLeadingPadding: CGFloat = 20
     let refreshBy: Any
     

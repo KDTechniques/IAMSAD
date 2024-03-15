@@ -10,7 +10,7 @@ import SwiftUI
 @MainActor
 struct Profile_InfoView: View {
     // MARK: - PROPERTIES
-    @EnvironmentObject private var profileVM: ProfileViewModel
+    @EnvironmentObject private var profileVM: ProfileVM
     
     // MARK: - BODY
     var body: some View {
@@ -65,7 +65,7 @@ struct Profile_InfoView: View {
         }
         .padding(.horizontal)
         .frame(width: screenWidth)
-        .offset(y: -profileVM.contentOffset.y)
+        .offset(y: -profileVM.contentOffsetY)
         .ignoresSafeArea()
     }
 }
