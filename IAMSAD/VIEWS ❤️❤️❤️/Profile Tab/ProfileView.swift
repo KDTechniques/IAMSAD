@@ -9,12 +9,6 @@ import SwiftUI
 import Combine
 
 struct ProfileView: View {
-    // MARK: - PROPERTIES
-    @Environment(\.colorScheme) private var colorScheme
-    @EnvironmentObject private var profileVM: ProfileVM
-    
-    let maxArrowOpacityCoverHeight: CGFloat = 10 // remove later
-    
     // MARK: - BODY
     var body: some View {
         NavigationStack {
@@ -25,6 +19,7 @@ struct ProfileView: View {
                 Profile_CoverContentView()
             }
             .toolbarBackground(.hidden, for: .navigationBar)
+            .onAppear { ProfileVM.shared.handleSafeSubscribing() }
         }
     }
 }
@@ -34,3 +29,4 @@ struct ProfileView: View {
     ProfileView()
         .previewViewModifier
 }
+

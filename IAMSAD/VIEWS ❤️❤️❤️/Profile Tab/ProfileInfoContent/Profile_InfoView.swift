@@ -36,6 +36,7 @@ struct Profile_InfoView: View {
                     )
                 }
                 
+                // remove isScrolling if expanded bio text compresses
                 if !profileVM.bioText.isEmpty {
                     Profile_BioView(
                         bioText: profileVM.bioText,
@@ -48,8 +49,7 @@ struct Profile_InfoView: View {
                     _3FollowersArray: profileVM._3FollowersArray,
                     followersCount: profileVM.followersCount,
                     linkText: profileVM.linkText,
-                    linkURL: profileVM.linkURL,
-                    isScrolling: profileVM.isScrolling
+                    linkURL: profileVM.linkURL
                 )
                 .padding(.top)
             }

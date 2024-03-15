@@ -180,6 +180,13 @@ extension View {
                 } else if condition4 {
                     scrollView.contentOffset.y = profileVM.contentOffsetY
                 }
+                
+                if let OffsetY: CGFloat = profileVM.scrollToTopContentOffsetY {
+                    if scrollView.contentOffset.y < profileVM.contentOffsetMaxY {
+                        scrollView.setContentOffset(.init(x: 0, y: OffsetY), animated: true)
+                    }
+                    profileVM.scrollToTopContentOffsetY = nil
+                }
             }
     }
 }
