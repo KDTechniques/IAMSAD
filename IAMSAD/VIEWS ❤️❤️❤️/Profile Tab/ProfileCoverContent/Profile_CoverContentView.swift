@@ -53,7 +53,6 @@ struct Profile_CoverContentView: View {
             )
         }
         .ignoresSafeArea(edges: .top)
-        .allowsHitTesting(false)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 ToolbarTopLeadingItemView(

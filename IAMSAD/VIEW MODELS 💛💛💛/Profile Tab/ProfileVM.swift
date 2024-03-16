@@ -111,9 +111,10 @@ final class ProfileVM: ObservableObject {
     @Published var followersCount: Int = 1200
     @Published var linkText: String? = "kd_techniques/sleepi.com"
     @Published var linkURL: String? = "https://exmaple.com/"
+    @Published var isPresentedFollowersSheet: Bool = false
     
     // MARK: - Bio
-    @Published var bioText: String = "Sajee's Hubby 👩🏻‍❤️‍👨🏻\n1st Class Honours Graduate 👨🏻‍🎓\nUI/UX Designer/Engineer 👨🏻‍💻\nFront-End SwiftUI iOS Develoer 👨🏻‍💻"
+    @Published var bioText: String = "Sajee's Hubby 👩🏻‍❤️‍👨🏻\n1st Class Honours Graduate 👨🏻‍🎓\nUI/UX Designer/Engineer 👨🏻‍💻\nFront-End SwiftUI iOS Developer 👨🏻‍💻\n🇱🇰 🇨🇦 Toronto, ON"
     
     // MARK: Singleton
     static let shared: ProfileVM = .init()
@@ -169,7 +170,7 @@ final class ProfileVM: ObservableObject {
     private func contentOffsetSubscriber() {
         $contentOffsetY
             .sink { [weak self] newValue in
-                guard let self = self, isSafeSubscribing else { return }
+                guard let self = self, isSafeSubscribing, !isPresentedFollowersSheet else { return }
                 
                 isScrolling = true
                 setCoverHeight(newValue)
@@ -184,7 +185,7 @@ final class ProfileVM: ObservableObject {
         $contentOffsetY
             .debounce(for: 0.3, scheduler: DispatchQueue.main)
             .sink { [weak self] newValue in
-                guard let self = self, isSafeSubscribing else { return }
+                guard let self = self, isSafeSubscribing, !isPresentedFollowersSheet else { return }
                 
                 isScrolling = false
                 networkRequestHandler(newValue)
@@ -382,5 +383,12 @@ final class ProfileVM: ObservableObject {
     // MARK: getPlural
     func getPlural() -> String {
         followersCount == 0 || followersCount > 1 ? "s" : ""
+    }
+    
+    // MARK: - Followers text
+    
+    // MARK: - handleFollowersSheetChanges
+    func handleFollowersSheetChanges(_ isPresented: Bool) {
+        isPresentedFollowersSheet = isPresented
     }
 }

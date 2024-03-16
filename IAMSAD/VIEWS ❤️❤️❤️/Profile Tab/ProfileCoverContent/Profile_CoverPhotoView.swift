@@ -26,6 +26,7 @@ struct Profile_CoverPhotoView: View {
         .resizable()
         .defaultBColorPlaceholder
         .scaledToFill()
+        .allowsHitTesting(false)
     }
 }
 

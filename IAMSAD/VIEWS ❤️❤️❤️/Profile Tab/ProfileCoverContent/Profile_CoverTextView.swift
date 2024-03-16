@@ -36,9 +36,11 @@ struct Profile_CoverTextView: View {
     
     // MARK: - BODY
     var body: some View {
-        VStack(alignment: .leading, spacing: -5) {
+        VStack(alignment: .leading, spacing: -2) {
             Text(name)
                 .font(.title3.weight(.heavy))
+                .lineLimit(1)
+                .frame(width: screenWidth/1.8, alignment: .leading)
             
             Text(subHeadlineText)
                 .font(.footnote)
