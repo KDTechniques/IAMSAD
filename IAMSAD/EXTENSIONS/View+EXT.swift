@@ -182,9 +182,11 @@ extension View {
                 }
                 
                 if let OffsetY: CGFloat = profileVM.scrollToTopContentOffsetY {
-                    if scrollView.contentOffset.y < profileVM.contentOffsetMaxY {
+                    if scrollView.contentOffset.y < profileVM.contentOffsetMaxY,
+                       !scrollView.isTracking {
                         scrollView.setContentOffset(.init(x: 0, y: OffsetY), animated: true)
                     }
+                    
                     profileVM.scrollToTopContentOffsetY = nil
                 }
             }
