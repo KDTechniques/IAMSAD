@@ -17,6 +17,7 @@ final class ProfileVM: ObservableObject {
     // MARK: - PRORPERTIES
     @Published var array: [MockModel] = []
     // MARK: - Common
+    @Published var selectedAccount: AccountTypes = .personal
     @Published var isSafeSubscribing: Bool = false
     @Published var isScrolling: Bool = false
     @Published var tapCoordinatesArray: [TapCoordinatesModel] = []
@@ -94,9 +95,11 @@ final class ProfileVM: ObservableObject {
         secondaryProfilePhotoSize * profilePhotoOffsetFraction
     }
     @Published var profilePhotoURL: URL? = .init(string: "https://img.freepik.com/free-photo/portrait-young-woman-with-natural-make-up_23-2149084907.jpg")
+    @Published var avatarImageName: URL? = Bundle.main.url(forResource: "Super Heroes_29", withExtension: "png")
     
     // MARK: - Profile Info
-    @Published var name: String = "Deepashika Sajeewanie"
+    @Published var personalName: String = "Deepashika Sajeewanie"
+    @Published var anonymousName: String = "Beauty_Queen96💃💋"
     @Published var badgeType: VerifiedBadgeTypes? = .blue
     @Published var gender: GenderTypes = .female
     @Published var joinedDate: String = "June 2023"

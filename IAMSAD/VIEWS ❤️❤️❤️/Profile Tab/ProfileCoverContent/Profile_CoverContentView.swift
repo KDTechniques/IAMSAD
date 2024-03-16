@@ -39,7 +39,7 @@ struct Profile_CoverContentView: View {
         .overlay(alignment: .bottomLeading) {
             Profile_CoverTextView(
                 coverTextStaticHeight: $profileVM.coverTextStaticHeight,
-                name: profileVM.name,
+                name: profileVM.personalName,
                 subHeadlineText: profileVM.subHeadlineText,
                 topToolbarLeadingItemStaticMaxX: profileVM.topToolbarLeadingItemStaticMaxX,
                 refreshBy: profileVM.coverTextOffsetY
