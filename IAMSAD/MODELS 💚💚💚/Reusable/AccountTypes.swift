@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum AccountTypes {
+enum AccountTypes: String {
     case personal, anonymous
 }
