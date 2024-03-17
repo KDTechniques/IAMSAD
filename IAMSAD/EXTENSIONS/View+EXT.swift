@@ -198,6 +198,36 @@ extension View {
                 (scrollView.contentOffset.y < 0 ? abs(scrollView.contentOffset.y) : 0)
             }
     }
+    
+    // MARK: - presentStatusCircleHandler
+    @ViewBuilder
+    func presentStatusCircleHandler(isPrimary: Bool, isOnline: Bool) -> some View {
+        let vm: ProfileVM = .shared
+        let ratio: CGFloat = vm.profilePhotoOffsetRatio
+        var lineWidth: CGFloat {
+            let value:  CGFloat = vm.secondaryProfilePhotoBorderSize
+            return isPrimary ? value*ratio : value
+        }
+        var frame: CGFloat {
+            let value:  CGFloat = vm.secondaryPresenceStatusCircleFrameSize
+            return isPrimary ? value*ratio : value
+        }
+        var offset: CGFloat {
+            let value:  CGFloat = -vm.secondaryPresenceStatusCircleFrameSize / 2
+            return isPrimary ? value*ratio : value
+        }
+        
+        self
+            .overlay(alignment: .bottomTrailing) {
+                if isOnline {
+                    Circle()
+                        .stroke(.tabBarNSystemBackground, lineWidth: lineWidth)
+                        .fill(.presentStatus)
+                        .frame(width: frame, height: frame)
+                        .offset(x: offset, y: offset)
+                }
+            }
+    }
 }
 
 // MARK: - OTHER

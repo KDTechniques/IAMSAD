@@ -47,7 +47,7 @@ struct Profile_CoverContentView: View {
         }
         .clipped()
         .overlay(alignment: .bottomLeading) {
-            Profile_ProfilePhotoView(
+            Profile_SecondaryProfilePhotoView(
                 profilePhotoURL: profileVM.profilePhotoURL,
                 refreshBy: profileVM.coverExtraHeight
             )

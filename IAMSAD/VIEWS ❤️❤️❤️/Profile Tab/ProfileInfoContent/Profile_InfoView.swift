@@ -20,7 +20,7 @@ struct Profile_InfoView: View {
                 
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
-                        ProfilePrimaryPhotoView()
+                        Profile_PrimaryPhotoView()
                         Spacer()
                         Profile_GeneralNShareButtonsView(
                             buttonType: profileVM.buttonType,

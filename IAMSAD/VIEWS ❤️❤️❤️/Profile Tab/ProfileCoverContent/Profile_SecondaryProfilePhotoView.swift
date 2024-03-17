@@ -1,5 +1,5 @@
 //
-//  Profile_ProfilePhotoView.swift
+//  Profile_SecondaryProfilePhotoView.swift
 //  IAMSAD
 //
 //  Created by Mr. Kavinda Dilshan on 2024-03-07.
@@ -9,14 +9,14 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 @MainActor
-struct Profile_ProfilePhotoView: View {
+struct Profile_SecondaryProfilePhotoView: View {
     // MARK: - PROPERTIES
     let profilePhotoURL: URL?
     let refreshBy: Any
     
     let profileVM: ProfileVM = .shared
     var profilePhotoOffsetY: CGFloat {
-        profileVM.secondaryProfilePhotoFrameSize * profileVM.profilePhotoOffsetFraction
+        profileVM.secondaryProfilePhotoFrameSize * profileVM.profilePhotoOffsetRatio
     }
     
     // MARK: - INITIALIZER
@@ -46,6 +46,7 @@ struct Profile_ProfilePhotoView: View {
                     width: profileVM.secondaryProfilePhotoSize,
                     height: profileVM.secondaryProfilePhotoSize
                 )
+                .presentStatusCircleHandler(isPrimary: false, isOnline: true)
             }
             .scaleEffect(profileVM.getProfilePhotoScale(), anchor: .bottomLeading)
             .offset(y: profilePhotoOffsetY)
@@ -55,8 +56,8 @@ struct Profile_ProfilePhotoView: View {
 }
 
 // MARK: - PREVIEWS
-#Preview("Profile_ProfilePhotoView") {
-    Profile_ProfilePhotoView(
+#Preview("Profile_SecondaryProfilePhotoView") {
+    Profile_SecondaryProfilePhotoView(
         profilePhotoURL: .init(string: "https://img.freepik.com/free-photo/portrait-young-woman-with-natural-make-up_23-2149084907.jpg"),
         refreshBy: 0
     )

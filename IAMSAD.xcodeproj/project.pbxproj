@@ -13,7 +13,7 @@
 		0B052FE62BA5643D008D07F1 /* Profile_SwitchProfilesSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B052FE52BA5643D008D07F1 /* Profile_SwitchProfilesSheetView.swift */; };
 		0B052FE92BA57254008D07F1 /* AccountTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B052FE82BA57254008D07F1 /* AccountTypes.swift */; };
 		0B20D7D72B96067300B71C10 /* Profile_GeneralNShareButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7D62B96067300B71C10 /* Profile_GeneralNShareButtonsView.swift */; };
-		0B20D7DB2B960F5300B71C10 /* ProfilePrimaryPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7DA2B960F5300B71C10 /* ProfilePrimaryPhotoView.swift */; };
+		0B20D7DB2B960F5300B71C10 /* Profile_PrimaryPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7DA2B960F5300B71C10 /* Profile_PrimaryPhotoView.swift */; };
 		0B20D7DD2B96126400B71C10 /* Profile_NameGenderNJoinedDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7DC2B96126400B71C10 /* Profile_NameGenderNJoinedDateView.swift */; };
 		0B20D7DF2B96134B00B71C10 /* VerifiedBadgeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7DE2B96134B00B71C10 /* VerifiedBadgeTypes.swift */; };
 		0B20D7E12B9616A500B71C10 /* Profile_BioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7E02B9616A500B71C10 /* Profile_BioView.swift */; };
@@ -409,7 +409,7 @@
 		0BE0AEA52BA1039600171298 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 0BE0AEA42BA1039600171298 /* SwiftUIIntrospect */; };
 		0BE0F7EF2B71414B00BD01BB /* RepliesTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0F7EE2B71414B00BD01BB /* RepliesTestingView.swift */; };
 		0BE75A662B99F741003C43DA /* Profile_CoverPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE75A652B99F741003C43DA /* Profile_CoverPhotoView.swift */; };
-		0BE75A682B99F88E003C43DA /* Profile_ProfilePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE75A672B99F88E003C43DA /* Profile_ProfilePhotoView.swift */; };
+		0BE75A682B99F88E003C43DA /* Profile_SecondaryProfilePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE75A672B99F88E003C43DA /* Profile_SecondaryProfilePhotoView.swift */; };
 		0BE75A6A2B99FA09003C43DA /* Profile_ArrowIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE75A692B99FA09003C43DA /* Profile_ArrowIconView.swift */; };
 		0BE75A6C2B99FAAB003C43DA /* Profile_ProgressIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE75A6B2B99FAAB003C43DA /* Profile_ProgressIndicatorView.swift */; };
 		0BE75A6E2B99FB2B003C43DA /* Profile_CoverTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE75A6D2B99FB2B003C43DA /* Profile_CoverTextView.swift */; };
@@ -425,7 +425,7 @@
 		0B052FE52BA5643D008D07F1 /* Profile_SwitchProfilesSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_SwitchProfilesSheetView.swift; sourceTree = "<group>"; };
 		0B052FE82BA57254008D07F1 /* AccountTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTypes.swift; sourceTree = "<group>"; };
 		0B20D7D62B96067300B71C10 /* Profile_GeneralNShareButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_GeneralNShareButtonsView.swift; sourceTree = "<group>"; };
-		0B20D7DA2B960F5300B71C10 /* ProfilePrimaryPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePrimaryPhotoView.swift; sourceTree = "<group>"; };
+		0B20D7DA2B960F5300B71C10 /* Profile_PrimaryPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_PrimaryPhotoView.swift; sourceTree = "<group>"; };
 		0B20D7DC2B96126400B71C10 /* Profile_NameGenderNJoinedDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_NameGenderNJoinedDateView.swift; sourceTree = "<group>"; };
 		0B20D7DE2B96134B00B71C10 /* VerifiedBadgeTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifiedBadgeTypes.swift; sourceTree = "<group>"; };
 		0B20D7E02B9616A500B71C10 /* Profile_BioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_BioView.swift; sourceTree = "<group>"; };
@@ -818,7 +818,7 @@
 		0BD9457E2B743D7F0091E845 /* TabTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTesting.swift; sourceTree = "<group>"; };
 		0BE0F7EE2B71414B00BD01BB /* RepliesTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepliesTestingView.swift; sourceTree = "<group>"; };
 		0BE75A652B99F741003C43DA /* Profile_CoverPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_CoverPhotoView.swift; sourceTree = "<group>"; };
-		0BE75A672B99F88E003C43DA /* Profile_ProfilePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_ProfilePhotoView.swift; sourceTree = "<group>"; };
+		0BE75A672B99F88E003C43DA /* Profile_SecondaryProfilePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_SecondaryProfilePhotoView.swift; sourceTree = "<group>"; };
 		0BE75A692B99FA09003C43DA /* Profile_ArrowIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_ArrowIconView.swift; sourceTree = "<group>"; };
 		0BE75A6B2B99FAAB003C43DA /* Profile_ProgressIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_ProgressIndicatorView.swift; sourceTree = "<group>"; };
 		0BE75A6D2B99FB2B003C43DA /* Profile_CoverTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_CoverTextView.swift; sourceTree = "<group>"; };
@@ -1538,7 +1538,7 @@
 			children = (
 				0BD876A62B8CC1DB00E66184 /* Profile_CoverContentView.swift */,
 				0BE75A652B99F741003C43DA /* Profile_CoverPhotoView.swift */,
-				0BE75A672B99F88E003C43DA /* Profile_ProfilePhotoView.swift */,
+				0BE75A672B99F88E003C43DA /* Profile_SecondaryProfilePhotoView.swift */,
 				0BE75A692B99FA09003C43DA /* Profile_ArrowIconView.swift */,
 				0BE75A6B2B99FAAB003C43DA /* Profile_ProgressIndicatorView.swift */,
 				0BE75A6D2B99FB2B003C43DA /* Profile_CoverTextView.swift */,
@@ -1551,7 +1551,7 @@
 			children = (
 				0B20D7E82B961DA500B71C10 /* Profile_InfoView.swift */,
 				0B20D7D62B96067300B71C10 /* Profile_GeneralNShareButtonsView.swift */,
-				0B20D7DA2B960F5300B71C10 /* ProfilePrimaryPhotoView.swift */,
+				0B20D7DA2B960F5300B71C10 /* Profile_PrimaryPhotoView.swift */,
 				0B20D7DC2B96126400B71C10 /* Profile_NameGenderNJoinedDateView.swift */,
 				0B20D7E02B9616A500B71C10 /* Profile_BioView.swift */,
 				0B20D7E22B96182B00B71C10 /* Profile_FollowersCountNLinkView.swift */,
@@ -1983,7 +1983,7 @@
 				0B26236A2B4CB4CF0063D71C /* Color+EXT.swift in Sources */,
 				0B2623662B4CA0F70063D71C /* View+EXT.swift in Sources */,
 				0BE75A6C2B99FAAB003C43DA /* Profile_ProgressIndicatorView.swift in Sources */,
-				0BE75A682B99F88E003C43DA /* Profile_ProfilePhotoView.swift in Sources */,
+				0BE75A682B99F88E003C43DA /* Profile_SecondaryProfilePhotoView.swift in Sources */,
 				0B28C9FE2B6B076E00AC4725 /* CustomLikeHeartAnimationView.swift in Sources */,
 				0B2623582B4C92FB0063D71C /* OnboardingWelcomeView.swift in Sources */,
 				0B26237C2B4D43810063D71C /* OnboardingListView.swift in Sources */,
@@ -2035,7 +2035,7 @@
 				0B6E745D2B5AA21D008B4CFB /* CustomContentNotAvailableView.swift in Sources */,
 				0BE75A662B99F741003C43DA /* Profile_CoverPhotoView.swift in Sources */,
 				0B26231E2B4BD8570063D71C /* HapticFeedbackGenerator.swift in Sources */,
-				0B20D7DB2B960F5300B71C10 /* ProfilePrimaryPhotoView.swift in Sources */,
+				0B20D7DB2B960F5300B71C10 /* Profile_PrimaryPhotoView.swift in Sources */,
 				0BE0F7EF2B71414B00BD01BB /* RepliesTestingView.swift in Sources */,
 				0B58AE942B6CF0360057CCFE /* CustomTransitioningCounterTextView.swift in Sources */,
 				0B052FE62BA5643D008D07F1 /* Profile_SwitchProfilesSheetView.swift in Sources */,

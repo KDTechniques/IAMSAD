@@ -80,19 +80,24 @@ final class ProfileVM: ObservableObject {
     @Published var subHeadlineText: String = "trusted by 123 people"
     
     // MARK: - Profile Photo
-    let profilePhotoOffsetFraction: CGFloat = 1 - 1/3
+    let profilePhotoOffsetRatio: CGFloat = 1 - 1/3
+    let presenceStatusCircleRatio: CGFloat = 8.6
     // Secondary
     let secondaryProfilePhotoFrameSize: CGFloat = 75
     let secondaryProfilePhotoBorderSize: CGFloat = 7
     var secondaryProfilePhotoSize: CGFloat {
         secondaryProfilePhotoFrameSize - secondaryProfilePhotoBorderSize
     }
+    var secondaryPresenceStatusCircleFrameSize: CGFloat {
+        secondaryProfilePhotoFrameSize / presenceStatusCircleRatio
+    }
+    
     // Primary
     var primaryProfilePhotoFrameSize: CGFloat {
-        secondaryProfilePhotoFrameSize * profilePhotoOffsetFraction
+        secondaryProfilePhotoFrameSize * profilePhotoOffsetRatio
     }
     var primaryProfilePhotoSize: CGFloat {
-        secondaryProfilePhotoSize * profilePhotoOffsetFraction
+        secondaryProfilePhotoSize * profilePhotoOffsetRatio
     }
     @Published var profilePhotoURL: URL? = .init(string: "https://img.freepik.com/free-photo/portrait-young-woman-with-natural-make-up_23-2149084907.jpg")
     @Published var avatarImageName: URL? = Bundle.main.url(forResource: "Super Heroes_29", withExtension: "png")
@@ -295,7 +300,7 @@ final class ProfileVM: ObservableObject {
     
     // MARK: getProfilePhotoScale
     func getProfilePhotoScale() -> CGFloat {
-        let calculation1: CGFloat = 1 - profilePhotoOffsetFraction
+        let calculation1: CGFloat = 1 - profilePhotoOffsetRatio
         let calculation2: CGFloat = coverExtraHeight / coverMaxExtraHeight * calculation1
         let calculation3: CGFloat = 1 - (calculation2 >= .zero ? calculation2 : .zero)
         

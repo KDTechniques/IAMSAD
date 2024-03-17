@@ -105,13 +105,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>133</string>
+					<string>138</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>132</string>
+					<string>137</string>
 					<key>Timestamp</key>
-					<string>732263073.320313</string>
+					<string>732337888.431758</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -152,13 +152,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>140</string>
+					<string>145</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>139</string>
+					<string>144</string>
 					<key>Timestamp</key>
-					<string>732263073.3203551</string>
+					<string>732337888.4317811</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -241,15 +241,15 @@
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>112</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>97</string>
+					<string>103</string>
 					<key>StartingColumnNumber</key>
-					<string>4</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>97</string>
+					<string>102</string>
 					<key>Timestamp</key>
-					<string>732263574.882504</string>
+					<string>732337888.431716</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -265,15 +265,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>@Published var avatarImageName: URL? = Bundle.main.url(forResource: "Super Heroes_29", withExtension: "png")</string>
+				<string>    @Published var avatarImageName: URL? = Bundle.main.url(forResource: "Super Heroes_29", withExtension: "png")
+</string>
 				<key>leading</key>
 				<string>    }
     @Published var profilePhotoURL: URL? = .init(string: "https://img.freepik.com/free-photo/portrait-young-woman-with-natural-make-up_23-2149084907.jpg")
-    </string>
+</string>
 				<key>trailing</key>
-				<string>
-    
+				<string>    
     // MARK: - Profile Info
+    @Published var personalName: String = "Deepashika Sajeewanie"
 </string>
 			</dict>
 			<key>title</key>

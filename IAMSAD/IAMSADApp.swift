@@ -20,7 +20,7 @@ struct IAMSADApp: App {
     
     var body: some Scene {
         WindowGroup {
-            Profile_SwitchProfilesSheetView()
+            TabTesting()
                 .dynamicTypeSize(...DynamicTypeSize.xLarge)
                 .environmentObject(avatar)
                 .environmentObject(avatarSheetVM)

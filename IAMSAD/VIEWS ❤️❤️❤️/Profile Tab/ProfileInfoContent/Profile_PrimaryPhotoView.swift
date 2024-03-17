@@ -1,5 +1,5 @@
 //
-//  ProfilePrimaryPhotoView.swift
+//  Profile_PrimaryPhotoView.swift
 //  IAMSAD
 //
 //  Created by Mr. Kavinda Dilshan on 2024-03-04.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct ProfilePrimaryPhotoView: View {
+struct Profile_PrimaryPhotoView: View {
     // MARK: - PROPERTIES
     @EnvironmentObject private var profileVM: ProfileVM
     
@@ -33,14 +33,14 @@ struct ProfilePrimaryPhotoView: View {
                     width: profileVM.primaryProfilePhotoSize,
                     height: profileVM.primaryProfilePhotoSize
                 )
+                .presentStatusCircleHandler(isPrimary: true, isOnline: true)
             }
             .opacity(profileVM.getProfilePhotoOpacity())
-//            .background(Color.debug)
     }
 }
 
 // MARK: - PREVIEWS
-#Preview("ProfilePrimaryPhotoView") {
-    ProfilePrimaryPhotoView()
+#Preview("Profile_PrimaryPhotoView") {
+    Profile_PrimaryPhotoView()
         .previewViewModifier
 }
