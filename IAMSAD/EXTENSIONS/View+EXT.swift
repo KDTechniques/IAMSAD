@@ -205,7 +205,8 @@ extension View {
         let vm: ProfileVM = .shared
         let ratio: CGFloat = vm.profilePhotoOffsetRatio
         var lineWidth: CGFloat {
-            let value:  CGFloat = vm.secondaryProfilePhotoBorderSize
+            let eyeSmoothingValue: CGFloat = 1
+            let value:  CGFloat = vm.secondaryProfilePhotoBorderSize - eyeSmoothingValue
             return isPrimary ? value*ratio : value
         }
         var frame: CGFloat {
