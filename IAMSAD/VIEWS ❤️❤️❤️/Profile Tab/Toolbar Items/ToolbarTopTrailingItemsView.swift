@@ -57,8 +57,8 @@ struct ToolbarTopTrailingItemsView: View {
             }
             
             // MARK: Settings/More Buttons
-            Button {
-                // settings/more button action goes here...
+            NavigationLink {
+                Profile_SettingsView()
             } label: {
                 Image(systemName: buttonType == .settingsButton ? "gearshape" : "ellipsis")
                     .resizable()

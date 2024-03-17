@@ -16,6 +16,7 @@ extension View {
             .environmentObject(Avatar.shared)
             .environmentObject(AvatarSheetVM.shared)
             .environmentObject(ProfileVM.shared)
+            .tint(.accent)
     }
     
     // MARK: - standardAccentColorBottomButtonViewModifier

@@ -117,6 +117,7 @@ extension Profile_FollowersCountNLinkView {
         
         Text(linkText)
             .tint(.secondary)
+            .lineLimit(1)
             .registerProfileTapEvent(event: Profile_TapEventTypes.link) {
                 guard let urlString: String = linkURL,
                       let url: URL = .init(string: urlString) else { return }
