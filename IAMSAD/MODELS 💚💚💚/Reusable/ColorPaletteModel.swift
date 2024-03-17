@@ -22,8 +22,15 @@ struct ColorPaletteModel: Identifiable, Equatable {
     }
     
     // MARK: - FUNCTIONS
+    
+    // MARK: - changeColor
     mutating func changeColor(s: CGFloat, b: CGFloat) {
         self.saturation = s
         self.brightness = b
+    }
+    
+    // MARK: - toColor
+    func toColor() -> Color {
+        Color(hue: hue, saturation: saturation, brightness: brightness)
     }
 }

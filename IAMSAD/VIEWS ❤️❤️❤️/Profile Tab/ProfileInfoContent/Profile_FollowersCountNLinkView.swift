@@ -16,6 +16,7 @@ struct Profile_FollowersCountNLinkView: View {
     let linkText: String?
     let linkURL: String?
     
+    @State private var isPresentedSheet: Bool = false
     let profileVM: ProfileVM = .shared
     
     // MARK: - INITIALIZER
@@ -95,9 +96,15 @@ extension Profile_FollowersCountNLinkView {
             Text("\(followersCount.intToKMString()) follower\(profileVM.getPlural())")
         }
         .registerProfileTapEvent(event: Profile_TapEventTypes.followers) {
-            // followers action goes here...
+            isPresentedSheet = true
             print("followers action got triggered...")
         }
+        .sheet(isPresented: $isPresentedSheet) {
+            Text("Followers Sheet is under construction.\nComing soon...")
+                .multilineTextAlignment(.center)
+                .presentationDragIndicator(.visible)
+        }
+        .onChange(of: isPresentedSheet) { profileVM.handleFollowersSheetChanges($1) }
     }
     
     // MARK: - link

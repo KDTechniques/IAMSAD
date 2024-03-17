@@ -20,7 +20,7 @@ struct Profile_InfoView: View {
                 
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
-                        ProfilePrimaryPhotoView()
+                        Profile_PrimaryPhotoView()
                         Spacer()
                         Profile_GeneralNShareButtonsView(
                             buttonType: profileVM.buttonType,
@@ -29,7 +29,7 @@ struct Profile_InfoView: View {
                     }
                     
                     Profile_NameGenderNJoinedDateView(
-                        name: profileVM.name,
+                        name: profileVM.personalName,
                         badgeType: profileVM.badgeType,
                         gender: profileVM.gender,
                         joinedDate: profileVM.joinedDate

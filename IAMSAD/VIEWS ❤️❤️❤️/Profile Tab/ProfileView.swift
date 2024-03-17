@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 struct ProfileView: View {
     // MARK: - BODY
@@ -30,3 +29,5 @@ struct ProfileView: View {
         .previewViewModifier
 }
 
+
+// person.badge.shield.checkmark.fill

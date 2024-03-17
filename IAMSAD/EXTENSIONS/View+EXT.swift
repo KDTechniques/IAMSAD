@@ -168,6 +168,7 @@ extension View {
     func profileTabContentsIntrospect(vm profileVM: ProfileVM, tab: Profile_TabLabelTypes) -> some View {
         self
             .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
+                // Handles scroll view's vertical content offset
                 let condition1: Bool = profileVM.selectedTabType != tab
                 let condition2: Bool = scrollView.contentOffset.y <= profileVM.contentOffsetMaxY
                 let condition3: Bool = profileVM.contentOffsetY < profileVM.contentOffsetMaxY
@@ -181,11 +182,49 @@ extension View {
                     scrollView.contentOffset.y = profileVM.contentOffsetY
                 }
                 
+                // Scrolls to tab labels anchoring point at top
                 if let OffsetY: CGFloat = profileVM.scrollToTopContentOffsetY {
-                    if scrollView.contentOffset.y < profileVM.contentOffsetMaxY {
+                    if scrollView.contentOffset.y < profileVM.contentOffsetMaxY,
+                       !scrollView.isTracking {
                         scrollView.setContentOffset(.init(x: 0, y: OffsetY), animated: true)
                     }
+                    
                     profileVM.scrollToTopContentOffsetY = nil
+                }
+                
+                // Handles vertical scroll indicator insets
+                scrollView.verticalScrollIndicatorInsets.top = profileVM.profileContentHeight +
+                profileVM.horizontalTabHeight +
+                (scrollView.contentOffset.y < 0 ? abs(scrollView.contentOffset.y) : 0)
+            }
+    }
+    
+    // MARK: - presentStatusCircleHandler
+    @ViewBuilder
+    func presentStatusCircleHandler(isPrimary: Bool, isOnline: Bool) -> some View {
+        let vm: ProfileVM = .shared
+        let ratio: CGFloat = vm.profilePhotoOffsetRatio
+        var lineWidth: CGFloat {
+            let value:  CGFloat = vm.secondaryProfilePhotoBorderSize
+            return isPrimary ? value*ratio : value
+        }
+        var frame: CGFloat {
+            let value:  CGFloat = vm.secondaryPresenceStatusCircleFrameSize
+            return isPrimary ? value*ratio : value
+        }
+        var offset: CGFloat {
+            let value:  CGFloat = -vm.secondaryPresenceStatusCircleFrameSize / 2
+            return isPrimary ? value*ratio : value
+        }
+        
+        self
+            .overlay(alignment: .bottomTrailing) {
+                if isOnline {
+                    Circle()
+                        .stroke(.tabBarNSystemBackground, lineWidth: lineWidth)
+                        .fill(.presentStatus)
+                        .frame(width: frame, height: frame)
+                        .offset(x: offset, y: offset)
                 }
             }
     }

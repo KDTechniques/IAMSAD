@@ -105,13 +105,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>129</string>
+					<string>138</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>128</string>
+					<string>137</string>
 					<key>Timestamp</key>
-					<string>732188564.107094</string>
+					<string>732337888.431758</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -152,13 +152,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>136</string>
+					<string>145</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>135</string>
+					<string>144</string>
 					<key>Timestamp</key>
-					<string>732188564.107134</string>
+					<string>732337888.4317811</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -232,6 +232,53 @@
                     Profile_BioView(
 </string>
 			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>103</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>102</string>
+					<key>Timestamp</key>
+					<string>732337888.431716</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/VIEW MODELS 💛💛💛/Profile Tab/ProfileVM.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>    @Published var avatarImageName: URL? = Bundle.main.url(forResource: "Super Heroes_29", withExtension: "png")
+</string>
+				<key>leading</key>
+				<string>    }
+    @Published var profilePhotoURL: URL? = .init(string: "https://img.freepik.com/free-photo/portrait-young-woman-with-natural-make-up_23-2149084907.jpg")
+</string>
+				<key>trailing</key>
+				<string>    
+    // MARK: - Profile Info
+    @Published var personalName: String = "Deepashika Sajeewanie"
+</string>
+			</dict>
+			<key>title</key>
+			<string>remove if needed</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>

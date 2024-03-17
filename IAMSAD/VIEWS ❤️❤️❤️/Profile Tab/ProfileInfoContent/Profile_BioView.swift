@@ -12,6 +12,9 @@ struct Profile_BioView: View {
     let bioText: String
     let isScrolling: Bool
     
+    @State private var more: Bool = false
+    let lineLimit: Int = 5
+    
     // MARK: - INITITIALIZER
     init(bioText: String, isScrolling: Bool) {
         self.bioText = bioText
@@ -22,17 +25,21 @@ struct Profile_BioView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack(alignment: .bottom) {
-                Text(bioText)
+                Text(bioText.truncateToLineLimit(lineLimit: more ? lineLimit : 4, dotsLimit: lineLimit))
                     .lineSpacing(5)
+                    .lineLimit(lineLimit)
                 
-                Text("more")
-                    .fontWeight(.medium)
-                    .foregroundStyle(.secondary)
-                    .padding(.leading, 6)
-                    .moreTapRegistration(isScrolling: isScrolling)
+                if !more {
+                    Text("more")
+                        .fontWeight(.medium)
+                        .foregroundStyle(.secondary)
+                        .padding(.leading, 6)
+                        .moreTapRegistration($more, isScrolling: isScrolling)
+                }
             }
             .font(.subheadline)
         }
+        .frame(maxWidth: screenWidth - 50, alignment: .leading)
     }
 }
 
@@ -49,14 +56,14 @@ struct Profile_BioView: View {
 @MainActor
 fileprivate extension View {
     // MARK: - moreTapRegistration
-    func moreTapRegistration(isScrolling: Bool) -> some View {
+    func moreTapRegistration(_ more: Binding<Bool>, isScrolling: Bool) -> some View {
         return Group {
             if isScrolling {
                 self
             } else {
                 self
                     .registerProfileTapEvent(event: Profile_TapEventTypes.more) {
-                        // more action goes here...
+                        more.wrappedValue = true
                         print("more action got triggered...")
                     }
             }

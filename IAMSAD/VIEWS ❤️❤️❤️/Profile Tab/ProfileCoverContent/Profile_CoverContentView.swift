@@ -39,7 +39,7 @@ struct Profile_CoverContentView: View {
         .overlay(alignment: .bottomLeading) {
             Profile_CoverTextView(
                 coverTextStaticHeight: $profileVM.coverTextStaticHeight,
-                name: profileVM.name,
+                name: profileVM.personalName,
                 subHeadlineText: profileVM.subHeadlineText,
                 topToolbarLeadingItemStaticMaxX: profileVM.topToolbarLeadingItemStaticMaxX,
                 refreshBy: profileVM.coverTextOffsetY
@@ -47,13 +47,12 @@ struct Profile_CoverContentView: View {
         }
         .clipped()
         .overlay(alignment: .bottomLeading) {
-            Profile_ProfilePhotoView(
+            Profile_SecondaryProfilePhotoView(
                 profilePhotoURL: profileVM.profilePhotoURL,
                 refreshBy: profileVM.coverExtraHeight
             )
         }
         .ignoresSafeArea(edges: .top)
-        .allowsHitTesting(false)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 ToolbarTopLeadingItemView(
