@@ -6,14 +6,12 @@
 //
 
 import SwiftUI
+import Combine
 
 @MainActor
 final class AvatarSheetVM: ObservableObject {
     // MARK: - PROPERTIES
     static let shared: AvatarSheetVM = .init()
-    
-    // MARK: - INITIALIZER
-    private init() { }
     
     // MARK: - Common
     let haptic: HapticFeedbackGenerator = .init()
@@ -24,6 +22,7 @@ final class AvatarSheetVM: ObservableObject {
         .init(.flexible()),
         .init(.flexible())
     ]
+    private var cancelable: Set<AnyCancellable> = []
     
     // MARK: - AvatarSheetView
     @Published var selectedAvatar: AvatarModel? = nil
@@ -48,9 +47,26 @@ final class AvatarSheetVM: ObservableObject {
         .init(.flexible())
     ]
     
+    // MARK: - INITIALIZER
+    private init() {
+        backgroundColorSubscriber()
+    }
+    
     // MARK: - FUNCTIONS
     
     // MARK: - COMMON
+    
+    // MARK: - backgroundColorSubscriber
+    private func backgroundColorSubscriber() {
+        $selectedBackgroundColor
+            .sink { [weak self] newValue in
+                guard let self = self else { return }
+                
+                selectedAvatar?.updateBackgroundColor(newValue.toColor())
+            }
+            .store(in: &cancelable)
+        
+    }
     
     // MARK: - setSliderValueWithAnimation
     func setSliderValueWithAnimation() {

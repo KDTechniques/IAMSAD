@@ -8,71 +8,40 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
+enum ConversationTypes: Equatable {
+    case conversationOnPost(isOnMyPost: Bool)
+    case conversationOverDirectMessage
+}
+
 struct ConversationsView: View {
     // MARK: - PROPERTIES
     let url: URL? = .init(string: "https://picsum.photos/id/\(Int.random(in: 1...500))/300")
-    let imageSize: CGFloat = 60
-    let badgeSize: CGFloat = 15
-    let badgeType: VerifiedBadgeTypes = .blue
     
     // MARK: - BODY
     var body: some View {
-        HStack(spacing: 12) {
-            WebImage(url: url, options: [.scaleDownLargeImages, .continueInBackground])
-                .resizable()
-                .defaultBColorPlaceholder
-                .scaledToFill()
-                .frame(width: imageSize, height: imageSize)
-                .clipShape(Circle())
-            
-            VStack(alignment: .leading, spacing: 3) {
-                HStack {
-                    HStack(spacing: 4) {
-                        Text("Deepashika Sajeewanie")
-                            .font(.headline)
-                            .lineLimit(1)
-                        
-                        Image(systemName: "checkmark.seal.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: badgeSize, height: badgeSize)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(badgeType == .blue ? .cyan : .orange)
-                    }
-                    
-                    Spacer()
-                    
-                    Text("8:13 AM")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                }
-                
-                HStack(alignment: .bottom) {
-                    Text("Don't you worry okay, i will help you go through this. Leave a message if you need me anytime. I'll get back to you as soon as i can.")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(2)
-                    
-                    Spacer()
-                    
-                    Text("on my post")
-                        .font(.footnote)
-                        .padding(.vertical, 2)
-                        .padding(.horizontal, 8)
-                        .background(Color(uiColor: .systemGray5))
-                        .clipShape(.rect(cornerRadius: 5))
-                }
+        List {
+            ForEach(0...200, id: \.self) { index in
+                Conversations_ListItemView(
+                    accountType: .anonymous,
+                    avatar: Avatar.shared.publicAvatarsArray[index],
+                    imageURL: Bundle.main.url(forResource: Avatar.shared.publicAvatarsArray[index].imageName, withExtension: "png"),
+                    name: "Deepashika Sajeewanie",
+                    badgeType: .blue,
+                    time: "6:24 PM",
+                    text: "Don't you worry okay, i will help you go through this. Leave a message if you need me anytime. I'll get back to you as soon as i can.",
+                    conversationType: .conversationOnPost(isOnMyPost: Bool.random())
+                )
             }
+            .listRowBackground(Color.clear)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.horizontal, 20)
+        .listStyle(.plain)
     }
 }
 
 // MARK: - PREVIEWS
 #Preview("ConversationsView") {
     ConversationsView()
-        .frame(width: screenWidth, height: screenHeight)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.tabBarNSystemBackground)
         .previewViewModifier
 }

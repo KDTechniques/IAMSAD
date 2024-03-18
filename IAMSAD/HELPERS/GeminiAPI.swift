@@ -10,7 +10,7 @@ import GoogleGenerativeAI
 
 actor GeminiAPI {
     // MARK: - PROPERTIES
-    var apiKey: String {
+    private var apiKey: String {
         guard let key: String = Bundle.main.infoDictionary?["Gemini API Key"] as? String else {
             fatalError("Error: Couldn't find API Key for `Gemini API Key` in the Info.plist.❗️❗️❗️")
             // send analytics here...
@@ -18,7 +18,7 @@ actor GeminiAPI {
         
         return key
     }
-    var model: GenerativeModel { .init(name: "gemini-pro", apiKey: apiKey) }
+    private var model: GenerativeModel { .init(name: "gemini-pro", apiKey: apiKey) }
     
     // MARK: - FUNCTIONS
     
@@ -35,7 +35,7 @@ actor GeminiAPI {
     }
     
     // MARK: - generateTextImageToTextContent
-    func generateTextImageToTextContent() {
+    private func generateTextImageToTextContent() {
         // code goes here...
     }
 }

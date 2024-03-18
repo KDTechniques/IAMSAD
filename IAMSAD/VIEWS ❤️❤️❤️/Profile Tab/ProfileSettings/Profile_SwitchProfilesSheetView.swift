@@ -127,7 +127,6 @@ extension CardView {
                 if let imageURL {
                     WebImage(url: imageURL, options: [.scaleDownLargeImages])
                         .resizable()
-                        .defaultBColorPlaceholder
                         .scaledToFill()
                 } else {
                     CustomNoProfileImageView()
