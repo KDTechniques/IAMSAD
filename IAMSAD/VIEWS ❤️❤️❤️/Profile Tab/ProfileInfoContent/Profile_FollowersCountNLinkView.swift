@@ -50,9 +50,9 @@ struct Profile_FollowersCountNLinkView: View {
 #Preview("Profile_FollowersCountNLinkView") {
     Profile_FollowersCountNLinkView(
         _3FollowersArray: [
-            "https://picsum.photos/50/50",
-            "https://picsum.photos/51/51",
-            "https://picsum.photos/52/52"
+            "https://picsum.photos/50",
+            "https://picsum.photos/51",
+            "https://picsum.photos/52"
         ],
         followersCount: 1400,
         linkText: "kd_techniques/sleepi.com",
@@ -117,6 +117,7 @@ extension Profile_FollowersCountNLinkView {
         
         Text(linkText)
             .tint(.secondary)
+            .lineLimit(1)
             .registerProfileTapEvent(event: Profile_TapEventTypes.link) {
                 guard let urlString: String = linkURL,
                       let url: URL = .init(string: urlString) else { return }

@@ -13,50 +13,54 @@ struct Profile_SwitchProfilesSheetView: View {
     @EnvironmentObject private var profileVM: ProfileVM
     @EnvironmentObject private var avatarSheetVM: AvatarSheetVM
     
-    @State var isPresented: Bool = false
+    @Binding var isPresented: Bool
+    
     @State var contentHeight: CGFloat = 0
+    
+    // MARK: - INITIALIZER
+    init(isPresented: Binding<Bool>) {
+        self._isPresented = isPresented
+    }
     
     // MARK: - BODY
     var body: some View {
-        Button("Present") {
-            isPresented = true
+        VStack(spacing: 20) {
+            CardView(
+                isPresented: $isPresented,
+                selectedAccountType: $profileVM.selectedAccount,
+                accountType: .personal,
+                name: profileVM.personalName,
+                imageURL: profileVM.profilePhotoURL
+            )
+            
+            CardView(
+                isPresented: $isPresented,
+                selectedAccountType: $profileVM.selectedAccount,
+                accountType: .anonymous,
+                name: profileVM.anonymousName,
+                avatar: avatarSheetVM.selectedAvatar,
+                backgroundColor: avatarSheetVM.selectedBackgroundColor.toColor()
+            )
         }
+        .padding(.horizontal, 25)
+        .padding(.vertical, 40)
+        .geometryReaderDimensionViewModifier($contentHeight, dimension: .height)
+        .presentationDragIndicator(.visible)
+        .presentationBackground(.sheetbackground)
+        .presentationDetents([.height(contentHeight)])
+        .presentationCornerRadius(30)
         .onAppear {
             avatarSheetVM.selectedAvatar = Avatar.shared.publicAvatarsArray[78]
-        }
-        .sheet(isPresented: $isPresented) {
-            VStack(spacing: 20) {
-                CardView(
-                    isPresented: $isPresented,
-                    selectedAccountType: $profileVM.selectedAccount,
-                    accountType: .personal,
-                    name: profileVM.personalName,
-                    imageURL: profileVM.profilePhotoURL
-                )
-                
-                CardView(
-                    isPresented: $isPresented,
-                    selectedAccountType: $profileVM.selectedAccount,
-                    accountType: .anonymous,
-                    name: profileVM.anonymousName,
-                    avatar: avatarSheetVM.selectedAvatar,
-                    backgroundColor: avatarSheetVM.selectedBackgroundColor.toColor()
-                )
-            }
-            .padding(.horizontal, 25)
-            .padding(.vertical, 40)
-            .geometryReaderDimensionViewModifier($contentHeight, dimension: .height)
-            .presentationDragIndicator(.visible)
-            .presentationBackground(.sheetbackground)
-            .presentationDetents([.height(contentHeight)])
-            .presentationCornerRadius(30)
         }
     }
 }
 
 // MARK: - PREVIEWS
 #Preview("Profile_SwitchProfilesSheetView") {
-    Profile_SwitchProfilesSheetView()
+    Color.clear
+        .sheet(isPresented: .constant(true)) {
+            Profile_SwitchProfilesSheetView(isPresented: .constant(true))
+        }
         .previewViewModifier
 }
 
@@ -144,7 +148,7 @@ extension CardView {
         .frame(width: imageSize, height: imageSize)
         .overlay(
             Circle()
-                .stroke(Color(uiColor: .separator), lineWidth: 0.7)
+                .stroke(.separator, lineWidth: 0.7)
         )
     }
     
@@ -154,7 +158,7 @@ extension CardView {
             Text(name)
                 .fontWeight(.semibold)
             
-            Text("\(accountType.rawValue.capitalized) Account")
+            Text("\(accountType.rawValue.capitalized) Profile")
                 .foregroundStyle(.secondary)
         }
         .font(.footnote)
