@@ -20,7 +20,7 @@ struct IAMSADApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TabTesting()
+            ConversationsView()
                 .dynamicTypeSize(...DynamicTypeSize.xLarge)
                 .environmentObject(avatar)
                 .environmentObject(avatarSheetVM)

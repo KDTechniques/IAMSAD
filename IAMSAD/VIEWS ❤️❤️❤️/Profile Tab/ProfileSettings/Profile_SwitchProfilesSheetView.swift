@@ -148,7 +148,7 @@ extension CardView {
         .frame(width: imageSize, height: imageSize)
         .overlay(
             Circle()
-                .stroke(Color(uiColor: .separator), lineWidth: 0.7)
+                .stroke(.separator, lineWidth: 0.7)
         )
     }
     

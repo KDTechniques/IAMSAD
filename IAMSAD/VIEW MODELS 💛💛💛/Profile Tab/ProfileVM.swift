@@ -112,9 +112,9 @@ final class ProfileVM: ObservableObject {
     // MARK: - Buttons + Link
     @Published var buttonType: Profile_GeneralButtonTypes = .following
     @Published var _3FollowersArray: [String] = [
-        "https://picsum.photos/50/50",
-        "https://picsum.photos/51/51",
-        "https://picsum.photos/52/52"
+        "https://picsum.photos/50",
+        "https://picsum.photos/51",
+        "https://picsum.photos/52"
     ]
     @Published var followersCount: Int = 1200
     @Published var linkText: String? = "kd_techniques/sleepi.com"

@@ -106,7 +106,6 @@ fileprivate struct NavLinkLabelView<T: View>: View {
         NavigationLink {
             destination
         } label: {
-            
             HStack(spacing: 12) {
                 Image(systemName: iconName)
                     .resizable()
