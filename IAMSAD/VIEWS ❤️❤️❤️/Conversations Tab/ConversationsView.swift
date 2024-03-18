@@ -56,7 +56,7 @@ struct ConversationsView: View {
                     Spacer()
                     
                     Text("on my post")
-                        .font(.caption2)
+                        .font(.footnote)
                         .padding(.vertical, 2)
                         .padding(.horizontal, 8)
                         .background(Color(uiColor: .systemGray5))
