@@ -21,7 +21,7 @@ struct Profile_CoverPhotoView: View {
     var body: some View {
         WebImage(
             url: coverPhotoURL,
-            options: [.highPriority, .scaleDownLargeImages]
+            options: [.highPriority, .scaleDownLargeImages, .retryFailed]
         )
         .resizable()
         .defaultBColorPlaceholder

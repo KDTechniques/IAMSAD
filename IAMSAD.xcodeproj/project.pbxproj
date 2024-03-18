@@ -106,7 +106,7 @@
 		0B6E745D2B5AA21D008B4CFB /* CustomContentNotAvailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E745C2B5AA21D008B4CFB /* CustomContentNotAvailableView.swift */; };
 		0B7204C12B9662B200C705B8 /* SDWebImage+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7204C02B9662B200C705B8 /* SDWebImage+EXT.swift */; };
 		0B729F712B667B16009BDFD2 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B729F702B667B16009BDFD2 /* AvatarImageView.swift */; };
-		0B729F732B668084009BDFD2 /* AvatarImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B729F722B668084009BDFD2 /* AvatarImageModel.swift */; };
+		0B729F732B668084009BDFD2 /* AvatarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B729F722B668084009BDFD2 /* AvatarModel.swift */; };
 		0B8544022B948D7F00FAF90F /* ProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8544012B948D7F00FAF90F /* ProfileVM.swift */; };
 		0B89BB862BA6A36D007C9721 /* Profile_SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B89BB852BA6A36D007C9721 /* Profile_SettingsView.swift */; };
 		0B89BB892BA6A3BE007C9721 /* Profile_SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B89BB882BA6A3BE007C9721 /* Profile_SearchView.swift */; };
@@ -408,6 +408,8 @@
 		0BC505A22B56912D00A96C3C /* Email.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BC505A12B56912D00A96C3C /* Email.png */; };
 		0BC505A42B56A0B800A96C3C /* Skull.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BC505A32B56A0B800A96C3C /* Skull.png */; };
 		0BC505A62B56B2A700A96C3C /* Telephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BC505A52B56B2A700A96C3C /* Telephone.png */; };
+		0BC560B72BA8730300EAAD75 /* Conversations_ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC560B62BA8730300EAAD75 /* Conversations_ListItemView.swift */; };
+		0BC560B92BA87C4100EAAD75 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC560B82BA87C4100EAAD75 /* Avatar.swift */; };
 		0BD00C1B2B6294A4000C3236 /* SeeAllAvatarSheetContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD00C1A2B6294A4000C3236 /* SeeAllAvatarSheetContentView.swift */; };
 		0BD876A72B8CC1DB00E66184 /* Profile_CoverContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD876A62B8CC1DB00E66184 /* Profile_CoverContentView.swift */; };
 		0BD9457F2B743D7F0091E845 /* TabTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD9457E2B743D7F0091E845 /* TabTesting.swift */; };
@@ -524,7 +526,7 @@
 		0B6E745C2B5AA21D008B4CFB /* CustomContentNotAvailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContentNotAvailableView.swift; sourceTree = "<group>"; };
 		0B7204C02B9662B200C705B8 /* SDWebImage+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SDWebImage+EXT.swift"; sourceTree = "<group>"; };
 		0B729F702B667B16009BDFD2 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
-		0B729F722B668084009BDFD2 /* AvatarImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageModel.swift; sourceTree = "<group>"; };
+		0B729F722B668084009BDFD2 /* AvatarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarModel.swift; sourceTree = "<group>"; };
 		0B8544012B948D7F00FAF90F /* ProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVM.swift; sourceTree = "<group>"; };
 		0B89BB852BA6A36D007C9721 /* Profile_SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_SettingsView.swift; sourceTree = "<group>"; };
 		0B89BB882BA6A3BE007C9721 /* Profile_SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_SearchView.swift; sourceTree = "<group>"; };
@@ -822,6 +824,8 @@
 		0BC505A12B56912D00A96C3C /* Email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Email.png; sourceTree = "<group>"; };
 		0BC505A32B56A0B800A96C3C /* Skull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Skull.png; sourceTree = "<group>"; };
 		0BC505A52B56B2A700A96C3C /* Telephone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Telephone.png; sourceTree = "<group>"; };
+		0BC560B62BA8730300EAAD75 /* Conversations_ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_ListItemView.swift; sourceTree = "<group>"; };
+		0BC560B82BA87C4100EAAD75 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		0BD00C1A2B6294A4000C3236 /* SeeAllAvatarSheetContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllAvatarSheetContentView.swift; sourceTree = "<group>"; };
 		0BD876A62B8CC1DB00E66184 /* Profile_CoverContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_CoverContentView.swift; sourceTree = "<group>"; };
 		0BD9457E2B743D7F0091E845 /* TabTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTesting.swift; sourceTree = "<group>"; };
@@ -957,6 +961,7 @@
 				0B2623252B4BDA1B0063D71C /* AnalyticsManager.swift */,
 				0B6E745A2B5A9A87008B4CFB /* Utilities.swift */,
 				0B89BB8A2BA6FFD0007C9721 /* GeminiAPI.swift */,
+				0BC560B82BA87C4100EAAD75 /* Avatar.swift */,
 			);
 			path = HELPERS;
 			sourceTree = "<group>";
@@ -989,7 +994,7 @@
 				0B2623A22B4E789A0063D71C /* DimensionTypes.swift */,
 				0B4392FB2B4EF2B30075E5D1 /* ColorPaletteModel.swift */,
 				0B27C3FC2B52A6E700680676 /* AvatarCollectionModel.swift */,
-				0B729F722B668084009BDFD2 /* AvatarImageModel.swift */,
+				0B729F722B668084009BDFD2 /* AvatarModel.swift */,
 				0B00D1DF2B540CBF00CE721C /* PhoneNumberModel.swift */,
 				0B20D7DE2B96134B00B71C10 /* VerifiedBadgeTypes.swift */,
 				0BFEFEA02B91E9130005DE9B /* TapCoordinatesModel.swift */,
@@ -1227,6 +1232,7 @@
 			isa = PBXGroup;
 			children = (
 				0BBD7CB42BA8075900AE8542 /* ConversationsView.swift */,
+				0BC560B62BA8730300EAAD75 /* Conversations_ListItemView.swift */,
 			);
 			path = "Conversations Tab";
 			sourceTree = "<group>";
@@ -2037,6 +2043,7 @@
 				0B7204C12B9662B200C705B8 /* SDWebImage+EXT.swift in Sources */,
 				0B5B0EA02B7B3129001A950C /* CustomStripTabHorizontalScrollView.swift in Sources */,
 				0B2623952B4D80850063D71C /* UserNameTextFieldView.swift in Sources */,
+				0BC560B72BA8730300EAAD75 /* Conversations_ListItemView.swift in Sources */,
 				0BBD2AAE2BA13729006990AA /* Profile_CoverTypes.swift in Sources */,
 				0B26236A2B4CB4CF0063D71C /* Color+EXT.swift in Sources */,
 				0B2623662B4CA0F70063D71C /* View+EXT.swift in Sources */,
@@ -2076,7 +2083,7 @@
 				0B28303F2B8C97C6006061BF /* ToolbarTopLeadingItemView.swift in Sources */,
 				0B00D1DE2B5334A900CE721C /* OnboardingPhoneNumberView.swift in Sources */,
 				0B9071EF2B6EC164008D5AF4 /* LaunchScreen.swift in Sources */,
-				0B729F732B668084009BDFD2 /* AvatarImageModel.swift in Sources */,
+				0B729F732B668084009BDFD2 /* AvatarModel.swift in Sources */,
 				0B2623642B4C9F3D0063D71C /* CustomStandardAccentBottomButtonView.swift in Sources */,
 				0BBD2AAC2BA136F4006990AA /* Profile_TabContentOffsetModel.swift in Sources */,
 				0BD876A72B8CC1DB00E66184 /* Profile_CoverContentView.swift in Sources */,
@@ -2096,6 +2103,7 @@
 				0B26231E2B4BD8570063D71C /* HapticFeedbackGenerator.swift in Sources */,
 				0B20D7DB2B960F5300B71C10 /* Profile_PrimaryPhotoView.swift in Sources */,
 				0BE0F7EF2B71414B00BD01BB /* RepliesTestingView.swift in Sources */,
+				0BC560B92BA87C4100EAAD75 /* Avatar.swift in Sources */,
 				0B58AE942B6CF0360057CCFE /* CustomTransitioningCounterTextView.swift in Sources */,
 				0B052FE62BA5643D008D07F1 /* Profile_SwitchProfilesSheetView.swift in Sources */,
 				0BBD2AB82BA1461A006990AA /* Profile_LikesTabView.swift in Sources */,

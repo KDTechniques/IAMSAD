@@ -1,26 +1,11 @@
 //
-//  AvatarModel.swift
+//  Avatar.swift
 //  IAMSAD
 //
-//  Created by Mr. Kavinda Dilshan on 2024-01-28.
+//  Created by Mr. Kavinda Dilshan on 2024-03-18.
 //
 
 import SwiftUI
-
-struct AvatarModel: Identifiable, Equatable {
-    // MARK: - PROPERTIES
-    var id: String { imageName }
-    let imageName: String
-    let collection: AvatarCollectionTypes
-    let position: Alignment
-    
-    // MARK: - INITIALIZER
-    init(imageName: String, collection: AvatarCollectionTypes, position: Alignment) {
-        self.imageName = imageName
-        self.collection = collection
-        self.position = position
-    }
-}
 
 final class Avatar: ObservableObject {
     // MARK: - PROPERTIES

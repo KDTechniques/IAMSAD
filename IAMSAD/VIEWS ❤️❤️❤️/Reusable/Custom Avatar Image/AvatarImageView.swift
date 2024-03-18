@@ -37,17 +37,13 @@ struct AvatarImageView: View {
             .fill(getFillColor())
             .background(
                 Circle()
-                    .strokeBorder(Color(uiColor: .systemGray4), style: .init(
+                    .strokeBorder(.separator, style: .init(
                         lineWidth: 1.5,
                         lineCap: .round,
                         lineJoin: .round
                     ))
                     .opacity(state == .failure ? (colorScheme == .dark ? 1 : 0) : 0)
             )
-            .overlay {
-                ProgressView()
-                    .opacity(state == .loading ? 1 : 0)
-            }
             .overlay(alignment: position) {
                 WebImage(url: url, options: [.lowPriority])
                     .onProgress { _, _ in state = .loading }
@@ -92,7 +88,7 @@ extension AvatarImageView {
     // MARK: - getFillColor
     private func getFillColor() -> Color {
         switch state {
-        case .loading: .clear
+        case .loading: Color(uiColor: .systemGray6)
         case .success: color
         case .failure: colorScheme == .dark ? .clear : .black.opacity(0.1)
         }

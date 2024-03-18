@@ -73,7 +73,7 @@ extension Profile_FollowersCountNLinkView {
                     .overlay {
                         WebImage(
                             url: .init(string: followerImageURL),
-                            options: [.scaleDownLargeImages]
+                            options: [.scaleDownLargeImages, .retryFailed]
                         )
                         .resizable()
                         .defaultBColorPlaceholder

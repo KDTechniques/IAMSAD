@@ -32,6 +32,7 @@ struct TabTesting: View {
             
             ZStack {
                 Color.tabBarNSystemBackground.ignoresSafeArea(edges: .top)
+                ConversationsView()
             }
             .tabItem {
                 Image(tabSelection == .conversations ? .conversationsFill : .conversations)
