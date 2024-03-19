@@ -148,7 +148,7 @@ fileprivate struct AvatarSheetCollectionRowView: View {
                         saturation: 0.1,
                         brightness: 1
                     ),
-                    withShadow: true
+                    withBorder: true
                 )
             }
         }

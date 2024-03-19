@@ -19,7 +19,7 @@ struct Conversations_ListItemView: View {
     let text: String
     let conversationType: ConversationTypes
     
-    let imageSize: CGFloat = 60
+    let imageSize: CGFloat = 56
     let badgeSize: CGFloat = 15
     
     // MARK: - INITIALIZER
@@ -68,6 +68,7 @@ struct Conversations_ListItemView: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.trailing, -5)
     }
 }
 
@@ -105,19 +106,19 @@ extension Conversations_ListItemView {
                     .resizable()
                     .defaultBColorPlaceholder
                     .scaledToFill()
+                    .clipShape(Circle())
                 } else {
                     CustomNoProfileImageView()
                 }
                 
             case .anonymous:
                 if let avatar {
-                    AvatarImageView(avatar: avatar)
+                    AvatarImageView(avatar: avatar, borderSize: 1.5)
                 } else {
                     CustomNoProfileImageView()
                 }
             }
         }
-        .clipShape(Circle())
         .frame(width: imageSize, height: imageSize)
     }
     

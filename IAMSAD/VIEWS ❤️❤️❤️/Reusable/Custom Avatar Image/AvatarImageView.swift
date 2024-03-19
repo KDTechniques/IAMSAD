@@ -14,15 +14,22 @@ struct AvatarImageView: View {
     
     let color: Color
     let avatar: AvatarModel
-    let showShadow: Bool
+    let showBorder: Bool
+    let borderSize: CGFloat
     
     @State private var state: AvatarStateTypes = .loading
     
     // MARK: - INITIALIZER
-    init(color: Color = .white, avatar: AvatarModel, showShadow: Bool = true) {
+    init(
+        color: Color = .white,
+        avatar: AvatarModel,
+        showBorder: Bool = true,
+        borderSize: CGFloat = 3
+    ) {
         self.color = color
         self.avatar = avatar
-        self.showShadow = showShadow
+        self.showBorder = showBorder
+        self.borderSize = borderSize
     }
     
     // MARK: - BODY
@@ -56,7 +63,8 @@ struct AvatarImageView: View {
             .clipShape(Circle())
             .shadowHandler(
                 colorScheme: colorScheme,
-                showShadow: showShadow,
+                showBorder: showBorder,
+                borderSize: borderSize,
                 state: state
             )
             .allowsHitTesting(state == .success)
@@ -112,15 +120,16 @@ extension View {
     @ViewBuilder
     fileprivate func shadowHandler(
         colorScheme: ColorScheme,
-        showShadow: Bool,
+        showBorder: Bool,
+        borderSize: CGFloat,
         state: AvatarStateTypes
     ) -> some View {
-        if colorScheme == .light, showShadow, state != .failure {
+        if colorScheme == .light, showBorder, state != .failure {
             self
                 .background(
                     Circle()
-                        .stroke(.black.opacity(0.05), style: .init(
-                            lineWidth: 3,
+                        .stroke(Color(uiColor: .systemGray6), style: .init(
+                            lineWidth: borderSize,
                             lineCap: .round,
                             lineJoin: .round
                         ))

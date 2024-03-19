@@ -16,7 +16,7 @@ struct CustomSelectableAvatarView: View {
     let avatar: AvatarModel
     let staticColor: Color
     let isAutoColorOn: Bool
-    let withShadow: Bool
+    let withBorder: Bool
     
     // MARK: - INITIALIZER
     init(
@@ -29,19 +29,19 @@ struct CustomSelectableAvatarView: View {
         avatar: AvatarModel,
         staticColor: Color = .white,
         isAutoColorOn: Bool = false,
-        withShadow: Bool = true
+        withBorder: Bool = true
     ) {
         _selectedAvatar = selectedAvatar
         _dynamicColor = dynamicColor
         self.avatar = avatar
         self.isAutoColorOn = isAutoColorOn
         self.staticColor = selectedAvatar.wrappedValue == avatar ? staticColor : .white
-        self.withShadow = withShadow
+        self.withBorder = withBorder
     }
     
     // MARK: - BODY
     var body: some View {
-        AvatarImageView(color: staticColor, avatar: avatar, showShadow: withShadow)
+        AvatarImageView(color: staticColor, avatar: avatar, showBorder: withBorder)
             .padding(5)
             .background(
                 Circle()

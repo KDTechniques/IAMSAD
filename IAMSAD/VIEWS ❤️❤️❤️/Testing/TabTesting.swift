@@ -11,7 +11,7 @@ enum TabTypes { case home, search, conversations, activity, profile }
 
 struct TabTesting: View {
     
-    @State private var tabSelection: TabTypes = .profile
+    @State private var tabSelection: TabTypes = .conversations
     
     var body: some View {
         TabView(selection: $tabSelection) {
