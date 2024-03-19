@@ -30,7 +30,7 @@ struct AvatarBackgroundColorSelectionView: View {
             .padding(.horizontal, 8)
         }
         .padding(.horizontal, 20)
-        .onChange(of: avatarSheetVM.selectedBackgroundColor) { avatarSheetVM.onColorChange($0) }
+        .onChange(of: avatarSheetVM.selectedBackgroundColor) { avatarSheetVM.onColorChange($1) }
         .onAppear { avatarSheetVM.setSliderValue() }
         .onDisappear { avatarSheetVM.setSliderValue() }
     }

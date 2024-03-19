@@ -36,7 +36,7 @@ struct OnboardingWelcomeView: View {
                 bottomButton
                     .bottomPartBackgroundEffectOnScrollViewModifier(minY: $minY)
             }
-            .onChange(of: minY) { showBackgroundEffect = maxY > $0 }
+            .onChange(of: minY) { showBackgroundEffect = maxY > $1 }
         }
     }
 }

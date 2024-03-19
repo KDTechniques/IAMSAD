@@ -14,25 +14,25 @@ struct CustomAvatarView: View {
     let avatar: AvatarModel?
     let imageSize: CGFloat?
     let color: Color
-    let withShadow: Bool
+    let withBorder: Bool
     
     // MARK: - INITIALIZER
     init(
         avatar : AvatarModel?,
         imageSize: CGFloat? = nil,
         color: Color = .white,
-        withShadow: Bool = false
+        withBorder: Bool = false
     ) {
         self.avatar = avatar
         self.imageSize = imageSize
         self.color = color
-        self.withShadow = withShadow
+        self.withBorder = withBorder
     }
     
     // MARK: - BODY
     var body: some View {
         if let avatar {
-            AvatarImageView(color: color, avatar: avatar, showShadow: withShadow)
+            AvatarImageView(color: color, avatar: avatar, showBorder: withBorder)
                 .imageSizeViewModifier(imageSize)
         } else {
             Image(systemName: "person.circle.fill")

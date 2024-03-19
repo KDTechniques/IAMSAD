@@ -10,7 +10,7 @@ import SwiftUI
 struct Profile_BackgroundView: View {
     // MARK: - BODY
     var body: some View {
-        Color.tabBarNSystemBackground
+        Color.clear
             .ignoresSafeArea()
     }
 }

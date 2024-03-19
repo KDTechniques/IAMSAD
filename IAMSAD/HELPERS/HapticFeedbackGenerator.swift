@@ -14,20 +14,44 @@ enum VibrationTypes: String, CaseIterable {
 }
 
 struct HapticFeedbackGeneratorWrapper {
-    private let generator = UINotificationFeedbackGenerator()
+    let notificationGenerator = UINotificationFeedbackGenerator()
+    let selectionGenerator = UISelectionFeedbackGenerator()
+    let heavyImpactGenerator = UIImpactFeedbackGenerator(style: .heavy)
+    let lightImpactGenerator = UIImpactFeedbackGenerator(style: .light)
+    let mediumImpactGenerator = UIImpactFeedbackGenerator(style: .medium)
+    let rigidImpactGenerator = UIImpactFeedbackGenerator(style: .rigid)
+    let softImpactGenerator = UIImpactFeedbackGenerator(style: .soft)
     
     func selectionOccurred() {
-        let generator = UISelectionFeedbackGenerator()
-        generator.prepare()
-        generator.selectionChanged()
+        selectionGenerator.prepare()
+        selectionGenerator.selectionChanged()
     }
     
     func notificationOccurred(_ type: UINotificationFeedbackGenerator.FeedbackType) {
-        generator.notificationOccurred(type)
+        notificationGenerator.prepare()
+        notificationGenerator.notificationOccurred(type)
     }
     
     func impactOccurred(style: UIImpactFeedbackGenerator.FeedbackStyle) {
-        UIImpactFeedbackGenerator(style: style).impactOccurred()
+        switch style {
+        case .light:
+            lightImpactGenerator.prepare()
+            lightImpactGenerator.impactOccurred()
+        case .medium:
+            mediumImpactGenerator.prepare()
+            mediumImpactGenerator.impactOccurred()
+        case .heavy:
+            heavyImpactGenerator.prepare()
+            heavyImpactGenerator.impactOccurred()
+        case .soft:
+            softImpactGenerator.prepare()
+            softImpactGenerator.impactOccurred()
+        case .rigid:
+            rigidImpactGenerator.prepare()
+            rigidImpactGenerator.impactOccurred()
+        @unknown default:
+            break
+        }
     }
 }
 

@@ -15,12 +15,12 @@ struct IAMSADApp: App {
     @StateObject private var profileVM: ProfileVM = .shared
     
     init() {
-        Utilities().setTabBarColor()
+       
     }
     
     var body: some Scene {
         WindowGroup {
-            TabTesting()
+            ContentView()
                 .dynamicTypeSize(...DynamicTypeSize.xLarge)
                 .environmentObject(avatar)
                 .environmentObject(avatarSheetVM)

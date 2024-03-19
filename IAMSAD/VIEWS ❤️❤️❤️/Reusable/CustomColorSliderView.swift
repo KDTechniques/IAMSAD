@@ -86,8 +86,8 @@ extension CustomColorSliderView {
                     .onChanged { onDragGestureChanged($0) }
                     .onEnded { onDragGestureEnded($0) }
             )
-            .onChange(of: sliderValue) { setOffsetX($0) }
-            .onChange(of: sliderValueWithAnimation) { setOffsetX($0, animate: true) }
+            .onChange(of: sliderValue) { setOffsetX($1) }
+            .onChange(of: sliderValueWithAnimation) { setOffsetX($1, animate: true) }
             .onAppear { setOffsetX(sliderValue) }
     }
     

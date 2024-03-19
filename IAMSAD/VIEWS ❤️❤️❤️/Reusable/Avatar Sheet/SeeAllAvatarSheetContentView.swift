@@ -148,7 +148,7 @@ fileprivate struct AvatarSheetCollectionRowView: View {
                         saturation: 0.1,
                         brightness: 1
                     ),
-                    withShadow: true
+                    withBorder: true
                 )
             }
         }
@@ -200,7 +200,7 @@ fileprivate struct AvatarCollectionSheetContentView: View {
             }
         }
         .overlay(alignment: .bottom) { SheetBottomContentView() }
-        .onChange(of: minY) { showDivider = maxY > $0 }
+        .onChange(of: minY) { showDivider = maxY > $1 }
     }
 }
 
