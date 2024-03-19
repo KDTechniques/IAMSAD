@@ -18,12 +18,4 @@ actor Utilities {
         
         return characters
     }
-    
-    @MainActor
-    func setTabBarColor() {
-        // set tab bar appearance to custom color.
-        let tabBarAppearance = UITabBarAppearance()
-        tabBarAppearance.backgroundColor = .tabBarNSystemBackground
-        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
-    }
 }

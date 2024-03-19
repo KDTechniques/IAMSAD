@@ -46,7 +46,6 @@ struct Profile_SwitchProfilesSheetView: View {
         .padding(.vertical, 40)
         .geometryReaderDimensionViewModifier($contentHeight, dimension: .height)
         .presentationDragIndicator(.visible)
-        .presentationBackground(.sheetbackground)
         .presentationDetents([.height(contentHeight)])
         .presentationCornerRadius(30)
         .onAppear {
@@ -69,6 +68,8 @@ struct Profile_SwitchProfilesSheetView: View {
 // MARK: - CardView
 fileprivate struct CardView: View {
     // MARK: - PROPERTIES
+    @Environment(\.colorScheme) private var colorScheme
+    
     @Binding var isPresented: Bool
     @Binding var selectedAccountType: AccountTypes
     let accountType: AccountTypes
@@ -112,7 +113,7 @@ fileprivate struct CardView: View {
             RoundedRectangle(cornerRadius: 20)
                 .stroke(Color(uiColor: .systemGray5), lineWidth: 1)
         )
-        .background(.sheetbackground)
+        .background(Color(uiColor: colorScheme == .dark ? .systemGray6 : .white))
         .onTapGesture { handleTap() }
     }
 }

@@ -11,6 +11,8 @@ import SDWebImageSwiftUI
 @MainActor
 struct Profile_SecondaryProfilePhotoView: View {
     // MARK: - PROPERTIES
+    @Environment(\.colorScheme) private var colorScheme
+    
     let profilePhotoURL: URL?
     let refreshBy: Any
     
@@ -28,7 +30,7 @@ struct Profile_SecondaryProfilePhotoView: View {
     // MARK: - BODY
     var body: some View {
         Circle()
-            .fill(.tabBarNSystemBackground)
+            .fill(colorScheme == .dark ? .black : .white)
             .frame(
                 width: profileVM.secondaryProfilePhotoFrameSize,
                 height: profileVM.secondaryProfilePhotoFrameSize
@@ -46,7 +48,11 @@ struct Profile_SecondaryProfilePhotoView: View {
                     width: profileVM.secondaryProfilePhotoSize,
                     height: profileVM.secondaryProfilePhotoSize
                 )
-                .presentStatusCircleHandler(isPrimary: false, isOnline: true)
+                .presentStatusCircleHandler(
+                    isPrimary: false,
+                    isOnline: true,
+                    color: colorScheme == .dark ? .black : .white
+                )
             }
             .scaleEffect(profileVM.getProfilePhotoScale(), anchor: .bottomLeading)
             .offset(y: profilePhotoOffsetY)

@@ -11,6 +11,8 @@ import SDWebImageSwiftUI
 @MainActor
 struct Profile_FollowersCountNLinkView: View {
     // MARK: - PROPERTIES
+    @Environment(\.colorScheme) private var colorScheme
+    
     let _3FollowersArray: [String]
     let followersCount: Int
     let linkText: String?
@@ -68,7 +70,7 @@ extension Profile_FollowersCountNLinkView {
         HStack(spacing: -8) {
             ForEach(_3FollowersArray, id: \.self) { followerImageURL in
                 Circle()
-                    .fill(.tabBarNSystemBackground)
+                    .fill(colorScheme == .dark ? .black : .white)
                     .frame(width: 22, height: 22)
                     .overlay {
                         WebImage(

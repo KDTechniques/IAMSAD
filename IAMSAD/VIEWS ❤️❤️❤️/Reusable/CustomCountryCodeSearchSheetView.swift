@@ -40,7 +40,7 @@ struct CustomCountryCodeSearchSheetView: View {
             list
         }
         .padding(.top, 20)
-        .onChange(of: searchText) { filterResults(text: $0) }
+        .onChange(of: searchText) { filterResults(text: $1) }
     }
 }
 

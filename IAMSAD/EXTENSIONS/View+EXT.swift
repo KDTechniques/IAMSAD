@@ -202,7 +202,7 @@ extension View {
     
     // MARK: - presentStatusCircleHandler
     @ViewBuilder
-    func presentStatusCircleHandler(isPrimary: Bool, isOnline: Bool) -> some View {
+    func presentStatusCircleHandler(isPrimary: Bool, isOnline: Bool, color: Color) -> some View {
         let vm: ProfileVM = .shared
         let ratio: CGFloat = vm.profilePhotoOffsetRatio
         var lineWidth: CGFloat {
@@ -223,7 +223,7 @@ extension View {
             .overlay(alignment: .bottomTrailing) {
                 if isOnline {
                     Circle()
-                        .stroke(.tabBarNSystemBackground, lineWidth: lineWidth)
+                        .stroke(color, lineWidth: lineWidth)
                         .fill(.presentStatus)
                         .frame(width: frame, height: frame)
                         .offset(x: offset, y: offset)

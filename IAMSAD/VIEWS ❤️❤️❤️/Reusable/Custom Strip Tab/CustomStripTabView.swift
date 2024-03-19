@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CustomStripTabView: View {
     // MARK: - PROPERTIES
+    @Environment(\.colorScheme) private var colorScheme
+    
     @Binding var horizontalTabHeight: CGFloat
     let contentArray: [CustomStripTabModel]
     let font: Font
@@ -76,7 +78,7 @@ struct CustomStripTabView: View {
                 labelSpacing: labelSpacing
             )
             .geometryReaderDimensionViewModifier($horizontalTabHeight, dimension: .height)
-            .background(.tabBarNSystemBackground)
+            .background(colorScheme == .dark ? .black : .white)
             .offset(y: horizontalTabOffsetY)
         }
         .frame(width: screenWidth, height: screenHeight)
