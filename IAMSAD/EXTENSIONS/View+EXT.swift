@@ -198,11 +198,20 @@ extension View {
                 profileVM.horizontalTabHeight +
                 (scrollView.contentOffset.y < 0 ? abs(scrollView.contentOffset.y) : 0)
             }
+            .gesture(
+                DragGesture()
+                    .onChanged { value in
+                        print(value)
+                        ///  to avoid unnecessary pull to refreshes, we can take the advantage of this closures execution.
+                        ///  because, this closure get executed only on time when the user start dragging, and that's when the first drag event happens.
+                        ///  so then we can check when whether the content offset of the content is within a certain threshold or not and disable pull to refresh progress view.
+                    }
+            )
     }
     
     // MARK: - presentStatusCircleHandler
     @ViewBuilder
-    func presentStatusCircleHandler(isPrimary: Bool, isOnline: Bool, color: Color) -> some View {
+    func presentStatusCircleHandler(isPrimary: Bool, isOnline: Bool) -> some View {
         let vm: ProfileVM = .shared
         let ratio: CGFloat = vm.profilePhotoOffsetRatio
         var lineWidth: CGFloat {
@@ -223,7 +232,7 @@ extension View {
             .overlay(alignment: .bottomTrailing) {
                 if isOnline {
                     Circle()
-                        .stroke(color, lineWidth: lineWidth)
+                        .stroke(.colorScheme, lineWidth: lineWidth)
                         .fill(.presentStatus)
                         .frame(width: frame, height: frame)
                         .offset(x: offset, y: offset)

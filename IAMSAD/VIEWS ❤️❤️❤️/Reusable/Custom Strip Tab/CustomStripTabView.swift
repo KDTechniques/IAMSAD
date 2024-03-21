@@ -78,7 +78,7 @@ struct CustomStripTabView: View {
                 labelSpacing: labelSpacing
             )
             .geometryReaderDimensionViewModifier($horizontalTabHeight, dimension: .height)
-            .background(colorScheme == .dark ? .black : .white)
+            .background(.colorScheme)
             .offset(y: horizontalTabOffsetY)
         }
         .frame(width: screenWidth, height: screenHeight)

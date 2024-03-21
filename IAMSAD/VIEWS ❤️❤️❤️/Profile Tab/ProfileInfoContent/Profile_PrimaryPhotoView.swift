@@ -10,13 +10,12 @@ import SDWebImageSwiftUI
 
 struct Profile_PrimaryPhotoView: View {
     // MARK: - PROPERTIES
-    @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject private var profileVM: ProfileVM
     
     // MARK: - BODY
     var body: some View {
         Circle()
-            .fill(colorScheme == .dark ? .black : .white)
+            .fill(.colorScheme)
             .frame(
                 width: profileVM.primaryProfilePhotoFrameSize,
                 height: profileVM.primaryProfilePhotoFrameSize
@@ -34,11 +33,7 @@ struct Profile_PrimaryPhotoView: View {
                     width: profileVM.primaryProfilePhotoSize,
                     height: profileVM.primaryProfilePhotoSize
                 )
-                .presentStatusCircleHandler(
-                    isPrimary: true,
-                    isOnline: true,
-                    color: colorScheme == .dark ? .black : .white
-                )
+                .presentStatusCircleHandler(isPrimary: true, isOnline: true)
             }
             .opacity(profileVM.getProfilePhotoOpacity())
     }
