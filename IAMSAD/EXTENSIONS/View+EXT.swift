@@ -117,7 +117,11 @@ extension View {
     }
     
     // MARK: - sheetTopTrailingCloseButtonViewModifier
-    func sheetTopTrailingCloseButtonViewModifier(color xmarkColor: Color = .primary, isVisible: Bool = true, action: @escaping () -> Void) -> some View {
+    func sheetTopTrailingCloseButtonViewModifier(
+        isVisible: Bool = true,
+        size: CGFloat = 35,
+        _ action: @escaping () -> Void
+    ) -> some View {
         self
             .overlay(alignment: .topTrailing) {
                 if isVisible {
@@ -127,9 +131,9 @@ extension View {
                         Image(systemName: "xmark.circle.fill")
                             .resizable()
                             .scaledToFit()
-                            .symbolRenderingMode(.hierarchical)
-                            .foregroundStyle(xmarkColor)
-                            .frame(width: 35)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(.secondary, Color(uiColor: .systemGray5))
+                            .frame(width: size, height: size)
                     }
                     .buttonStyle(.plain)
                     .padding()
@@ -147,7 +151,7 @@ extension View {
     }
     
     // MARK: - registerProfileTapEvent
-    func registerProfileTapEvent(event: Profile_TapEventTypes, action: @escaping () -> Void) -> some View {
+    func registerProfileTapEventViewModifier(event: Profile_TapEventTypes, action: @escaping () -> Void) -> some View {
         self
             .background {
                 GeometryReader { geo in
@@ -211,7 +215,7 @@ extension View {
     
     // MARK: - presentStatusCircleHandler
     @ViewBuilder
-    func presentStatusCircleHandler(isPrimary: Bool, isOnline: Bool) -> some View {
+    func presentStatusCircleHandlerViewModifier(isPrimary: Bool, isOnline: Bool) -> some View {
         let vm: ProfileVM = .shared
         let ratio: CGFloat = vm.profilePhotoOffsetRatio
         var lineWidth: CGFloat {
@@ -238,6 +242,11 @@ extension View {
                         .offset(x: offset, y: offset)
                 }
             }
+    }
+    
+    // MARK: - sheetListButtonStyleViewModifier
+    var sheetListButtonStyleViewModifier: some View {
+        self.buttonStyle(SheetListButtonStyle())
     }
 }
 
@@ -275,5 +284,18 @@ struct CustomCGRectPreferenceKey: PreferenceKey {
     
     static func reduce(value: inout CGRect, nextValue: () -> CGRect) {
         value = nextValue()
+    }
+}
+
+// MARK: - SheetListButtonStyle
+struct SheetListButtonStyle: ButtonStyle {
+    @Environment(\.colorScheme) private var colorScheme
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .background(configuration.isPressed
+                        ? Color(uiColor: .systemGray2)
+                        : colorScheme == .dark ? Color(uiColor: .systemGray5) : .white
+            )
     }
 }

@@ -244,15 +244,15 @@
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>21</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>200</string>
+					<string>205</string>
 					<key>StartingColumnNumber</key>
-					<string>21</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>200</string>
+					<string>204</string>
 					<key>Timestamp</key>
-					<string>732690242.580366</string>
+					<string>732729471.038875</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -268,15 +268,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string></string>
+				<string>            .gesture(
+</string>
 				<key>leading</key>
 				<string>                (scrollView.contentOffset.y &lt; 0 ? abs(scrollView.contentOffset.y) : 0)
             }
-            .gesture(</string>
+</string>
 				<key>trailing</key>
-				<string>
-                DragGesture()
+				<string>                DragGesture()
                     .onChanged { value in
+                        print(value)
 </string>
 			</dict>
 			<key>title</key>

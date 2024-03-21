@@ -106,6 +106,7 @@
 		0B7204C12B9662B200C705B8 /* SDWebImage+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7204C02B9662B200C705B8 /* SDWebImage+EXT.swift */; };
 		0B729F712B667B16009BDFD2 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B729F702B667B16009BDFD2 /* AvatarImageView.swift */; };
 		0B729F732B668084009BDFD2 /* AvatarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B729F722B668084009BDFD2 /* AvatarModel.swift */; };
+		0B7A99CC2BAC5F4800D5D3E2 /* Conversation_CellMoreSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7A99CB2BAC5F4800D5D3E2 /* Conversation_CellMoreSheetView.swift */; };
 		0B8544022B948D7F00FAF90F /* ProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8544012B948D7F00FAF90F /* ProfileVM.swift */; };
 		0B89BB862BA6A36D007C9721 /* Profile_SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B89BB852BA6A36D007C9721 /* Profile_SettingsView.swift */; };
 		0B89BB892BA6A3BE007C9721 /* Profile_SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B89BB882BA6A3BE007C9721 /* Profile_SearchView.swift */; };
@@ -420,6 +421,7 @@
 		0BE75A6A2B99FA09003C43DA /* Profile_ArrowIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE75A692B99FA09003C43DA /* Profile_ArrowIconView.swift */; };
 		0BE75A6C2B99FAAB003C43DA /* Profile_ProgressIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE75A6B2B99FAAB003C43DA /* Profile_ProgressIndicatorView.swift */; };
 		0BE75A6E2B99FB2B003C43DA /* Profile_CoverTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE75A6D2B99FB2B003C43DA /* Profile_CoverTextView.swift */; };
+		0BEBFBC72BAC71FC008A997A /* CustomSheetButtonsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEBFBC62BAC71FC008A997A /* CustomSheetButtonsListView.swift */; };
 		0BFB38112B56FDB300227CB2 /* OnboardingLastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFB38102B56FDB300227CB2 /* OnboardingLastView.swift */; };
 		0BFB38132B56FEDC00227CB2 /* ThumbsUpLightSkinTone.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BFB38122B56FEDC00227CB2 /* ThumbsUpLightSkinTone.png */; };
 		0BFEFEA12B91E9130005DE9B /* TapCoordinatesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFEFEA02B91E9130005DE9B /* TapCoordinatesModel.swift */; };
@@ -526,6 +528,7 @@
 		0B7204C02B9662B200C705B8 /* SDWebImage+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SDWebImage+EXT.swift"; sourceTree = "<group>"; };
 		0B729F702B667B16009BDFD2 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		0B729F722B668084009BDFD2 /* AvatarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarModel.swift; sourceTree = "<group>"; };
+		0B7A99CB2BAC5F4800D5D3E2 /* Conversation_CellMoreSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation_CellMoreSheetView.swift; sourceTree = "<group>"; };
 		0B8544012B948D7F00FAF90F /* ProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVM.swift; sourceTree = "<group>"; };
 		0B89BB852BA6A36D007C9721 /* Profile_SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_SettingsView.swift; sourceTree = "<group>"; };
 		0B89BB882BA6A3BE007C9721 /* Profile_SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_SearchView.swift; sourceTree = "<group>"; };
@@ -835,6 +838,7 @@
 		0BE75A692B99FA09003C43DA /* Profile_ArrowIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_ArrowIconView.swift; sourceTree = "<group>"; };
 		0BE75A6B2B99FAAB003C43DA /* Profile_ProgressIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_ProgressIndicatorView.swift; sourceTree = "<group>"; };
 		0BE75A6D2B99FB2B003C43DA /* Profile_CoverTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_CoverTextView.swift; sourceTree = "<group>"; };
+		0BEBFBC62BAC71FC008A997A /* CustomSheetButtonsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheetButtonsListView.swift; sourceTree = "<group>"; };
 		0BEE056A2B51A05D002478D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0BFB38102B56FDB300227CB2 /* OnboardingLastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingLastView.swift; sourceTree = "<group>"; };
 		0BFB38122B56FEDC00227CB2 /* ThumbsUpLightSkinTone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ThumbsUpLightSkinTone.png; sourceTree = "<group>"; };
@@ -1055,6 +1059,7 @@
 				0B27C3F52B52A5F500680676 /* Avatar Sheet */,
 				0B5B0E9E2B7B305A001A950C /* Custom Strip Tab */,
 				0B4F90B52BA590D900C79C0A /* CustomNoProfileImageView.swift */,
+				0BEBFBC62BAC71FC008A997A /* CustomSheetButtonsListView.swift */,
 			);
 			path = Reusable;
 			sourceTree = "<group>";
@@ -1233,6 +1238,7 @@
 			children = (
 				0BBD7CB42BA8075900AE8542 /* ConversationsView.swift */,
 				0BC560B62BA8730300EAAD75 /* Conversations_ListItemView.swift */,
+				0B7A99CB2BAC5F4800D5D3E2 /* Conversation_CellMoreSheetView.swift */,
 			);
 			path = "Conversations Tab";
 			sourceTree = "<group>";
@@ -2021,6 +2027,7 @@
 				0B2623982B4D82C70063D71C /* OnboardingAvatarView.swift in Sources */,
 				0B27C4012B52AE4200680676 /* AvatarSheetVM.swift in Sources */,
 				0B2623682B4CA1D50063D71C /* UIDevice+EXT.swift in Sources */,
+				0BEBFBC72BAC71FC008A997A /* CustomSheetButtonsListView.swift in Sources */,
 				0B20D7E12B9616A500B71C10 /* Profile_BioView.swift in Sources */,
 				0B27C3F72B52A61C00680676 /* AvatarSelectionView.swift in Sources */,
 				0BBD2AB22BA137F6006990AA /* Profile_TabLabelTypes.swift in Sources */,
@@ -2035,6 +2042,7 @@
 				0BFB38112B56FDB300227CB2 /* OnboardingLastView.swift in Sources */,
 				0B4434662B527C200041E8BF /* OTPVerificationView.swift in Sources */,
 				0B6E745B2B5A9A87008B4CFB /* Utilities.swift in Sources */,
+				0B7A99CC2BAC5F4800D5D3E2 /* Conversation_CellMoreSheetView.swift in Sources */,
 				0B2623182B4BD4420063D71C /* AlertModel.swift in Sources */,
 				0B9E806D2BA0D2250018FDE3 /* Profile_PostsTabView.swift in Sources */,
 				0B2623932B4D75870063D71C /* UserNameStatusTypes.swift in Sources */,

@@ -39,14 +39,14 @@ struct Profile_SecondaryProfilePhotoView: View {
                     options: [.highPriority, .scaleDownLargeImages, .retryFailed]
                 )
                 .resizable()
-                .defaultBColorPlaceholder
+                .defaultBColorPlaceholder()
                 .scaledToFill()
                 .clipShape(Circle())
                 .frame(
                     width: profileVM.secondaryProfilePhotoSize,
                     height: profileVM.secondaryProfilePhotoSize
                 )
-                .presentStatusCircleHandler(isPrimary: false, isOnline: true)
+                .presentStatusCircleHandlerViewModifier(isPrimary: false, isOnline: true)
             }
             .scaleEffect(profileVM.getProfilePhotoScale(), anchor: .bottomLeading)
             .offset(y: profilePhotoOffsetY)

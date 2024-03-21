@@ -24,7 +24,7 @@ struct Profile_CoverPhotoView: View {
             options: [.highPriority, .scaleDownLargeImages, .retryFailed]
         )
         .resizable()
-        .defaultBColorPlaceholder
+        .defaultBColorPlaceholder()
         .scaledToFill()
         .allowsHitTesting(false)
     }
