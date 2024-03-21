@@ -117,7 +117,11 @@ extension View {
     }
     
     // MARK: - sheetTopTrailingCloseButtonViewModifier
-    func sheetTopTrailingCloseButtonViewModifier(color xmarkColor: Color = .primary, isVisible: Bool = true, action: @escaping () -> Void) -> some View {
+    func sheetTopTrailingCloseButtonViewModifier(
+        isVisible: Bool = true,
+        size: CGFloat = 35,
+        _ action: @escaping () -> Void
+    ) -> some View {
         self
             .overlay(alignment: .topTrailing) {
                 if isVisible {
@@ -127,9 +131,9 @@ extension View {
                         Image(systemName: "xmark.circle.fill")
                             .resizable()
                             .scaledToFit()
-                            .symbolRenderingMode(.hierarchical)
-                            .foregroundStyle(xmarkColor)
-                            .frame(width: 35)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(.secondary, Color(uiColor: .systemGray5))
+                            .frame(width: size, height: size)
                     }
                     .buttonStyle(.plain)
                     .padding()
@@ -147,7 +151,7 @@ extension View {
     }
     
     // MARK: - registerProfileTapEvent
-    func registerProfileTapEvent(event: Profile_TapEventTypes, action: @escaping () -> Void) -> some View {
+    func registerProfileTapEventViewModifier(event: Profile_TapEventTypes, action: @escaping () -> Void) -> some View {
         self
             .background {
                 GeometryReader { geo in
@@ -198,11 +202,20 @@ extension View {
                 profileVM.horizontalTabHeight +
                 (scrollView.contentOffset.y < 0 ? abs(scrollView.contentOffset.y) : 0)
             }
+            .gesture(
+                DragGesture()
+                    .onChanged { value in
+                        print(value)
+                        ///  to avoid unnecessary pull to refreshes, we can take the advantage of this closures execution.
+                        ///  because, this closure get executed only on time when the user start dragging, and that's when the first drag event happens.
+                        ///  so then we can check when whether the content offset of the content is within a certain threshold or not and disable pull to refresh progress view.
+                    }
+            )
     }
     
     // MARK: - presentStatusCircleHandler
     @ViewBuilder
-    func presentStatusCircleHandler(isPrimary: Bool, isOnline: Bool, color: Color) -> some View {
+    func presentStatusCircleHandlerViewModifier(isPrimary: Bool, isOnline: Bool) -> some View {
         let vm: ProfileVM = .shared
         let ratio: CGFloat = vm.profilePhotoOffsetRatio
         var lineWidth: CGFloat {
@@ -223,12 +236,17 @@ extension View {
             .overlay(alignment: .bottomTrailing) {
                 if isOnline {
                     Circle()
-                        .stroke(color, lineWidth: lineWidth)
+                        .stroke(.colorScheme, lineWidth: lineWidth)
                         .fill(.presentStatus)
                         .frame(width: frame, height: frame)
                         .offset(x: offset, y: offset)
                 }
             }
+    }
+    
+    // MARK: - sheetListButtonStyleViewModifier
+    var sheetListButtonStyleViewModifier: some View {
+        self.buttonStyle(SheetListButtonStyle())
     }
 }
 
@@ -266,5 +284,18 @@ struct CustomCGRectPreferenceKey: PreferenceKey {
     
     static func reduce(value: inout CGRect, nextValue: () -> CGRect) {
         value = nextValue()
+    }
+}
+
+// MARK: - SheetListButtonStyle
+struct SheetListButtonStyle: ButtonStyle {
+    @Environment(\.colorScheme) private var colorScheme
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .background(configuration.isPressed
+                        ? Color(uiColor: .systemGray2)
+                        : colorScheme == .dark ? Color(uiColor: .systemGray5) : .white
+            )
     }
 }

@@ -78,7 +78,7 @@ extension Profile_FollowersCountNLinkView {
                             options: [.scaleDownLargeImages, .retryFailed]
                         )
                         .resizable()
-                        .defaultBColorPlaceholder
+                        .defaultBColorPlaceholder()
                         .scaledToFill()
                         .clipShape(Circle())
                         .padding(1.5)
@@ -97,7 +97,7 @@ extension Profile_FollowersCountNLinkView {
             
             Text("\(followersCount.intToKMString()) follower\(profileVM.getPlural())")
         }
-        .registerProfileTapEvent(event: Profile_TapEventTypes.followers) {
+        .registerProfileTapEventViewModifier(event: Profile_TapEventTypes.followers) {
             isPresentedSheet = true
             print("followers action got triggered...")
         }
@@ -120,7 +120,7 @@ extension Profile_FollowersCountNLinkView {
         Text(linkText)
             .tint(.secondary)
             .lineLimit(1)
-            .registerProfileTapEvent(event: Profile_TapEventTypes.link) {
+            .registerProfileTapEventViewModifier(event: Profile_TapEventTypes.link) {
                 guard let urlString: String = linkURL,
                       let url: URL = .init(string: urlString) else { return }
                 

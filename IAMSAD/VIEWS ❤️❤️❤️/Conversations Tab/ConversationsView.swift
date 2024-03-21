@@ -15,8 +15,7 @@ enum ConversationTypes: Equatable {
 
 struct ConversationsView: View {
     // MARK: - PROPERTIES
-    let url: URL? = .init(string: "https://picsum.photos/id/\(Int.random(in: 1...500))/300")
-    @State private var array: [Int] = Array(0...200)
+    @State private var array: [Int] = Array(0...50)
     @State var searchText: String = ""
     @State var showUnread: Bool = false
     @State private var selection = Set<Int>()
@@ -29,9 +28,9 @@ struct ConversationsView: View {
         NavigationStack {
             List(array, id: \.self, selection: $selection) { index in
                 Conversations_ListItemView(
-                    accountType: .anonymous,
-                    avatar: Avatar.shared.publicAvatarsArray[index],
-                    imageURL: nil,
+                    accountType: .personal,
+//                    avatar: Avatar.shared.publicAvatarsArray[index],
+                    imageURL: .init(string: "https://picsum.photos/id/\(Int.random(in: 1...500))/150"),
                     name: "Deepashika Sajeewanie",
                     badgeType: .blue,
                     time: "Friday",

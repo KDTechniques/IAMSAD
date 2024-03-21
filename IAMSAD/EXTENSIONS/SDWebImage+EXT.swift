@@ -9,8 +9,8 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 extension WebImage {
-    // MARK: - defaultBColorPlaceholder
-    var defaultBColorPlaceholder: some View {
-        self.placeholder { Color(uiColor: .systemGray6) }
+    // MARK: - defaultBColorPlaceholder()
+    func defaultBColorPlaceholder(_ backgroundColor: Color = Color(uiColor: .systemGray6)) -> some View {
+        self.placeholder { backgroundColor }
     }
 }

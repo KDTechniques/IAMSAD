@@ -20,7 +20,7 @@ struct IAMSADApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Conversation_CellMoreSheetView_Preview()
                 .dynamicTypeSize(...DynamicTypeSize.xLarge)
                 .environmentObject(avatar)
                 .environmentObject(avatarSheetVM)

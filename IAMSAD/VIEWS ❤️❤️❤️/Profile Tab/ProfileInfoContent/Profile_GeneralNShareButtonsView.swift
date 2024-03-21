@@ -65,7 +65,7 @@ fileprivate extension View {
                 self
             } else {
                 self
-                    .registerProfileTapEvent(event: Profile_TapEventTypes.general) {
+                    .registerProfileTapEventViewModifier(event: Profile_TapEventTypes.general) {
                         // follow/unfollow/edit profile action goes here...
                         print("general - follow/unfollow/edit profile action got triggered...")
                     }
@@ -80,7 +80,7 @@ fileprivate extension View {
                 self
             } else {
                 self
-                    .registerProfileTapEvent(event: Profile_TapEventTypes.share) {
+                    .registerProfileTapEventViewModifier(event: Profile_TapEventTypes.share) {
                         // share action goes here...
                         print("share action got triggered...")
                     }

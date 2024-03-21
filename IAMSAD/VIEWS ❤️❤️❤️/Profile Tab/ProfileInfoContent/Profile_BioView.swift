@@ -62,7 +62,7 @@ fileprivate extension View {
                 self
             } else {
                 self
-                    .registerProfileTapEvent(event: Profile_TapEventTypes.more) {
+                    .registerProfileTapEventViewModifier(event: Profile_TapEventTypes.more) {
                         more.wrappedValue = true
                         print("more action got triggered...")
                     }

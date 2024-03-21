@@ -197,50 +197,6 @@
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>69</string>
-					<key>EndingLineNumber</key>
-					<string>38</string>
-					<key>StartingColumnNumber</key>
-					<string>69</string>
-					<key>StartingLineNumber</key>
-					<string>38</string>
-					<key>Timestamp</key>
-					<string>732191796.942136</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>IAMSAD/VIEWS ❤️❤️❤️/Profile Tab/ProfileInfoContent/Profile_InfoView.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string></string>
-				<key>leading</key>
-				<string>                }
-                
-                // remove isScrolling if expanded bio text compresses</string>
-				<key>trailing</key>
-				<string>
-                if !profileVM.bioText.isEmpty {
-                    Profile_BioView(
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
 					<string>103</string>
@@ -279,6 +235,53 @@
 			</dict>
 			<key>title</key>
 			<string>remove if needed</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>205</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>204</string>
+					<key>Timestamp</key>
+					<string>732729471.038875</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/EXTENSIONS/View+EXT.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>            .gesture(
+</string>
+				<key>leading</key>
+				<string>                (scrollView.contentOffset.y &lt; 0 ? abs(scrollView.contentOffset.y) : 0)
+            }
+</string>
+				<key>trailing</key>
+				<string>                DragGesture()
+                    .onChanged { value in
+                        print(value)
+</string>
+			</dict>
+			<key>title</key>
+			<string>Implement this later</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>

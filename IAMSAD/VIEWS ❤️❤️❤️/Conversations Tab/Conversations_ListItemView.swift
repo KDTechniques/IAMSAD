@@ -104,7 +104,7 @@ extension Conversations_ListItemView {
                         options: [.scaleDownLargeImages, .continueInBackground, .retryFailed]
                     )
                     .resizable()
-                    .defaultBColorPlaceholder
+                    .defaultBColorPlaceholder()
                     .scaledToFill()
                     .clipShape(Circle())
                 } else {
