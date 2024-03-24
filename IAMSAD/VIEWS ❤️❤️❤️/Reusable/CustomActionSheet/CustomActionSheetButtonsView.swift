@@ -1,5 +1,5 @@
 //
-//  CustomSheetButtonsListView.swift
+//  CustomActionSheetButtonsView.swift
 //  IAMSAD
 //
 //  Created by Mr. Kavinda Dilshan on 2024-03-21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomSheetButtonsListView: View {
+struct CustomActionSheetButtonsView: View {
     // MARK: - PROPERTIES
     @Environment(\.colorScheme) private var colorScheme
     
@@ -47,7 +47,7 @@ struct CustomSheetButtonsListView: View {
 }
 
 // MARK: - PREVIEWS
-#Preview("CustomSheetButtonsListView") {
+#Preview("CustomActionSheetButtonsView") {
     let buttonsArray: [SheetButtonListModel] = [
         .init(
             text: "Mute",
@@ -62,7 +62,7 @@ struct CustomSheetButtonsListView: View {
             },
     ]
     
-    return CustomSheetButtonsListView { buttonsArray }.padding(.horizontal)
+    return CustomActionSheetButtonsView { buttonsArray }.padding(.horizontal)
 }
 
 struct SheetButtonListModel: Identifiable {

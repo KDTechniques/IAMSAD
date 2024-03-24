@@ -10,10 +10,9 @@ import SDWebImageSwiftUI
 
 struct Conversation_CellMoreSheetView: View {
     // MARK: - PROPERTIES
-    let imageURL: URL? = .init(string: "https://picsum.photos/id/\(Int.random(in: 100...300))/100")
+    let imageURL: URL? = .init(string: "https://picsum.photos/id/\(Int.random(in: 100...300))/10")
     let accountType:  AccountTypes = .personal
     let avatar: AvatarModel? = Avatar.shared.publicAvatarsArray.first
-    let imageSize: CGFloat = 40
     let name: String = "Deepashika Sajeewanie ❤️😘"
     
     let buttonsArray: [SheetButtonListModel] = [
@@ -33,47 +32,17 @@ struct Conversation_CellMoreSheetView: View {
     // MARK: - BODY
     var body: some View {
         VStack(spacing: 12) {
-            HStack(spacing: 12) {
-                // profile image
-                Group {
-                    switch accountType {
-                    case .personal:
-                        if let imageURL {
-                            WebImage(
-                                url: imageURL,
-                                options: [.scaleDownLargeImages, .retryFailed]
-                            )
-                            .resizable()
-                            .defaultBColorPlaceholder(Color(uiColor: .systemGray5))
-                            .scaledToFill()
-                            .clipShape(Circle())
-                        } else {
-                            CustomNoProfileImageView()
-                        }
-                        
-                    case .anonymous:
-                        if let avatar {
-                            AvatarImageView(avatar: avatar, borderSize: 1.5)
-                        } else {
-                            CustomNoProfileImageView()
-                        }
-                    }
-                }
-                .frame(width: imageSize, height: imageSize)
-                
-                // name
-                Text(name)
-                    .font(.headline)
-                    .lineLimit(1)
-                    .padding(.trailing, 50)
-                
-                Spacer()
-            }
+            CustomActionSheetHeadlineView(
+                text: "Kavinda Dilshan",
+                textOnly: false,
+                accountType: .anonymous,
+                avatar: Avatar.shared.publicAvatarsArray.first!,
+                alignment: .leading
+            )
             
-            CustomSheetButtonsListView { buttonsArray }
-                .padding(.top, 2)
+            CustomActionSheetButtonsView { buttonsArray }
             
-            CustomSheetButtonsListView { destructiveButtonsArray }
+            CustomActionSheetButtonsView { destructiveButtonsArray }
         }
         .padding()
         .sheetTopTrailingCloseButtonViewModifier(size: 30) {
