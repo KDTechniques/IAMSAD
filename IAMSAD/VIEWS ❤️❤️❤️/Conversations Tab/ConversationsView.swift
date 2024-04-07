@@ -28,9 +28,9 @@ struct ConversationsView: View {
         NavigationStack {
             List(array, id: \.self, selection: $selection) { index in
                 Conversations_ListItemView(
-                    accountType: .personal,
-//                    avatar: Avatar.shared.publicAvatarsArray[index],
-                    imageURL: .init(string: "https://picsum.photos/id/\(Int.random(in: 1...500))/150"),
+                    accountType: .anonymous,
+                    avatar: Avatar.shared.publicAvatarsArray[index],
+                    imageURL: .init(string: "https://picsum.photos/id/\(Int.random(in: 100...300))/150"),
                     name: "Deepashika Sajeewanie",
                     badgeType: .blue,
                     time: "Friday",
@@ -94,7 +94,7 @@ struct ConversationsView: View {
                                     showTabBar = false
                                 }
                                 
-                                DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
+                                DispatchQueue.main.asyncAfter(deadline: .now()+0.55) {
                                     withAnimation {
                                         showBottomBar = true
                                     }

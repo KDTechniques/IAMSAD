@@ -13,9 +13,10 @@ struct IAMSADApp: App {
     let avatar: Avatar = .shared
     @StateObject private var avatarSheetVM: AvatarSheetVM = .shared
     @StateObject private var profileVM: ProfileVM = .shared
+    @StateObject private var conversationsVM: ConversationsVM = .shared
     
     init() {
-       
+        
     }
     
     var body: some Scene {
@@ -25,6 +26,7 @@ struct IAMSADApp: App {
                 .environmentObject(avatar)
                 .environmentObject(avatarSheetVM)
                 .environmentObject(profileVM)
+                .environmentObject(conversationsVM)
         }
     }
 }
