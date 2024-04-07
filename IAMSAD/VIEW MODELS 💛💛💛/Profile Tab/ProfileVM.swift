@@ -34,7 +34,7 @@ final class ProfileVM: ObservableObject {
         profileContentHeight - coverStaticHeight -
         coverMaxExtraHeight
     }
-    var cancellable: Set<AnyCancellable> = []
+    var cancellables: Set<AnyCancellable> = []
     
     // MARK: - Toolbar
     @Published var topToolbarStaticMidY: CGFloat = 0
@@ -185,7 +185,7 @@ final class ProfileVM: ObservableObject {
                 setTabLabelContentOffsetY(newValue)
                 handleRefreshable(newValue)
             }
-            .store(in: &cancellable)
+            .store(in: &cancellables)
     }
     
     // MARK: contentOffsetDebouncedSubscriber
@@ -198,7 +198,7 @@ final class ProfileVM: ObservableObject {
                 isScrolling = false
                 networkRequestHandler(newValue)
             }
-            .store(in: &cancellable)
+            .store(in: &cancellables)
     }
     
     // MARK: registerEventCoordinates
@@ -240,7 +240,7 @@ final class ProfileVM: ObservableObject {
                 
                 executeTapEvent(newValue)
             }
-            .store(in: &cancellable)
+            .store(in: &cancellables)
     }
     
     // MARK: setProfileContentHeight
@@ -347,7 +347,7 @@ final class ProfileVM: ObservableObject {
                     }
                 }
             }
-            .store(in: &cancellable)
+            .store(in: &cancellables)
     }
     
     // MARK: handleRefreshable

@@ -121,6 +121,12 @@
 		0B931DFB2B779CFC00EB8F2E /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 0B931DFA2B779CFC00EB8F2E /* Algorithms */; };
 		0B931DFE2B779D1900EB8F2E /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 0B931DFD2B779D1900EB8F2E /* PopupView */; };
 		0B931E072B779EAB00EB8F2E /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 0B931E062B779EAB00EB8F2E /* SDWebImageSwiftUI */; };
+		0B939B682BC1E6BF00DC5F1E /* ConversationsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B939B672BC1E6BF00DC5F1E /* ConversationsVM.swift */; };
+		0B939B6A2BC27CD500DC5F1E /* CustomActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B939B692BC27CD500DC5F1E /* CustomActionSheetView.swift */; };
+		0B939B6C2BC284F500DC5F1E /* ActionSheetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B939B6B2BC284F500DC5F1E /* ActionSheetModel.swift */; };
+		0B939B6E2BC2877B00DC5F1E /* Conversations_CellMoreBlockConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B939B6D2BC2877B00DC5F1E /* Conversations_CellMoreBlockConversationView.swift */; };
+		0B939B702BC290D600DC5F1E /* Conversations_CellMoreDeleteConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B939B6F2BC290D600DC5F1E /* Conversations_CellMoreDeleteConversationView.swift */; };
+		0B939B742BC2926F00DC5F1E /* Conversations_CellMoreClearConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B939B732BC2926F00DC5F1E /* Conversations_CellMoreClearConversationView.swift */; };
 		0B9974692B55D683001AD3F6 /* UIApplication+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9974682B55D682001AD3F6 /* UIApplication+EXT.swift */; };
 		0B99746B2B55D6DE001AD3F6 /* CustomSearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B99746A2B55D6DE001AD3F6 /* CustomSearchBarView.swift */; };
 		0B9E806B2BA0D0B40018FDE3 /* Profile_TabContentTopClearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E806A2BA0D0B40018FDE3 /* Profile_TabContentTopClearView.swift */; };
@@ -542,6 +548,12 @@
 		0B8F37902B952CE0003D0824 /* CustomUIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIScrollView.swift; sourceTree = "<group>"; };
 		0B9071EE2B6EC164008D5AF4 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		0B9071F12B6EC8E7008D5AF4 /* CustomPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUpView.swift; sourceTree = "<group>"; };
+		0B939B672BC1E6BF00DC5F1E /* ConversationsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsVM.swift; sourceTree = "<group>"; };
+		0B939B692BC27CD500DC5F1E /* CustomActionSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionSheetView.swift; sourceTree = "<group>"; };
+		0B939B6B2BC284F500DC5F1E /* ActionSheetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetModel.swift; sourceTree = "<group>"; };
+		0B939B6D2BC2877B00DC5F1E /* Conversations_CellMoreBlockConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_CellMoreBlockConversationView.swift; sourceTree = "<group>"; };
+		0B939B6F2BC290D600DC5F1E /* Conversations_CellMoreDeleteConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_CellMoreDeleteConversationView.swift; sourceTree = "<group>"; };
+		0B939B732BC2926F00DC5F1E /* Conversations_CellMoreClearConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_CellMoreClearConversationView.swift; sourceTree = "<group>"; };
 		0B9974682B55D682001AD3F6 /* UIApplication+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+EXT.swift"; sourceTree = "<group>"; };
 		0B99746A2B55D6DE001AD3F6 /* CustomSearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBarView.swift; sourceTree = "<group>"; };
 		0B9E806A2BA0D0B40018FDE3 /* Profile_TabContentTopClearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_TabContentTopClearView.swift; sourceTree = "<group>"; };
@@ -937,6 +949,7 @@
 		0B26230F2B4BD3270063D71C /* VIEW MODELS 💛💛💛 */ = {
 			isa = PBXGroup;
 			children = (
+				0B939B662BC1E6A800DC5F1E /* Conversations Tab */,
 				0B8544002B948D6300FAF90F /* Profile Tab */,
 				0B27C4002B52AE4200680676 /* AvatarSheetVM.swift */,
 			);
@@ -1010,6 +1023,7 @@
 				0B20D7DE2B96134B00B71C10 /* VerifiedBadgeTypes.swift */,
 				0BFEFEA02B91E9130005DE9B /* TapCoordinatesModel.swift */,
 				0B052FE82BA57254008D07F1 /* AccountTypes.swift */,
+				0B939B6B2BC284F500DC5F1E /* ActionSheetModel.swift */,
 			);
 			path = Reusable;
 			sourceTree = "<group>";
@@ -1199,6 +1213,25 @@
 			path = ProfileSearch;
 			sourceTree = "<group>";
 		};
+		0B939B632BC13B4200DC5F1E /* Conversation Cell More */ = {
+			isa = PBXGroup;
+			children = (
+				0B7A99CB2BAC5F4800D5D3E2 /* Conversation_CellMoreSheetView.swift */,
+				0B939B6D2BC2877B00DC5F1E /* Conversations_CellMoreBlockConversationView.swift */,
+				0B939B6F2BC290D600DC5F1E /* Conversations_CellMoreDeleteConversationView.swift */,
+				0B939B732BC2926F00DC5F1E /* Conversations_CellMoreClearConversationView.swift */,
+			);
+			path = "Conversation Cell More";
+			sourceTree = "<group>";
+		};
+		0B939B662BC1E6A800DC5F1E /* Conversations Tab */ = {
+			isa = PBXGroup;
+			children = (
+				0B939B672BC1E6BF00DC5F1E /* ConversationsVM.swift */,
+			);
+			path = "Conversations Tab";
+			sourceTree = "<group>";
+		};
 		0BB6173B2B758C6C00BABB89 /* Profile Tab */ = {
 			isa = PBXGroup;
 			children = (
@@ -1245,7 +1278,7 @@
 			children = (
 				0BBD7CB42BA8075900AE8542 /* ConversationsView.swift */,
 				0BC560B62BA8730300EAAD75 /* Conversations_ListItemView.swift */,
-				0B7A99CB2BAC5F4800D5D3E2 /* Conversation_CellMoreSheetView.swift */,
+				0B939B632BC13B4200DC5F1E /* Conversation Cell More */,
 			);
 			path = "Conversations Tab";
 			sourceTree = "<group>";
@@ -1612,6 +1645,7 @@
 				0BEBFBC62BAC71FC008A997A /* CustomActionSheetButtonsView.swift */,
 				0B7704972BADA08300C7EC22 /* CustomActionSheetSubHeadlineView.swift */,
 				0B5C492B2BADA8E600616181 /* CustomActionSheetHeadlineView.swift */,
+				0B939B692BC27CD500DC5F1E /* CustomActionSheetView.swift */,
 			);
 			path = CustomActionSheet;
 			sourceTree = "<group>";
@@ -2065,15 +2099,18 @@
 				0B9E806D2BA0D2250018FDE3 /* Profile_PostsTabView.swift in Sources */,
 				0B2623932B4D75870063D71C /* UserNameStatusTypes.swift in Sources */,
 				0BB6173D2B758CB400BABB89 /* ProfileView.swift in Sources */,
+				0B939B6C2BC284F500DC5F1E /* ActionSheetModel.swift in Sources */,
 				0B7204C12B9662B200C705B8 /* SDWebImage+EXT.swift in Sources */,
 				0B5B0EA02B7B3129001A950C /* CustomStripTabHorizontalScrollView.swift in Sources */,
 				0B2623952B4D80850063D71C /* UserNameTextFieldView.swift in Sources */,
 				0BC560B72BA8730300EAAD75 /* Conversations_ListItemView.swift in Sources */,
 				0BBD2AAE2BA13729006990AA /* Profile_CoverTypes.swift in Sources */,
+				0B939B742BC2926F00DC5F1E /* Conversations_CellMoreClearConversationView.swift in Sources */,
 				0B26236A2B4CB4CF0063D71C /* Color+EXT.swift in Sources */,
 				0B2623662B4CA0F70063D71C /* View+EXT.swift in Sources */,
 				0BE75A6C2B99FAAB003C43DA /* Profile_ProgressIndicatorView.swift in Sources */,
 				0B5C492C2BADA8E600616181 /* CustomActionSheetHeadlineView.swift in Sources */,
+				0B939B6A2BC27CD500DC5F1E /* CustomActionSheetView.swift in Sources */,
 				0BE75A682B99F88E003C43DA /* Profile_SecondaryProfilePhotoView.swift in Sources */,
 				0B28C9FE2B6B076E00AC4725 /* CustomLikeHeartAnimationView.swift in Sources */,
 				0B2623582B4C92FB0063D71C /* OnboardingWelcomeView.swift in Sources */,
@@ -2095,8 +2132,10 @@
 				0B2830412B8CA495006061BF /* ToolbarTopTrailingItemsView.swift in Sources */,
 				0B2623162B4BD4200063D71C /* ViewThatFitsTypes.swift in Sources */,
 				0B2623202B4BD8CC0063D71C /* NetworkManager.swift in Sources */,
+				0B939B6E2BC2877B00DC5F1E /* Conversations_CellMoreBlockConversationView.swift in Sources */,
 				0B2623222B4BD9730063D71C /* UserDefaultsManager.swift in Sources */,
 				0B20D7D72B96067300B71C10 /* Profile_GeneralNShareButtonsView.swift in Sources */,
+				0B939B702BC290D600DC5F1E /* Conversations_CellMoreDeleteConversationView.swift in Sources */,
 				0BBAEF982BA9CE1C005330FD /* TabTypes.swift in Sources */,
 				0BBD2AB62BA1460F006990AA /* Profile_MediaTabView.swift in Sources */,
 				0B27C3FB2B52A68B00680676 /* AvatarBackgroundColorSelectionView.swift in Sources */,
@@ -2129,6 +2168,7 @@
 				0BE75A662B99F741003C43DA /* Profile_CoverPhotoView.swift in Sources */,
 				0B26231E2B4BD8570063D71C /* HapticFeedbackGenerator.swift in Sources */,
 				0B20D7DB2B960F5300B71C10 /* Profile_PrimaryPhotoView.swift in Sources */,
+				0B939B682BC1E6BF00DC5F1E /* ConversationsVM.swift in Sources */,
 				0BE0F7EF2B71414B00BD01BB /* RepliesTestingView.swift in Sources */,
 				0BC560B92BA87C4100EAAD75 /* Avatar.swift in Sources */,
 				0B58AE942B6CF0360057CCFE /* CustomTransitioningCounterTextView.swift in Sources */,
