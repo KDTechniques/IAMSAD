@@ -15,7 +15,8 @@ enum ConversationTypes: Equatable {
 
 struct ConversationsView: View {
     // MARK: - PROPERTIES
-    @State private var array: [Int] = Array(0...50)
+    @EnvironmentObject private var conversationsVM: ConversationsVM
+    
     @State var searchText: String = ""
     @State var showUnread: Bool = false
     @State private var selection = Set<Int>()
@@ -26,7 +27,7 @@ struct ConversationsView: View {
     // MARK: - BODY
     var body: some View {
         NavigationStack {
-            List(array, id: \.self, selection: $selection) { index in
+            List(0...50, id: \.self, selection: $selection) { index in
                 Conversations_ListItemView(
                     accountType: .anonymous,
                     avatar: Avatar.shared.publicAvatarsArray[index],
@@ -37,37 +38,8 @@ struct ConversationsView: View {
                     text: "Don't you worry okay, i will help you go through this. Leave a message if you need me anytime. I'll get back to you as soon as i can.",
                     conversationType: .conversationOnPost(isOnMyPost: false)
                 )
-                .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                    Button {
-                        // action goes here...
-                    } label: {
-                        Label("Unread", systemImage: "message.badge.fill")
-                    }
-                    .tint(.unreadSwipeAction)
-                    
-                    Button {
-                        // action goes here...
-                    } label: {
-                        Label("Pin", systemImage: "pin.fill")
-                    }
-                    .tint(.secondarySwipeAction)
-                }
-                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                    Button {
-                        // action goes here...
-                    } label: {
-                        Label("Mute", systemImage: "bell.slash.fill")
-                    }
-                    .tint(.muteSwipeAction)
-                    
-                    Button {
-                        // action goes here...
-                    } label: {
-                        Label("More", systemImage: "ellipsis.circle.fill")
-                            .fontWeight(.heavy)
-                    }
-                    .tint(.secondarySwipeAction)
-                }
+                .leadingSwipeGestures
+                .trailingSwipeGestures(name: "Deepashika Sajeewanie")
                 .listRowBackground(Color.clear)
                 .listSectionSeparator(.hidden)
             }
@@ -77,52 +49,13 @@ struct ConversationsView: View {
             .toolbar(showBottomBar ? .visible : .hidden, for: .bottomBar)
             .environment(\.editMode, $editMode)
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    if editMode == .active {
-                        Button("Done") {
-                            withAnimation {
-                                editMode = .inactive
-                                showBottomBar = false
-                                showTabBar = true
-                            }
-                        }
-                    } else {
-                        Menu {
-                            Button {
-                                withAnimation {
-                                    editMode = .active
-                                    showTabBar = false
-                                }
-                                
-                                DispatchQueue.main.asyncAfter(deadline: .now()+0.55) {
-                                    withAnimation {
-                                        showBottomBar = true
-                                    }
-                                }
-                            } label: {
-                                Label("Select Conversations", systemImage: "checkmark.circle")
-                            }
-                        } label: {
-                            Image(systemName: "ellipsis.circle")
-                        }
-                    }
-                }
+                ToolbarItem(placement: .topBarLeading) { topBarLeadingToolbarContent }
                 
-                ToolbarItem(placement: .topBarTrailing) {
-                    
-                }
+                ToolbarItem(placement: .topBarTrailing) { topBarTrailingToolbarContent }
                 
-                ToolbarItem(placement: .bottomBar) {
-                    HStack {
-                        Button("Mute") { }
-                        Spacer()
-                        Button("Read All") { }
-                        Spacer()
-                        Button("Delete") { }
-                    }
-                    .disabled(selection.count == 0)
-                }
+                ToolbarItem(placement: .bottomBar) { bottomToolbarContent }
             }
+            .sheet(item: $conversationsVM.sheetItem) { $0.content }
         }
         .searchable(text: $searchText)
     }
@@ -137,4 +70,116 @@ struct ConversationsView: View {
 #Preview("ContentView") {
     ContentView()
         .previewViewModifier
+}
+
+// MARK: - EXTENSIONS
+extension ConversationsView {
+    // MARK: - topBarLeadingToolbarContent
+    @ViewBuilder
+    private var topBarLeadingToolbarContent: some View {
+        if editMode == .active {
+            Button("Done") {
+                withAnimation {
+                    editMode = .inactive
+                    showBottomBar = false
+                    showTabBar = true
+                }
+            }
+        } else {
+            Menu {
+                Button {
+                    withAnimation {
+                        editMode = .active
+                        showTabBar = false
+                    }
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now()+0.55) {
+                        withAnimation {
+                            showBottomBar = true
+                        }
+                    }
+                } label: {
+                    Label("Select Conversations", systemImage: "checkmark.circle")
+                }
+            } label: {
+                Image(systemName: "ellipsis.circle")
+            }
+        }
+    }
+    
+    // MARK: - topBarTrailingToolbarContent
+    private var topBarTrailingToolbarContent: some View {
+        Menu {
+            Button {
+                // action goes here...
+            } label: {
+                Label("Show Unread", systemImage: "envelope")
+            }
+            
+            Button {
+                // action goes here...
+            } label: {
+                Label("Show trusted people", systemImage: "person.badge.shield.checkmark")
+            }
+            
+        } label: {
+            Image(systemName: "line.3.horizontal.decrease.circle")
+        }
+    }
+    
+    // MARK: - bottomToolbarContent
+    private var bottomToolbarContent: some View {
+        HStack {
+            Button("Mute") { conversationsVM.mute() }
+            Spacer()
+            Button("Read All") { conversationsVM.readAll() }
+            Spacer()
+            Button("Delete") { conversationsVM.delete() }
+        }
+        .disabled(selection.count == 0)
+    }
+}
+
+@MainActor
+extension View {
+    // MARK: - leadingSwipeGestures
+    fileprivate var leadingSwipeGestures: some View {
+        self
+            .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                Button {
+                    // action goes here...
+                } label: {
+                    Label("Unread", systemImage: "message.badge.fill")
+                }
+                .tint(.unreadSwipeAction)
+                
+                Button {
+                    // action goes here...
+                } label: {
+                    Label("Pin", systemImage: "pin.fill")
+                }
+                .tint(.secondarySwipeAction)
+            }
+    }
+    
+    // MARK: - trailingSwipeGestures
+    fileprivate func trailingSwipeGestures(name: String) -> some View {
+        self
+            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                Button {
+                    // action goes here...
+                } label: {
+                    Label("Mute", systemImage: "bell.slash.fill")
+                }
+                .tint(.muteSwipeAction)
+                
+                Button {
+                    ConversationsVM.shared.moreActionSheet(name: name)
+                } label: {
+                    Label("More", systemImage: "ellipsis.circle.fill")
+                        .fontWeight(.heavy)
+                }
+                .tint(.secondarySwipeAction)
+            }
+    }
 }

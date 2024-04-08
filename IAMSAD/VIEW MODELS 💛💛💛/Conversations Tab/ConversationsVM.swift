@@ -21,6 +21,28 @@ final class ConversationsVM: ObservableObject {
     
     // MARK: - FUNCTIONS
     
+    // MARK: - mute
+    func mute() {
+        
+    }
+    
+    // MARK: - readAll
+    func readAll() {
+        
+    }
+    
+    // MARK: - delete
+    func delete() {
+        
+    }
+    
+    // MARK: - moreActionSheet
+    func moreActionSheet(name: String) {
+        sheetItem = .init(AnyView(
+            Conversation_CellMoreSheetView(name: name)
+        ))
+    }
+    
     // MARK: - blockConversation
     func blockConversation(name: String) {
         sheetItem = .init(AnyView(

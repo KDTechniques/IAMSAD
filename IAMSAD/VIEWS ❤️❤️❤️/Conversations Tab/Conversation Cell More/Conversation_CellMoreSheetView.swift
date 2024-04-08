@@ -13,7 +13,7 @@ struct Conversation_CellMoreSheetView: View {
     let imageURL: URL? = .init(string: "https://picsum.photos/id/\(Int.random(in: 100...300))/100")
     let accountType:  AccountTypes = .personal
     let avatar: AvatarModel? = Avatar.shared.publicAvatarsArray.first
-    let name: String = "Wifey ❤️😘"
+    let name: String
     var dismissAction: () {
         DispatchQueue.main.async {
             ConversationsVM.shared.dismissAction
@@ -23,7 +23,7 @@ struct Conversation_CellMoreSheetView: View {
     var buttonsArray: [SheetButtonListModel] {[
         .init(text: "Send a gift", systemImageName: "gift") { },
         .init(text: "Contact Info", systemImageName: "info.circle") { },
-        .init(text: "Add to trusted people", systemImageName: "person.badge.shield.checkmark") { },
+        .init(text: "Add to trusted people", systemImageName: "person.badge.plus") { },
         .init(text: "Recommend to a friend", systemImageName: "person.line.dotted.person") { },
         .init(text: "Lock conversation", systemImageName: "lock") { },
         .init(text: "Clear conversation", systemImageName: "xmark.circle") {
@@ -45,6 +45,11 @@ struct Conversation_CellMoreSheetView: View {
             }
         }
     ]}
+    
+    // MARK: - INITIALIZER
+    init(name: String) {
+        self.name = name
+    }
     
     // MARK: - BODY
     var body: some View {
@@ -75,7 +80,9 @@ struct Conversation_CellMoreSheetView_Preview: View {
         Color.clear
             .sheet(item: $conversationsVM.sheetItem) { $0.content }
             .onAppear {
-                conversationsVM.sheetItem = .init(AnyView(Conversation_CellMoreSheetView()))
+                conversationsVM.sheetItem = .init(AnyView(
+                    Conversation_CellMoreSheetView(name: "Wifey ❤️😘")
+                ))
             }
     }
 }
