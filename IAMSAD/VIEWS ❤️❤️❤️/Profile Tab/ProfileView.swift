@@ -28,6 +28,3 @@ struct ProfileView: View {
     ProfileView()
         .previewViewModifier
 }
-
-
-// person.badge.shield.checkmark.fill

@@ -959,6 +959,7 @@
 		0B2623102B4BD33C0063D71C /* MODELS 💚💚💚 */ = {
 			isa = PBXGroup;
 			children = (
+				0B939B6D2BC2877B00DC5F1E /* Conversations_CellMoreBlockConversationView.swift */,
 				0BBD2AAA2BA136CF006990AA /* Profile Tab */,
 				0B2623142B4BD4010063D71C /* Reusable */,
 			);
@@ -1217,7 +1218,6 @@
 			isa = PBXGroup;
 			children = (
 				0B7A99CB2BAC5F4800D5D3E2 /* Conversation_CellMoreSheetView.swift */,
-				0B939B6D2BC2877B00DC5F1E /* Conversations_CellMoreBlockConversationView.swift */,
 				0B939B6F2BC290D600DC5F1E /* Conversations_CellMoreDeleteConversationView.swift */,
 				0B939B732BC2926F00DC5F1E /* Conversations_CellMoreClearConversationView.swift */,
 			);
