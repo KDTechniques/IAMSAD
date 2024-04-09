@@ -28,6 +28,6 @@ struct Conversations_RegularMessageBubbleView<T: View>: View {
             .clipShape(Conversations_BubbleShape(direction: direction))
             .frame(maxWidth: .infinity, alignment: direction == .left ? .leading : .trailing)
             .padding([direction == .left ? .leading : .trailing], 10)
-            .padding([direction == .left ? .trailing : .leading], 50)
+            .padding([direction == .left ? .trailing : .leading], 80)
     }
 }
