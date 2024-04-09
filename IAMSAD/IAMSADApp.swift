@@ -21,7 +21,7 @@ struct IAMSADApp: App {
     
     var body: some Scene {
         WindowGroup {
-            Conversation_CellMoreSheetView_Preview()
+            Conversations_MessageThreadView()
                 .dynamicTypeSize(...DynamicTypeSize.xLarge)
                 .environmentObject(avatar)
                 .environmentObject(avatarSheetVM)
