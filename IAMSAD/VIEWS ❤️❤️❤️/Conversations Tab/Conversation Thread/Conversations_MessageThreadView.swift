@@ -9,11 +9,6 @@ import SwiftUI
 
 struct Conversations_MessageThreadView: View {
     
-    @State private var toggle: Bool = false
-    @State private var isExceededLineLimit: Bool = false
-    @State private var isReadMore: Bool = false
-    @State private var height: CGFloat = 0
-    
     var body: some View {
         Color.black.ignoresSafeArea()
             .overlay {
@@ -25,43 +20,16 @@ struct Conversations_MessageThreadView: View {
             }
             .overlay {
                 ScrollView(.vertical) {
-                    let padding: CGFloat = 12
-                    let text: String = "This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines.This is a sample, and bit longer text that could go up to several lines."
-                    
-                    Conversations_RegularMessageBubbleView(direction: toggle ? .left : .right) {
-                        VStack(spacing: 10) {
-                            if !isReadMore {
-                                if height < screenHeight {
-                                    Text(text)
-                                        .geometryReaderDimensionViewModifier($height, dimension: .height)
-                                } else {
-                                    Text(text)
-                                        .lineLimit(50)
-                                        .onAppear { isExceededLineLimit = true }
-                                        .onDisappear { isExceededLineLimit = false }
-                                }
-                            } else {
-                                Text(text)
-                            }
-                            
-                            HStack(alignment: .bottom) {
-                                if isExceededLineLimit {
-                                    Button("Read more") { isReadMore = true }
-                                        .fontWeight(.medium)
-                                        .padding(.bottom, 4)
-                                }
-                                
-                                Spacer()
-                                
-                                Text("10:43 PM")
-                                    .font(.footnote)
-                                    .foregroundStyle(.secondary)
-                            }
+                    LazyVStack(spacing: 50) {
+                        ForEach(0...100, id: \.self) { index in
+                            Conversations_TextOnlyBubbleTypeView(
+                                text: "Hello there 👋👋👋",
+                                timestamp: "06:12 PM",
+                                userType: index % 2 == 0 ? .sender : .receiver,
+                                showPointer: index % 2 == 0
+                            )
                         }
-                        .padding([.horizontal, .top], padding)
-                        .padding(.bottom, 6)
                     }
-                    .onTapGesture { toggle.toggle() }
                 }
             }
     }

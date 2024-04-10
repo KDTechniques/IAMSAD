@@ -117,6 +117,57 @@ extension View {
             )
     }
     
+    // MARK: - geometryReaderFrameViewModifier
+    @ViewBuilder
+    func geometryReaderFrameViewModifier(
+        coordinateSpace: CoordinateSpace = .global,
+        rect: RectCoordinateTypes,
+        _ binding: Binding<CGFloat>
+    ) -> some View {
+        self
+            .background {
+                GeometryReader { geo in
+                    Group {
+                        switch rect {
+                        case .minX:
+                            Color.clear.preference(
+                                key: CustomCGFloatPreferenceKey.self,
+                                value: geo.frame(in: .global).minX
+                            )
+                        case .midX:
+                            Color.clear.preference(
+                                key: CustomCGFloatPreferenceKey.self,
+                                value: geo.frame(in: .global).midX
+                            )
+                        case .maxX:
+                            Color.clear.preference(
+                                key: CustomCGFloatPreferenceKey.self,
+                                value: geo.frame(in: .global).maxX
+                            )
+                        case .minY:
+                            Color.clear.preference(
+                                key: CustomCGFloatPreferenceKey.self,
+                                value: geo.frame(in: .global).minY
+                            )
+                        case .midY:
+                            Color.clear.preference(
+                                key: CustomCGFloatPreferenceKey.self,
+                                value: geo.frame(in: .global).midY
+                            )
+                        case .maxY:
+                            Color.clear.preference(
+                                key: CustomCGFloatPreferenceKey.self,
+                                value: geo.frame(in: .global).maxY
+                            )
+                        }
+                    }
+                    .onPreferenceChange(CustomCGFloatPreferenceKey.self) {
+                        binding.wrappedValue = $0
+                    }
+                }
+            }
+    }
+    
     // MARK: - sheetTopTrailingCloseButtonViewModifier
     func sheetTopTrailingCloseButtonViewModifier(
         isVisible: Bool = true,

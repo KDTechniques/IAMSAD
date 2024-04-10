@@ -10,21 +10,29 @@ import SwiftUI
 struct Conversations_BubbleShape: Shape {
     // MARK: - PROPERTIES
     let direction: BubbleShapeValues.Directions
+    let showPointer: Bool
     
     let values: BubbleShapeValues = .init()
     
     // MARK: - INITIALIZER
-    init(direction: BubbleShapeValues.Directions) {
+    init(direction: BubbleShapeValues.Directions, showPointer: Bool) {
         self.direction = direction
+        self.showPointer = showPointer
     }
     
     // MARK: - FUNCTIONS
     
     // MARK: - path
     func path(in rect: CGRect) -> Path {
-        direction == .left
-        ? getLeftPointPath(in: rect).union(getLeftRectanglePath(in: rect))
-        : getRightPointPath(in: rect).union(getRightRectanglePath(in: rect))
+        if showPointer {
+            direction == .left
+            ? getLeftPointPath(in: rect).union(getLeftRectanglePath(in: rect))
+            : getRightPointPath(in: rect).union(getRightRectanglePath(in: rect))
+        } else {
+            direction == .left
+            ? getLeftRectanglePath(in: rect)
+            : getRightRectanglePath(in: rect)
+        }
     }
     
     // MARK: - getRightPointPath
@@ -173,7 +181,7 @@ struct Conversations_BubbleShape: Shape {
 
 // MARK: - PREVIEWS
 #Preview("Conversations_BubbleShape - Right") {
-    Conversations_BubbleShape(direction: .right)
+    Conversations_BubbleShape(direction: .right, showPointer: Bool.random())
         .fill(Color.regularBubble)
         .frame(width: 250, height: 100)
         .frame(maxWidth: .infinity, alignment: .trailing)
@@ -181,7 +189,7 @@ struct Conversations_BubbleShape: Shape {
 }
 
 #Preview("Conversations_BubbleShape - Left") {
-    Conversations_BubbleShape(direction: .left)
+    Conversations_BubbleShape(direction: .left, showPointer: Bool.random())
         .fill(Color.regularBubble)
         .frame(width: 250, height: 100)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -193,7 +201,7 @@ struct Conversations_BubbleShape: Shape {
 // MARK: - BubbleShapeValues
 struct BubbleShapeValues {
     enum Directions { case left, right }
-    let cornerRadius: CGFloat = 20
+    let cornerRadius: CGFloat = 14
     let eyeCraftedValue: CGFloat = 20
     var ratio: CGFloat { cornerRadius/eyeCraftedValue }
     var externalWidth: CGFloat { 8 * ratio }

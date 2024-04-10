@@ -5,7 +5,7 @@
 //  Created by Mr. Kavinda Dilshan on 2024-02-02.
 //
 
-import Foundation
+import SwiftUI
 
 extension String {
     // MARK: - kmStringToInt
@@ -40,5 +40,25 @@ extension String {
         }
         
         return truncatedString
+    }
+    
+    // MARK: - widthOfString
+    func widthOfHString(usingFont font: UIFont) -> CGFloat {
+        let fontAttributes = [NSAttributedString.Key.font: font]
+        let size = self.size(withAttributes: fontAttributes)
+        return size.width
+    }
+    
+    // MARK: - heightOfString
+    func heightOfHString(usingFont font: UIFont) -> CGFloat {
+        let fontAttributes = [NSAttributedString.Key.font: font]
+        let size = self.size(withAttributes: fontAttributes)
+        return size.height
+    }
+    
+    // MARK: - sizeOfString
+    func sizeOfHString(usingFont font: UIFont) -> CGSize {
+        let fontAttributes = [NSAttributedString.Key.font: font]
+        return self.size(withAttributes: fontAttributes)
     }
 }
