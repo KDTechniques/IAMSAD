@@ -9,8 +9,6 @@ import SwiftUI
 
 struct Conversations_MessageThreadView: View {
     
-    @State private var toggle: Bool = !false
-    
     var body: some View {
         Color.black.ignoresSafeArea()
             .overlay {
@@ -21,22 +19,17 @@ struct Conversations_MessageThreadView: View {
                     .ignoresSafeArea()
             }
             .overlay {
-                let padding: CGFloat = 12
-                Conversations_RegularMessageBubbleView(direction: toggle ? .left : .right) {
-                    Text("This is a sample, and bit longer text that could go up to two lines.This is a sample, and bit longer text that could go up to two lines.This is a sample, and bit longer text that could go up to two lines.")
-                        .lineLimit(60)
-                        .padding(padding)
-                        .overlay(alignment: .bottomTrailing) {
-                            Text("10:43 PM")
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
-                                .padding(.trailing, padding)
-                                .padding(.bottom, 10)
+                ScrollView(.vertical) {
+                    LazyVStack(spacing: 50) {
+                        ForEach(0...100, id: \.self) { index in
+                            Conversations_TextOnlyBubbleTypeView(
+                                text: "Hello there 👋👋👋",
+                                timestamp: "06:12 PM",
+                                userType: index % 2 == 0 ? .sender : .receiver,
+                                showPointer: index % 2 == 0
+                            )
                         }
-                    
-                }
-                .onTapGesture {
-                    toggle.toggle()
+                    }
                 }
             }
     }
