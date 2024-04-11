@@ -12,7 +12,7 @@ struct Conversations_BubbleShape: Shape {
     let direction: BubbleShapeValues.Directions
     let showPointer: Bool
     
-    let values: BubbleShapeValues = .init()
+    let values = BubbleShapeValues.self
     
     // MARK: - INITIALIZER
     init(direction: BubbleShapeValues.Directions, showPointer: Bool) {
@@ -182,7 +182,7 @@ struct Conversations_BubbleShape: Shape {
 // MARK: - PREVIEWS
 #Preview("Conversations_BubbleShape - Right") {
     Conversations_BubbleShape(direction: .right, showPointer: Bool.random())
-        .fill(Color.regularBubble)
+        .fill(Color.bubbleSender)
         .frame(width: 250, height: 100)
         .frame(maxWidth: .infinity, alignment: .trailing)
         .padding(.trailing)
@@ -190,7 +190,7 @@ struct Conversations_BubbleShape: Shape {
 
 #Preview("Conversations_BubbleShape - Left") {
     Conversations_BubbleShape(direction: .left, showPointer: Bool.random())
-        .fill(Color.regularBubble)
+        .fill(Color.bubbleSender)
         .frame(width: 250, height: 100)
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.leading)
@@ -200,9 +200,15 @@ struct Conversations_BubbleShape: Shape {
 
 // MARK: - BubbleShapeValues
 struct BubbleShapeValues {
-    enum Directions { case left, right }
-    let cornerRadius: CGFloat = 14
-    let eyeCraftedValue: CGFloat = 20
-    var ratio: CGFloat { cornerRadius/eyeCraftedValue }
-    var externalWidth: CGFloat { 8 * ratio }
+    enum Directions {
+        case left, right
+        
+        static func random() -> Self {
+            Bool.random() ? .right : .left
+        }
+    }
+    static let cornerRadius: CGFloat = 14
+    static let eyeCraftedValue: CGFloat = 20
+    static var ratio: CGFloat { cornerRadius/eyeCraftedValue }
+    static var externalWidth: CGFloat { 8 * ratio }
 }

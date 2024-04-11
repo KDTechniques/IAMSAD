@@ -10,7 +10,8 @@ import SwiftUI
 struct Conversations_MessageThreadView: View {
     
     var body: some View {
-        Color.black.ignoresSafeArea()
+        Color.conversationBackground
+            .ignoresSafeArea()
             .overlay {
                 Image(.whatsappchatbackgroundimage)
                     .resizable()
@@ -26,7 +27,7 @@ struct Conversations_MessageThreadView: View {
                                 text: "Hello there 👋👋👋",
                                 timestamp: "06:12 PM",
                                 userType: index % 2 == 0 ? .sender : .receiver,
-                                showPointer: index % 2 == 0
+                                showPointer: index % 2 != 0
                             )
                         }
                     }
