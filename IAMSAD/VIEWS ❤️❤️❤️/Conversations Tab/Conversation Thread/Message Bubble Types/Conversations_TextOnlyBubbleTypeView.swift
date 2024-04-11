@@ -19,7 +19,7 @@ struct Conversations_TextOnlyBubbleTypeView: View {
     @State private var isExceededLineLimit: Bool = false
     @State private var isReadMore: Bool = false
     @State private var height: CGFloat = 0
-    let values: MessageBubbleValues = .init()
+    let values = MessageBubbleValues.self
     let innerHPadding: CGFloat = 10
     let singleLineHSpacing: CGFloat = 12
     var textWidth: CGFloat {

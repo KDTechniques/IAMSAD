@@ -154,6 +154,7 @@
 		0BBD2ABC2BA14639006990AA /* Profile_AchievementsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD2ABB2BA14639006990AA /* Profile_AchievementsTabView.swift */; };
 		0BBD7CB52BA8075900AE8542 /* ConversationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD7CB42BA8075900AE8542 /* ConversationsView.swift */; };
 		0BBF76852B679A73000D3D40 /* CGFloat+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF76842B679A73000D3D40 /* CGFloat+EXT.swift */; };
+		0BC2EB1E2BC82DB100003941 /* Conversations_StickerOnlyBubbleTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC2EB1D2BC82DB100003941 /* Conversations_StickerOnlyBubbleTypeView.swift */; };
 		0BC362F82B66CC0C008BD184 /* Featured_31.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BC362C62B66CC0B008BD184 /* Featured_31.png */; };
 		0BC362F92B66CC0C008BD184 /* Featured_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BC362C72B66CC0B008BD184 /* Featured_2.png */; };
 		0BC362FA2B66CC0C008BD184 /* Featured_39.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BC362C82B66CC0B008BD184 /* Featured_39.png */; };
@@ -590,6 +591,7 @@
 		0BBD2ABB2BA14639006990AA /* Profile_AchievementsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_AchievementsTabView.swift; sourceTree = "<group>"; };
 		0BBD7CB42BA8075900AE8542 /* ConversationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsView.swift; sourceTree = "<group>"; };
 		0BBF76842B679A73000D3D40 /* CGFloat+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+EXT.swift"; sourceTree = "<group>"; };
+		0BC2EB1D2BC82DB100003941 /* Conversations_StickerOnlyBubbleTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_StickerOnlyBubbleTypeView.swift; sourceTree = "<group>"; };
 		0BC362C62B66CC0B008BD184 /* Featured_31.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Featured_31.png; sourceTree = "<group>"; };
 		0BC362C72B66CC0B008BD184 /* Featured_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Featured_2.png; sourceTree = "<group>"; };
 		0BC362C82B66CC0B008BD184 /* Featured_39.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Featured_39.png; sourceTree = "<group>"; };
@@ -1270,6 +1272,7 @@
 				0BB588562BC50DFA003ACABB /* Conversations_BubbleShape.swift */,
 				0B08F1C52BC5B4A1009E8538 /* Conversations_MessageBubbleView.swift */,
 				0B8900BE2BC6E74F0054B056 /* Conversations_TextOnlyBubbleTypeView.swift */,
+				0BC2EB1D2BC82DB100003941 /* Conversations_StickerOnlyBubbleTypeView.swift */,
 			);
 			path = "Message Bubble Types";
 			sourceTree = "<group>";
@@ -2205,6 +2208,7 @@
 				0B26231C2B4BD6550063D71C /* ConfirmationDialogModel.swift in Sources */,
 				0BBD2AB02BA13750006990AA /* Profile_GeneralButtonTypes.swift in Sources */,
 				0B8900C32BC6F10B0054B056 /* RectCoordinateTypes.swift in Sources */,
+				0BC2EB1E2BC82DB100003941 /* Conversations_StickerOnlyBubbleTypeView.swift in Sources */,
 				0B20D7DD2B96126400B71C10 /* Profile_NameGenderNJoinedDateView.swift in Sources */,
 				0B20D7E72B961C3C00B71C10 /* Profile_BackgroundView.swift in Sources */,
 				0B2623262B4BDA1B0063D71C /* AnalyticsManager.swift in Sources */,
