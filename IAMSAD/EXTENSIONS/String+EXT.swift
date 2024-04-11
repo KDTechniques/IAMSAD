@@ -43,21 +43,21 @@ extension String {
     }
     
     // MARK: - widthOfString
-    func widthOfHString(usingFont font: UIFont) -> CGFloat {
+    func widthOfHString(usingFont font: UIFont, _ : DynamicTypeSize) -> CGFloat {
         let fontAttributes = [NSAttributedString.Key.font: font]
         let size = self.size(withAttributes: fontAttributes)
         return size.width
     }
     
     // MARK: - heightOfString
-    func heightOfHString(usingFont font: UIFont) -> CGFloat {
+    func heightOfHString(usingFont font: UIFont, _ : DynamicTypeSize) -> CGFloat {
         let fontAttributes = [NSAttributedString.Key.font: font]
         let size = self.size(withAttributes: fontAttributes)
         return size.height
     }
     
     // MARK: - sizeOfString
-    func sizeOfHString(usingFont font: UIFont) -> CGSize {
+    func sizeOfHString(usingFont font: UIFont, _ : DynamicTypeSize) -> CGSize {
         let fontAttributes = [NSAttributedString.Key.font: font]
         return self.size(withAttributes: fontAttributes)
     }

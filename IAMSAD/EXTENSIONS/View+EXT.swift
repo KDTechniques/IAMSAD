@@ -87,7 +87,7 @@ extension View {
     }
     
     // MARK: - geometryReaderDimensionViewModifier
-    func geometryReaderDimensionViewModifier(_ binding: Binding<CGFloat>, dimension: DimensionTypes) -> some View {
+    func geometryReaderDimensionViewModifier(_ binding: Binding<CGFloat>, dimension: DimensionTypes, extraValue: CGFloat = 0) -> some View {
         self
             .background(
                 GeometryReader { geo in
@@ -97,21 +97,24 @@ extension View {
                             value: dimension == .width ? geo.size.width : geo.size.height
                         )
                         .onPreferenceChange(CustomCGFloatPreferenceKey.self) {
-                            binding.wrappedValue = $0
+                            binding.wrappedValue = $0 + extraValue
                         }
                 }
             )
     }
     
     // MARK: - geometryReaderSizeViewModifier
-    func geometryReaderSizeViewModifier(_ binding: Binding<CGSize>) -> some View {
+    func geometryReaderSizeViewModifier(_ binding: Binding<CGSize>, extraWidth: CGFloat = 0, extraHeight: CGFloat = 0) -> some View {
         self
             .background(
                 GeometryReader { geo in
                     Color.clear
                         .preference(key: CustomCGSizePreferenceKey.self, value: geo.size)
                         .onPreferenceChange(CustomCGSizePreferenceKey.self) {
-                            binding.wrappedValue = $0
+                            binding.wrappedValue = .init(
+                                width: $0.width + extraWidth,
+                                height: $0.height + extraHeight
+                            )
                         }
                 }
             )
