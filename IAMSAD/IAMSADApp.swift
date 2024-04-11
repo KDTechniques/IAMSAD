@@ -21,12 +21,23 @@ struct IAMSADApp: App {
     
     var body: some Scene {
         WindowGroup {
-            Conversations_MessageThreadView()
-                .dynamicTypeSize(...DynamicTypeSize.xLarge)
-                .environmentObject(avatar)
-                .environmentObject(avatarSheetVM)
-                .environmentObject(profileVM)
-                .environmentObject(conversationsVM)
+            ScrollView(.vertical) {
+                LazyVStack {
+                    Conversations_TextOnlyBubbleTypeView(
+                        text: "Hello there 👋👋👋",
+                        timestamp: "06:12 PM",
+                        userType: .sender,
+                        showPointer: true
+                    )
+                    
+                    Conversations_StickerOnlyBubbleTypeView(url: .init(string: ""), timestamp: "06:12 PM", userType: .sender)
+                }
+            }
+            .dynamicTypeSize(...DynamicTypeSize.xLarge)
+            .environmentObject(avatar)
+            .environmentObject(avatarSheetVM)
+            .environmentObject(profileVM)
+            .environmentObject(conversationsVM)
         }
     }
 }

@@ -105,6 +105,7 @@
 		0B5C492C2BADA8E600616181 /* CustomActionSheetHeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5C492B2BADA8E600616181 /* CustomActionSheetHeadlineView.swift */; };
 		0B5C492E2BAE8DFC00616181 /* CustomProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5C492D2BAE8DFC00616181 /* CustomProfileImageView.swift */; };
 		0B5FBB802B7C90DC00669034 /* Profile_TabContentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5FBB7F2B7C90DC00669034 /* Profile_TabContentsView.swift */; };
+		0B685AE92BC876D60049B7AA /* Conversations_StickerPlaceholderShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B685AE82BC876D60049B7AA /* Conversations_StickerPlaceholderShapeView.swift */; };
 		0B6E745B2B5A9A87008B4CFB /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E745A2B5A9A87008B4CFB /* Utilities.swift */; };
 		0B6E745D2B5AA21D008B4CFB /* CustomContentNotAvailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E745C2B5AA21D008B4CFB /* CustomContentNotAvailableView.swift */; };
 		0B7204C12B9662B200C705B8 /* SDWebImage+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7204C02B9662B200C705B8 /* SDWebImage+EXT.swift */; };
@@ -546,6 +547,7 @@
 		0B5C492B2BADA8E600616181 /* CustomActionSheetHeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionSheetHeadlineView.swift; sourceTree = "<group>"; };
 		0B5C492D2BAE8DFC00616181 /* CustomProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProfileImageView.swift; sourceTree = "<group>"; };
 		0B5FBB7F2B7C90DC00669034 /* Profile_TabContentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_TabContentsView.swift; sourceTree = "<group>"; };
+		0B685AE82BC876D60049B7AA /* Conversations_StickerPlaceholderShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_StickerPlaceholderShapeView.swift; sourceTree = "<group>"; };
 		0B6E745A2B5A9A87008B4CFB /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		0B6E745C2B5AA21D008B4CFB /* CustomContentNotAvailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContentNotAvailableView.swift; sourceTree = "<group>"; };
 		0B7204C02B9662B200C705B8 /* SDWebImage+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SDWebImage+EXT.swift"; sourceTree = "<group>"; };
@@ -1211,6 +1213,15 @@
 			path = "Custom Strip Tab";
 			sourceTree = "<group>";
 		};
+		0B685AE72BC876990049B7AA /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				0BB588562BC50DFA003ACABB /* Conversations_BubbleShape.swift */,
+				0B685AE82BC876D60049B7AA /* Conversations_StickerPlaceholderShapeView.swift */,
+			);
+			path = Shapes;
+			sourceTree = "<group>";
+		};
 		0B729F6F2B667A0C009BDFD2 /* Custom Avatar Image */ = {
 			isa = PBXGroup;
 			children = (
@@ -1269,7 +1280,7 @@
 		0BB588532BC48D5D003ACABB /* Message Bubble Types */ = {
 			isa = PBXGroup;
 			children = (
-				0BB588562BC50DFA003ACABB /* Conversations_BubbleShape.swift */,
+				0B685AE72BC876990049B7AA /* Shapes */,
 				0B08F1C52BC5B4A1009E8538 /* Conversations_MessageBubbleView.swift */,
 				0B8900BE2BC6E74F0054B056 /* Conversations_TextOnlyBubbleTypeView.swift */,
 				0BC2EB1D2BC82DB100003941 /* Conversations_StickerOnlyBubbleTypeView.swift */,
@@ -2124,6 +2135,7 @@
 				0B2623982B4D82C70063D71C /* OnboardingAvatarView.swift in Sources */,
 				0B27C4012B52AE4200680676 /* AvatarSheetVM.swift in Sources */,
 				0B7704982BADA08300C7EC22 /* CustomActionSheetSubHeadlineView.swift in Sources */,
+				0B685AE92BC876D60049B7AA /* Conversations_StickerPlaceholderShapeView.swift in Sources */,
 				0B2623682B4CA1D50063D71C /* UIDevice+EXT.swift in Sources */,
 				0BEBFBC72BAC71FC008A997A /* CustomActionSheetButtonsView.swift in Sources */,
 				0B20D7E12B9616A500B71C10 /* Profile_BioView.swift in Sources */,

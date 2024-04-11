@@ -207,7 +207,9 @@ struct BubbleShapeValues {
             Bool.random() ? .right : .left
         }
     }
+    
     static let cornerRadius: CGFloat = 14
+    static var timestampOnlyCornerRadius: CGFloat { cornerRadius - 4 }
     static let eyeCraftedValue: CGFloat = 20
     static var ratio: CGFloat { cornerRadius/eyeCraftedValue }
     static var externalWidth: CGFloat { 8 * ratio }
