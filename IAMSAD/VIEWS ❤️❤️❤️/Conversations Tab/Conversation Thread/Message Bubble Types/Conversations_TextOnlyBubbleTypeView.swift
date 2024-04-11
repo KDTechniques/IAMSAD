@@ -9,6 +9,8 @@ import SwiftUI
 
 struct Conversations_TextOnlyBubbleTypeView: View {
     // MARK: - PROPERTIES
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    
     let text: String
     let timestamp: String
     let userType: MessageBubbleUserTypes
@@ -17,20 +19,41 @@ struct Conversations_TextOnlyBubbleTypeView: View {
     @State private var isExceededLineLimit: Bool = false
     @State private var isReadMore: Bool = false
     @State private var height: CGFloat = 0
-    @State private var minX: CGFloat = 0
     let values: MessageBubbleValues = .init()
-    var condition: Bool {
-        let value1: CGFloat = 10
-        let value2: CGFloat = values.maxWidthLimitationPadding + value1
+    let innerHPadding: CGFloat = 10
+    let singleLineHSpacing: CGFloat = 12
+    var textWidth: CGFloat {
+        text.widthOfHString(
+            usingFont: .preferredFont(forTextStyle: .body),
+            dynamicTypeSize
+        )
+    }
+    var timeStampWidth: CGFloat {
+        timestamp.widthOfHString(
+            usingFont: .preferredFont(forTextStyle: .caption1),
+            dynamicTypeSize
+        )
+    }
+    var bubbleWidth: CGFloat {
+        (innerHPadding * 2) +
+        textWidth +
+        singleLineHSpacing +
+        timeStampWidth +
+        values.bubbleShapeValues.externalWidth +
+        values.screenToBubblePadding
+    }
+    var conditionToBeSingleLineBubble: Bool {
+        let safeValue: CGFloat = 10
+        let bubbleMaxWidth: CGFloat = screenWidth -
+        values.maxWidthLimitationPadding - safeValue
         
-        return userType == .sender
-        ? minX > value2
-        : minX < value2
+        return bubbleWidth < bubbleMaxWidth
     }
     var approxLineLimit: Int {
         let text: String = "👨🏻‍💻"
         let textHeight: CGFloat = text.heightOfHString(
-            usingFont: .preferredFont(forTextStyle: .body)
+            usingFont: .preferredFont(forTextStyle: .body),
+            dynamicTypeSize
         )
         let accuracyValue: Int = 4
         
@@ -59,7 +82,7 @@ struct Conversations_TextOnlyBubbleTypeView: View {
             Group {
                 if !isReadMore {
                     if height < screenHeight {
-                        if condition {
+                        if conditionToBeSingleLineBubble {
                             singleLineBubble
                         } else {
                             multiLineBubble
@@ -71,10 +94,9 @@ struct Conversations_TextOnlyBubbleTypeView: View {
                     expandedBubble
                 }
             }
-            .padding(.horizontal, 10)
+            .padding(.horizontal, innerHPadding)
             .padding(.vertical, 8)
             .geometryReaderDimensionViewModifier($height, dimension: .height)
-            .geometryReaderFrameViewModifier(rect: .minX, $minX)
         }
     }
 }
@@ -86,7 +108,7 @@ struct Conversations_TextOnlyBubbleTypeView: View {
             Conversations_TextOnlyBubbleTypeView(
                 text: "Hello there 👋👋👋",
                 timestamp: "06:12 PM",
-                userType:.sender,
+                userType: .sender,
                 showPointer: true
             )
         }
@@ -95,24 +117,25 @@ struct Conversations_TextOnlyBubbleTypeView: View {
 
 // MARK: - EXTENSIONS
 extension Conversations_TextOnlyBubbleTypeView {
+    // MARK: - singleLineBubble
+    private var singleLineBubble: some View {
+        HStack(alignment: .bottom, spacing: singleLineHSpacing) {
+            Text(text)
+            Conversations_BubbleTimeStampView(timestamp)
+        }
+        .onAppear {
+            print("singleLineBubble")
+        }
+    }
+    
     // MARK: - multiLineBubble
     private var multiLineBubble: some View {
         VStack(alignment: .trailing, spacing: 6) {
             Text(text)
             Conversations_BubbleTimeStampView(timestamp)
         }
-    }
-    
-    // MARK: - expandedBubble
-    private var expandedBubble: some View {
-        multiLineBubble.frame(maxWidth: .infinity)
-    }
-    
-    // MARK: - singleLineBubble
-    private var singleLineBubble: some View {
-        HStack(alignment: .bottom, spacing: 12) {
-            Text(text)
-            Conversations_BubbleTimeStampView(timestamp)
+        .onAppear {
+            print("multiLineBubble")
         }
     }
     
@@ -128,5 +151,16 @@ extension Conversations_TextOnlyBubbleTypeView {
                 Conversations_BubbleTimeStampView(timestamp)
             }
         }
+        .onAppear {
+            print("readMoreBubble")
+        }
+    }
+    
+    // MARK: - expandedBubble
+    private var expandedBubble: some View {
+        multiLineBubble.frame(maxWidth: .infinity)
+            .onAppear {
+                print("expandedBubble")
+            }
     }
 }
