@@ -8,31 +8,55 @@
 import SwiftUI
 
 struct Conversations_StickerPlaceholderShapeView: View {
+    // MARK: - PROPERTIES
+    @Environment(\.colorScheme) private var colorScheme
+    
+    let values = MessageBubbleValues.self
+    var ratio: CGFloat { values.stickerFrameSize / 138 }
+    var cornerRadius: CGFloat { ratio * 45 }
+    var padding: CGFloat { (values.stickerFrameSize - ratio * 55) / 2 }
+    var arrowDownSize: CGFloat { padding/41.5 * 13 }
+    var lineWidth: CGFloat { ratio * 5 }
+    var strokeColor: Color {
+        .primary
+        .opacity(colorScheme == .dark ? 0.185 : 0.057)
+    }
+    var fillColor: Color {
+        .primary
+        .opacity(colorScheme == .dark ? 0.102 : 0.04)
+    }
+    
+    // MARK: - INITIALIZER
+    
+    
+    // MARK: - BODY
     var body: some View {
-        Conversations_StickerPlaceholderShape(45)
-            .stroke(.primary.opacity(0.1), style: .init(lineWidth: 5, lineJoin: .round))
-            .frame(width: 138, height: 138)
+        Conversations_StickerPlaceholderShape(cornerRadius)
+            .stroke(strokeColor, style: .init(lineWidth: lineWidth, lineJoin: .round))
+            .frame(width: values.stickerFrameSize, height: values.stickerFrameSize)
             .overlay {
-                Conversations_StickerPlaceholderShape(45+2.5)
-                    .fill(.primary.opacity(0.05))
-                    .frame(width: 138 + 5, height: 138 + 5)
+                Conversations_StickerPlaceholderShape(cornerRadius + lineWidth/2)
+                    .fill(fillColor)
+                    .frame(
+                        width: values.stickerFrameSize + lineWidth,
+                        height: values.stickerFrameSize + lineWidth
+                    )
             }
             .overlay {
-                Button {
-                    print("Pressed!")
-                } label: {
-                    Circle()
-                        .fill(.arrowDownCircle)
-                        .padding(40)
-                        .overlay {
-                            Image(systemName: "arrow.down")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 15, height: 15)
-                                .fontWeight(.semibold)
-                                .foregroundStyle(.arrowDown)
-                        }
-                }
+                Circle()
+                    .fill(.arrowDownCircle)
+                    .padding(padding)
+                    .overlay {
+                        Image(systemName: "arrow.down")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: arrowDownSize, height: arrowDownSize)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.arrowDown)
+                    }
+                    .onTapGesture {
+                        print("Pressed!")
+                    }
             }
     }
 }
@@ -43,66 +67,14 @@ struct Conversations_StickerPlaceholderShapeView: View {
         Color.conversationBackground
             .ignoresSafeArea()
         
+        Image(.whatsappchatbackgroundimage)
+            .resizable()
+            .scaledToFill()
+            .frame(width: screenWidth, height: screenHeight)
+            .clipped()
+            .ignoresSafeArea()
+            .opacity(0.25)
+        
         Conversations_StickerPlaceholderShapeView()
-    }
-}
-
-fileprivate struct Conversations_StickerPlaceholderShape: Shape {
-    // MARK: - PROPERTIES
-    let cornerRadius: CGFloat
-    
-    // MARK: - INITIALIZER
-    init(_ cornerRadius: CGFloat) {
-        self.cornerRadius = cornerRadius
-    }
-    
-    // MARK: - FUNCTIONS
-    
-    // MARK: - path
-    func path(in rect: CGRect) -> Path {
-        Path {
-            $0.move(to: .init(x: rect.minX + cornerRadius, y: rect.minY))
-            
-            $0.addLine(to: .init(x: rect.maxX - cornerRadius, y: rect.minY))
-            
-            $0.addQuadCurve(
-                to: .init(x: rect.maxX, y: rect.minY + cornerRadius),
-                control: .init(x: rect.maxX, y: rect.minY)
-            )
-            
-            $0.addLine(to: .init(x: rect.maxX, y: rect.maxY - cornerRadius))
-            
-            let value1: CGFloat = cornerRadius/65*50
-            let value2: CGFloat = cornerRadius/65*70
-            
-            $0.addCurve(
-                to: .init(x: rect.maxX - cornerRadius, y: rect.maxY),
-                control1: .init(x: rect.maxX - value1, y: rect.maxY - value2),
-                control2: .init(x: rect.maxX - value2, y: rect.maxY - value1)
-            )
-            
-            $0.move(to: .init(x: rect.maxX, y: rect.maxY - cornerRadius))
-            
-            let value: CGFloat = cornerRadius/45*15
-            
-            $0.addQuadCurve(
-                to: .init(x: rect.maxX - cornerRadius, y: rect.maxY),
-                control: .init(x: rect.maxX-value, y: rect.maxY-value)
-            )
-            
-            $0.addLine(to: .init(x: rect.minX + cornerRadius, y: rect.maxY))
-            
-            $0.addQuadCurve(
-                to: .init(x: rect.minX, y: rect.maxY - cornerRadius),
-                control: .init(x: rect.minX, y: rect.maxY)
-            )
-            
-            $0.addLine(to: .init(x: rect.minX, y: rect.minY + cornerRadius))
-            
-            $0.addQuadCurve(
-                to: .init(x: rect.minX + cornerRadius, y: rect.minY),
-                control: .init(x: rect.minX, y: rect.minY)
-            )
-        }
     }
 }
