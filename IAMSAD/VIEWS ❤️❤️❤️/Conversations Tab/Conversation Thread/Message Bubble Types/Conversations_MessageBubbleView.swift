@@ -35,14 +35,8 @@ struct Conversations_MessageBubbleView<T: View>: View {
             .padding([direction == .left ? .leading : .trailing], values.bubbleShapeValues.externalWidth)
             .background(direction == .right ? .bubbleSender : .bubbleReceiver)
             .clipShape(Conversations_BubbleShape(direction: direction, showPointer: showPointer))
-            .shadowViewModifier
-            .background {
-                if colorScheme == .light {
-                    Conversations_BubbleShape(direction: direction, showPointer: showPointer)
-                        .fill(.black.opacity(0.05))
-                        .padding(.horizontal, 1)
-                        .offset(y: 1.3)
-                }
+            .conversationsBubbleShadowViewModifier(colorScheme) {
+                AnyShape(Conversations_BubbleShape(direction: direction, showPointer: showPointer))
             }
             .frame(maxWidth: .infinity, alignment: direction == .left ? .leading : .trailing)
             .padding([direction == .left ? .leading : .trailing], values.screenToBubblePadding)
@@ -63,21 +57,6 @@ struct Conversations_MessageBubbleView<T: View>: View {
     }
 }
 
-// MARK: - EXTENSIONS
-extension View {
-    // MARK: - shadowViewModifier
-    @ViewBuilder
-    fileprivate var shadowViewModifier: some View {
-        let colorScheme: ColorScheme = Environment(\.colorScheme).wrappedValue
-        
-        if colorScheme == .light {
-            self.shadow(color: .black.opacity(0.05), radius: 1)
-        } else {
-            self
-        }
-    }
-}
-
 // MARK: - OTHER
 
 // MARK: - MessageBubbleValues
@@ -85,6 +64,12 @@ struct MessageBubbleValues {
     static let bubbleShapeValues = BubbleShapeValues.self
     static let screenToBubblePadding: CGFloat = 10
     static let maxWidthLimitationPadding: CGFloat = 85
+    static let innerHPadding: CGFloat = 12
+    static let innerVPadding: CGFloat = 8
+    static var innerVPaddingTimestampOnly: CGFloat { innerVPadding - 0.5 }
+    static let bubbleToBubbleVPadding: CGFloat = 3
+    static let stickerFrameSize: CGFloat = 138
+    
     static func getDirection(_ by: MessageBubbleUserTypes ) -> BubbleShapeValues.Directions {
         by == .sender ? .right : .left
     }

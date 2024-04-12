@@ -31,5 +31,3 @@ struct IAMSADApp: App {
     }
 }
 
-
-

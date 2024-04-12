@@ -20,7 +20,6 @@ struct Conversations_TextOnlyBubbleTypeView: View {
     @State private var isReadMore: Bool = false
     @State private var height: CGFloat = 0
     let values = MessageBubbleValues.self
-    let innerHPadding: CGFloat = 10
     let singleLineHSpacing: CGFloat = 12
     var textWidth: CGFloat {
         text.widthOfHString(
@@ -35,7 +34,7 @@ struct Conversations_TextOnlyBubbleTypeView: View {
         )
     }
     var bubbleWidth: CGFloat {
-        (innerHPadding * 2) +
+        (values.innerHPadding * 2) +
         textWidth +
         singleLineHSpacing +
         timeStampWidth +
@@ -94,8 +93,8 @@ struct Conversations_TextOnlyBubbleTypeView: View {
                     expandedBubble
                 }
             }
-            .padding(.horizontal, innerHPadding)
-            .padding(.vertical, 8)
+            .padding(.horizontal, values.innerHPadding)
+            .padding(.vertical, values.innerVPadding)
             .geometryReaderDimensionViewModifier($height, dimension: .height)
         }
     }

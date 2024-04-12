@@ -303,6 +303,21 @@ extension View {
     var sheetListButtonStyleViewModifier: some View {
         self.buttonStyle(SheetListButtonStyle())
     }
+    
+    // MARK: - conversationsBubbleShadowViewModifier
+    func conversationsBubbleShadowViewModifier(
+        _ colorScheme: ColorScheme,
+        @ViewBuilder bubble: () -> AnyShape
+    ) -> some View {
+        self
+            .background {
+                if colorScheme == .light {
+                    bubble()
+                        .fill(.black.opacity(0.1))
+                        .offset(y: 1)
+                }
+            }
+    }
 }
 
 // MARK: - OTHER
