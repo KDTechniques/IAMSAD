@@ -32,22 +32,21 @@ struct Conversations_StickerPlaceholderShape: Shape {
             
             $0.addLine(to: .init(x: rect.maxX, y: rect.maxY - cornerRadius))
             
-            let value1: CGFloat = cornerRadius/65*50
-            let value2: CGFloat = cornerRadius/65*70
+            let value1: CGFloat = cornerRadius/65*60
             
             $0.addCurve(
                 to: .init(x: rect.maxX - cornerRadius, y: rect.maxY),
-                control1: .init(x: rect.maxX - value1, y: rect.maxY - value2),
-                control2: .init(x: rect.maxX - value2, y: rect.maxY - value1)
+                control1: .init(x: rect.maxX - value1, y: rect.maxY - value1),
+                control2: .init(x: rect.maxX - value1, y: rect.maxY - value1)
             )
             
             $0.move(to: .init(x: rect.maxX, y: rect.maxY - cornerRadius))
             
-            let value: CGFloat = cornerRadius/45*15
+            let value2: CGFloat = cornerRadius/45*12
             
             $0.addQuadCurve(
                 to: .init(x: rect.maxX - cornerRadius, y: rect.maxY),
-                control: .init(x: rect.maxX-value, y: rect.maxY-value)
+                control: .init(x: rect.maxX - value2, y: rect.maxY-value2)
             )
             
             $0.addLine(to: .init(x: rect.minX + cornerRadius, y: rect.maxY))
