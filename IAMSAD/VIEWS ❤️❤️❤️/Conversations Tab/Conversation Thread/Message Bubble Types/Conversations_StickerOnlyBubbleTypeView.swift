@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import SwiftUIIntrospect
 
 struct Conversations_StickerOnlyBubbleTypeView: View {
     // MARK: - PROPERTIRS
@@ -56,23 +57,31 @@ struct Conversations_StickerOnlyBubbleTypeView: View {
 
 // MARK: - PREVIEWS
 #Preview("Conversations_StickerOnlyBubbleTypeView") {
-    ZStack {
-        Color.conversationBackground
-            .ignoresSafeArea()
-        
-        Image(.whatsappchatbackgroundimage)
-            .resizable()
-            .scaledToFill()
-            .frame(width: screenWidth, height: screenHeight)
-            .clipped()
-            .ignoresSafeArea()
-            .opacity(0.25)
-        
-        Conversations_StickerOnlyBubbleTypeView(
-            url: .init(string: "https://user-images.githubusercontent.com/14011726/94132137-7d4fc100-fe7c-11ea-8512-69f90cb65e48.gif"),
-            timestamp: "10:44 PM",
-            userType: .receiver
-        )
+    NavigationStack {
+        ZStack {
+            Color.conversationBackground
+                .ignoresSafeArea()
+            
+            Image(.whatsappchatbackgroundimage)
+                .resizable()
+                .scaledToFill()
+                .frame(width: screenWidth, height: screenHeight)
+                .clipped()
+                .ignoresSafeArea()
+                .opacity(0.25)
+            
+            ScrollView(.vertical) {
+                Conversations_StickerOnlyBubbleTypeView(
+                    url: .init(string: "https://cdn.pixabay.com/animation/2022/10/11/09/05/09-05-26-529_512.gif"),
+                    timestamp: "10:44 PM",
+                    userType: .receiver
+                )
+                .padding(.top, screenHeight/2)
+            }
+            .introspect(.scrollView, on: .iOS(.v17)) { scrollview in
+                print("Is Tracking: \(scrollview.isTracking)")
+            }
+        }
     }
     .previewViewModifier
 }
@@ -83,6 +92,12 @@ extension Conversations_StickerOnlyBubbleTypeView {
     // MARK: - image
     private var image: some View {
         AnimatedImage(url: url, options: [.scaleDownLargeImages])
+            .placeholder {
+                Conversations_StickerPlaceholderShapeView()
+                    .overlay { ProgressView().tint(.secondary) }
+                    .frame(width: 138, height: 138)
+            }
+//            .customLoopCount(3)
             .resizable()
             .scaledToFit()
             .frame(width: size, height: size)
