@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum DownloadStatusTypes {
+enum DownloadStatusTypes: CaseIterable {
     case none, onProgress, success, failure
 }

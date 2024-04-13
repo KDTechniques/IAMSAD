@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ConversationMediaTypes: String {
+enum ConversationMediaTypes: String, CaseIterable {
     case text
     case photo = "Photo"
     case sticker = "Sticker" // Sticker gifs and GIFs are two different things even though their extensions are same.

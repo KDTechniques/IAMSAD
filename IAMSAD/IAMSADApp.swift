@@ -15,6 +15,7 @@ struct IAMSADApp: App {
     @StateObject private var avatarSheetVM: AvatarSheetVM = .shared
     @StateObject private var profileVM: ProfileVM = .shared
     @StateObject private var conversationsVM: ConversationsVM = .shared
+    @State var status: ReadReceiptStatusTypes = .seen
     
     init() {
         
@@ -22,29 +23,18 @@ struct IAMSADApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                ZStack {
-                    Color.conversationBackground
-                        .ignoresSafeArea()
-                    
-                    Image(.whatsappchatbackgroundimage)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: screenWidth, height: screenHeight)
-                        .clipped()
-                        .ignoresSafeArea()
-                        .opacity(0.25)
-                    
-                    ScrollView(.vertical) {
-                        Conversations_StickerOnlyBubbleTypeView(
-                            url: .init(string: "https://cdn.pixabay.com/animation/2022/10/11/09/05/09-05-26-529_512.gif"),
-                            timestamp: "10:44 PM",
-                            userType: .receiver
-                        )
-                        .padding(.top, screenHeight/2)
-                    }
-                    .introspect(.scrollView, on: .iOS(.v17)) { scrollview in
-                        print("Is Tracking: \(scrollview.isTracking)")
+            ScrollView(.vertical) {
+                LazyVStack {
+                    Conversations_TextOnlyBubbleTypeView(
+                        text: "Hello there 👋👋👋",
+                        timestamp: "06:12 PM",
+                        status: status,
+                        userType: .sender,
+                        showPointer: true,
+                        shouldAnimate: .random()
+                    )
+                    .onTapGesture {
+                        status = .random()
                     }
                 }
             }

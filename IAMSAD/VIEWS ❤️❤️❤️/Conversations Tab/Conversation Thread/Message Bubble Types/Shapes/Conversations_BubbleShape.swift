@@ -181,7 +181,7 @@ struct Conversations_BubbleShape: Shape {
 
 // MARK: - PREVIEWS
 #Preview("Conversations_BubbleShape - Right") {
-    Conversations_BubbleShape(direction: .right, showPointer: Bool.random())
+    Conversations_BubbleShape(direction: .right, showPointer: .random())
         .fill(Color.bubbleSender)
         .frame(width: 250, height: 100)
         .frame(maxWidth: .infinity, alignment: .trailing)
@@ -189,7 +189,7 @@ struct Conversations_BubbleShape: Shape {
 }
 
 #Preview("Conversations_BubbleShape - Left") {
-    Conversations_BubbleShape(direction: .left, showPointer: Bool.random())
+    Conversations_BubbleShape(direction: .left, showPointer: .random())
         .fill(Color.bubbleSender)
         .frame(width: 250, height: 100)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -200,12 +200,8 @@ struct Conversations_BubbleShape: Shape {
 
 // MARK: - BubbleShapeValues
 struct BubbleShapeValues {
-    enum Directions {
+    enum Directions: CaseIterable {
         case left, right
-        
-        static func random() -> Self {
-            Bool.random() ? .right : .left
-        }
     }
     
     static let cornerRadius: CGFloat = 14

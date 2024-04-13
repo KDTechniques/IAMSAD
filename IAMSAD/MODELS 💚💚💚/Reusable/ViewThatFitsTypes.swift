@@ -5,7 +5,7 @@
 //  Created by Mr. Kavinda Dilshan on 2024-01-08.
 //
 
-enum ViewThatFitsTypes: String {
+enum ViewThatFitsTypes: String, CaseIterable {
     case xSmall
     // iPhone 8             - 4.7"
     // iPhone SE2           - 4.7"

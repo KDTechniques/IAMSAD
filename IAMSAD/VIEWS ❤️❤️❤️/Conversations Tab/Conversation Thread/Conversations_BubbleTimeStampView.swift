@@ -9,20 +9,20 @@ import SwiftUI
 
 struct Conversations_BubbleTimeStampView: View {
     // MARK: - PROPERTIES
-    let time: String
+    let timestamp: String
+    
+    let font: Font = MessageBubbleValues.timestampFont
     
     // MARK: - INITIALIZER
-    init(_ time: String) {
-        self.time = time
+    init(_ timestamp: String) {
+        self.timestamp = timestamp
     }
     
     // MARK: - BODY
     var body: some View {
-        Text(time)
-            .font(.caption)
-            .kerning(0.3)
+        Text(timestamp)
+            .font(font)
             .foregroundStyle(.secondary)
-            .padding(.bottom, -2)
     }
 }
 

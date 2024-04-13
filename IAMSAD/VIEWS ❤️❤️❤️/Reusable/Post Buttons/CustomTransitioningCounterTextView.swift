@@ -131,7 +131,7 @@ fileprivate struct Preview1: View {
             }
             .onTapGesture {
                 let count: Int = item2.count.kmStringToInt() ?? 0
-                let bool: Bool = Bool.random()
+                let bool: Bool = .random()
                 var newCount: Int = 0
                 
                 if bool { newCount = count+10 } else { newCount = count-1 }
@@ -165,7 +165,7 @@ fileprivate struct Preview2: View {
             }
             .onTapGesture {
                 let count: Int = item.count.kmStringToInt() ?? 0
-                let bool: Bool = Bool.random()
+                let bool: Bool = .random()
                 var newCount: Int = 0
                 
                 if bool { newCount = count+100 } else { newCount = count-1 }
@@ -192,7 +192,7 @@ fileprivate struct Preview2: View {
             }
             .onTapGesture {
                 let count: Int = item2.count.kmStringToInt() ?? 0
-                let bool: Bool = Bool.random()
+                let bool: Bool = .random()
                 var newCount: Int = 0
                 
                 if bool { newCount = count+100 } else { newCount = count-1 }

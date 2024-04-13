@@ -7,10 +7,6 @@
 
 import Foundation
 
-enum MessageBubbleUserTypes {
+enum MessageBubbleUserTypes: CaseIterable {
     case receiver, sender
-    
-    static func random() -> Self {
-        Bool.random() ? .receiver : .sender
-    }
 }

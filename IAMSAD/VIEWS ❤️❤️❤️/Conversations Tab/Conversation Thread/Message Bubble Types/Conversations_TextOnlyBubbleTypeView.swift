@@ -13,8 +13,10 @@ struct Conversations_TextOnlyBubbleTypeView: View {
     
     let text: String
     let timestamp: String
+    let status: ReadReceiptStatusTypes
     let userType: MessageBubbleUserTypes
     let showPointer: Bool
+    let shouldAnimate: Bool
     
     @State private var isExceededLineLimit: Bool = false
     @State private var isReadMore: Bool = false
@@ -38,6 +40,8 @@ struct Conversations_TextOnlyBubbleTypeView: View {
         textWidth +
         singleLineHSpacing +
         timeStampWidth +
+        values.timestampToReadReceiptPadding +
+        values.readReceiptShapesValues(dynamicTypeSize).size +
         values.bubbleShapeValues.externalWidth +
         values.screenToBubblePadding
     }
@@ -63,13 +67,17 @@ struct Conversations_TextOnlyBubbleTypeView: View {
     init(
         text: String,
         timestamp: String,
+        status: ReadReceiptStatusTypes,
         userType: MessageBubbleUserTypes,
-        showPointer: Bool
+        showPointer: Bool,
+        shouldAnimate: Bool
     ) {
         self.text = text
         self.timestamp = timestamp
+        self.status = status
         self.userType = userType
         self.showPointer = showPointer
+        self.shouldAnimate = shouldAnimate
     }
     
     // MARK: - BODY
@@ -107,8 +115,10 @@ struct Conversations_TextOnlyBubbleTypeView: View {
             Conversations_TextOnlyBubbleTypeView(
                 text: "Hello there 👋👋👋",
                 timestamp: "06:12 PM",
+                status: .random(),
                 userType: .sender,
-                showPointer: true
+                showPointer: true,
+                shouldAnimate: .random()
             )
         }
     }
@@ -120,7 +130,7 @@ extension Conversations_TextOnlyBubbleTypeView {
     private var singleLineBubble: some View {
         HStack(alignment: .bottom, spacing: singleLineHSpacing) {
             Text(text)
-            Conversations_BubbleTimeStampView(timestamp)
+            timestampNReadReceipts
         }
         .onAppear {
             print("singleLineBubble")
@@ -131,7 +141,7 @@ extension Conversations_TextOnlyBubbleTypeView {
     private var multiLineBubble: some View {
         VStack(alignment: .trailing, spacing: 6) {
             Text(text)
-            Conversations_BubbleTimeStampView(timestamp)
+            timestampNReadReceipts
         }
         .onAppear {
             print("multiLineBubble")
@@ -147,7 +157,7 @@ extension Conversations_TextOnlyBubbleTypeView {
             HStack(alignment: .bottom) {
                 Conversations_ReadMoreButtonView { isReadMore = true }
                 Spacer()
-                Conversations_BubbleTimeStampView(timestamp)
+                timestampNReadReceipts
             }
         }
         .onAppear {
@@ -161,5 +171,14 @@ extension Conversations_TextOnlyBubbleTypeView {
             .onAppear {
                 print("expandedBubble")
             }
+    }
+    
+    // MARK: - timestampNReadReceipts
+    private var timestampNReadReceipts: some View {
+        Conversations_BubbleTimestampReadReceiptsView(
+            timestamp: timestamp,
+            status: status,
+            shouldAnimate: shouldAnimate
+        )
     }
 }

@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum VerifiedBadgeTypes {
+enum VerifiedBadgeTypes: CaseIterable {
     case blue, orange
 }

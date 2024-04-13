@@ -315,12 +315,12 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>            .customLoopCount(3)
+				<string>//            .customLoopCount(3)
 </string>
 				<key>leading</key>
 				<string>                    .frame(width: 138, height: 138)
             }
-//</string>
+</string>
 				<key>trailing</key>
 				<string>            .resizable()
             .scaledToFit()

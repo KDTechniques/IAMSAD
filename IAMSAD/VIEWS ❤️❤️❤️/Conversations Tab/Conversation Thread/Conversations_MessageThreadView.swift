@@ -25,8 +25,10 @@ struct Conversations_MessageThreadView: View {
                         Conversations_TextOnlyBubbleTypeView(
                             text: "Hello there 👋👋👋",
                             timestamp: "06:12 PM",
+                            status: .random(),
                             userType: .receiver,
-                            showPointer: true
+                            showPointer: true,
+                            shouldAnimate: .random()
                         )
                         
                         Conversations_StickerOnlyBubbleTypeView(
