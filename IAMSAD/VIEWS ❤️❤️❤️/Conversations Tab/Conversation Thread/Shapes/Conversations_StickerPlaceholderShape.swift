@@ -67,9 +67,17 @@ struct Conversations_StickerPlaceholderShape: Shape {
 }
 
 // MARK: - PREVIEWS
-#Preview("Conversations_StickerPlaceholderShape") {
+#Preview("Conversations_StickerPlaceholderShape - Stroke Only") {
     let values = MessageBubbleValues.self
     return Conversations_StickerPlaceholderShape(45)
         .stroke(.red, style: .init(lineWidth: 5, lineJoin: .round))
+        .frame(width: values.stickerFrameSize, height: values.stickerFrameSize)
+}
+
+#Preview("Conversations_StickerPlaceholderShape - Fill & Stroke") {
+    let values = MessageBubbleValues.self
+    return Conversations_StickerPlaceholderShape(45)
+        .fill(.red)
+        .stroke(.black, style: .init(lineWidth: 5, lineJoin: .round))
         .frame(width: values.stickerFrameSize, height: values.stickerFrameSize)
 }

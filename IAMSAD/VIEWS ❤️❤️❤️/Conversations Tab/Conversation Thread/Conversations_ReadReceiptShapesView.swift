@@ -10,12 +10,18 @@ import SwiftUI
 struct Conversations_ReadReceiptShapesView: View {
     // MARK: - PROPERTIES
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.colorScheme) private var colorScheme
     
     let status: ReadReceiptStatusTypes
     let shouldAnimate: Bool
     
     var values: ReadReceiptShapesValues { .init(dynamicTypeSize: dynamicTypeSize) }
     @State private var trimValue: CGFloat = 0
+    var strokeColor: Color {
+        status == .seen
+        ? colorScheme == .dark ? .accent : .checkmarkSeenLight
+        : .primary.opacity(colorScheme == .dark ? 0.3 : 0.37)
+    }
     
     // MARK: - INITIALIZER
     init(status: ReadReceiptStatusTypes, shouldAnimate: Bool = false) {
@@ -26,34 +32,9 @@ struct Conversations_ReadReceiptShapesView: View {
     // MARK: - BODY
     var body: some View {
         if let bool = isFirstCheckmarkOnly(status) {
-            Conversations_ReadReceiptCheckmarkShapes(
-                isFirstCheckmarkOnly: bool,
-                lineWidth: values.lineWidth,
-                ratio: values.ratio
-            )
-            .trim(from: 0, to: status == .sent ? 1 : shouldAnimate ? trimValue : 1)
-            .stroke(
-                status == .seen ? .accent : Color.secondary,
-                style: .init(lineWidth: values.lineWidth, lineCap: .round)
-            )
-            .frame(width: values.size, height: values.size)
-            .frame(height: values.clipHeight, alignment: .top)
-            .onAppear { handleAnimation() }
+            checkmarks(bool)
         } else {
-            let smoothFrameReductionValue: CGFloat = 0.5
-            let smoothLineWidthReductionValue: CGFloat = 0.2
-            
-            Conversations_ReadReceiptClockShape(values.lineWidth-smoothLineWidthReductionValue)
-                .stroke(
-                    Color.secondary,
-                    style: .init(lineWidth: values.lineWidth-smoothLineWidthReductionValue, lineCap: .round)
-                )
-                .frame(
-                    width: values.clipHeight-smoothFrameReductionValue,
-                    height: values.clipHeight-smoothFrameReductionValue
-                )
-                .padding(.leading, values.clipHeight/5)
-                .frame(width: values.size, alignment: .leading)
+            clock
         }
     }
 }
@@ -66,6 +47,45 @@ struct Conversations_ReadReceiptShapesView: View {
 
 // MARK: - EXTENSIONS
 extension Conversations_ReadReceiptShapesView {
+    // MARK: - checkmarks
+    private func checkmarks(_ bool: Bool) -> some View {
+        Conversations_ReadReceiptCheckmarkShapes(
+            isFirstCheckmarkOnly: bool,
+            lineWidth: values.lineWidth,
+            ratio: values.ratio
+        )
+        .trim(from: 0, to: status == .sent ? 1 : shouldAnimate ? trimValue : 1)
+        .stroke(
+            strokeColor,
+            style: .init(lineWidth: values.lineWidth, lineCap: .round, lineJoin: .round)
+        )
+        .frame(width: values.size, height: values.size)
+        .frame(height: values.clipHeight, alignment: .top)
+        .onAppear { handleAnimation() }
+    }
+    
+    // MARK: - clock
+    @ViewBuilder
+    private var clock: some View {
+        let smoothFrameReductionValue: CGFloat = 0.5
+        let smoothLineWidthReductionValue: CGFloat = 0.2
+        let leadingPaddingRatio: CGFloat = values.clipHeight/5
+        
+        Conversations_ReadReceiptClockShape(values.lineWidth-smoothLineWidthReductionValue)
+            .stroke(
+                strokeColor,
+                style: .init(lineWidth: values.lineWidth-smoothLineWidthReductionValue, lineCap: .round, lineJoin: .round)
+            )
+            .frame(
+                width: values.clipHeight-smoothFrameReductionValue,
+                height: values.clipHeight-smoothFrameReductionValue
+            )
+            .padding(.leading, leadingPaddingRatio)
+            .frame(width: values.size, alignment: .leading)
+    }
+    
+    // MARK: - FUNCTIONS
+    
     // MARK: - isFirstCheckmarkOnly
     private func isFirstCheckmarkOnly(_ status: ReadReceiptStatusTypes) -> Bool? {
         switch status {

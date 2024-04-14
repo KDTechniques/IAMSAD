@@ -32,11 +32,11 @@ struct Conversations_ReadReceiptCheckmarkShapes: Shape {
     // MARK: - getFirstCheckmarkOnly
     private func getFirstCheckmarkOnly(in rect: CGRect) -> Path {
         Path {
-            $0.move(to: CGPoint(x: rect.minX + lineWidth/2, y: rect.midY - (ratio*15)))
+            $0.move(to: CGPoint(x: rect.minX + lineWidth/3, y: rect.midY - (ratio*45)))
             
-            $0.addLine(to: CGPoint(x: rect.minX + (ratio*110), y: rect.midY + (ratio*45)))
+            $0.addLine(to: CGPoint(x: rect.minX + (ratio*130), y: rect.midY + (ratio*45)))
             
-            $0.addLine(to: CGPoint(x: rect.midX + (ratio*55), y: rect.minY + lineWidth))
+            $0.addLine(to: CGPoint(x: rect.midX + (ratio*95), y: rect.minY + lineWidth/2))
         }
     }
     
@@ -49,7 +49,7 @@ struct Conversations_ReadReceiptCheckmarkShapes: Shape {
             
             $0.addLine(to: CGPoint(x: rect.midX, y: rect.midY + (ratio*62)))
             
-            $0.addLine(to: CGPoint(x: rect.maxX - lineWidth, y: rect.minY + lineWidth))
+            $0.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
         }
     }
 }
@@ -132,7 +132,7 @@ struct Conversations_ReadReceiptClockShape: Shape {
     return Conversations_ReadReceiptClockShape(values.lineWidth)
         .stroke(
             Color.secondary,
-            style: .init(lineWidth: values.lineWidth, lineCap: .round)
+            style: .init(lineWidth: values.lineWidth, lineCap: .round, lineJoin: .round)
         )
         .frame(width: values.clipHeight, height: values.clipHeight)
         .previewViewModifier
@@ -147,14 +147,14 @@ fileprivate struct Preview: View {
     @State private var isFirstCheckmarkOnly: Bool = true
     var body: some View {
         Conversations_ReadReceiptCheckmarkShapes(
-            isFirstCheckmarkOnly: isFirstCheckmarkOnly,
+            isFirstCheckmarkOnly: false,
             lineWidth: values.lineWidth,
             ratio: values.ratio
         )
         .trim(from: 0, to: isFirstCheckmarkOnly ? 1 : trimValue)
         .stroke(
             isFirstCheckmarkOnly ? Color.secondary : .accent,
-            style: .init(lineWidth: values.lineWidth, lineCap: .round)
+            style: .init(lineWidth: values.lineWidth, lineCap: .round, lineJoin: .round)
         )
         .frame(width: values.size, height: values.size)
         .frame(height: values.clipHeight, alignment: .top)

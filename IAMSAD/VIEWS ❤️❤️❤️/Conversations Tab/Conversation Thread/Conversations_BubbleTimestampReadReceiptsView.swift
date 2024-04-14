@@ -14,6 +14,9 @@ struct Conversations_BubbleTimestampReadReceiptsView: View {
     let shouldAnimate: Bool
     
     let values = MessageBubbleValues.self
+    var hSpacing: CGFloat {
+        values.timestampToReadReceiptPadding + (status == .pending ? 1 : 0)
+    }
     
     // MARK: - INITIALIIZER
     init(timestamp: String, status: ReadReceiptStatusTypes, shouldAnimate: Bool) {
@@ -27,7 +30,6 @@ struct Conversations_BubbleTimestampReadReceiptsView: View {
         HStack(spacing: values.timestampToReadReceiptPadding) {
             Conversations_BubbleTimeStampView(timestamp)
             Conversations_ReadReceiptShapesView(status: status, shouldAnimate: shouldAnimate)
-                .offset(x: status == .pending ? 0 : 1)
         }
         .padding(.bottom, -2)
     }

@@ -26,7 +26,10 @@ struct Conversations_StickerPlaceholderShapeView: View {
     // MARK: - BODY
     var body: some View {
         Conversations_StickerPlaceholderShape(cornerRadius)
-            .stroke(strokeColor, style: .init(lineWidth: lineWidth, lineJoin: .round))
+            .stroke(
+                strokeColor,
+                style: .init(lineWidth: lineWidth, lineCap: .round, lineJoin: .round)
+            )
             .frame(
                 width: values.stickerFrameSize - lineWidth,
                 height: values.stickerFrameSize - lineWidth

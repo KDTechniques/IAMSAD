@@ -1243,7 +1243,6 @@
 			children = (
 				0BB588562BC50DFA003ACABB /* Conversations_BubbleShape.swift */,
 				0B6FEC2D2BC901F9000EBC31 /* Conversations_StickerPlaceholderShape.swift */,
-				0BE6C05F2BC9360900BAE66B /* Conversations_StickerPlaceholderShapeView.swift */,
 				0B4164B42BC9BCC900B92311 /* Conversations_ReadReceiptCheckmarkShapes.swift */,
 			);
 			path = Shapes;
@@ -1296,9 +1295,11 @@
 		0BB588522BC48D11003ACABB /* Conversation Thread */ = {
 			isa = PBXGroup;
 			children = (
+				0B685AE72BC876990049B7AA /* Shapes */,
 				0BB588542BC48D8D003ACABB /* Conversations_MessageThreadView.swift */,
 				0B8900BA2BC69D7B0054B056 /* Conversations_BubbleTimeStampView.swift */,
 				0B8900BC2BC6A3AF0054B056 /* Conversations_ReadMoreButtonView.swift */,
+				0BE6C05F2BC9360900BAE66B /* Conversations_StickerPlaceholderShapeView.swift */,
 				0BB1F9BF2BCA795400719F12 /* Conversations_ReadReceiptShapesView.swift */,
 				0B12FB972BCAAB2F002E0048 /* Conversations_BubbleTimestampReadReceiptsView.swift */,
 				0BB588532BC48D5D003ACABB /* Message Bubble Types */,
@@ -1309,7 +1310,6 @@
 		0BB588532BC48D5D003ACABB /* Message Bubble Types */ = {
 			isa = PBXGroup;
 			children = (
-				0B685AE72BC876990049B7AA /* Shapes */,
 				0B08F1C52BC5B4A1009E8538 /* Conversations_MessageBubbleView.swift */,
 				0B8900BE2BC6E74F0054B056 /* Conversations_TextOnlyBubbleTypeView.swift */,
 				0BC2EB1D2BC82DB100003941 /* Conversations_StickerOnlyBubbleTypeView.swift */,

@@ -70,7 +70,7 @@ struct MessageBubbleValues {
     static let innerHPadding: CGFloat = 12
     static let innerVPadding: CGFloat = 8
     static var innerVPaddingTimestampOnly: CGFloat { innerVPadding - 0.5 }
-    static let timestampToReadReceiptPadding: CGFloat = 2
+    static let timestampToReadReceiptPadding: CGFloat = 3
     static let timestampFont: Font = .caption
     static let bubbleToBubbleVPadding: CGFloat = 3
     static let stickerFrameSize: CGFloat = 138
