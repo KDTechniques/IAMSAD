@@ -23,26 +23,14 @@ struct IAMSADApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ScrollView(.vertical) {
-                LazyVStack {
-                    Conversations_TextOnlyBubbleTypeView(
-                        text: "Hello there 👋👋👋",
-                        timestamp: "06:12 PM",
-                        status: status,
-                        userType: .sender,
-                        showPointer: true,
-                        shouldAnimate: .random()
-                    )
-                    .onTapGesture {
-                        status = .random()
-                    }
-                }
-            }
-            .dynamicTypeSize(...DynamicTypeSize.xLarge)
-            .environmentObject(avatar)
-            .environmentObject(avatarSheetVM)
-            .environmentObject(profileVM)
-            .environmentObject(conversationsVM)
+            Text("Photo")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+                .dynamicTypeSize(...DynamicTypeSize.xLarge)
+                .environmentObject(avatar)
+                .environmentObject(avatarSheetVM)
+                .environmentObject(profileVM)
+                .environmentObject(conversationsVM)
         }
     }
 }

@@ -42,7 +42,7 @@ struct Conversations_TextOnlyBubbleTypeView: View {
         timeStampWidth +
         values.timestampToReadReceiptPadding +
         values.readReceiptShapesValues(dynamicTypeSize).size +
-        values.bubbleShapeValues.externalWidth +
+        values.bubbleShapeValues.pointerWidth +
         values.screenToBubblePadding
     }
     var conditionToBeSingleLineBubble: Bool {

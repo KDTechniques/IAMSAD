@@ -42,6 +42,8 @@ struct Conversations_ReplyBubbleTypeView: View {
                         gifBased
                     case .video:
                         videoBased
+                    case .voiceRecord:
+                        voiceRecordBased
                     }
                 }
                 .padding()
@@ -113,6 +115,14 @@ extension Conversations_ReplyBubbleTypeView {
     
     // MARK: - videoBased
     private var videoBased: some View {
+        VStack {
+            Text("Wifey ❤️😘")
+                .font(.callout.weight(.semibold))
+        }
+    }
+    
+    // MARK: - voiceRecordBased
+    private var voiceRecordBased: some View {
         VStack {
             Text("Wifey ❤️😘")
                 .font(.callout.weight(.semibold))

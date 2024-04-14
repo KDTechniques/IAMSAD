@@ -338,15 +338,15 @@
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>29</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>55</string>
+					<string>58</string>
 					<key>StartingColumnNumber</key>
-					<string>29</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>55</string>
+					<string>57</string>
 					<key>Timestamp</key>
-					<string>734640642.2828749</string>
+					<string>734802730.165525</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -362,15 +362,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string></string>
+				<string>                Text("this is going to be the reply text. 1234567890")
+</string>
 				<key>leading</key>
 				<string>                .clipShape(CustomRoundedRectangleShape(cornerRadius: values.bubbleShapeValues.cornerRadius - 5))
                 
-                Text("this is</string>
+</string>
 				<key>trailing</key>
-				<string> going to be the reply text. 1234567890")
-                    .geometryReaderDimensionViewModifier($width, dimension: .width)
+				<string>                    .geometryReaderDimensionViewModifier($width, dimension: .width)
             }
+            .padding([.top, .horizontal], 5)
 </string>
 			</dict>
 			<key>title</key>

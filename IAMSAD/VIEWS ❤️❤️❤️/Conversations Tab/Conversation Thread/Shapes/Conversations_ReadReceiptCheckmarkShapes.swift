@@ -168,31 +168,3 @@ fileprivate struct Preview: View {
         }
     }
 }
-
-// MARK: - OTHER
-
-// MARK: - ReadReceiptShapesValues
-struct ReadReceiptShapesValues {
-    // MARK: - PROPERTIES
-    let dynamicTypeSize: DynamicTypeSize
-    
-    var size: CGFloat {
-        ":APM1234567890"
-            .heightOfHString(
-                usingFont: .from(.footnote),
-                dynamicTypeSize
-            )
-    }
-    let lineWidth: CGFloat = 1.4
-    var ratio: CGFloat { size/578 }
-    /// don't simplify the clipHeight  by adding 1/2 or 0.5
-    var clipHeight: CGFloat {
-        (size - (size/2) + (ratio*62)) + lineWidth
-    }
-    let animation: Animation = .linear(duration: 0.15)
-    
-    // MARK: - INITIALIZER
-    init(dynamicTypeSize: DynamicTypeSize) {
-        self.dynamicTypeSize = dynamicTypeSize
-    }
-}

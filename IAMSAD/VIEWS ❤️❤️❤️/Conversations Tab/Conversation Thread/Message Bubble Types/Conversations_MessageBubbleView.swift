@@ -32,7 +32,7 @@ struct Conversations_MessageBubbleView<T: View>: View {
     // MARK: - BODY
     var body: some View {
         content()
-            .padding([direction == .left ? .leading : .trailing], values.bubbleShapeValues.externalWidth)
+            .padding([direction == .left ? .leading : .trailing], values.bubbleShapeValues.pointerWidth)
             .background(direction == .right ? .bubbleSender : .bubbleReceiver)
             .clipShape(Conversations_BubbleShape(direction: direction, showPointer: showPointer))
             .conversationsBubbleShadowViewModifier(colorScheme) {
@@ -54,28 +54,5 @@ struct Conversations_MessageBubbleView<T: View>: View {
             Text("Hi there 👋👋👋")
                 .padding(12)
         }
-    }
-}
-
-// MARK: - OTHER
-
-// MARK: - MessageBubbleValues
-struct MessageBubbleValues {
-    static let bubbleShapeValues = BubbleShapeValues.self
-    static func readReceiptShapesValues(_ dynamicTypeSize: DynamicTypeSize) -> ReadReceiptShapesValues {
-        ReadReceiptShapesValues(dynamicTypeSize: dynamicTypeSize)
-    }
-    static let screenToBubblePadding: CGFloat = 10
-    static let maxWidthLimitationPadding: CGFloat = 85
-    static let innerHPadding: CGFloat = 12
-    static let innerVPadding: CGFloat = 8
-    static var innerVPaddingTimestampOnly: CGFloat { innerVPadding - 0.5 }
-    static let timestampToReadReceiptPadding: CGFloat = 3
-    static let timestampFont: Font = .caption
-    static let bubbleToBubbleVPadding: CGFloat = 3
-    static let stickerFrameSize: CGFloat = 138
-    
-    static func getDirection(_ by: MessageBubbleUserTypes ) -> BubbleShapeValues.Directions {
-        by == .sender ? .right : .left
     }
 }

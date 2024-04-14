@@ -38,7 +38,7 @@ struct Conversations_BubbleShape: Shape {
     // MARK: - getRightPointPath
     private func getRightPointPath(in rect: CGRect) -> Path {
         // safeTrailingX < maxX
-        let safeTrailingX: CGFloat = rect.maxX - values.externalWidth
+        let safeTrailingX: CGFloat = rect.maxX - values.pointerWidth
         
         return Path {
             $0.move(to: .init(
@@ -65,7 +65,7 @@ struct Conversations_BubbleShape: Shape {
     // MARK: - getRightRectanglePath
     private func getRightRectanglePath(in rect: CGRect) -> Path {
         // safeTrailingX < maxX
-        let safeTrailingX: CGFloat = rect.maxX - values.externalWidth
+        let safeTrailingX: CGFloat = rect.maxX - values.pointerWidth
         
         return Path {
             $0.move(to: .zero)
@@ -109,7 +109,7 @@ struct Conversations_BubbleShape: Shape {
     // MARK: - getLeftPointPath
     private func getLeftPointPath(in rect: CGRect) -> Path {
         // safeLeadingX > minX
-        let safeLeadingX: CGFloat = rect.minX + values.externalWidth
+        let safeLeadingX: CGFloat = rect.minX + values.pointerWidth
         
         return Path {
             $0.move(to: .init(
@@ -136,7 +136,7 @@ struct Conversations_BubbleShape: Shape {
     // MARK: - getRightRectanglePath
     private func getLeftRectanglePath(in rect: CGRect) -> Path {
         // safeLeadingX > minX
-        let safeLeadingX: CGFloat = rect.minX + values.externalWidth
+        let safeLeadingX: CGFloat = rect.minX + values.pointerWidth
         
         return Path {
             $0.move(to: .init(x: safeLeadingX, y: rect.minY))
@@ -194,19 +194,4 @@ struct Conversations_BubbleShape: Shape {
         .frame(width: 250, height: 100)
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.leading)
-}
-
-// MARK: - OTHER
-
-// MARK: - BubbleShapeValues
-struct BubbleShapeValues {
-    enum Directions: CaseIterable {
-        case left, right
-    }
-    
-    static let cornerRadius: CGFloat = 14
-    static var timestampOnlyCornerRadius: CGFloat { cornerRadius - 4 }
-    static let eyeCraftedValue: CGFloat = 20
-    static var ratio: CGFloat { cornerRadius/eyeCraftedValue }
-    static var externalWidth: CGFloat { 8 * ratio }
 }
