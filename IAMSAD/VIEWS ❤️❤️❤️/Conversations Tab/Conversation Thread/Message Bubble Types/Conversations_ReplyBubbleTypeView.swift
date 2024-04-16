@@ -9,33 +9,51 @@ import SwiftUI
 
 struct Conversations_ReplyBubbleTypeView: View {
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
     // MARK: - PROPERTIES
-    let senderColorLight: Color = Color.debug
-    let senderColorDark: Color = Color.debug
-    let receiverColorLight: Color = Color.debug
-    let receiverColorDark: Color = Color.debug
-    let mediaType: ConversationMediaTypes = .text
-    let replyingTo: MessageBubbleUserTypes = .receiver
-    let direction: BubbleShapeValues.Directions = .right
-    let showPointer: Bool = true
+    let userName: String = "Wifey ❤️😘"
+    let replyText: String = ""
+    let timestamp: String = "03:15 PM"
+    let status: ReadReceiptStatusTypes = .seen
+    let stripColor: Color = .cyan
+    let mediaType: ConversationMediaTypes
+    let replyingTo: MessageBubbleUserTypes = .random()
+    let userType: MessageBubbleUserTypes = .random()
+    let showPointer: Bool = .random()
+    let shouldAnimate: Bool = .random()
     
-    let colorStripWidth: CGFloat = 4
     let values = MessageBubbleValues.self
-    @State private var width: CGFloat = 0
+    var outerPadding: (Edge.Set, CGFloat) { values.replyBubbleValues.outerPadding }
+    var replyBubbleWidth: CGFloat {
+        (outerPadding.1 * 2) +
+        values.replyBubbleValues.stripWidth +
+        (values.replyBubbleValues.leadingInnerPadding(mediaType) * 2) +
+        userName.widthOfHString(usingFont: .from(.callout.weight(.semibold)), dynamicTypeSize) +
+        values.replyBubbleValues.mediaContentSize(mediaType)
+    }
     
     // MARK: - INITIALIZER
     
+    
     // MARK: - BODY
     var body: some View {
-        Conversations_MessageBubbleView(direction: direction, showPointer: showPointer) {
-            VStack {
+        ScrollView {
+            Conversations_TextOnlyBubbleTypeView(
+                text: "12345678",
+                timestamp: timestamp,
+                status: status,
+                userType: userType,
+                showPointer: showPointer,
+                shouldAnimate: shouldAnimate,
+                withContent: true
+            ) { width in
                 Group {
                     switch mediaType {
                     case .text:
                         textBased
                     case .photo:
-                        photoBased
+                        photoBased(width+values.innerHPadding)
                     case .sticker:
                         stickerBased
                     case .gif:
@@ -46,55 +64,60 @@ struct Conversations_ReplyBubbleTypeView: View {
                         voiceRecordBased
                     }
                 }
-                .padding()
-                .overlay(alignment: .leading) {
-                    getStripColor(replyingTo)
-                        .frame(width: colorStripWidth)
-                }
-                .frame(width: width, alignment: .leading)
-                .background(direction == .right ? .replyShapeSender : .replyShapeReceiver)
-                .clipShape(CustomRoundedRectangleShape(cornerRadius: values.bubbleShapeValues.cornerRadius - 5))
-                
-                Text("this is going to be the reply text. 1234567890")
-                    .geometryReaderDimensionViewModifier($width, dimension: .width)
+                .frame(minWidth: 0)
+                .background(userType == .sender ? .replyShapeSender : .replyShapeReceiver)
+                .clipShape(CustomRoundedRectangleShape(cornerRadius: values.bubbleShapeValues.cornerRadius - outerPadding.1))
+                .padding(outerPadding.0, outerPadding.1)
             }
-            .padding([.top, .horizontal], 5)
-            .padding(.bottom, 10)
         }
     }
 }
 
 // MARK: - PREVIEWS
 #Preview("Conversations_ReplyBubbleTypeView") {
-    Conversations_ReplyBubbleTypeView()
+    Conversations_ReplyBubbleTypeView(mediaType: .photo)
 }
 
 // MARK: -  EXTENSIONS
 extension Conversations_ReplyBubbleTypeView {
-    // MARK: - getStripColor
-    private func getStripColor(_ replyingTo: MessageBubbleUserTypes) -> Color {
-        switch replyingTo {
-        case .receiver:
-            colorScheme == .dark ? receiverColorDark : receiverColorLight
-        case .sender:
-            colorScheme == .dark ? senderColorDark : senderColorLight
-        }
-    }
-    
     // MARK: - textBased
     private var textBased: some View {
         VStack {
-            Text("Wifey ❤️😘")
+            Text(userName)
                 .font(.callout.weight(.semibold))
         }
     }
     
     // MARK: - photoBased
-    private var photoBased: some View {
-        VStack {
-            Text("Wifey ❤️😘")
-                .font(.callout.weight(.semibold))
+    @ViewBuilder
+    private func photoBased(_ messageBubbleWidth: CGFloat) -> some View {
+        var shouldExpand: Bool { replyBubbleWidth < messageBubbleWidth }
+        
+        HStack(spacing: values.replyBubbleValues.leadingInnerPadding(mediaType)) {
+            stripColor
+                .frame(width: values.replyBubbleValues.stripWidth)
+            
+            VStack(alignment: .leading, spacing: values.replyBubbleValues.userTypeToMediaTypeBadgePadding(mediaType)) {
+                Text(userName)
+                    .font(.callout.weight(.semibold))
+                    .lineLimit(1)
+                
+                Conversations_PhotoBadgeView()
+            }
+            .padding(.trailing, shouldExpand ? -values.replyBubbleValues.leadingInnerPadding(mediaType) : 0)
+            
+            if shouldExpand {
+                Spacer()
+            }
+            
+            Image(.follower1)
+                .resizable()
+                .scaledToFill()
+                .frame(width: values.replyBubbleValues.mediaContentSize(mediaType))
+            
         }
+        .frame(maxHeight: values.replyBubbleValues.innerBubbleFrameHeight)
+        .maxWidth(shouldExpand: shouldExpand, messageBubbleWidth: messageBubbleWidth)
     }
     
     // MARK: - stickerBased
@@ -126,6 +149,18 @@ extension Conversations_ReplyBubbleTypeView {
         VStack {
             Text("Wifey ❤️😘")
                 .font(.callout.weight(.semibold))
+        }
+    }
+}
+
+extension View {
+    @ViewBuilder
+    fileprivate func maxWidth(shouldExpand: Bool, messageBubbleWidth: CGFloat) -> some View {
+        if shouldExpand {
+            self
+                .frame(maxWidth: messageBubbleWidth)
+        } else {
+            self
         }
     }
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Conversations_TextOnlyBubbleTypeView: View {
+struct Conversations_TextOnlyBubbleTypeView<T: View>: View {
     // MARK: - PROPERTIES
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
@@ -17,6 +17,8 @@ struct Conversations_TextOnlyBubbleTypeView: View {
     let userType: MessageBubbleUserTypes
     let showPointer: Bool
     let shouldAnimate: Bool
+    let withContent: Bool
+    let content: (CGFloat) -> T
     
     @State private var isExceededLineLimit: Bool = false
     @State private var isReadMore: Bool = false
@@ -35,7 +37,7 @@ struct Conversations_TextOnlyBubbleTypeView: View {
             dynamicTypeSize
         )
     }
-    var bubbleWidth: CGFloat {
+    var bubbleWidthNScreenToBubblePadding: CGFloat {
         (values.innerHPadding * 2) +
         textWidth +
         singleLineHSpacing +
@@ -50,7 +52,7 @@ struct Conversations_TextOnlyBubbleTypeView: View {
         let bubbleMaxWidth: CGFloat = screenWidth -
         values.maxWidthLimitationPadding - safeValue
         
-        return bubbleWidth < bubbleMaxWidth
+        return bubbleWidthNScreenToBubblePadding < bubbleMaxWidth
     }
     var approxLineLimit: Int {
         let text: String = "👨🏻‍💻"
@@ -62,6 +64,7 @@ struct Conversations_TextOnlyBubbleTypeView: View {
         
         return Int(screenHeight/textHeight) - accuracyValue
     }
+    @State private var bubbleWidth: CGFloat = 0
     
     // MARK: - INITILAIZER
     init(
@@ -70,7 +73,9 @@ struct Conversations_TextOnlyBubbleTypeView: View {
         status: ReadReceiptStatusTypes,
         userType: MessageBubbleUserTypes,
         showPointer: Bool,
-        shouldAnimate: Bool
+        shouldAnimate: Bool,
+        withContent: Bool = false,
+        @ViewBuilder content: @escaping (CGFloat) -> T = { _ in EmptyView() }
     ) {
         self.text = text
         self.timestamp = timestamp
@@ -78,6 +83,8 @@ struct Conversations_TextOnlyBubbleTypeView: View {
         self.userType = userType
         self.showPointer = showPointer
         self.shouldAnimate = shouldAnimate
+        self.withContent = withContent
+        self.content = content
     }
     
     // MARK: - BODY
@@ -86,23 +93,35 @@ struct Conversations_TextOnlyBubbleTypeView: View {
             direction: values.getDirection(userType),
             showPointer: showPointer
         ) {
-            Group {
-                if !isReadMore {
-                    if height < screenHeight {
-                        if conditionToBeSingleLineBubble {
-                            singleLineBubble
+            VStack(alignment: .leading) {
+                content(bubbleWidth)
+                
+                Group {
+                    if !isReadMore {
+                        if height < screenHeight {
+                            if conditionToBeSingleLineBubble {
+                                singleLineBubble
+                            } else {
+                                multiLineBubble
+                            }
                         } else {
-                            multiLineBubble
+                            readMoreBubble
                         }
                     } else {
-                        readMoreBubble
+                        expandedBubble
                     }
-                } else {
-                    expandedBubble
+                }
+                .padding(.horizontal, values.innerHPadding)
+                .padding(.vertical, values.innerVPadding)
+                .geometryReaderDimensionViewModifier($bubbleWidth, dimension: .width)
+            }
+            .overlay(alignment: .bottomTrailing) {
+                if withContent {
+                    timestampNReadReceipts
+                        .padding(.trailing, values.innerHPadding)
+                        .padding(.bottom, values.innerVPadding)
                 }
             }
-            .padding(.horizontal, values.innerHPadding)
-            .padding(.vertical, values.innerVPadding)
             .geometryReaderDimensionViewModifier($height, dimension: .height)
         }
     }
@@ -119,18 +138,24 @@ struct Conversations_TextOnlyBubbleTypeView: View {
                 userType: .sender,
                 showPointer: true,
                 shouldAnimate: .random()
-            )
+            ) { _ in }
         }
     }
 }
 
 // MARK: - EXTENSIONS
 extension Conversations_TextOnlyBubbleTypeView {
+    // MARK: textOnly
+    private var textOnly: some View {
+        Text(text)
+    }
+    
     // MARK: - singleLineBubble
     private var singleLineBubble: some View {
         HStack(alignment: .bottom, spacing: singleLineHSpacing) {
-            Text(text)
+            textOnly
             timestampNReadReceipts
+                .opacity(withContent ? 0 : 1)
         }
         .onAppear {
             print("singleLineBubble")
@@ -140,8 +165,9 @@ extension Conversations_TextOnlyBubbleTypeView {
     // MARK: - multiLineBubble
     private var multiLineBubble: some View {
         VStack(alignment: .trailing, spacing: 6) {
-            Text(text)
+            textOnly
             timestampNReadReceipts
+                .opacity(withContent ? 0 : 1)
         }
         .onAppear {
             print("multiLineBubble")
@@ -151,13 +177,14 @@ extension Conversations_TextOnlyBubbleTypeView {
     // MARK: - readMoreBubble
     private var readMoreBubble: some View {
         VStack(spacing: 6) {
-            Text(text)
+            textOnly
                 .lineLimit(approxLineLimit)
             
             HStack(alignment: .bottom) {
                 Conversations_ReadMoreButtonView { isReadMore = true }
                 Spacer()
                 timestampNReadReceipts
+                    .opacity(withContent ? 0 : 1)
             }
         }
         .onAppear {

@@ -332,53 +332,6 @@
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>58</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>57</string>
-					<key>Timestamp</key>
-					<string>734802730.165525</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>IAMSAD/VIEWS ❤️❤️❤️/Conversations Tab/Conversation Thread/Message Bubble Types/Conversations_ReplyBubbleTypeView.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>                Text("this is going to be the reply text. 1234567890")
-</string>
-				<key>leading</key>
-				<string>                .clipShape(CustomRoundedRectangleShape(cornerRadius: values.bubbleShapeValues.cornerRadius - 5))
-                
-</string>
-				<key>trailing</key>
-				<string>                    .geometryReaderDimensionViewModifier($width, dimension: .width)
-            }
-            .padding([.top, .horizontal], 5)
-</string>
-			</dict>
-			<key>title</key>
-			<string>replicate the whole text only bubble type view and combine it with this one</string>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
 	</array>
 </dict>
 </plist>

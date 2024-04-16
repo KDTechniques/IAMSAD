@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct MessageBubbleValues {
+    // MARK: - PROPERTIES
     static let bubbleShapeValues = BubbleShapeValues.self
-    static func readReceiptShapesValues(_ dynamicTypeSize: DynamicTypeSize) -> ReadReceiptShapesValues {
-        ReadReceiptShapesValues(dynamicTypeSize: dynamicTypeSize)
-    }
+    static let replyBubbleValues = ReplyBubbleValues.self
     static let screenToBubblePadding: CGFloat = 10
     static let maxWidthLimitationPadding: CGFloat = 85
     static let innerHPadding: CGFloat = 12
@@ -22,12 +21,18 @@ struct MessageBubbleValues {
     static let bubbleToBubbleVPadding: CGFloat = 3
     static let stickerFrameSize: CGFloat = 138
     static let mediaTypeFont: Font = .footnote
+    static let mediaTypeIconToTextHPadding: CGFloat = 4
+    
+    // MARK: - FUNCTIONS
+    static func getDirection(_ by: MessageBubbleUserTypes ) -> BubbleShapeValues.Directions {
+        by == .sender ? .right : .left
+    }
+    
     static func mediaTypeFontHeight(_ dynamicTypeSize: DynamicTypeSize) -> CGFloat {
         "".heightOfHString(usingFont: .from(mediaTypeFont), dynamicTypeSize)
     }
-    static let mediaTypeIconToTextHPadding: CGFloat = 4
     
-    static func getDirection(_ by: MessageBubbleUserTypes ) -> BubbleShapeValues.Directions {
-        by == .sender ? .right : .left
+    static func readReceiptShapesValues(_ dynamicTypeSize: DynamicTypeSize) -> ReadReceiptShapesValues {
+        ReadReceiptShapesValues(dynamicTypeSize: dynamicTypeSize)
     }
 }

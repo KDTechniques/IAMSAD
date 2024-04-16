@@ -15,7 +15,6 @@ struct IAMSADApp: App {
     @StateObject private var avatarSheetVM: AvatarSheetVM = .shared
     @StateObject private var profileVM: ProfileVM = .shared
     @StateObject private var conversationsVM: ConversationsVM = .shared
-    @State var status: ReadReceiptStatusTypes = .seen
     
     init() {
         
@@ -23,7 +22,7 @@ struct IAMSADApp: App {
     
     var body: some Scene {
         WindowGroup {
-            Text("Photo")
+            Conversations_ReplyBubbleTypeView(mediaType: .photo)
                 .font(.footnote)
                 .foregroundStyle(.secondary)
                 .dynamicTypeSize(...DynamicTypeSize.xLarge)
