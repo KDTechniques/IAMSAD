@@ -12,48 +12,45 @@ struct Conversations_ReplyBubbleTypeView: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
     // MARK: - PROPERTIES
-    let userName: String = "Wifey ❤️😘"
-    let replyText: String = ""
+    let userName: String = "Wifey ❤️"
+    let replyText: String = "Hi there."
     let timestamp: String = "03:15 PM"
     let status: ReadReceiptStatusTypes = .seen
     let stripColor: Color = .cyan
     let mediaType: ConversationMediaTypes
-    let replyingTo: MessageBubbleUserTypes = .random()
-    let userType: MessageBubbleUserTypes = .random()
-    let showPointer: Bool = .random()
-    let shouldAnimate: Bool = .random()
+    let replyingTo: MessageBubbleUserTypes = .receiver
+    let userType: MessageBubbleUserTypes = .sender
+    let showPointer: Bool = true
+    let shouldAnimate: Bool = false
     
     let values = MessageBubbleValues.self
     var replyBubbleValues: ReplyBubbleValues.Type { values.replyBubbleValues }
     var outerPadding: (Edge.Set, CGFloat) { replyBubbleValues.outerPadding }
-    var replyBubbleWidth: CGFloat {
-        (outerPadding.1 * 2) +
-        replyBubbleValues.stripWidth +
-        (replyBubbleValues.userTypeTextHPadding * 2) +
-        userName.widthOfHString(usingFont: .from(replyBubbleValues.userTypeFont), dynamicTypeSize) +
-        replyBubbleValues.mediaContentSize
-    }
     
     // MARK: - INITIALIZER
     
     
     // MARK: - BODY
     var body: some View {
-        Conversations_TextOnlyBubbleTypeView(
-            text: "පුක",
+        Conversations_PrimaryNSecondaryBubbleTypeView(
+            text: replyText,
             timestamp: timestamp,
             status: status,
             userType: userType,
             showPointer: showPointer,
             shouldAnimate: shouldAnimate,
             withContent: true
-        ) { width in
+        ) { type, width in
+            var messageBubbleWidth: CGFloat {
+                width + (type == .text ? values.innerHPadding : 0)
+            }
+            
             Group {
                 switch mediaType {
                 case .text:
                     textBased
                 case .photo:
-                    photoBased(width+values.innerHPadding)
+                    photoBased(messageBubbleWidth)
                 case .sticker:
                     stickerBased
                 case .gif:
@@ -64,7 +61,6 @@ struct Conversations_ReplyBubbleTypeView: View {
                     voiceRecordBased
                 }
             }
-            .frame(minWidth: 0)
             .background(userType == .sender ? .replyShapeSender : .replyShapeReceiver)
             .clipShape(CustomRoundedRectangleShape(cornerRadius: values.bubbleShapeValues.cornerRadius - outerPadding.1))
             .padding(outerPadding.0, outerPadding.1)
@@ -88,36 +84,13 @@ extension Conversations_ReplyBubbleTypeView {
     }
     
     // MARK: - photoBased
-    @ViewBuilder
     private func photoBased(_ messageBubbleWidth: CGFloat) -> some View {
-        var shouldExpand: Bool { replyBubbleWidth < messageBubbleWidth }
-        
-        HStack(spacing: replyBubbleValues.userTypeTextHPadding) {
-            stripColor
-                .frame(width: replyBubbleValues.stripWidth)
-            
-            VStack(alignment: .leading, spacing: replyBubbleValues.userTypeToMediaTypeBadgePadding(mediaType)) {
-                Text(userName)
-                    .font(replyBubbleValues.userTypeFont)
-                    .lineLimit(1)
-                
-                Conversations_PhotoBadgeView()
-            }
-            .padding(.trailing, shouldExpand ? -replyBubbleValues.userTypeTextHPadding : 0)
-            
-            if shouldExpand {
-                Spacer()
-            }
-            
-            Image(.follower1)
-                .resizable()
-                .scaledToFill()
-                .frame(width: replyBubbleValues.mediaContentSize)
-                .clipped()
-            
-        }
-        .frame(height: replyBubbleValues.innerBubbleFrameHeight)
-        .maxWidth(shouldExpand: shouldExpand, messageBubbleWidth: messageBubbleWidth)
+        Conversations_PhotoBasedReplyBubbleView(
+            messageBubbleWidth: messageBubbleWidth,
+            stripColor: stripColor,
+            mediaType: mediaType,
+            userName: userName
+        )
     }
     
     // MARK: - stickerBased
@@ -149,18 +122,6 @@ extension Conversations_ReplyBubbleTypeView {
         VStack {
             Text("Wifey ❤️😘")
                 .font(replyBubbleValues.userTypeFont)
-        }
-    }
-}
-
-extension View {
-    @ViewBuilder
-    fileprivate func maxWidth(shouldExpand: Bool, messageBubbleWidth: CGFloat) -> some View {
-        if shouldExpand {
-            self
-                .frame(maxWidth: messageBubbleWidth)
-        } else {
-            self
         }
     }
 }

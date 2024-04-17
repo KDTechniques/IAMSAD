@@ -1,5 +1,5 @@
 //
-//  Conversations_TextOnlyBubbleTypeView.swift
+//  Conversations_PrimaryNSecondaryBubbleTypeView.swift
 //  IAMSAD
 //
 //  Created by Mr. Kavinda Dilshan on 2024-04-10.
@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct Conversations_TextOnlyBubbleTypeView<T: View>: View {
+struct Conversations_PrimaryNSecondaryBubbleTypeView<T: View>: View {
     // MARK: - PROPERTIES
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
+    let mediaType: ConversationMediaTypes = .sticker
     let text: String
     let timestamp: String
     let status: ReadReceiptStatusTypes
@@ -18,7 +19,7 @@ struct Conversations_TextOnlyBubbleTypeView<T: View>: View {
     let showPointer: Bool
     let shouldAnimate: Bool
     let withContent: Bool
-    let content: (CGFloat) -> T
+    let content: (ConversationMediaTypes, CGFloat) -> T
     
     @State private var isExceededLineLimit: Bool = false
     @State private var isReadMore: Bool = false
@@ -65,6 +66,15 @@ struct Conversations_TextOnlyBubbleTypeView<T: View>: View {
         return Int(screenHeight/textHeight) - accuracyValue
     }
     @State private var bubbleWidth: CGFloat = 0
+    var vStackAlignment: HorizontalAlignment {
+        mediaType == .text ? .leading : .center
+    }
+    var innerHPadding: CGFloat {
+        mediaType == .text ? values.innerHPadding : 0
+    }
+    var innerVPadding: CGFloat {
+        mediaType == .text ? values.innerVPadding : 4
+    }
     
     // MARK: - INITILAIZER
     init(
@@ -75,7 +85,7 @@ struct Conversations_TextOnlyBubbleTypeView<T: View>: View {
         showPointer: Bool,
         shouldAnimate: Bool,
         withContent: Bool = false,
-        @ViewBuilder content: @escaping (CGFloat) -> T = { _ in EmptyView() }
+        @ViewBuilder content: @escaping (ConversationMediaTypes, CGFloat) -> T = { _, _  in EmptyView() }
     ) {
         self.text = text
         self.timestamp = timestamp
@@ -93,26 +103,39 @@ struct Conversations_TextOnlyBubbleTypeView<T: View>: View {
             direction: values.getDirection(userType),
             showPointer: showPointer
         ) {
-            VStack(alignment: .leading, spacing: 0) {
-                content(bubbleWidth)
+            VStack(alignment: vStackAlignment, spacing: 0) {
+                content(mediaType, bubbleWidth)
                 
                 Group {
-                    if !isReadMore {
-                        if height < screenHeight {
-                            if conditionToBeSingleLineBubble {
-                                singleLineBubble
+                    switch mediaType {
+                    case .text:
+                        if !isReadMore {
+                            if height < screenHeight {
+                                if conditionToBeSingleLineBubble {
+                                    singleLineBubble
+                                } else {
+                                    multiLineBubble
+                                }
                             } else {
-                                multiLineBubble
+                                readMoreBubble
                             }
                         } else {
-                            readMoreBubble
+                            expandedBubble
                         }
-                    } else {
-                        expandedBubble
+                    case .sticker:
+                        Image(.follower3)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: values.stickerFrameSize, height: values.stickerFrameSize)
+                            .clipped()
+                            .padding(.bottom, 20)
+                    default:
+                        EmptyView()
                     }
                 }
-                .padding(.horizontal, values.innerHPadding)
-                .padding(.vertical, values.innerVPadding)
+                
+                .padding(.horizontal, innerHPadding)
+                .padding(.vertical, innerVPadding)
                 .geometryReaderDimensionViewModifier($bubbleWidth, dimension: .width)
             }
             .overlay(alignment: .bottomTrailing) {
@@ -128,23 +151,23 @@ struct Conversations_TextOnlyBubbleTypeView<T: View>: View {
 }
 
 // MARK: - PREVIEWS
-#Preview("Conversations_TextOnlyBubbleTypeView") {
+#Preview("Conversations_PrimaryNSecondaryBubbleTypeView") {
     ScrollView(.vertical) {
         LazyVStack {
-            Conversations_TextOnlyBubbleTypeView(
+            Conversations_PrimaryNSecondaryBubbleTypeView(
                 text: "Hello there 👋👋👋",
                 timestamp: "06:12 PM",
                 status: .random(),
                 userType: .sender,
                 showPointer: true,
                 shouldAnimate: .random()
-            ) { _ in }
+            ) { _, _ in }
         }
     }
 }
 
 // MARK: - EXTENSIONS
-extension Conversations_TextOnlyBubbleTypeView {
+extension Conversations_PrimaryNSecondaryBubbleTypeView {
     // MARK: textOnly
     private var textOnly: some View {
         Text(text)
