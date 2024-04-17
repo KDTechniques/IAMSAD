@@ -14,4 +14,5 @@ enum ConversationMediaTypes: CaseIterable {
     case gif // GIFs are from GIFPHY, or from a link
     case video
     case voiceRecord
+    case link
 }

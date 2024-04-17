@@ -1,5 +1,5 @@
 //
-//  Conversations_ReplyBubbleTypeView.swift
+//  Conversations_SecondaryBubbleView.swift
 //  IAMSAD
 //
 //  Created by Mr. Kavinda Dilshan on 2024-04-12.
@@ -7,17 +7,18 @@
 
 import SwiftUI
 
-struct Conversations_ReplyBubbleTypeView: View {
+struct Conversations_SecondaryBubbleView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
     // MARK: - PROPERTIES
+    let primaryMediaType: ConversationMediaTypes
+    let secondaryMediaType: ConversationMediaTypes
     let userName: String = "Wifey ❤️"
     let replyText: String = "Hi there."
     let timestamp: String = "03:15 PM"
     let status: ReadReceiptStatusTypes = .seen
     let stripColor: Color = .cyan
-    let mediaType: ConversationMediaTypes
     let replyingTo: MessageBubbleUserTypes = .receiver
     let userType: MessageBubbleUserTypes = .sender
     let showPointer: Bool = true
@@ -32,21 +33,22 @@ struct Conversations_ReplyBubbleTypeView: View {
     
     // MARK: - BODY
     var body: some View {
-        Conversations_PrimaryNSecondaryBubbleTypeView(
+        Conversations_PrimaryNSecondaryBubbleView(
+            primaryMediaType: primaryMediaType,
             text: replyText,
             timestamp: timestamp,
             status: status,
             userType: userType,
             showPointer: showPointer,
             shouldAnimate: shouldAnimate,
-            withContent: true
+            withSecondaryContent: true
         ) { type, width in
             var messageBubbleWidth: CGFloat {
                 width + (type == .text ? values.innerHPadding : 0)
             }
             
             Group {
-                switch mediaType {
+                switch secondaryMediaType {
                 case .text:
                     textBased
                 case .photo:
@@ -59,6 +61,8 @@ struct Conversations_ReplyBubbleTypeView: View {
                     videoBased
                 case .voiceRecord:
                     voiceRecordBased
+                case .link:
+                    linkBased
                 }
             }
             .background(userType == .sender ? .replyShapeSender : .replyShapeReceiver)
@@ -69,12 +73,12 @@ struct Conversations_ReplyBubbleTypeView: View {
 }
 
 // MARK: - PREVIEWS
-#Preview("Conversations_ReplyBubbleTypeView") {
-    Conversations_ReplyBubbleTypeView(mediaType: .photo)
+#Preview("Conversations_SecondaryBubbleView") {
+    Conversations_SecondaryBubbleView(primaryMediaType: .sticker, secondaryMediaType: .photo)
 }
 
 // MARK: -  EXTENSIONS
-extension Conversations_ReplyBubbleTypeView {
+extension Conversations_SecondaryBubbleView {
     // MARK: - textBased
     private var textBased: some View {
         VStack {
@@ -85,10 +89,9 @@ extension Conversations_ReplyBubbleTypeView {
     
     // MARK: - photoBased
     private func photoBased(_ messageBubbleWidth: CGFloat) -> some View {
-        Conversations_PhotoBasedReplyBubbleView(
+        Conversations_PhotoBasedSecondaryBubbleView(
             messageBubbleWidth: messageBubbleWidth,
             stripColor: stripColor,
-            mediaType: mediaType,
             userName: userName
         )
     }
@@ -119,6 +122,14 @@ extension Conversations_ReplyBubbleTypeView {
     
     // MARK: - voiceRecordBased
     private var voiceRecordBased: some View {
+        VStack {
+            Text("Wifey ❤️😘")
+                .font(replyBubbleValues.userTypeFont)
+        }
+    }
+    
+    // MARK: - linkBased
+    private var linkBased: some View {
         VStack {
             Text("Wifey ❤️😘")
                 .font(replyBubbleValues.userTypeFont)
