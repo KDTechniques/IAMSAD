@@ -12,7 +12,7 @@ struct Conversations_PhotoBadgeView: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
     let values = MessageBubbleValues.self
-    var height: CGFloat { values.mediaTypeFontHeight(dynamicTypeSize) - 3 }
+    var height: CGFloat { values.mediaTypeFontHeight(dynamicTypeSize) - 5 }
     
     // MARK: - BODY
     var body: some View {

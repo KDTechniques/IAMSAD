@@ -23,8 +23,6 @@ struct IAMSADApp: App {
     var body: some Scene {
         WindowGroup {
             Conversations_ReplyBubbleTypeView(mediaType: .photo)
-                .font(.footnote)
-                .foregroundStyle(.secondary)
                 .dynamicTypeSize(...DynamicTypeSize.xLarge)
                 .environmentObject(avatar)
                 .environmentObject(avatarSheetVM)

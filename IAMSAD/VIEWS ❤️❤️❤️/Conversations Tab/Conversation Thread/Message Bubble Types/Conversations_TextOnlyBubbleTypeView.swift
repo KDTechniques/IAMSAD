@@ -93,7 +93,7 @@ struct Conversations_TextOnlyBubbleTypeView<T: View>: View {
             direction: values.getDirection(userType),
             showPointer: showPointer
         ) {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 0) {
                 content(bubbleWidth)
                 
                 Group {

@@ -24,13 +24,14 @@ struct Conversations_ReplyBubbleTypeView: View {
     let shouldAnimate: Bool = .random()
     
     let values = MessageBubbleValues.self
-    var outerPadding: (Edge.Set, CGFloat) { values.replyBubbleValues.outerPadding }
+    var replyBubbleValues: ReplyBubbleValues.Type { values.replyBubbleValues }
+    var outerPadding: (Edge.Set, CGFloat) { replyBubbleValues.outerPadding }
     var replyBubbleWidth: CGFloat {
         (outerPadding.1 * 2) +
-        values.replyBubbleValues.stripWidth +
-        (values.replyBubbleValues.leadingInnerPadding(mediaType) * 2) +
-        userName.widthOfHString(usingFont: .from(.callout.weight(.semibold)), dynamicTypeSize) +
-        values.replyBubbleValues.mediaContentSize(mediaType)
+        replyBubbleValues.stripWidth +
+        (replyBubbleValues.userTypeTextHPadding * 2) +
+        userName.widthOfHString(usingFont: .from(replyBubbleValues.userTypeFont), dynamicTypeSize) +
+        replyBubbleValues.mediaContentSize
     }
     
     // MARK: - INITIALIZER
@@ -38,37 +39,35 @@ struct Conversations_ReplyBubbleTypeView: View {
     
     // MARK: - BODY
     var body: some View {
-        ScrollView {
-            Conversations_TextOnlyBubbleTypeView(
-                text: "12345678",
-                timestamp: timestamp,
-                status: status,
-                userType: userType,
-                showPointer: showPointer,
-                shouldAnimate: shouldAnimate,
-                withContent: true
-            ) { width in
-                Group {
-                    switch mediaType {
-                    case .text:
-                        textBased
-                    case .photo:
-                        photoBased(width+values.innerHPadding)
-                    case .sticker:
-                        stickerBased
-                    case .gif:
-                        gifBased
-                    case .video:
-                        videoBased
-                    case .voiceRecord:
-                        voiceRecordBased
-                    }
+        Conversations_TextOnlyBubbleTypeView(
+            text: "පුක",
+            timestamp: timestamp,
+            status: status,
+            userType: userType,
+            showPointer: showPointer,
+            shouldAnimate: shouldAnimate,
+            withContent: true
+        ) { width in
+            Group {
+                switch mediaType {
+                case .text:
+                    textBased
+                case .photo:
+                    photoBased(width+values.innerHPadding)
+                case .sticker:
+                    stickerBased
+                case .gif:
+                    gifBased
+                case .video:
+                    videoBased
+                case .voiceRecord:
+                    voiceRecordBased
                 }
-                .frame(minWidth: 0)
-                .background(userType == .sender ? .replyShapeSender : .replyShapeReceiver)
-                .clipShape(CustomRoundedRectangleShape(cornerRadius: values.bubbleShapeValues.cornerRadius - outerPadding.1))
-                .padding(outerPadding.0, outerPadding.1)
             }
+            .frame(minWidth: 0)
+            .background(userType == .sender ? .replyShapeSender : .replyShapeReceiver)
+            .clipShape(CustomRoundedRectangleShape(cornerRadius: values.bubbleShapeValues.cornerRadius - outerPadding.1))
+            .padding(outerPadding.0, outerPadding.1)
         }
     }
 }
@@ -84,7 +83,7 @@ extension Conversations_ReplyBubbleTypeView {
     private var textBased: some View {
         VStack {
             Text(userName)
-                .font(.callout.weight(.semibold))
+                .font(replyBubbleValues.userTypeFont)
         }
     }
     
@@ -93,18 +92,18 @@ extension Conversations_ReplyBubbleTypeView {
     private func photoBased(_ messageBubbleWidth: CGFloat) -> some View {
         var shouldExpand: Bool { replyBubbleWidth < messageBubbleWidth }
         
-        HStack(spacing: values.replyBubbleValues.leadingInnerPadding(mediaType)) {
+        HStack(spacing: replyBubbleValues.userTypeTextHPadding) {
             stripColor
-                .frame(width: values.replyBubbleValues.stripWidth)
+                .frame(width: replyBubbleValues.stripWidth)
             
-            VStack(alignment: .leading, spacing: values.replyBubbleValues.userTypeToMediaTypeBadgePadding(mediaType)) {
+            VStack(alignment: .leading, spacing: replyBubbleValues.userTypeToMediaTypeBadgePadding(mediaType)) {
                 Text(userName)
-                    .font(.callout.weight(.semibold))
+                    .font(replyBubbleValues.userTypeFont)
                     .lineLimit(1)
                 
                 Conversations_PhotoBadgeView()
             }
-            .padding(.trailing, shouldExpand ? -values.replyBubbleValues.leadingInnerPadding(mediaType) : 0)
+            .padding(.trailing, shouldExpand ? -replyBubbleValues.userTypeTextHPadding : 0)
             
             if shouldExpand {
                 Spacer()
@@ -113,10 +112,11 @@ extension Conversations_ReplyBubbleTypeView {
             Image(.follower1)
                 .resizable()
                 .scaledToFill()
-                .frame(width: values.replyBubbleValues.mediaContentSize(mediaType))
+                .frame(width: replyBubbleValues.mediaContentSize)
+                .clipped()
             
         }
-        .frame(maxHeight: values.replyBubbleValues.innerBubbleFrameHeight)
+        .frame(height: replyBubbleValues.innerBubbleFrameHeight)
         .maxWidth(shouldExpand: shouldExpand, messageBubbleWidth: messageBubbleWidth)
     }
     
@@ -124,7 +124,7 @@ extension Conversations_ReplyBubbleTypeView {
     private var stickerBased: some View {
         VStack {
             Text("Wifey ❤️😘")
-                .font(.callout.weight(.semibold))
+                .font(replyBubbleValues.userTypeFont)
         }
     }
     
@@ -132,7 +132,7 @@ extension Conversations_ReplyBubbleTypeView {
     private var gifBased: some View {
         VStack {
             Text("Wifey ❤️😘")
-                .font(.callout.weight(.semibold))
+                .font(replyBubbleValues.userTypeFont)
         }
     }
     
@@ -140,7 +140,7 @@ extension Conversations_ReplyBubbleTypeView {
     private var videoBased: some View {
         VStack {
             Text("Wifey ❤️😘")
-                .font(.callout.weight(.semibold))
+                .font(replyBubbleValues.userTypeFont)
         }
     }
     
@@ -148,7 +148,7 @@ extension Conversations_ReplyBubbleTypeView {
     private var voiceRecordBased: some View {
         VStack {
             Text("Wifey ❤️😘")
-                .font(.callout.weight(.semibold))
+                .font(replyBubbleValues.userTypeFont)
         }
     }
 }
