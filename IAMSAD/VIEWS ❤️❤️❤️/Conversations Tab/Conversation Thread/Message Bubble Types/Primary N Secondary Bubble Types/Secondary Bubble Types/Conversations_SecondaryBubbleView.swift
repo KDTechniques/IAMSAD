@@ -51,18 +51,14 @@ struct Conversations_SecondaryBubbleView: View {
                 switch secondaryMediaType {
                 case .text:
                     textBased
-                case .photo:
-                    photoBased(messageBubbleWidth)
+                case .photo, .video, .gif, .link:
+                    photoVideoGIFLinkBased(messageBubbleWidth)
                 case .sticker:
                     stickerBased
-                case .gif:
-                    gifBased
-                case .video:
-                    videoBased
                 case .voiceRecord:
                     voiceRecordBased
-                case .link:
-                    linkBased
+                case .audio:
+                    audioBased
                 }
             }
             .background(userType == .sender ? .replyShapeSender : .replyShapeReceiver)
@@ -87,9 +83,10 @@ extension Conversations_SecondaryBubbleView {
         }
     }
     
-    // MARK: - photoBased
-    private func photoBased(_ messageBubbleWidth: CGFloat) -> some View {
-        Conversations_PhotoBasedSecondaryBubbleView(
+    // MARK: - photoVideoGIFLinkBased
+    private func photoVideoGIFLinkBased(_ messageBubbleWidth: CGFloat) -> some View {
+        Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView(
+            secondaryMediaType: secondaryMediaType,
             messageBubbleWidth: messageBubbleWidth,
             stripColor: stripColor,
             userName: userName
@@ -104,22 +101,6 @@ extension Conversations_SecondaryBubbleView {
         }
     }
     
-    // MARK: - gifBased
-    private var gifBased: some View {
-        VStack {
-            Text("Wifey ❤️😘")
-                .font(replyBubbleValues.userTypeFont)
-        }
-    }
-    
-    // MARK: - videoBased
-    private var videoBased: some View {
-        VStack {
-            Text("Wifey ❤️😘")
-                .font(replyBubbleValues.userTypeFont)
-        }
-    }
-    
     // MARK: - voiceRecordBased
     private var voiceRecordBased: some View {
         VStack {
@@ -128,8 +109,8 @@ extension Conversations_SecondaryBubbleView {
         }
     }
     
-    // MARK: - linkBased
-    private var linkBased: some View {
+    // MARK: - audioBased
+    private var audioBased: some View {
         VStack {
             Text("Wifey ❤️😘")
                 .font(replyBubbleValues.userTypeFont)

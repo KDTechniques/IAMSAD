@@ -52,7 +52,7 @@ struct AvatarImageView: View {
                     .opacity(state == .failure ? (colorScheme == .dark ? 1 : 0) : 0)
             )
             .overlay(alignment: position) {
-                WebImage(url: url, options: [.lowPriority])
+                WebImage(url: url, options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad])
                     .onProgress { _, _ in state = .loading }
                     .onSuccess { _, _, _ in state = .success }
                     .onFailure { _ in state = .failure }

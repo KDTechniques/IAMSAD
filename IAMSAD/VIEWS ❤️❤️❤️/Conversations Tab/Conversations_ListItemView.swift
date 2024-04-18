@@ -101,7 +101,7 @@ extension Conversations_ListItemView {
                 if let imageURL {
                     WebImage(
                         url: imageURL,
-                        options: [.scaleDownLargeImages, .continueInBackground, .retryFailed]
+                        options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
                     )
                     .resizable()
                     .defaultBColorPlaceholder()

@@ -36,7 +36,7 @@ struct Profile_SecondaryProfilePhotoView: View {
             .overlay {
                 WebImage(
                     url: profilePhotoURL,
-                    options: [.highPriority, .scaleDownLargeImages, .retryFailed]
+                    options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
                 )
                 .resizable()
                 .defaultBColorPlaceholder()

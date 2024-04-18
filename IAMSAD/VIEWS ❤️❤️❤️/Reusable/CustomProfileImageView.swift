@@ -39,7 +39,7 @@ struct CustomProfileImageView: View {
                 if let imageURL {
                     WebImage(
                         url: imageURL,
-                        options: [.scaleDownLargeImages, .retryFailed]
+                        options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
                     )
                     .resizable()
                     .defaultBColorPlaceholder(Color(uiColor: .systemGray5))

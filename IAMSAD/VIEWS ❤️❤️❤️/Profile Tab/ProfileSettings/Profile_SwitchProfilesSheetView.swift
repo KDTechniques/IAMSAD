@@ -126,9 +126,12 @@ extension CardView {
             switch accountType {
             case .personal:
                 if let imageURL {
-                    WebImage(url: imageURL, options: [.scaleDownLargeImages])
-                        .resizable()
-                        .scaledToFill()
+                    WebImage(
+                        url: imageURL,
+                        options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
+                    )
+                    .resizable()
+                    .scaledToFill()
                 } else {
                     CustomNoProfileImageView()
                 }

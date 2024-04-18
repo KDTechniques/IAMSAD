@@ -21,7 +21,7 @@ struct Profile_CoverPhotoView: View {
     var body: some View {
         WebImage(
             url: coverPhotoURL,
-            options: [.highPriority, .scaleDownLargeImages, .retryFailed]
+            options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
         )
         .resizable()
         .defaultBColorPlaceholder()
@@ -33,4 +33,7 @@ struct Profile_CoverPhotoView: View {
 // MARK: PREVIEW
 #Preview("Profile_CoverPhotoView") {
     Profile_CoverPhotoView(coverPhotoURL: .init(string: "https://www.tomerazabi.com/wp-content/uploads/2020/12/IMG_7677-7751-1000px-SJPEG-V3.jpg"))
+        .frame(height: 150)
+        .clipped()
+        .ignoresSafeArea()
 }

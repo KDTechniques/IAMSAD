@@ -23,7 +23,7 @@ struct Profile_PrimaryPhotoView: View {
             .overlay {
                 WebImage(
                     url: profileVM.profilePhotoURL,
-                    options: [.highPriority, .scaleDownLargeImages, .retryFailed]
+                    options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
                 )
                 .resizable()
                 .defaultBColorPlaceholder()

@@ -12,7 +12,7 @@ struct Conversations_GIFBadgeView: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
     let values = MessageBubbleValues.self
-    var height: CGFloat { values.mediaTypeFontHeight(dynamicTypeSize) - 3 }
+    var height: CGFloat { values.mediaTypeFontHeight(dynamicTypeSize) - 4 }
     var ratio: CGFloat { height / 33 }
     var fontSize: CGFloat { ratio * 20 }
     var width: CGFloat { ratio * 48 }
@@ -28,7 +28,7 @@ struct Conversations_GIFBadgeView: View {
                 .foregroundStyle(.black)
                 .frame(width: width, height: height)
                 .offset(x: offsetX)
-                .background(.gray)
+                .background(.secondary)
                 .clipShape(.rect(cornerRadius: cornerRadius))
             
             Conversations_MediaBadgeTextView(text: "GIF")

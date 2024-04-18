@@ -22,7 +22,7 @@ struct IAMSADApp: App {
     
     var body: some Scene {
         WindowGroup {
-            Conversations_SecondaryBubbleView(primaryMediaType: .photo, secondaryMediaType: .sticker)
+            Conversations_SecondaryBubbleView(primaryMediaType: .sticker, secondaryMediaType: .link)
                 .dynamicTypeSize(...DynamicTypeSize.xLarge)
                 .environmentObject(avatar)
                 .environmentObject(avatarSheetVM)
