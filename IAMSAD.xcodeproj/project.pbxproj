@@ -19,6 +19,11 @@
 		0B12FB9A2BCAD629002E0048 /* UIFont + EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B12FB992BCAD629002E0048 /* UIFont + EXT.swift */; };
 		0B1888EA2BD1151A00C8C59D /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0B1888E92BD1151A00C8C59D /* video.mp4 */; };
 		0B1888EC2BD12DD100C8C59D /* photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0B1888EB2BD12DD100C8C59D /* photo.jpg */; };
+		0B1AF16E2BD510C800E3825C /* SocialMediaTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1AF16D2BD510C800E3825C /* SocialMediaTypes.swift */; };
+		0B1AF1702BD5185800E3825C /* TikTokInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1AF16F2BD5185800E3825C /* TikTokInfoModel.swift */; };
+		0B1AF1722BD52B9200E3825C /* InstagramInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1AF1712BD52B9200E3825C /* InstagramInfoModel.swift */; };
+		0B1AF1742BD52BA800E3825C /* FacebookInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1AF1732BD52BA800E3825C /* FacebookInfoModel.swift */; };
+		0B1AF1762BD52BC200E3825C /* YoutubeInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1AF1752BD52BC200E3825C /* YoutubeInfoModel.swift */; };
 		0B20D7D72B96067300B71C10 /* Profile_GeneralNShareButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7D62B96067300B71C10 /* Profile_GeneralNShareButtonsView.swift */; };
 		0B20D7DB2B960F5300B71C10 /* Profile_PrimaryPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7DA2B960F5300B71C10 /* Profile_PrimaryPhotoView.swift */; };
 		0B20D7DD2B96126400B71C10 /* Profile_NameGenderNJoinedDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7DC2B96126400B71C10 /* Profile_NameGenderNJoinedDateView.swift */; };
@@ -483,6 +488,11 @@
 		0B12FB992BCAD629002E0048 /* UIFont + EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + EXT.swift"; sourceTree = "<group>"; };
 		0B1888E92BD1151A00C8C59D /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
 		0B1888EB2BD12DD100C8C59D /* photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = photo.jpg; path = "IAMSAD/Preview Content/Preview Assets.xcassets/follower3.imageset/photo.jpg"; sourceTree = SOURCE_ROOT; };
+		0B1AF16D2BD510C800E3825C /* SocialMediaTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaTypes.swift; sourceTree = "<group>"; };
+		0B1AF16F2BD5185800E3825C /* TikTokInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TikTokInfoModel.swift; sourceTree = "<group>"; };
+		0B1AF1712BD52B9200E3825C /* InstagramInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramInfoModel.swift; sourceTree = "<group>"; };
+		0B1AF1732BD52BA800E3825C /* FacebookInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookInfoModel.swift; sourceTree = "<group>"; };
+		0B1AF1752BD52BC200E3825C /* YoutubeInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeInfoModel.swift; sourceTree = "<group>"; };
 		0B20D7D62B96067300B71C10 /* Profile_GeneralNShareButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_GeneralNShareButtonsView.swift; sourceTree = "<group>"; };
 		0B20D7DA2B960F5300B71C10 /* Profile_PrimaryPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_PrimaryPhotoView.swift; sourceTree = "<group>"; };
 		0B20D7DC2B96126400B71C10 /* Profile_NameGenderNJoinedDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_NameGenderNJoinedDateView.swift; sourceTree = "<group>"; };
@@ -1106,6 +1116,11 @@
 				0BC7DA822BCC393700C4D356 /* MessageBubbleValues.swift */,
 				0BC7DA842BCC3C9100C4D356 /* ReadReceiptShapesValues.swift */,
 				0BDE95262BCE53D5003A211E /* ReplyBubbleValues.swift */,
+				0B1AF16D2BD510C800E3825C /* SocialMediaTypes.swift */,
+				0B1AF16F2BD5185800E3825C /* TikTokInfoModel.swift */,
+				0B1AF1712BD52B9200E3825C /* InstagramInfoModel.swift */,
+				0B1AF1732BD52BA800E3825C /* FacebookInfoModel.swift */,
+				0B1AF1752BD52BC200E3825C /* YoutubeInfoModel.swift */,
 			);
 			path = Reusable;
 			sourceTree = "<group>";
@@ -2254,6 +2269,7 @@
 				0B8900C12BC6E8090054B056 /* MessageBubbleUserTypes.swift in Sources */,
 				0B2623242B4BD9F20063D71C /* CrashlyticsManager.swift in Sources */,
 				0B26236E2B4D32960063D71C /* OnboardingGenderNAgeView.swift in Sources */,
+				0B1AF1702BD5185800E3825C /* TikTokInfoModel.swift in Sources */,
 				0B89BB8B2BA6FFD0007C9721 /* GeminiAPI.swift in Sources */,
 				0BFB38112B56FDB300227CB2 /* OnboardingLastView.swift in Sources */,
 				0B4434662B527C200041E8BF /* OTPVerificationView.swift in Sources */,
@@ -2293,12 +2309,14 @@
 				0B99746B2B55D6DE001AD3F6 /* CustomSearchBarView.swift in Sources */,
 				0B26238B2B4D5F710063D71C /* Binding+EXT.swift in Sources */,
 				0BC7DA852BCC3C9100C4D356 /* ReadReceiptShapesValues.swift in Sources */,
+				0B1AF1742BD52BA800E3825C /* FacebookInfoModel.swift in Sources */,
 				0B8544022B948D7F00FAF90F /* ProfileVM.swift in Sources */,
 				0B08F1C62BC5B4A1009E8538 /* Conversations_MessageBubbleView.swift in Sources */,
 				0BE75A6A2B99FA09003C43DA /* Profile_ArrowIconView.swift in Sources */,
 				0B4392FC2B4EF2B30075E5D1 /* ColorPaletteModel.swift in Sources */,
 				0BE75A6E2B99FB2B003C43DA /* Profile_CoverTextView.swift in Sources */,
 				0B5FBB802B7C90DC00669034 /* Profile_TabContentsView.swift in Sources */,
+				0B1AF16E2BD510C800E3825C /* SocialMediaTypes.swift in Sources */,
 				0B2830412B8CA495006061BF /* ToolbarTopTrailingItemsView.swift in Sources */,
 				0B2623162B4BD4200063D71C /* ViewThatFitsTypes.swift in Sources */,
 				0B6D740F2BCFBF5A001CE339 /* Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView.swift in Sources */,
@@ -2324,6 +2342,7 @@
 				0B00D1DE2B5334A900CE721C /* OnboardingPhoneNumberView.swift in Sources */,
 				0B9071EF2B6EC164008D5AF4 /* LaunchScreen.swift in Sources */,
 				0B729F732B668084009BDFD2 /* AvatarModel.swift in Sources */,
+				0B1AF1722BD52B9200E3825C /* InstagramInfoModel.swift in Sources */,
 				0B2623642B4C9F3D0063D71C /* CustomStandardAccentBottomButtonView.swift in Sources */,
 				0B4164B32BC9A52400B92311 /* ConversationMediaTypes.swift in Sources */,
 				0BBD2AAC2BA136F4006990AA /* Profile_TabContentOffsetModel.swift in Sources */,
@@ -2361,6 +2380,7 @@
 				0BBD2AB82BA1461A006990AA /* Profile_LikesTabView.swift in Sources */,
 				0B4164B52BC9BCC900B92311 /* Conversations_ReadReceiptCheckmarkShapes.swift in Sources */,
 				0BBD2ABC2BA14639006990AA /* Profile_AchievementsTabView.swift in Sources */,
+				0B1AF1762BD52BC200E3825C /* YoutubeInfoModel.swift in Sources */,
 				0B9071F22B6EC8E7008D5AF4 /* CustomPopUpView.swift in Sources */,
 				0B12FB9A2BCAD629002E0048 /* UIFont + EXT.swift in Sources */,
 				0BB588552BC48D8D003ACABB /* Conversations_MessageThreadView.swift in Sources */,

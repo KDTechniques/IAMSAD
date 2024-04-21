@@ -180,19 +180,15 @@ extension Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView {
     // MARK: - linkBased
     @ViewBuilder
     private var linkBased: some View {
-        let urlString: String = "https://youtu.be/fdZwRDv9OWI?si=XRE-8O3nr-JvMXRO"
+        let urlString: String = "https://img.youtube.com/vi/xtAL2x58hns/mqdefault.jpg"
         
-        if let youtubeID: String = Utilities.extractYouTubeID(from: urlString),
-           let url: URL = .init(string: "https://img.youtube.com/vi/\(youtubeID)/mqdefault.jpg") {
+        if let url: URL = .init(string: urlString) {
             WebImage(url: url, options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad])
                 .resizable()
                 .defaultBColorPlaceholder()
                 .scaledToFill()
                 .frame(width: replyBubbleValues.mediaContentSize)
                 .clipped()
-        } else {
-            Color(uiColor: .systemGray6)
-                .frame(width: replyBubbleValues.mediaContentSize)
         }
     }
 }

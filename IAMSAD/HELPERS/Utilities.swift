@@ -25,9 +25,35 @@ struct Utilities {
         }
     }
     
-    // MARK: - extractYouTubeID
-    static func extractYouTubeID(from url: String) -> String? {
-        let pattern = "((?<=(v|V)/)|(?<=be/)|(?<=(\\?|\\&)v=)|(?<=embed/)|(?<=shorts/))([\\w-]+)"
+    // MARK: - findSocialMediaType
+    static func findSocialMediaType(by url: String) -> SocialMediaTypes? {
+        if url.contains("facebook.com") {
+            return .facebook
+        } else if url.contains("instagram.com") {
+            return .instagram
+        } else if url.contains("youtube.com") {
+            return .youtube
+        } else if url.contains("tiktok.com") {
+            return .tiktok
+        } else {
+            return nil
+        }
+    }
+    
+    // MARK: - extractSocialMediaID
+    static func extractSocialMediaID(from url: String, type: SocialMediaTypes) -> String? {
+        var pattern: String {
+            switch type {
+            case .facebook:
+                "(?<=facebook\\.com/)[^/?#&]+"
+            case .instagram:
+                "(?<=instagram\\.com/)[^/?#&]+"
+            case .youtube:
+                "((?<=(v|V)/)|(?<=be/)|(?<=(\\?|\\&)v=)|(?<=embed/)|(?<=shorts/))([\\w-]+)"
+            case .tiktok:
+                "(?<=https://vt\\.tiktok\\.com/)([\\w-]+)"
+            }
+        }
         
         let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)
         let range = NSRange(location: 0, length: url.utf16.count)
@@ -42,4 +68,57 @@ struct Utilities {
         
         return nil
     }
+    
+    // MARK: - getTikTokInfoData
+    static func getTikTokInfoData(id: String) async -> TikTokInfoModel? {
+        let headers: [String: String] = [
+            "X-RapidAPI-Key": "1c876fdb4emshe21e1c515423661p1111b9jsn52ad6f81f06e",
+            "X-RapidAPI-Host": "tiktok-scraper7.p.rapidapi.com"
+        ]
+        
+        guard let url: URL = .init(string: "https://tiktok-scraper7.p.rapidapi.com/?url=https%3A%2F%2Fvt.tiktok.com%2F\(id)%2F&hd=1") else { return nil }
+        
+        var request: URLRequest = .init(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        
+        let decoder: JSONDecoder = .init()
+        
+        guard let (data, _) = try? await URLSession.shared.data(for: request),
+              let model: TikTokInfoModel = try? decoder.decode(TikTokInfoModel.self, from: data) else { return nil }
+        
+        return model
+    }
+    
+    // MARK: - getInstagramInfoData
+    static func getInstagramInfoData(id: String) async -> InstagramInfoModel? {
+        let headers: [String: String] = [
+            "X-RapidAPI-Key": "1c876fdb4emshe21e1c515423661p1111b9jsn52ad6f81f06e",
+            "X-RapidAPI-Host": "instagram243.p.rapidapi.com"
+        ]
+        
+        guard let url: URL = .init(string: "https://instagram243.p.rapidapi.com/userinfo/\(id)") else { return nil }
+        
+        var request: URLRequest = .init(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        
+        let decoder: JSONDecoder = .init()
+        
+        guard let (data, _) = try? await URLSession.shared.data(for: request),
+              let model: InstagramInfoModel = try? decoder.decode(InstagramInfoModel.self, from: data) else { return nil }
+        
+        return model
+    }
+    
+    // MARK: - getFacebookInfoData
+    static func getFacebookInfoData(id: String) async -> FacebookInfoModel? {
+        nil
+    }
+    
+    // MARK: - getYoutubeInfoData
+    static func getYoutubeInfoData(id: String) async -> YoutubeInfoModel? {
+        nil
+    }
 }
+

@@ -502,7 +502,7 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>        let urlString: String = "https://youtu.be/fdZwRDv9OWI?si=XRE-8O3nr-JvMXRO"
+				<string>        let urlString: String = "https://img.youtube.com/vi/xtAL2x58hns/mqdefault.jpg"
 </string>
 				<key>leading</key>
 				<string>    @ViewBuilder
@@ -510,8 +510,8 @@
 </string>
 				<key>trailing</key>
 				<string>        
-        if let youtubeID: String = Utilities.extractYouTubeID(from: urlString),
-           let url: URL = .init(string: "https://img.youtube.com/vi/\(youtubeID)/mqdefault.jpg") {
+        if let url: URL = .init(string: urlString) {
+            WebImage(url: url, options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad])
 </string>
 			</dict>
 			<key>title</key>
