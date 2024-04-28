@@ -25,8 +25,8 @@ struct Conversations_SecondaryBubbleView: View {
     let shouldAnimate: Bool = false
     
     let values = MessageBubbleValues.self
-    var replyBubbleValues: ReplyBubbleValues.Type { values.replyBubbleValues }
-    var outerPadding: (Edge.Set, CGFloat) { replyBubbleValues.outerPadding }
+    var secondaryBubbleValues: SecondaryBubbleValues.Type { values.secondaryBubbleValues }
+    var outerPadding: (Edge.Set, CGFloat) { secondaryBubbleValues.outerPadding }
     
     // MARK: - INITIALIZER
     
@@ -51,7 +51,7 @@ struct Conversations_SecondaryBubbleView: View {
                 switch secondaryMediaType {
                 case .text:
                     textBased
-                case .photo, .video, .gif, .link:
+                case .photo, .video, .gif, .linkWithPreview, .linkTextOnly, .socialMediaInfo:
                     photoVideoGIFLinkBased(messageBubbleWidth)
                 case .sticker:
                     stickerBased
@@ -59,6 +59,7 @@ struct Conversations_SecondaryBubbleView: View {
                     voiceRecordBased
                 case .audio:
                     audioBased
+                default: EmptyView()
                 }
             }
             .background(userType == .sender ? .replyShapeSender : .replyShapeReceiver)
@@ -79,7 +80,7 @@ extension Conversations_SecondaryBubbleView {
     private var textBased: some View {
         VStack {
             Text(userName)
-                .font(replyBubbleValues.userTypeFont)
+                .font(secondaryBubbleValues.userTypeFont)
         }
     }
     
@@ -97,7 +98,7 @@ extension Conversations_SecondaryBubbleView {
     private var stickerBased: some View {
         VStack {
             Text("Wifey ❤️😘")
-                .font(replyBubbleValues.userTypeFont)
+                .font(secondaryBubbleValues.userTypeFont)
         }
     }
     
@@ -105,7 +106,7 @@ extension Conversations_SecondaryBubbleView {
     private var voiceRecordBased: some View {
         VStack {
             Text("Wifey ❤️😘")
-                .font(replyBubbleValues.userTypeFont)
+                .font(secondaryBubbleValues.userTypeFont)
         }
     }
     
@@ -113,7 +114,7 @@ extension Conversations_SecondaryBubbleView {
     private var audioBased: some View {
         VStack {
             Text("Wifey ❤️😘")
-                .font(replyBubbleValues.userTypeFont)
+                .font(secondaryBubbleValues.userTypeFont)
         }
     }
 }

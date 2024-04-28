@@ -10,7 +10,8 @@ import SwiftUI
 struct MessageBubbleValues {
     // MARK: - PROPERTIES
     static let bubbleShapeValues = BubbleShapeValues.self
-    static let replyBubbleValues = ReplyBubbleValues.self
+    static let secondaryBubbleValues = SecondaryBubbleValues.self
+    static let socialMediaBubbleValues = SocialMediaBubbleValues.self
     static let screenToBubblePadding: CGFloat = 10
     static let maxWidthLimitationPadding: CGFloat = 85
     static let innerHPadding: CGFloat = 12

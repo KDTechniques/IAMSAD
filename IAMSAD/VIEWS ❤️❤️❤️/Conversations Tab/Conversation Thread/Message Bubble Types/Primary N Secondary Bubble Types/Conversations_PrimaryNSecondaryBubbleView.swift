@@ -65,21 +65,22 @@ struct Conversations_PrimaryNSecondaryBubbleView<T: View>: View {
     // MARK: - BODY
     var body: some View {
         if !withSecondaryContent {
+            // Primary Bubble Only
+            /// this must be goes with a switch statement for other primary only types
             Conversations_StickerOnlyBubbleTypeView(
                 url: .init(string: "https://cdn.pixabay.com/animation/2022/10/11/09/05/09-05-26-529_512.gif"),
                 timestamp: timestamp,
                 userType: userType
             )
         } else {
+            // Secondary N Primary Both Bubbles
             Conversations_MessageBubbleView(
                 direction: values.getDirection(userType),
                 showPointer: showPointer
             ) {
                 VStack(alignment: vStackAlignment, spacing: 0) {
                     // MARK: - SECONDARY CONTENT
-                    if withSecondaryContent {
-                        secondaryContent(primaryMediaType, bubbleWidth)
-                    }
+                    secondaryContent(primaryMediaType, bubbleWidth)
                     
                     // MARK: - PRIMARY CONTENT
                     Group {
@@ -88,11 +89,10 @@ struct Conversations_PrimaryNSecondaryBubbleView<T: View>: View {
                             textBased
                         case .sticker:
                             stickerBased
-                        default:
+                        default: // more to come here...
                             EmptyView()
                         }
                     }
-                    
                     .padding(.horizontal, innerHPadding)
                     .padding(.vertical, innerVPadding)
                     .geometryReaderDimensionViewModifier($bubbleWidth, dimension: .width)

@@ -11,6 +11,7 @@ struct Conversations_TextBasedPrimaryBubbleView: View {
     // MARK: - PROPERTIES
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
+    
     let text: String
     let timestamp: String
     let status: ReadReceiptStatusTypes

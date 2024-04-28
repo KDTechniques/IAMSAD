@@ -25,8 +25,8 @@ struct Utilities {
         }
     }
     
-    // MARK: - findSocialMediaType
-    static func findSocialMediaType(by url: String) -> SocialMediaTypes? {
+    // MARK: - getSocialMediaType
+    static func getSocialMediaType(by url: String) -> SocialMediaTypes? {
         if url.contains("facebook.com") {
             return .facebook
         } else if url.contains("instagram.com") {
@@ -40,8 +40,8 @@ struct Utilities {
         }
     }
     
-    // MARK: - extractSocialMediaID
-    static func extractSocialMediaID(from url: String, type: SocialMediaTypes) -> String? {
+    // MARK: - getSocialMediaID
+    static func getSocialMediaID(from url: String, type: SocialMediaTypes) -> String? {
         var pattern: String {
             switch type {
             case .facebook:

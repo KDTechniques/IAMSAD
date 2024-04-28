@@ -12,7 +12,7 @@ struct TikTokInfoModel: Codable {
     
     struct TikTokData: Codable {
         let videoURL: String
-        let coverPhotoURL: String
+        let coverPhotoURL: String?
         let author: TikTokAuthor
         let likesCount: Int
         let commentCount: Int

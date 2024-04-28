@@ -15,5 +15,8 @@ enum ConversationMediaTypes: CaseIterable {
     case video
     case voiceRecord
     case audio
-    case link
+    case linkWithPreview
+    case linkTextOnly
+    case socialMediaInfo // Shows a preview of the url content
+    case collage
 }
