@@ -41,7 +41,7 @@ struct IAMSADApp: App {
                         Conversations_MessageBubbleView(
                             direction: .random(),
                             showPointer: true) {
-                                Conversations_TextBasedPrimaryBubbleView(
+                                Conversations_TextPrimaryPlainBubbleView(
                                     isEdited: .random(),
                                     text: text,
                                     timestamp: "12:12 PM",

@@ -54,7 +54,7 @@ struct Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView: View {
         case .text, .photo, .sticker, .gif, .video:
             secondaryBubbleValues.innerBubbleFrameHeight
             
-        case .linkWithPreview, .linkTextOnly:
+        case .linkWithPreview:
             secondaryBubbleValues.innerBubbleFrameHeight + 17
             
         case .socialMediaInfo:
@@ -88,7 +88,7 @@ struct Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView: View {
     // MARK: - BODY
     var body: some View {
         switch secondaryMediaType {
-        case .photo, .video, .gif, .linkWithPreview, .linkTextOnly, .socialMediaInfo:
+        case .photo, .video, .gif, .linkWithPreview, .socialMediaInfo:
             HStack(spacing: secondaryBubbleValues.vContainerHPadding) {
                 if secondaryMediaType != .socialMediaInfo {
                     strip
@@ -157,14 +157,13 @@ extension Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView {
                 Conversations_VideoBadgeView()
             case .gif:
                 Conversations_GIFBadgeView()
-            case .linkWithPreview, .linkTextOnly:
+            case .linkWithPreview:
                 Conversations_MediaBadgeTextView(text: "https://youtu.be/fdZwRDv9OWI?si=XRE-8O3nr-JvMXRO")
             default:
                 EmptyView()
             }
         }
         .padding(.trailing, shouldExpand ? -secondaryBubbleValues.vContainerHPadding : 0)
-        .padding(.trailing, secondaryMediaType == .linkTextOnly ? secondaryBubbleValues.vContainerHPadding : 0)
     }
     
     // MARK: - spacer

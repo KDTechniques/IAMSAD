@@ -51,7 +51,7 @@ struct Conversations_SecondaryBubbleView: View {
                 switch secondaryMediaType {
                 case .text:
                     textBased
-                case .photo, .video, .gif, .linkWithPreview, .linkTextOnly, .socialMediaInfo:
+                case .photo, .video, .gif, .linkWithPreview, .socialMediaInfo:
                     photoVideoGIFLinkBased(messageBubbleWidth)
                 case .sticker:
                     stickerBased

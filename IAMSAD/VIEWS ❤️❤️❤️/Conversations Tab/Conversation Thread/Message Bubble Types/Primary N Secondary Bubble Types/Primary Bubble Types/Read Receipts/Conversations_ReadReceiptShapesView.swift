@@ -20,7 +20,7 @@ struct Conversations_ReadReceiptShapesView: View {
     var strokeColor: Color {
         status == .seen
         ? colorScheme == .dark ? .accent : .checkmarkSeenLight
-        : .primary.opacity(colorScheme == .dark ? 0.3 : 0.37)
+        : MessageBubbleValues.specialSecondaryColor(colorScheme)
     }
     
     // MARK: - INITIALIZER
@@ -31,11 +31,14 @@ struct Conversations_ReadReceiptShapesView: View {
     
     // MARK: - BODY
     var body: some View {
-        if let bool = isFirstCheckmarkOnly(status) {
-            checkmarks(bool)
-        } else {
-            clock
+        Group {
+            if let bool = isFirstCheckmarkOnly(status) {
+                checkmarks(bool)
+            } else {
+                clock
+            }
         }
+        .opacity(status == .none ? 0 : 1)
     }
 }
 

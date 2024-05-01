@@ -69,9 +69,6 @@ struct Conversations_PrimaryNSecondaryBubbleView<T: View>: View {
             case .text:
                 Color.debug
                 
-            case .linkTextOnly:
-                Color.debug
-                
             case .voiceRecord:
                 Color.debug
                 
@@ -159,7 +156,7 @@ struct Conversations_PrimaryNSecondaryBubbleView<T: View>: View {
 extension Conversations_PrimaryNSecondaryBubbleView {
     // MARK: - textBased
     private var textBased: some View {
-        Conversations_TextBasedPrimaryBubbleView(
+        Conversations_TextPrimaryPlainBubbleView(
             text: text,
             timestamp: timestamp,
             status: status,

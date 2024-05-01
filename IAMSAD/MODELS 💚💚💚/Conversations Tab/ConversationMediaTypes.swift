@@ -16,7 +16,6 @@ enum ConversationMediaTypes: CaseIterable {
     case voiceRecord
     case audio
     case linkWithPreview // Only used for secondary bubble reply type where it shows the link and small preview next to each other.
-    case linkTextOnly
     case socialMediaInfo // Shows a preview of the url content.
     case collage
 }

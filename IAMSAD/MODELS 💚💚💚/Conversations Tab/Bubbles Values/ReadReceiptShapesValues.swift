@@ -25,6 +25,7 @@ struct ReadReceiptShapesValues {
     }
     let animation: Animation = .linear(duration: 0.15)
     
+    
     // MARK: - INITIALIZER
     init(dynamicTypeSize: DynamicTypeSize) {
         self.dynamicTypeSize = dynamicTypeSize
