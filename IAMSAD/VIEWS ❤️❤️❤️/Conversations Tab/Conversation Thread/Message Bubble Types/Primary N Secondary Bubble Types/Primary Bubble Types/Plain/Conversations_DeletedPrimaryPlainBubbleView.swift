@@ -27,12 +27,12 @@ struct Conversations_DeletedPrimaryPlainBubbleView: View {
                 HStack(spacing: 2) {
                     Image(systemName: "nosign")
                         .font(.footnote.weight(.bold))
-                        .foregroundStyle(values.specialSecondaryColor(colorScheme))
+                        .foregroundStyle(.primary.opacity(0.4))
                     
                     Text("You deleted this message.")
                         .font(.subheadline)
                         .italic()
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(.primary.opacity(0.5))
                 }
                 
                 Conversations_BubbleEditedTimestampReadReceiptsView(

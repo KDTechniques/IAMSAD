@@ -40,8 +40,4 @@ struct MessageBubbleValues {
     static func readReceiptShapesValues(_ dynamicTypeSize: DynamicTypeSize) -> ReadReceiptShapesValues {
         ReadReceiptShapesValues(dynamicTypeSize: dynamicTypeSize)
     }
-    
-    static func specialSecondaryColor(_ colorScheme: ColorScheme) -> Color {
-        .primary.opacity(colorScheme == .dark ? 0.3 : 0.37)
-    }
 }
