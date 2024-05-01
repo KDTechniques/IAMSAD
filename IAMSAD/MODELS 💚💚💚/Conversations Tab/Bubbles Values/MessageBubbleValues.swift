@@ -12,13 +12,17 @@ struct MessageBubbleValues {
     static let bubbleShapeValues = BubbleShapeValues.self
     static let secondaryBubbleValues = SecondaryBubbleValues.self
     static let socialMediaBubbleValues = SocialMediaBubbleValues.self
+    
     static let screenToBubblePadding: CGFloat = 10
     static let maxWidthLimitationPadding: CGFloat = 85
     static let innerHPadding: CGFloat = 12
     static let innerVPadding: CGFloat = 8
     static var innerVPaddingTimestampOnly: CGFloat { innerVPadding - 0.5 }
-    static let timestampToReadReceiptPadding: CGFloat = 3
+    static let editedToTimestampToReadReceiptSpacing: CGFloat = 3
+    static let editedToTimestampTrailingPadding: CGFloat = 2
+    static let textFont: Font = .body
     static let timestampFont: Font = .caption
+    static var editedFont: Font { self.timestampFont }
     static let bubbleToBubbleVPadding: CGFloat = 3
     static let stickerFrameSize: CGFloat = 138
     static let mediaTypeFont: Font = .footnote

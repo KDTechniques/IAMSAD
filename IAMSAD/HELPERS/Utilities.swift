@@ -120,5 +120,60 @@ struct Utilities {
     static func getYoutubeInfoData(id: String) async -> YoutubeInfoModel? {
         nil
     }
+    
+    // MARK: - separateTextAndURLs
+    static private func separateTextAndURLs(from text: String) -> [(content: String, isURL: Bool)] {
+        var result: [(content: String, isURL: Bool)] = []
+        
+        // Attempt to create a data detector for links
+        guard let urlDetector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue) else { return [] }
+        
+        // Find all matches in the input string
+        let matches = urlDetector.matches(in: text, options: [], range: NSRange(location: 0, length: text.utf16.count))
+        
+        // Keep track of the last range end to find non-URL strings
+        var lastRangeEnd = text.startIndex
+        
+        // Iterate through all matches
+        for match in matches {
+            guard let range = Range(match.range, in: text) else { continue }
+            
+            // Add the non-URL string before the current URL
+            let nonURLString = String(text[lastRangeEnd..<range.lowerBound])
+            if !nonURLString.isEmpty {
+                result.append((content: nonURLString, isURL: false))
+            }
+            
+            // Add the current URL
+            let urlString = String(text[range])
+            result.append((content: urlString, isURL: true))
+            
+            // Update the last range end
+            lastRangeEnd = range.upperBound
+        }
+        
+        // Add any remaining non-URL string after the last URL
+        let remainingString = String(text[lastRangeEnd...])
+        if !remainingString.isEmpty {
+            result.append((content: remainingString, isURL: false))
+        }
+        
+        return result
+    }
+    
+    // MARK: - getUnderlinedHyperlinkText
+    static func getUnderlinedHyperlinkText(_ text: String) -> Text {
+        let results: [(content: String, isURL: Bool)] = separateTextAndURLs(from: text)
+        
+        var modifiedText: Text = results.isEmpty ? .init(text) : .init("")
+        
+        for result in results {
+            modifiedText = modifiedText +
+            Text(LocalizedStringKey(result.content))
+                .underline(result.isURL, color: .accent)
+                .foregroundStyle(result.isURL ? .accent : .primary)
+        }
+        
+        return modifiedText
+    }
 }
-

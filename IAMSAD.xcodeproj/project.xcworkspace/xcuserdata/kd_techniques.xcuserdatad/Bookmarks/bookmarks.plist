@@ -434,13 +434,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>149</string>
+					<string>176</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>148</string>
+					<string>175</string>
 					<key>Timestamp</key>
-					<string>735994136.741078</string>
+					<string>736236959.612595</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -611,52 +611,6 @@
 			</dict>
 			<key>title</key>
 			<string>change this along the way</string>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>4</string>
-					<key>EndingLineNumber</key>
-					<string>13</string>
-					<key>StartingColumnNumber</key>
-					<string>4</string>
-					<key>StartingLineNumber</key>
-					<string>13</string>
-					<key>Timestamp</key>
-					<string>735420821.467713</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>IAMSAD/VIEWS ❤️❤️❤️/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Primary Bubble Types/Conversations_TextBasedPrimaryBubbleView.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string></string>
-				<key>leading</key>
-				<string>    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
-    
-    </string>
-				<key>trailing</key>
-				<string>
-    let text: String
-    let timestamp: String
-</string>
-			</dict>
-			<key>title</key>
-			<string>create a property called isLink: Bool</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>

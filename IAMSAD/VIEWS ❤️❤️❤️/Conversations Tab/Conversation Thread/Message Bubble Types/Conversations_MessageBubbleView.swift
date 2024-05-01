@@ -50,9 +50,13 @@ struct Conversations_MessageBubbleView<T: View>: View {
         Color.conversationBackground
             .ignoresSafeArea()
         
-        Conversations_MessageBubbleView(direction: .random(), showPointer: .random()) {
-            Text("Hi there 👋👋👋")
-                .padding(12)
+        Conversations_MessageBubbleView(direction: .right, showPointer: true) {
+            VStack(alignment: .trailing, spacing: 2) {
+                Text("Hi there 👋👋👋")
+                
+                Conversations_BubbleEditedTimestampReadReceiptsView(timestamp: "12:35 PM", status: .seen, shouldAnimate: false)
+            }
+            .padding(12)
         }
     }
 }

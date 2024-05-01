@@ -64,16 +64,43 @@ struct Conversations_PrimaryNSecondaryBubbleView<T: View>: View {
     
     // MARK: - BODY
     var body: some View {
-        if !withSecondaryContent {
-            // Primary Bubble Only
-            /// this must be goes with a switch statement for other primary only types
-            Conversations_StickerOnlyBubbleTypeView(
-                url: .init(string: "https://cdn.pixabay.com/animation/2022/10/11/09/05/09-05-26-529_512.gif"),
-                timestamp: timestamp,
-                userType: userType
-            )
-        } else {
-            // Secondary N Primary Both Bubbles
+        if !withSecondaryContent { // (Primary Bubble Types / Sticker Only Bubble Type) Only
+            switch primaryMediaType {
+            case .text:
+                Color.debug
+                
+            case .linkTextOnly:
+                Color.debug
+                
+            case .voiceRecord:
+                Color.debug
+                
+            case .audio:
+                Color.debug
+                
+            case .collage:
+                Color.debug
+                
+            case .photo:
+                Color.debug
+                
+            case .video:
+                Color.debug
+                
+            case .gif:
+                Color.debug
+                
+            case .sticker:
+                Conversations_StickerOnlyBubbleTypeView(
+                    url: .init(string: "https://cdn.pixabay.com/animation/2022/10/11/09/05/09-05-26-529_512.gif"),
+                    timestamp: timestamp,
+                    userType: userType
+                )
+                
+            default:
+                EmptyView()
+            }
+        } else { // Secondary + Primary Bubble Types
             Conversations_MessageBubbleView(
                 direction: values.getDirection(userType),
                 showPointer: showPointer
@@ -157,7 +184,7 @@ extension Conversations_PrimaryNSecondaryBubbleView {
     
     // MARK: - timestampNReadReceipts
     private var timestampNReadReceipts: some View {
-        Conversations_BubbleTimestampReadReceiptsView(
+        Conversations_BubbleEditedTimestampReadReceiptsView(
             timestamp: timestamp,
             status: status,
             shouldAnimate: shouldAnimate

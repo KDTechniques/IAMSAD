@@ -11,7 +11,7 @@ struct Conversations_TextBasedPrimaryBubbleView: View {
     // MARK: - PROPERTIES
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
-    
+    let isEdited: Bool
     let text: String
     let timestamp: String
     let status: ReadReceiptStatusTypes
@@ -21,6 +21,7 @@ struct Conversations_TextBasedPrimaryBubbleView: View {
     
     // MARK: - INITIALIZER
     init(
+        isEdited: Bool = false,
         text: String,
         timestamp: String,
         status: ReadReceiptStatusTypes,
@@ -28,6 +29,7 @@ struct Conversations_TextBasedPrimaryBubbleView: View {
         height: CGFloat,
         withSecondaryContent: Bool
     ) {
+        self.isEdited = isEdited
         self.text = text
         self.timestamp = timestamp
         self.status = status
@@ -40,12 +42,12 @@ struct Conversations_TextBasedPrimaryBubbleView: View {
     @State private var isReadMore: Bool = false
     
     let values = MessageBubbleValues.self
-    let singleLineHSpacing: CGFloat = 12
+    let fromTextToSpacing: CGFloat = 12
     
     var approxLineLimit: Int {
         let text: String = "👨🏻‍💻"
         let textHeight: CGFloat = text.heightOfHString(
-            usingFont: .preferredFont(forTextStyle: .body),
+            usingFont:  .from(values.textFont),
             dynamicTypeSize
         )
         let accuracyValue: Int = 4
@@ -55,52 +57,62 @@ struct Conversations_TextBasedPrimaryBubbleView: View {
     
     var textWidth: CGFloat {
         text.widthOfHString(
-            usingFont: .preferredFont(forTextStyle: .body),
+            usingFont: .from(values.textFont),
             dynamicTypeSize
         )
     }
     
     var timeStampWidth: CGFloat {
         timestamp.widthOfHString(
-            usingFont: .preferredFont(forTextStyle: .caption1),
+            usingFont: .from(values.timestampFont),
             dynamicTypeSize
         )
+    }
+    
+    var editedWidth: CGFloat {
+        "Edited".widthOfHString(
+            usingFont: .from(values.editedFont),
+            dynamicTypeSize
+        ) + values.editedToTimestampTrailingPadding
     }
     
     var bubbleWidthNScreenToBubblePadding: CGFloat {
         (values.innerHPadding * 2) +
         textWidth +
-        singleLineHSpacing +
+        fromTextToSpacing +
+        (isEdited ? editedWidth : 0) +
         timeStampWidth +
-        values.timestampToReadReceiptPadding +
+        (values.editedToTimestampToReadReceiptSpacing * (isEdited ? 2 : 1)) +
         values.readReceiptShapesValues(dynamicTypeSize).size +
         values.bubbleShapeValues.pointerWidth +
         values.screenToBubblePadding
     }
     
     var conditionToBeSingleLineBubble: Bool {
-        let safeValue: CGFloat = 10
-        let bubbleMaxWidth: CGFloat = screenWidth -
-        values.maxWidthLimitationPadding - safeValue
+        let bubbleMaxWidth: CGFloat = screenWidth - values.maxWidthLimitationPadding
         
         return bubbleWidthNScreenToBubblePadding < bubbleMaxWidth
     }
     
     // MARK: - BODY
     var body: some View {
-        if !isReadMore {
-            if height < screenHeight {
-                if conditionToBeSingleLineBubble {
-                    singleLineBubble
+        Group {
+            if !isReadMore {
+                if height < screenHeight {
+                    if conditionToBeSingleLineBubble {
+                        singleLineBubble
+                    } else {
+                        multiLineBubble
+                    }
                 } else {
-                    multiLineBubble
+                    readMoreBubble
                 }
             } else {
-                readMoreBubble
+                expandedBubble
             }
-        } else {
-            expandedBubble
         }
+        .padding(.horizontal, values.innerHPadding)
+        .padding(.vertical, values.innerVPadding)
     }
 }
 
@@ -114,20 +126,48 @@ struct Conversations_TextBasedPrimaryBubbleView: View {
         height: screenWidth,
         withSecondaryContent: false
     )
-    .background(Color.debug)
+    .background(Color.debug.opacity(0.5))
     .previewViewModifier
+}
+
+#Preview("Conversations_MessageBubbleView") {
+    let values = MessageBubbleValues.self
+    
+    return Conversations_MessageBubbleView(
+        direction: .right,
+        showPointer: true) {
+            Conversations_TextBasedPrimaryBubbleView(
+                isEdited: .random(),
+                text: "Check out this website: https://www.example.com and also this one: https://www.anotherexample.com",
+                timestamp: "12:12 PM",
+                status: .seen,
+                shouldAnimate: true,
+                height: screenWidth,
+                withSecondaryContent: false
+            )
+        }
+        .overlay {
+            Rectangle()
+                .fill(.red)
+                .frame(width: 1)
+                .frame(width: screenWidth, alignment:  .leading)
+                .offset(x: values.maxWidthLimitationPadding)
+                .opacity(0)
+        }
+        .previewViewModifier
 }
 
 // MARK: - EXTENSIONS
 extension Conversations_TextBasedPrimaryBubbleView{
     // MARK: textOnly
+    @ViewBuilder
     private var textOnly: some View {
-        Text(text)
+        Utilities.getUnderlinedHyperlinkText(text)
     }
     
     // MARK: - singleLineBubble
     private var singleLineBubble: some View {
-        HStack(alignment: .bottom, spacing: singleLineHSpacing) {
+        HStack(alignment: .bottom, spacing: fromTextToSpacing) {
             textOnly
             timestampNReadReceipts
                 .opacity(withSecondaryContent ? 0 : 1)
@@ -177,7 +217,8 @@ extension Conversations_TextBasedPrimaryBubbleView{
     
     // MARK: - timestampNReadReceipts
     private var timestampNReadReceipts: some View {
-        Conversations_BubbleTimestampReadReceiptsView(
+        Conversations_BubbleEditedTimestampReadReceiptsView(
+            isEdited: isEdited,
             timestamp: timestamp,
             status: status,
             shouldAnimate: shouldAnimate

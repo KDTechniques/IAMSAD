@@ -16,7 +16,7 @@
 		0B08F1C82BC5C291009E8538 /* CustomRoundedRectangleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08F1C72BC5C291009E8538 /* CustomRoundedRectangleShape.swift */; };
 		0B0A6E382BDCB77E0000430F /* TikTokBasedSecondaryBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0A6E372BDCB77E0000430F /* TikTokBasedSecondaryBubbleView.swift */; };
 		0B12FB962BCAA4F8002E0048 /* Enum + EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B12FB952BCAA4F8002E0048 /* Enum + EXT.swift */; };
-		0B12FB982BCAAB2F002E0048 /* Conversations_BubbleTimestampReadReceiptsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B12FB972BCAAB2F002E0048 /* Conversations_BubbleTimestampReadReceiptsView.swift */; };
+		0B12FB982BCAAB2F002E0048 /* Conversations_BubbleEditedTimestampReadReceiptsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B12FB972BCAAB2F002E0048 /* Conversations_BubbleEditedTimestampReadReceiptsView.swift */; };
 		0B12FB9A2BCAD629002E0048 /* UIFont + EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B12FB992BCAD629002E0048 /* UIFont + EXT.swift */; };
 		0B1888EA2BD1151A00C8C59D /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0B1888E92BD1151A00C8C59D /* video.mp4 */; };
 		0B1888EC2BD12DD100C8C59D /* photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0B1888EB2BD12DD100C8C59D /* photo.jpg */; };
@@ -154,6 +154,22 @@
 		0B99746B2B55D6DE001AD3F6 /* CustomSearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B99746A2B55D6DE001AD3F6 /* CustomSearchBarView.swift */; };
 		0B9E806B2BA0D0B40018FDE3 /* Profile_TabContentTopClearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E806A2BA0D0B40018FDE3 /* Profile_TabContentTopClearView.swift */; };
 		0B9E806D2BA0D2250018FDE3 /* Profile_PostsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E806C2BA0D2250018FDE3 /* Profile_PostsTabView.swift */; };
+		0BA4E58E2BE216B9004E7945 /* Conversations_SocialMediaInfoSecondaryPlainBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4E58D2BE216B9004E7945 /* Conversations_SocialMediaInfoSecondaryPlainBubbleView.swift */; };
+		0BA4E5902BE2177E004E7945 /* Conversations_TextSecondaryReplyBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4E58F2BE2177E004E7945 /* Conversations_TextSecondaryReplyBubbleView.swift */; };
+		0BA4E5922BE217AE004E7945 /* Conversations_LinkTextSecondaryReplyBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4E5912BE217AE004E7945 /* Conversations_LinkTextSecondaryReplyBubbleView.swift */; };
+		0BA4E5942BE217E1004E7945 /* Conversations_LinkWithPreviewSecondaryReplyBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4E5932BE217E1004E7945 /* Conversations_LinkWithPreviewSecondaryReplyBubbleView.swift */; };
+		0BA4E5962BE21806004E7945 /* Conversations_StickerSecondaryReplyBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4E5952BE21806004E7945 /* Conversations_StickerSecondaryReplyBubbleView.swift */; };
+		0BA4E5982BE21823004E7945 /* Conversations_VoiceRecordSecondaryReplyBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4E5972BE21823004E7945 /* Conversations_VoiceRecordSecondaryReplyBubbleView.swift */; };
+		0BA4E59A2BE2183E004E7945 /* Conversations_AudioSecondaryReplyBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4E5992BE2183E004E7945 /* Conversations_AudioSecondaryReplyBubbleView.swift */; };
+		0BA4E59C2BE21873004E7945 /* Conversations_PhotoVideoGIFSecondaryReplyBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4E59B2BE21873004E7945 /* Conversations_PhotoVideoGIFSecondaryReplyBubbleView.swift */; };
+		0BA4E59E2BE218B2004E7945 /* Conversations_TextPrimaryPlainBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4E59D2BE218B2004E7945 /* Conversations_TextPrimaryPlainBubbleView.swift */; };
+		0BA4E5A02BE218CB004E7945 /* Conversations_LinkTextPrimaryPlainBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4E59F2BE218CB004E7945 /* Conversations_LinkTextPrimaryPlainBubbleView.swift */; };
+		0BA4E5A22BE218EB004E7945 /* Conversations_VoiceRecordPrimaryPlainBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4E5A12BE218EA004E7945 /* Conversations_VoiceRecordPrimaryPlainBubbleView.swift */; };
+		0BA4E5A42BE2190A004E7945 /* Conversations_AudioPrimaryPlainBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4E5A32BE2190A004E7945 /* Conversations_AudioPrimaryPlainBubbleView.swift */; };
+		0BA4E5A62BE2192B004E7945 /* Conversations_CollagePlainBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4E5A52BE2192B004E7945 /* Conversations_CollagePlainBubbleView.swift */; };
+		0BA4E5A82BE2196A004E7945 /* Conversations_PhotoVideoGIFPlainBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4E5A72BE2196A004E7945 /* Conversations_PhotoVideoGIFPlainBubbleView.swift */; };
+		0BA4E5AA2BE219B9004E7945 /* Conversations_ForwardedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4E5A92BE219B9004E7945 /* Conversations_ForwardedTextView.swift */; };
+		0BA4E5AC2BE219DB004E7945 /* Conversations_EditedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4E5AB2BE219DB004E7945 /* Conversations_EditedTextView.swift */; };
 		0BA54BE92B79196100100C71 /* CustomStripTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA54BE82B79196100100C71 /* CustomStripTabView.swift */; };
 		0BAE579F2BD0486D0024735C /* Conversations_TextBasedPrimaryBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE579E2BD0486D0024735C /* Conversations_TextBasedPrimaryBubbleView.swift */; };
 		0BB1F9C02BCA795400719F12 /* Conversations_ReadReceiptShapesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F9BF2BCA795400719F12 /* Conversations_ReadReceiptShapesView.swift */; };
@@ -487,7 +503,7 @@
 		0B08F1C72BC5C291009E8538 /* CustomRoundedRectangleShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRoundedRectangleShape.swift; sourceTree = "<group>"; };
 		0B0A6E372BDCB77E0000430F /* TikTokBasedSecondaryBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TikTokBasedSecondaryBubbleView.swift; sourceTree = "<group>"; };
 		0B12FB952BCAA4F8002E0048 /* Enum + EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum + EXT.swift"; sourceTree = "<group>"; };
-		0B12FB972BCAAB2F002E0048 /* Conversations_BubbleTimestampReadReceiptsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_BubbleTimestampReadReceiptsView.swift; sourceTree = "<group>"; };
+		0B12FB972BCAAB2F002E0048 /* Conversations_BubbleEditedTimestampReadReceiptsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_BubbleEditedTimestampReadReceiptsView.swift; sourceTree = "<group>"; };
 		0B12FB992BCAD629002E0048 /* UIFont + EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + EXT.swift"; sourceTree = "<group>"; };
 		0B1888E92BD1151A00C8C59D /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
 		0B1888EB2BD12DD100C8C59D /* photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = photo.jpg; path = "IAMSAD/Preview Content/Preview Assets.xcassets/follower3.imageset/photo.jpg"; sourceTree = SOURCE_ROOT; };
@@ -622,6 +638,22 @@
 		0B99746A2B55D6DE001AD3F6 /* CustomSearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBarView.swift; sourceTree = "<group>"; };
 		0B9E806A2BA0D0B40018FDE3 /* Profile_TabContentTopClearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_TabContentTopClearView.swift; sourceTree = "<group>"; };
 		0B9E806C2BA0D2250018FDE3 /* Profile_PostsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_PostsTabView.swift; sourceTree = "<group>"; };
+		0BA4E58D2BE216B9004E7945 /* Conversations_SocialMediaInfoSecondaryPlainBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_SocialMediaInfoSecondaryPlainBubbleView.swift; sourceTree = "<group>"; };
+		0BA4E58F2BE2177E004E7945 /* Conversations_TextSecondaryReplyBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_TextSecondaryReplyBubbleView.swift; sourceTree = "<group>"; };
+		0BA4E5912BE217AE004E7945 /* Conversations_LinkTextSecondaryReplyBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_LinkTextSecondaryReplyBubbleView.swift; sourceTree = "<group>"; };
+		0BA4E5932BE217E1004E7945 /* Conversations_LinkWithPreviewSecondaryReplyBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_LinkWithPreviewSecondaryReplyBubbleView.swift; sourceTree = "<group>"; };
+		0BA4E5952BE21806004E7945 /* Conversations_StickerSecondaryReplyBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_StickerSecondaryReplyBubbleView.swift; sourceTree = "<group>"; };
+		0BA4E5972BE21823004E7945 /* Conversations_VoiceRecordSecondaryReplyBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_VoiceRecordSecondaryReplyBubbleView.swift; sourceTree = "<group>"; };
+		0BA4E5992BE2183E004E7945 /* Conversations_AudioSecondaryReplyBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_AudioSecondaryReplyBubbleView.swift; sourceTree = "<group>"; };
+		0BA4E59B2BE21873004E7945 /* Conversations_PhotoVideoGIFSecondaryReplyBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_PhotoVideoGIFSecondaryReplyBubbleView.swift; sourceTree = "<group>"; };
+		0BA4E59D2BE218B2004E7945 /* Conversations_TextPrimaryPlainBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_TextPrimaryPlainBubbleView.swift; sourceTree = "<group>"; };
+		0BA4E59F2BE218CB004E7945 /* Conversations_LinkTextPrimaryPlainBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_LinkTextPrimaryPlainBubbleView.swift; sourceTree = "<group>"; };
+		0BA4E5A12BE218EA004E7945 /* Conversations_VoiceRecordPrimaryPlainBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_VoiceRecordPrimaryPlainBubbleView.swift; sourceTree = "<group>"; };
+		0BA4E5A32BE2190A004E7945 /* Conversations_AudioPrimaryPlainBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_AudioPrimaryPlainBubbleView.swift; sourceTree = "<group>"; };
+		0BA4E5A52BE2192B004E7945 /* Conversations_CollagePlainBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_CollagePlainBubbleView.swift; sourceTree = "<group>"; };
+		0BA4E5A72BE2196A004E7945 /* Conversations_PhotoVideoGIFPlainBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_PhotoVideoGIFPlainBubbleView.swift; sourceTree = "<group>"; };
+		0BA4E5A92BE219B9004E7945 /* Conversations_ForwardedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_ForwardedTextView.swift; sourceTree = "<group>"; };
+		0BA4E5AB2BE219DB004E7945 /* Conversations_EditedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_EditedTextView.swift; sourceTree = "<group>"; };
 		0BA54BE82B79196100100C71 /* CustomStripTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStripTabView.swift; sourceTree = "<group>"; };
 		0BAE579E2BD0486D0024735C /* Conversations_TextBasedPrimaryBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_TextBasedPrimaryBubbleView.swift; sourceTree = "<group>"; };
 		0BB1F9BF2BCA795400719F12 /* Conversations_ReadReceiptShapesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_ReadReceiptShapesView.swift; sourceTree = "<group>"; };
@@ -1050,7 +1082,7 @@
 		0B2623102B4BD33C0063D71C /* MODELS 💚💚💚 */ = {
 			isa = PBXGroup;
 			children = (
-				0B939B6D2BC2877B00DC5F1E /* Conversations_CellMoreBlockConversationView.swift */,
+				0BA4E5872BE190B8004E7945 /* Conversations Tab */,
 				0BBD2AAA2BA136CF006990AA /* Profile Tab */,
 				0B2623142B4BD4010063D71C /* Reusable */,
 			);
@@ -1120,17 +1152,8 @@
 				0BFEFEA02B91E9130005DE9B /* TapCoordinatesModel.swift */,
 				0B052FE82BA57254008D07F1 /* AccountTypes.swift */,
 				0B939B6B2BC284F500DC5F1E /* ActionSheetModel.swift */,
-				0B8900C02BC6E8090054B056 /* MessageBubbleUserTypes.swift */,
 				0B8900C22BC6F10B0054B056 /* RectCoordinateTypes.swift */,
 				0BE6C0622BC941CC00BAE66B /* DownloadStatusTypes.swift */,
-				0BFC0BF42BDE19730033E682 /* Bubbles Related */,
-				0B4164B22BC9A52400B92311 /* ConversationMediaTypes.swift */,
-				0BB1F9C12BCA819100719F12 /* ReadReceiptStatusTypes.swift */,
-				0B1AF16D2BD510C800E3825C /* SocialMediaTypes.swift */,
-				0B1AF16F2BD5185800E3825C /* TikTokInfoModel.swift */,
-				0B1AF1712BD52B9200E3825C /* InstagramInfoModel.swift */,
-				0B1AF1732BD52BA800E3825C /* FacebookInfoModel.swift */,
-				0B1AF1752BD52BC200E3825C /* YoutubeInfoModel.swift */,
 			);
 			path = Reusable;
 			sourceTree = "<group>";
@@ -1308,6 +1331,8 @@
 		0B6D740D2BCFBE7E001CE339 /* Secondary Bubble Types */ = {
 			isa = PBXGroup;
 			children = (
+				0BA4E58B2BE21643004E7945 /* Plain */,
+				0BA4E58C2BE2164B004E7945 /* Reply */,
 				0B4164B02BC99C9200B92311 /* Conversations_SecondaryBubbleView.swift */,
 				0B0A6E362BDC4A850000430F /* Photo Video GIF Link Based */,
 			);
@@ -1358,6 +1383,97 @@
 			path = "Conversations Tab";
 			sourceTree = "<group>";
 		};
+		0BA4E5872BE190B8004E7945 /* Conversations Tab */ = {
+			isa = PBXGroup;
+			children = (
+				0B8900C02BC6E8090054B056 /* MessageBubbleUserTypes.swift */,
+				0B4164B22BC9A52400B92311 /* ConversationMediaTypes.swift */,
+				0BB1F9C12BCA819100719F12 /* ReadReceiptStatusTypes.swift */,
+				0B1AF16D2BD510C800E3825C /* SocialMediaTypes.swift */,
+				0B1AF16F2BD5185800E3825C /* TikTokInfoModel.swift */,
+				0B1AF1712BD52B9200E3825C /* InstagramInfoModel.swift */,
+				0B1AF1732BD52BA800E3825C /* FacebookInfoModel.swift */,
+				0B1AF1752BD52BC200E3825C /* YoutubeInfoModel.swift */,
+				0BFC0BF42BDE19730033E682 /* Bubbles Values */,
+			);
+			path = "Conversations Tab";
+			sourceTree = "<group>";
+		};
+		0BA4E5882BE215DF004E7945 /* Plain */ = {
+			isa = PBXGroup;
+			children = (
+				0BA4E59D2BE218B2004E7945 /* Conversations_TextPrimaryPlainBubbleView.swift */,
+				0BA4E59F2BE218CB004E7945 /* Conversations_LinkTextPrimaryPlainBubbleView.swift */,
+				0BA4E5A12BE218EA004E7945 /* Conversations_VoiceRecordPrimaryPlainBubbleView.swift */,
+				0BA4E5A32BE2190A004E7945 /* Conversations_AudioPrimaryPlainBubbleView.swift */,
+				0BA4E5A52BE2192B004E7945 /* Conversations_CollagePlainBubbleView.swift */,
+				0BA4E5A72BE2196A004E7945 /* Conversations_PhotoVideoGIFPlainBubbleView.swift */,
+			);
+			path = Plain;
+			sourceTree = "<group>";
+		};
+		0BA4E5892BE215EA004E7945 /* Forwarded */ = {
+			isa = PBXGroup;
+			children = (
+				0BA4E5A92BE219B9004E7945 /* Conversations_ForwardedTextView.swift */,
+			);
+			path = Forwarded;
+			sourceTree = "<group>";
+		};
+		0BA4E58A2BE215F8004E7945 /* Edited */ = {
+			isa = PBXGroup;
+			children = (
+				0BA4E5AB2BE219DB004E7945 /* Conversations_EditedTextView.swift */,
+			);
+			path = Edited;
+			sourceTree = "<group>";
+		};
+		0BA4E58B2BE21643004E7945 /* Plain */ = {
+			isa = PBXGroup;
+			children = (
+				0BA4E58D2BE216B9004E7945 /* Conversations_SocialMediaInfoSecondaryPlainBubbleView.swift */,
+			);
+			path = Plain;
+			sourceTree = "<group>";
+		};
+		0BA4E58C2BE2164B004E7945 /* Reply */ = {
+			isa = PBXGroup;
+			children = (
+				0BA4E58F2BE2177E004E7945 /* Conversations_TextSecondaryReplyBubbleView.swift */,
+				0BA4E5912BE217AE004E7945 /* Conversations_LinkTextSecondaryReplyBubbleView.swift */,
+				0BA4E5932BE217E1004E7945 /* Conversations_LinkWithPreviewSecondaryReplyBubbleView.swift */,
+				0BA4E5952BE21806004E7945 /* Conversations_StickerSecondaryReplyBubbleView.swift */,
+				0BA4E5972BE21823004E7945 /* Conversations_VoiceRecordSecondaryReplyBubbleView.swift */,
+				0BA4E5992BE2183E004E7945 /* Conversations_AudioSecondaryReplyBubbleView.swift */,
+				0BA4E59B2BE21873004E7945 /* Conversations_PhotoVideoGIFSecondaryReplyBubbleView.swift */,
+			);
+			path = Reply;
+			sourceTree = "<group>";
+		};
+		0BA4E5AD2BE21ADA004E7945 /* Read More */ = {
+			isa = PBXGroup;
+			children = (
+				0B8900BC2BC6A3AF0054B056 /* Conversations_ReadMoreButtonView.swift */,
+			);
+			path = "Read More";
+			sourceTree = "<group>";
+		};
+		0BA4E5AE2BE21B4C004E7945 /* Read Receipts */ = {
+			isa = PBXGroup;
+			children = (
+				0BB1F9BF2BCA795400719F12 /* Conversations_ReadReceiptShapesView.swift */,
+			);
+			path = "Read Receipts";
+			sourceTree = "<group>";
+		};
+		0BA4E5AF2BE21B90004E7945 /* Time Stamp */ = {
+			isa = PBXGroup;
+			children = (
+				0B8900BA2BC69D7B0054B056 /* Conversations_BubbleTimeStampView.swift */,
+			);
+			path = "Time Stamp";
+			sourceTree = "<group>";
+		};
 		0BAE579D2BD048220024735C /* Primary N Secondary Bubble Types */ = {
 			isa = PBXGroup;
 			children = (
@@ -1371,6 +1487,13 @@
 		0BAE57A02BD0509B0024735C /* Primary Bubble Types */ = {
 			isa = PBXGroup;
 			children = (
+				0BA4E5882BE215DF004E7945 /* Plain */,
+				0BA4E5892BE215EA004E7945 /* Forwarded */,
+				0BA4E5AD2BE21ADA004E7945 /* Read More */,
+				0BA4E58A2BE215F8004E7945 /* Edited */,
+				0BA4E5AF2BE21B90004E7945 /* Time Stamp */,
+				0BA4E5AE2BE21B4C004E7945 /* Read Receipts */,
+				0B12FB972BCAAB2F002E0048 /* Conversations_BubbleEditedTimestampReadReceiptsView.swift */,
 				0BAE579E2BD0486D0024735C /* Conversations_TextBasedPrimaryBubbleView.swift */,
 			);
 			path = "Primary Bubble Types";
@@ -1380,11 +1503,7 @@
 			isa = PBXGroup;
 			children = (
 				0BB588542BC48D8D003ACABB /* Conversations_MessageThreadView.swift */,
-				0B8900BA2BC69D7B0054B056 /* Conversations_BubbleTimeStampView.swift */,
-				0B8900BC2BC6A3AF0054B056 /* Conversations_ReadMoreButtonView.swift */,
 				0BE6C05F2BC9360900BAE66B /* Conversations_StickerPlaceholderShapeView.swift */,
-				0BB1F9BF2BCA795400719F12 /* Conversations_ReadReceiptShapesView.swift */,
-				0B12FB972BCAAB2F002E0048 /* Conversations_BubbleTimestampReadReceiptsView.swift */,
 				0B685AE72BC876990049B7AA /* Shapes */,
 				0BC7DA882BCC430E00C4D356 /* Media Types */,
 				0BB588532BC48D5D003ACABB /* Message Bubble Types */,
@@ -1448,6 +1567,7 @@
 			children = (
 				0BBD7CB42BA8075900AE8542 /* ConversationsView.swift */,
 				0BC560B62BA8730300EAAD75 /* Conversations_ListItemView.swift */,
+				0B939B6D2BC2877B00DC5F1E /* Conversations_CellMoreBlockConversationView.swift */,
 				0B939B632BC13B4200DC5F1E /* Conversation Cell More */,
 				0BB588522BC48D11003ACABB /* Conversation Thread */,
 			);
@@ -1868,7 +1988,7 @@
 			path = OnboardingPhoneNumber;
 			sourceTree = "<group>";
 		};
-		0BFC0BF42BDE19730033E682 /* Bubbles Related */ = {
+		0BFC0BF42BDE19730033E682 /* Bubbles Values */ = {
 			isa = PBXGroup;
 			children = (
 				0BC7DA802BCC38F200C4D356 /* BubbleShapeValues.swift */,
@@ -1877,7 +1997,7 @@
 				0BC7DA842BCC3C9100C4D356 /* ReadReceiptShapesValues.swift */,
 				0BFC0BF52BDE1A0C0033E682 /* SocialMediaBubbleValues.swift */,
 			);
-			path = "Bubbles Related";
+			path = "Bubbles Values";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2286,15 +2406,20 @@
 				0B89BB892BA6A3BE007C9721 /* Profile_SearchView.swift in Sources */,
 				0B00D1E02B540CBF00CE721C /* PhoneNumberModel.swift in Sources */,
 				0B26231A2B4BD52C0063D71C /* BottomPopupModel.swift in Sources */,
+				0BA4E5982BE21823004E7945 /* Conversations_VoiceRecordSecondaryReplyBubbleView.swift in Sources */,
 				0BDE95272BCE53D5003A211E /* SecondaryBubbleValues.swift in Sources */,
 				0B9E806B2BA0D0B40018FDE3 /* Profile_TabContentTopClearView.swift in Sources */,
 				0B8900C12BC6E8090054B056 /* MessageBubbleUserTypes.swift in Sources */,
 				0B2623242B4BD9F20063D71C /* CrashlyticsManager.swift in Sources */,
 				0B26236E2B4D32960063D71C /* OnboardingGenderNAgeView.swift in Sources */,
+				0BA4E5902BE2177E004E7945 /* Conversations_TextSecondaryReplyBubbleView.swift in Sources */,
 				0B1AF1702BD5185800E3825C /* TikTokInfoModel.swift in Sources */,
 				0B89BB8B2BA6FFD0007C9721 /* GeminiAPI.swift in Sources */,
 				0BFB38112B56FDB300227CB2 /* OnboardingLastView.swift in Sources */,
+				0BA4E5922BE217AE004E7945 /* Conversations_LinkTextSecondaryReplyBubbleView.swift in Sources */,
+				0BA4E59E2BE218B2004E7945 /* Conversations_TextPrimaryPlainBubbleView.swift in Sources */,
 				0B4434662B527C200041E8BF /* OTPVerificationView.swift in Sources */,
+				0BA4E5A02BE218CB004E7945 /* Conversations_LinkTextPrimaryPlainBubbleView.swift in Sources */,
 				0B6E745B2B5A9A87008B4CFB /* Utilities.swift in Sources */,
 				0B7A99CC2BAC5F4800D5D3E2 /* Conversation_CellMoreSheetView.swift in Sources */,
 				0B2623182B4BD4420063D71C /* AlertModel.swift in Sources */,
@@ -2322,7 +2447,9 @@
 				0B4392FF2B4F0DE90075E5D1 /* CustomPageIndexIndicatorView.swift in Sources */,
 				0B6FEC2E2BC901F9000EBC31 /* Conversations_StickerPlaceholderShape.swift in Sources */,
 				0B8900BD2BC6A3AF0054B056 /* Conversations_ReadMoreButtonView.swift in Sources */,
+				0BA4E5A62BE2192B004E7945 /* Conversations_CollagePlainBubbleView.swift in Sources */,
 				0B20D7E92B961DA500B71C10 /* Profile_InfoView.swift in Sources */,
+				0BA4E5AA2BE219B9004E7945 /* Conversations_ForwardedTextView.swift in Sources */,
 				0B2623832B4D4F340063D71C /* OnboardingUserNameView.swift in Sources */,
 				0B9974692B55D683001AD3F6 /* UIApplication+EXT.swift in Sources */,
 				0B20D7E52B9618D000B71C10 /* Profile_TopClearView.swift in Sources */,
@@ -2345,10 +2472,13 @@
 				0B2623202B4BD8CC0063D71C /* NetworkManager.swift in Sources */,
 				0B8900BF2BC6E74F0054B056 /* Conversations_PrimaryNSecondaryBubbleView.swift in Sources */,
 				0B939B6E2BC2877B00DC5F1E /* Conversations_CellMoreBlockConversationView.swift in Sources */,
+				0BA4E59A2BE2183E004E7945 /* Conversations_AudioSecondaryReplyBubbleView.swift in Sources */,
 				0B2623222B4BD9730063D71C /* UserDefaultsManager.swift in Sources */,
+				0BA4E5A82BE2196A004E7945 /* Conversations_PhotoVideoGIFPlainBubbleView.swift in Sources */,
 				0B20D7D72B96067300B71C10 /* Profile_GeneralNShareButtonsView.swift in Sources */,
 				0B939B702BC290D600DC5F1E /* Conversations_CellMoreDeleteConversationView.swift in Sources */,
 				0BBAEF982BA9CE1C005330FD /* TabTypes.swift in Sources */,
+				0BA4E5A22BE218EB004E7945 /* Conversations_VoiceRecordPrimaryPlainBubbleView.swift in Sources */,
 				0BBD2AB62BA1460F006990AA /* Profile_MediaTabView.swift in Sources */,
 				0BE6C0632BC941CC00BAE66B /* DownloadStatusTypes.swift in Sources */,
 				0BC7DA902BCC4CB300C4D356 /* Conversations_VideoBadgeView.swift in Sources */,
@@ -2356,6 +2486,7 @@
 				0B20D7E32B96182B00B71C10 /* Profile_FollowersCountNLinkView.swift in Sources */,
 				0B00D1E22B54192B00CE721C /* CustomCountryCodeSearchSheetView.swift in Sources */,
 				0B2623A32B4E789A0063D71C /* DimensionTypes.swift in Sources */,
+				0BA4E5AC2BE219DB004E7945 /* Conversations_EditedTextView.swift in Sources */,
 				0B58AE982B6D340E0057CCFE /* Int+EXT.swift in Sources */,
 				0BBD7CB52BA8075900AE8542 /* ConversationsView.swift in Sources */,
 				0B2623742B4D35F70063D71C /* GenderTypes.swift in Sources */,
@@ -2384,10 +2515,13 @@
 				0B2623262B4BDA1B0063D71C /* AnalyticsManager.swift in Sources */,
 				0BFEFEA12B91E9130005DE9B /* TapCoordinatesModel.swift in Sources */,
 				0B2622FE2B4B4E120063D71C /* IAMSADApp.swift in Sources */,
+				0BA4E58E2BE216B9004E7945 /* Conversations_SocialMediaInfoSecondaryPlainBubbleView.swift in Sources */,
 				0B0A6E382BDCB77E0000430F /* TikTokBasedSecondaryBubbleView.swift in Sources */,
 				0B58AE962B6CF5730057CCFE /* String+EXT.swift in Sources */,
+				0BA4E5962BE21806004E7945 /* Conversations_StickerSecondaryReplyBubbleView.swift in Sources */,
 				0B20D7DF2B96134B00B71C10 /* VerifiedBadgeTypes.swift in Sources */,
 				0B052FE92BA57254008D07F1 /* AccountTypes.swift in Sources */,
+				0BA4E5A42BE2190A004E7945 /* Conversations_AudioPrimaryPlainBubbleView.swift in Sources */,
 				0B6E745D2B5AA21D008B4CFB /* CustomContentNotAvailableView.swift in Sources */,
 				0BE75A662B99F741003C43DA /* Profile_CoverPhotoView.swift in Sources */,
 				0B26231E2B4BD8570063D71C /* HapticFeedbackGenerator.swift in Sources */,
@@ -2412,17 +2546,19 @@
 				0B5B0EA22B7B31BD001A950C /* CustomStripTabContentView.swift in Sources */,
 				0B5C492E2BAE8DFC00616181 /* CustomProfileImageView.swift in Sources */,
 				0BB1F9C22BCA819100719F12 /* ReadReceiptStatusTypes.swift in Sources */,
-				0B12FB982BCAAB2F002E0048 /* Conversations_BubbleTimestampReadReceiptsView.swift in Sources */,
+				0B12FB982BCAAB2F002E0048 /* Conversations_BubbleEditedTimestampReadReceiptsView.swift in Sources */,
 				0BBD2ABA2BA1462C006990AA /* Profile_BookmarksTabView.swift in Sources */,
 				0B89BB862BA6A36D007C9721 /* Profile_SettingsView.swift in Sources */,
 				0BA54BE92B79196100100C71 /* CustomStripTabView.swift in Sources */,
 				0B2623872B4D50A70063D71C /* OnboardingTitleTextView.swift in Sources */,
 				0BD9457F2B743D7F0091E845 /* ContentView.swift in Sources */,
+				0BA4E5942BE217E1004E7945 /* Conversations_LinkWithPreviewSecondaryReplyBubbleView.swift in Sources */,
 				0BC7DA832BCC393700C4D356 /* MessageBubbleValues.swift in Sources */,
 				0B26239F2B4DD9280063D71C /* CustomSelectableAvatarView.swift in Sources */,
 				0B2623A52B4E81530063D71C /* CustomColorSliderView.swift in Sources */,
 				0B729F712B667B16009BDFD2 /* AvatarImageView.swift in Sources */,
 				0B8F37912B952CE0003D0824 /* CustomUIScrollView.swift in Sources */,
+				0BA4E59C2BE21873004E7945 /* Conversations_PhotoVideoGIFSecondaryReplyBubbleView.swift in Sources */,
 				0B27C3FD2B52A6E700680676 /* AvatarCollectionModel.swift in Sources */,
 				0B2623A12B4E61460063D71C /* CustomAvatarView.swift in Sources */,
 			);

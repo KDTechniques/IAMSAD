@@ -7,8 +7,10 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
-import SwiftUIIntrospect
 
+// Sticker only bubble is a very unique media type bubble that differ from the reset.
+// Because it doesn't belong to either Primary or Secondary bubble types.
+// It's a standalone type.
 struct Conversations_StickerOnlyBubbleTypeView: View {
     // MARK: - PROPERTIRS
     @Environment(\.colorScheme) private var colorScheme
