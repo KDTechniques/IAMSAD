@@ -848,6 +848,52 @@
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>29</string>
+					<key>EndingLineNumber</key>
+					<string>19</string>
+					<key>StartingColumnNumber</key>
+					<string>29</string>
+					<key>StartingLineNumber</key>
+					<string>19</string>
+					<key>Timestamp</key>
+					<string>736352781.8707581</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/VIEWS ❤️❤️❤️/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Primary Bubble Types/Plain/Conversations_VoiceRecordPrimaryPlainBubbleView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string></string>
+				<key>leading</key>
+				<string>    let duration: String = "0:05"
+    let timestamp: String = "12:30 AM"
+    let width: CGFloat = 160</string>
+				<key>trailing</key>
+				<string>
+    let values = MessageBubbleValues.self
+    let widthPerFrame: CGFloat = 2.5 // ✅
+</string>
+			</dict>
+			<key>title</key>
+			<string>get the maxim value this could go by a calculation</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
 	</array>
 </dict>
 </plist>
