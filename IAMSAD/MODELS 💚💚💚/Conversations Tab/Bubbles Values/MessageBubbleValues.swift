@@ -23,6 +23,7 @@ struct MessageBubbleValues {
     static let textFont: Font = .body
     static let timestampFont: Font = .caption
     static var editedFont: Font { self.timestampFont }
+    static let bottomTrailingContentBottomPadding: CGFloat = -2
     static let bubbleToBubbleVPadding: CGFloat = 3
     static let stickerFrameSize: CGFloat = 138
     static let mediaTypeFont: Font = .footnote
