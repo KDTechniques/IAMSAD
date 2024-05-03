@@ -13,11 +13,11 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
-    let status: ReadReceiptStatusTypes = .seen
+    let status: ReadReceiptStatusTypes = .delivered
     let shouldAnimate: Bool = false
     let duration: String = "0:05"
     let timestamp: String = "12:30 AM"
-    let width: CGFloat = 160 
+    let width: CGFloat = 160
     let values = MessageBubbleValues.self
     let widthPerFrame: CGFloat = 2.5 // ✅
     let maxHeightPerFrame: CGFloat = 24 // ✅
@@ -76,6 +76,7 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
         ) {
             HStack {
                 image
+                    .padding(.trailing, 12)
                 
                 HStack(alignment: .top) {
                     HStack {
@@ -115,6 +116,10 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: playPauseIconWidth)
+                                .foregroundStyle(.micPlaybackNCancelIcons)
+                                .onTapGesture {
+                                    // playback action goes here...
+                                }
                         default:
                             EmptyView()
                         }
@@ -163,6 +168,7 @@ extension Conversations_VoiceRecordPrimaryPlainBubbleView {
             isThumbTouchDown: $isThumbTouchDown,
             thumbSize: $thumbSize,
             scale: thumbScale,
+            thumbTintColor: status == .seen ? .sliderThumbOnSeen : .sliderThumb,
             minimumTrackTintColor: .clear,
             maximumTrackTintColor: .clear
         )
@@ -241,6 +247,20 @@ extension Conversations_VoiceRecordPrimaryPlainBubbleView {
         .scaledToFill()
         .frame(width: imageSize, height: imageSize)
         .clipShape(Circle())
+        .overlay(alignment: .bottomTrailing) {
+            let image: UIImage = .init(named: "micStroked") ?? UIImage()
+            let imageWidth: CGFloat = image.size.width
+            
+            Image(.micStroked)
+                .renderingMode(.template)
+                .foregroundStyle(.bubbleSender)
+                .overlay {
+                    Image(.mic)
+                        .renderingMode(.template)
+                        .foregroundStyle(.micPlaybackNCancelIcons)
+                }
+                .offset(x: imageWidth/2)
+        }
     }
     
     // MARK: - FUNCTIONS
