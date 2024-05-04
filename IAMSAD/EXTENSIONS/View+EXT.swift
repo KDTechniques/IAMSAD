@@ -318,6 +318,16 @@ extension View {
                 }
             }
     }
+    
+    // MARK: - messageBubbleContentDefaultPadding
+    @ViewBuilder
+    var messageBubbleContentDefaultPadding: some View {
+        let values = MessageBubbleValues.self
+        
+        self
+            .padding(.vertical, values.innerVPadding)
+            .padding(.horizontal, values.innerHPadding)
+    }
 }
 
 // MARK: - OTHER

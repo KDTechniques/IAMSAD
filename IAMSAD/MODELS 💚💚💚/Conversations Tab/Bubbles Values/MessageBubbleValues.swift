@@ -29,6 +29,13 @@ struct MessageBubbleValues {
     static let mediaTypeFont: Font = .footnote
     static let mediaTypeIconToTextHPadding: CGFloat = 4
     
+    static var maxContentWidth: CGFloat {
+        screenWidth -
+        maxWidthLimitationPadding -
+        bubbleShapeValues.pointerWidth -
+        screenToBubblePadding
+    }
+    
     // MARK: - FUNCTIONS
     static func getDirection(_ by: MessageBubbleUserTypes ) -> BubbleShapeValues.Directions {
         by == .sender ? .right : .left

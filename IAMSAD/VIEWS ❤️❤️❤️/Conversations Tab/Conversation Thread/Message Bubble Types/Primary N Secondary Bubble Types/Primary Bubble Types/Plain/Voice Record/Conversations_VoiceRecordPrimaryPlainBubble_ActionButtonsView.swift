@@ -36,9 +36,9 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView: View {
         Image(systemName: iconName)
             .resizable()
             .scaledToFit()
-            .frame(width: values.playPauseIconsWidth)
+            .frame(width: values.actionIconsFrameWidth - 0) // change here for the xmark
+            .frame(width: values.actionIconsFrameWidth)
             .foregroundStyle(.micPlaybackNCancelIcons)
-            .padding(.horizontal, 10)
             .onTapGesture { action() }
     }
 }

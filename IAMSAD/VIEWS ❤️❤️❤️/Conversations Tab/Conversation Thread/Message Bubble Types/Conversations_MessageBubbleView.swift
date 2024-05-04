@@ -51,12 +51,22 @@ struct Conversations_MessageBubbleView<T: View>: View {
             .ignoresSafeArea()
         
         Conversations_MessageBubbleView(direction: .right, showPointer: true) {
-            VStack(alignment: .trailing, spacing: 2) {
-                Text("Hi there 👋👋👋")
+            HStack {
+                Text("Hi there 👋👋👋 ...") /// insert another '.' and the bubble will expand to a second line.
                 
-                Conversations_BubbleEditedTimestampReadReceiptsView(timestamp: "12:35 PM", status: .seen, shouldAnimate: false)
+                Conversations_BubbleEditedTimestampReadReceiptsView(
+                    timestamp: "12:35 PM",
+                    status: .seen,
+                    shouldAnimate: false
+                )
             }
-            .padding(12)
+            .messageBubbleContentDefaultPadding
         }
+        
+        Rectangle()
+            .fill(Color.debug)
+            .frame(width: MessageBubbleValues.maxContentWidth, height: 5)
+            .frame(width: screenWidth, alignment: .trailing)
+            .offset(x: -MessageBubbleValues.screenToBubblePadding, y: 30)
     }
 }

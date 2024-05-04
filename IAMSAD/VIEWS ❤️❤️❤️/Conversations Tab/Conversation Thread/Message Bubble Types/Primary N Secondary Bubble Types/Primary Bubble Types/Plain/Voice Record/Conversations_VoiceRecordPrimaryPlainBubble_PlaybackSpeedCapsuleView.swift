@@ -20,7 +20,8 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView: Vie
     
     // MARK: - PRIVATE PROPERTIES
     let values = VoiceRecordBubbleValues.self
-    var capsuleHeight: CGFloat { values.playPauseIconsWidth + 8 }
+    var capsuleWidth: CGFloat { values.imageSize - 2 }
+    var capsuleHeight: CGFloat { values.actionIconsFrameWidth + 8 }
     let font: Font = .caption
     let speedsArray: [VoiceRecordBubbleValues.PlaybackSpeedTypes] = Array(VoiceRecordBubbleValues.PlaybackSpeedTypes.allCases)
     
@@ -54,12 +55,12 @@ extension Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView {
     private var capsule: some View {
         Capsule()
             .fill(.voiceRecordPlaybackSpeedCapsule)
-            .frame(width: values.imageSize, height: capsuleHeight)
+            .frame(width: capsuleWidth, height: capsuleHeight)
     }
     
     // MARK: - text
     private var text: some View {
-        Text("1.5")
+        Text(currentPlaybackSpeed.rawValue)
             .font(font.weight(.semibold))
     }
     
@@ -82,7 +83,7 @@ extension Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView {
     private func toggleSpeed() {
         guard let index: Int = speedsArray.firstIndex(of: currentPlaybackSpeed) else { return }
         
-        currentPlaybackSpeed = index < speedsArray.endIndex ? speedsArray[index+1] : ._1x
+        currentPlaybackSpeed = index < speedsArray.count-1 ? speedsArray[index+1] : ._1x
         action()
     }
 }

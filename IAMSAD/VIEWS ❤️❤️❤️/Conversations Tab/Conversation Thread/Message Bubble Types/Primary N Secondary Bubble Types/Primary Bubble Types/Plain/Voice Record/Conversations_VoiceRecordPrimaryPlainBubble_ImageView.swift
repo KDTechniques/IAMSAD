@@ -52,9 +52,6 @@ extension Conversations_VoiceRecordPrimaryPlainBubble_ImageView {
     // MARK: - mic
     @ViewBuilder
     private var mic: some View {
-        let image: UIImage = .init(named: "micStroked") ?? UIImage()
-        let imageWidth: CGFloat = image.size.width
-        
         Image(.micStroked)
             .renderingMode(.template)
             .foregroundStyle(.bubbleSender)
@@ -63,6 +60,6 @@ extension Conversations_VoiceRecordPrimaryPlainBubble_ImageView {
                     .renderingMode(.template)
                     .foregroundStyle(.micPlaybackNCancelIcons)
             }
-            .offset(x: imageWidth/2)
+            .offset(x: values.strokedMicImageWidth/2)
     }
 }

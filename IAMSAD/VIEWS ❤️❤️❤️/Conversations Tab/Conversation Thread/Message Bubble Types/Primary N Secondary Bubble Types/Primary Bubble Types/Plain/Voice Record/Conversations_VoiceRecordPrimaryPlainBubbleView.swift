@@ -13,14 +13,15 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
-    let imageURLString: String = ""
+    let imageURLString: String = "https://dynl.mktgcdn.com/p/fZYVExInA1kabvL66aVysERPQERyVk8ibBQoTCEMWfY/500x500"
     let voiceRecordURLString: String = ""
-    let status: ReadReceiptStatusTypes = .delivered
+    let status: ReadReceiptStatusTypes = .seen
     let shouldAnimate: Bool = false
     let duration: String = "0:05"
     let timestamp: String = "12:30 AM"
     let values = MessageBubbleValues.self
     let voiceRecordValues = VoiceRecordBubbleValues.self
+    let extraHPadding: CGFloat = 10
     
     var actualSpectrumWidth: CGFloat {
         let value1: CGFloat = CGFloat(voiceRecordValues.framesCount) *
@@ -38,11 +39,16 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
         (voiceRecordValues.widthPerSpectrumFrame/2)
     }
     
+    var vContainerSpacing: CGFloat {
+        extraHPadding -
+        abs(values.bottomTrailingContentBottomPadding)
+    }
+    
     @State private var sliderValue: CGFloat = 0
     @State private var isThumbTouchDown: Bool = false
     @State private var thumbSize: CGFloat = 0
     @State private var fileSize: String = "23 KB"
-    @State private var isActive: Bool = true
+    @State private var isActive: Bool = false
     @State private var isUploading: Bool = false
     
     // MARK: - BODY
@@ -51,22 +57,24 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
             direction: .right,
             showPointer: true
         ) {
-            HStack {
+            HStack(spacing: 0) {
                 if !isActive {
                     Conversations_VoiceRecordPrimaryPlainBubble_ImageView(urlString: imageURLString)
+                        .offset(x: -voiceRecordValues.strokedMicImageWidth/3)
                 }
                 
-                HStack(alignment: .top) {
-                    HStack {
+                HStack(alignment: .top, spacing: 0) {
+                    HStack(spacing: 0) {
                         if isActive {
                             Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView { }
                         }
                         
                         Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView(actionType: .play) { }
+                            .padding(.horizontal, voiceRecordValues.actionIconsHPadding)
                     }
                     .frame(height: voiceRecordValues.spectrumMaxHeight)
                     
-                    VStack(spacing: 7) {
+                    VStack(spacing: vContainerSpacing) {
                         Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView(
                             sliderValue: $sliderValue,
                             isThumbTouchDown: $isThumbTouchDown,
@@ -84,14 +92,14 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
                             duration: "1:45",
                             type: .duration,
                             timestamp: "05:36 AM",
-                            status: .seen,
+                            status: status,
                             shouldAnimate: false
                         )
                     }
                 }
+                .padding(.top, extraHPadding)
             }
-            .padding(.horizontal, values.innerHPadding)
-            .padding(.vertical, values.innerVPadding)
+            .messageBubbleContentDefaultPadding
         }
     }
 }
