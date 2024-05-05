@@ -157,6 +157,7 @@ extension Conversations_PrimaryNSecondaryBubbleView {
     // MARK: - textBased
     private var textBased: some View {
         Conversations_TextPrimaryPlainBubbleView(
+            direction: .random(),
             text: text,
             timestamp: timestamp,
             status: status,

@@ -61,7 +61,7 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
     @State private var thumbSize: CGFloat = 0
     @State private var isActive: Bool = false
     @State private var isProcessing: Bool = false
-    @State private var action: VoiceRecordBubbleValues.ActionTypes = .upload
+    @State private var action: VoiceRecordBubbleValues.ActionTypes = .process
     @State private var heightsArray: [CGFloat] = VoiceRecordBubbleValues.getMockArrayOfHeights()
     @State private var duration: String = "0:00"
     @State private var fileSize: String = "0 KB"
@@ -83,7 +83,7 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
                             Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView(direction: direction) { }
                         }
                         
-                        Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView(
+                        Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView(
                             direction: direction,
                             actionType: action
                         ) { }
@@ -148,14 +148,14 @@ extension Conversations_VoiceRecordPrimaryPlainBubbleView {
     
     // MARK: - bottomContent
     private var bottomContent: some View {
-        Conversations_VoiceRecordPrimaryPlainBubble_BottomTrailingView(
+        Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView(
             width: thumbAlignedSpectrumWidth,
-            fileSize: "43 KB",
-            duration: "1:45",
+            fileSize: fileSize,
+            duration: duration,
             type: isProcessing ? .fileSize : .duration,
-            timestamp: "05:36 AM",
+            timestamp: timestamp,
             status: status,
-            shouldAnimate: false
+            shouldAnimate: shouldAnimate
         )
     }
 }

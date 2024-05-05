@@ -1,5 +1,5 @@
 //
-//  Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView.swift
+//  Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView.swift
 //  IAMSAD
 //
 //  Created by Mr. Kavinda Dilshan on 2024-05-03.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView: View {
+struct Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView: View {
     // MARK: - PROPERTIES
     let direction: BubbleShapeValues.Directions
     let actionType: VoiceRecordBubbleValues.ActionTypes
@@ -23,7 +23,7 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView: View {
                 .init(.pause)
         case .cancel:
                 .init(systemName: "xmark")
-        case .upload:
+        case .process:
                 .init(.arrowUpCircle)
         }
     }
@@ -34,13 +34,13 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView: View {
             values.actionIconsFrameWidth
         case .cancel:
             values.actionIconsFrameWidth - 5
-        case .upload:
+        case .process:
             values.actionIconsFrameWidth + 10
         }
     }
     
     var rotationDegree: CGFloat {
-        actionType == .upload && direction == .left ? 180 : 0
+        actionType == .process && direction == .left ? 180 : 0
     }
     
     // MARK: - INITILAIZER
@@ -71,8 +71,8 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView: View {
     }
 }
 
-#Preview("Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView") {
-    Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView(
+#Preview("Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView") {
+    Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView(
         direction: .random(),
         actionType: .random()
     ) {

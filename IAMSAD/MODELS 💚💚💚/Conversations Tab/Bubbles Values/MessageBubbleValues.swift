@@ -29,6 +29,7 @@ struct MessageBubbleValues {
     static let mediaTypeFont: Font = .footnote
     static let mediaTypeIconToTextHPadding: CGFloat = 4
     static let anyImagePlaceholderColor: Color = .primary.opacity(0.1)
+    static let secondaryOuterPadding: (Edge.Set, CGFloat) = ([.horizontal, .top], 4)
     
     static var maxContentWidth: CGFloat {
         screenWidth -

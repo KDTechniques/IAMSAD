@@ -43,7 +43,6 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView: View {
     
     // MARK: - PRIVATE PROPERTIES
     let values = VoiceRecordBubbleValues.self
-    let thumbScale: CGFloat = 0.45
     let progressBarHeight: CGFloat = 4
     var progressIndicatorHeight: CGFloat { progressBarHeight + 1 }
     let progressIndicatorWidth: CGFloat = 18
@@ -116,7 +115,7 @@ extension Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView {
             value: $sliderValue,
             isThumbTouchDown: $isThumbTouchDown,
             thumbSize: $thumbSize,
-            scale: thumbScale,
+            scale: values.thumbScale,
             thumbTintColor: thumbTintColor,
             minimumTrackTintColor: .clear,
             maximumTrackTintColor: .clear

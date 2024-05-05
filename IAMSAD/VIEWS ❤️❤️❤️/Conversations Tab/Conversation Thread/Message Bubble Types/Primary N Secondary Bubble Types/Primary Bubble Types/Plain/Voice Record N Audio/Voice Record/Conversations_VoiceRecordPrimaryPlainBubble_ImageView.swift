@@ -26,7 +26,7 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_ImageView: View {
     var body: some View {
         image
             .overlay(alignment: direction == .right ? .bottomTrailing : .bottomLeading) { mic }
-            .offset(x: values.strokedMicImageWidth/3 * (direction == .right ? -1 : 1))
+            .offset(x: values.getImageOffsetX(direction))
     }
 }
 

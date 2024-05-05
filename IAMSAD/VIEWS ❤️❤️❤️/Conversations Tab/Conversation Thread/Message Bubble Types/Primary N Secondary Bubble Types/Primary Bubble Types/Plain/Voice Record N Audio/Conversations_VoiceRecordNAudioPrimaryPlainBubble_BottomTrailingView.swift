@@ -1,5 +1,5 @@
 //
-//  Conversations_VoiceRecordPrimaryPlainBubble_BottomTrailingView.swift
+//  Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView.swift
 //  IAMSAD
 //
 //  Created by Mr. Kavinda Dilshan on 2024-05-03.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct Conversations_VoiceRecordPrimaryPlainBubble_BottomTrailingView: View {
+struct Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView: View {
     // MARK: - PROPERTIES
-    let width: CGFloat
+    let width: CGFloat?
     let fileSize: String
     let duration: String
     let type: VoiceRecordBubbleValues.FileDatatypes
@@ -19,7 +19,7 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_BottomTrailingView: View {
     
     // MARK: - INITIALIZER
     init(
-        width: CGFloat,
+        width: CGFloat? = nil,
         fileSize: String,
         duration: String,
         type: VoiceRecordBubbleValues.FileDatatypes,
@@ -47,13 +47,13 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_BottomTrailingView: View {
             Spacer()
             timeStampNReadReceipts
         }
-        .frame(width: width)
+        .setWidth(width)
     }
 }
 
 // MARK: - PREVIEWS
-#Preview("Conversations_VoiceRecordPrimaryPlainBubble_BottomTrailingView") {
-    Conversations_VoiceRecordPrimaryPlainBubble_BottomTrailingView(
+#Preview("Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView") {
+    Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView(
         width: VoiceRecordBubbleValues.actualSpectrumWidth,
         fileSize: "19 KB",
         duration: "0:05",
@@ -65,7 +65,7 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_BottomTrailingView: View {
 }
 
 // MARK: - EXTENSIONS
-extension Conversations_VoiceRecordPrimaryPlainBubble_BottomTrailingView {
+extension Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView {
     //MARK: - fileSizeOrDuration
     private var fileSizeOrDuration: some View {
         Text(type == .fileSize ? fileSize : duration)
@@ -81,5 +81,17 @@ extension Conversations_VoiceRecordPrimaryPlainBubble_BottomTrailingView {
             status: status,
             shouldAnimate: shouldAnimate
         )
+    }
+}
+
+extension View {
+    // MARK: - setWidth
+    @ViewBuilder
+    fileprivate func setWidth(_ width: CGFloat? = nil) -> some View {
+        if let width {
+            self
+        } else {
+            self.frame(width: width)
+        }
     }
 }

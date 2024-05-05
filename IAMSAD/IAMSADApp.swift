@@ -22,15 +22,20 @@ struct IAMSADApp: App {
     
     var body: some Scene {
         WindowGroup {
-            Conversations_VoiceRecordPrimaryPlainBubbleView(
-                direction: .random(),
-                showPointer: .random(),
-                imageURLString: "https://www.akc.org/wp-content/uploads/2018/08/nervous_lab_puppy-studio-portrait-lg-500x500.jpg",
-                voiceRecordURLString: "",
-                status: .random(),
-                shouldAnimate: .random(),
-                timestamp: "05:48 PM"
-            )
+            ZStack {
+                Color.conversationBackground
+                
+                Conversations_VoiceRecordPrimaryPlainBubbleView(
+                    direction: .random(),
+                    showPointer: .random(),
+                    imageURLString: "https://www.akc.org/wp-content/uploads/2018/08/nervous_lab_puppy-studio-portrait-lg-500x500.jpg",
+                    voiceRecordURLString: "",
+                    status: .random(),
+                    shouldAnimate: .random(),
+                    timestamp: "05:48 PM"
+                )
+            }
+            .ignoresSafeArea()
             .dynamicTypeSize(...DynamicTypeSize.xLarge)
             .environmentObject(avatar)
             .environmentObject(avatarSheetVM)
