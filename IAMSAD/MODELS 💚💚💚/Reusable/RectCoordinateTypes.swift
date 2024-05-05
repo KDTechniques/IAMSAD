@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum RectCoordinateTypes {
+enum RectCoordinateTypes: CaseIterable {
     case minX, midX, maxX
     case minY, midY, maxY
 }

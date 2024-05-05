@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIIntrospect
 
 @main
 struct IAMSADApp: App {
@@ -21,13 +22,20 @@ struct IAMSADApp: App {
     
     var body: some Scene {
         WindowGroup {
-            Conversations_MessageThreadView()
-                .dynamicTypeSize(...DynamicTypeSize.xLarge)
-                .environmentObject(avatar)
-                .environmentObject(avatarSheetVM)
-                .environmentObject(profileVM)
-                .environmentObject(conversationsVM)
+            Conversations_VoiceRecordPrimaryPlainBubbleView(
+                direction: .random(),
+                showPointer: .random(),
+                imageURLString: "https://www.akc.org/wp-content/uploads/2018/08/nervous_lab_puppy-studio-portrait-lg-500x500.jpg",
+                voiceRecordURLString: "",
+                status: .random(),
+                shouldAnimate: .random(),
+                timestamp: "05:48 PM"
+            )
+            .dynamicTypeSize(...DynamicTypeSize.xLarge)
+            .environmentObject(avatar)
+            .environmentObject(avatarSheetVM)
+            .environmentObject(profileVM)
+            .environmentObject(conversationsVM)
         }
     }
 }
-

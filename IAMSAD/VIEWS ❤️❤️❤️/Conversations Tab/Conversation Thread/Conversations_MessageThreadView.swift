@@ -22,13 +22,6 @@ struct Conversations_MessageThreadView: View {
             .overlay {
                 ScrollView(.vertical) {
                     LazyVStack(spacing: 50) {
-                        Conversations_TextOnlyBubbleTypeView(
-                            text: "Hello there 👋👋👋",
-                            timestamp: "06:12 PM",
-                            userType: .receiver,
-                            showPointer: true
-                        )
-                        
                         Conversations_StickerOnlyBubbleTypeView(
                             url: .init(string: "https://user-images.githubusercontent.com/14011726/94132137-7d4fc100-fe7c-11ea-8512-69f90cb65e48.gif"),
                             timestamp: "10:44 PM",

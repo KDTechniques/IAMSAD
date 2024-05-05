@@ -14,3 +14,10 @@ extension WebImage {
         self.placeholder { backgroundColor }
     }
 }
+
+extension AnimatedImage {
+    // MARK: - defaultBColorPlaceholder()
+    func defaultBColorPlaceholder(_ backgroundColor: Color = Color(uiColor: .systemGray6)) -> some View {
+        self.placeholder { backgroundColor }
+    }
+}

@@ -17,5 +17,69 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "725C1C24-3FF9-4843-8600-3FE196B489A9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IAMSAD/VIEWS &#x2764;&#xfe0f;&#x2764;&#xfe0f;&#x2764;&#xfe0f;/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Secondary Bubble Types/Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "secondaryBubbleWidth"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4DB9C8CB-8ED1-4210-8AF3-53315DFFF933"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IAMSAD/VIEWS &#x2764;&#xfe0f;&#x2764;&#xfe0f;&#x2764;&#xfe0f;/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Secondary Bubble Types/Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F035F1A9-9DF6-4D5C-9D62-02AEC93954EC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IAMSAD/VIEWS &#x2764;&#xfe0f;&#x2764;&#xfe0f;&#x2764;&#xfe0f;/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Secondary Bubble Types/Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "secondaryBubbleWidth"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "45050BBC-9363-4916-BE2D-2BE34236160C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IAMSAD/VIEWS &#x2764;&#xfe0f;&#x2764;&#xfe0f;&#x2764;&#xfe0f;/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Secondary Bubble Types/Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView"
+            landmarkType = "14">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

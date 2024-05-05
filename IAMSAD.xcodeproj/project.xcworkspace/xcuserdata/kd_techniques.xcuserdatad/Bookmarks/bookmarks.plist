@@ -285,6 +285,615 @@
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>208</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>207</string>
+					<key>Timestamp</key>
+					<string>735516163.18425</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/VIEWS ❤️❤️❤️/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Secondary Bubble Types/Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        let url: URL? = .init(string: "https://i0.wp.com/www.galvanizeaction.org/wp-content/uploads/2022/06/Wow-gif.gif?fit=450%2C250&amp;ssl=1")
+</string>
+				<key>leading</key>
+				<string>    @ViewBuilder
+    private var gifBased: some View {
+</string>
+				<key>trailing</key>
+				<string>        
+        WebImage(url: url, options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad])
+            .resizable()
+</string>
+			</dict>
+			<key>title</key>
+			<string>initialize to url property</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>192</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>191</string>
+					<key>Timestamp</key>
+					<string>735516163.1842721</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/VIEWS ❤️❤️❤️/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Secondary Bubble Types/Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>            if let videoURL: URL = Bundle.main.url(forResource: "video", withExtension: "mp4"),
+</string>
+				<key>leading</key>
+				<string>    private var videoBased: some View {
+        Group {
+</string>
+				<key>trailing</key>
+				<string>               let image: UIImage = Utilities.getThumbnailFrom(videoURL) {
+                Image(uiImage: image)
+                    .resizable()
+</string>
+			</dict>
+			<key>title</key>
+			<string>initialize to url property</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>179</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>178</string>
+					<key>Timestamp</key>
+					<string>735516163.1843261</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/VIEWS ❤️❤️❤️/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Secondary Bubble Types/Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        let url: URL? = Bundle.main.url(forResource: "photo", withExtension: "jpg")
+</string>
+				<key>leading</key>
+				<string>    @ViewBuilder
+    private var photoBased: some View {
+</string>
+				<key>trailing</key>
+				<string>        
+        WebImage(url: url, options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad])
+            .resizable()
+</string>
+			</dict>
+			<key>title</key>
+			<string>initialize to url property</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>173</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>172</string>
+					<key>Timestamp</key>
+					<string>736279368.876694</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/VIEWS ❤️❤️❤️/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Conversations_PrimaryNSecondaryBubbleView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>            Image(.follower3)
+</string>
+				<key>leading</key>
+				<string>    private var stickerBased: some View {
+        if withSecondaryContent {
+</string>
+				<key>trailing</key>
+				<string>                .resizable()
+                .scaledToFill()
+                .frame(width: values.stickerFrameSize, height: values.stickerFrameSize)
+</string>
+			</dict>
+			<key>title</key>
+			<string>use progressiveloading along with a placeholder</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>221</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>220</string>
+					<key>Timestamp</key>
+					<string>735516163.184208</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/VIEWS ❤️❤️❤️/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Secondary Bubble Types/Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        let urlString: String = "https://img.youtube.com/vi/fdZwRDv9OWI/mqdefault.jpg"
+</string>
+				<key>leading</key>
+				<string>    @ViewBuilder
+    private var linkWithPreviewBased: some View {
+</string>
+				<key>trailing</key>
+				<string>        
+        WebImage(url: .init(string: urlString), options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad])
+            .resizable()
+</string>
+			</dict>
+			<key>title</key>
+			<string>initialize to url property</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>159</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>158</string>
+					<key>Timestamp</key>
+					<string>735516163.18431</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/VIEWS ❤️❤️❤️/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Secondary Bubble Types/Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>                Conversations_MediaBadgeTextView(text: "https://youtu.be/fdZwRDv9OWI?si=XRE-8O3nr-JvMXRO")
+</string>
+				<key>leading</key>
+				<string>                Conversations_GIFBadgeView()
+            case .linkWithPreview, .linkTextOnly:
+</string>
+				<key>trailing</key>
+				<string>            default:
+                EmptyView()
+            }
+</string>
+			</dict>
+			<key>title</key>
+			<string>get from url property</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>42</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>41</string>
+					<key>Timestamp</key>
+					<string>735513035.558432</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/VIEWS ❤️❤️❤️/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Secondary Bubble Types/Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>    var secondaryBubbleWidth: CGFloat {
+</string>
+				<key>leading</key>
+				<string>    var outerPadding: (Edge.Set, CGFloat) { secondaryBubbleValues.outerPadding }
+    
+</string>
+				<key>trailing</key>
+				<string>        (outerPadding.1 * 2) +
+        secondaryBubbleValues.stripWidth +
+        (secondaryBubbleValues.vContainerHPadding * 2) +
+</string>
+			</dict>
+			<key>title</key>
+			<string>change this along the way</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>91</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>90</string>
+					<key>Timestamp</key>
+					<string>735516163.184291</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/VIEWS ❤️❤️❤️/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Secondary Bubble Types/Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>                if secondaryMediaType != .socialMediaInfo {
+</string>
+				<key>leading</key>
+				<string>        case .photo, .video, .gif, .linkWithPreview, .linkTextOnly, .socialMediaInfo:
+            HStack(spacing: secondaryBubbleValues.vContainerHPadding) {
+</string>
+				<key>trailing</key>
+				<string>                    strip
+                    verticalContainer
+                    spacer
+</string>
+			</dict>
+			<key>title</key>
+			<string>strip has no use if secondary content type is .socialMediaInfo, don't forget to remove strip with from messagebubble width</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>26</string>
+					<key>EndingLineNumber</key>
+					<string>247</string>
+					<key>StartingColumnNumber</key>
+					<string>26</string>
+					<key>StartingLineNumber</key>
+					<string>247</string>
+					<key>Timestamp</key>
+					<string>735857187.842205</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/VIEWS ❤️❤️❤️/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Secondary Bubble Types/Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string></string>
+				<key>leading</key>
+				<string>    }
+    
+    // MARK: - tiktokBased</string>
+				<key>trailing</key>
+				<string>
+    @ViewBuilder
+    private var tiktokBased: some View {
+</string>
+			</dict>
+			<key>title</key>
+			<string>extract this to a different view</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>283</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>282</string>
+					<key>Timestamp</key>
+					<string>736279449.586561</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/VIEWS ❤️❤️❤️/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Secondary Bubble Types/Photo Video GIF Link Based/Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>                self
+</string>
+				<key>leading</key>
+				<string>            switch socialMediaType {
+            case .facebook:
+</string>
+				<key>trailing</key>
+				<string>            case .instagram:
+                self
+            case .youtube:
+</string>
+			</dict>
+			<key>title</key>
+			<string>replace self later</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>285</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>284</string>
+					<key>Timestamp</key>
+					<string>736279449.5864969</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/VIEWS ❤️❤️❤️/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Secondary Bubble Types/Photo Video GIF Link Based/Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>                self
+</string>
+				<key>leading</key>
+				<string>                self
+            case .instagram:
+</string>
+				<key>trailing</key>
+				<string>            case .youtube:
+                self
+            case .tiktok:
+</string>
+			</dict>
+			<key>title</key>
+			<string>replace self later</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>287</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>286</string>
+					<key>Timestamp</key>
+					<string>736279449.58654</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/VIEWS ❤️❤️❤️/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Secondary Bubble Types/Photo Video GIF Link Based/Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>                self
+</string>
+				<key>leading</key>
+				<string>                self
+            case .youtube:
+</string>
+				<key>trailing</key>
+				<string>            case .tiktok:
+                if let object: TikTokInfoModel = dataObject as? TikTokInfoModel,
+                   object.data.coverPhotoURL != nil {
+</string>
+			</dict>
+			<key>title</key>
+			<string>replace self later</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>29</string>
+					<key>EndingLineNumber</key>
+					<string>19</string>
+					<key>StartingColumnNumber</key>
+					<string>29</string>
+					<key>StartingLineNumber</key>
+					<string>19</string>
+					<key>Timestamp</key>
+					<string>736352781.8707581</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/VIEWS ❤️❤️❤️/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Primary Bubble Types/Plain/Conversations_VoiceRecordPrimaryPlainBubbleView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string></string>
+				<key>leading</key>
+				<string>    let duration: String = "0:05"
+    let timestamp: String = "12:30 AM"
+    let width: CGFloat = 160</string>
+				<key>trailing</key>
+				<string>
+    let values = MessageBubbleValues.self
+    let widthPerFrame: CGFloat = 2.5 // ✅
+</string>
+			</dict>
+			<key>title</key>
+			<string>get the maxim value this could go by a calculation</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
 	</array>
 </dict>
 </plist>

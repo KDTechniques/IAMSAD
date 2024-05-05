@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum TabTypes {
+enum TabTypes: CaseIterable {
     case home, search, conversations, activity, profile
 }
