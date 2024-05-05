@@ -14,10 +14,10 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView: View {
     @Binding var sliderValue: CGFloat
     @Binding var isThumbTouchDown: Bool
     @Binding var thumbSize: CGFloat
+    let direction: BubbleShapeValues.Directions
     let spectrumFrameWidth: CGFloat
     let status: ReadReceiptStatusTypes
-    let isActive: Bool
-    let isUploading: Bool
+    let isProcessing: Bool
     let heightsArray: [CGFloat]
     
     // MARK: - INITITIALIZER
@@ -25,19 +25,19 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView: View {
         sliderValue: Binding<CGFloat>,
         isThumbTouchDown: Binding<Bool>,
         thumbSize: Binding<CGFloat>,
+        direction: BubbleShapeValues.Directions,
         spectrumFrameWidth: CGFloat,
         status: ReadReceiptStatusTypes,
-        isActive: Bool,
-        isUploading: Bool = false,
+        isProcessing: Bool = false,
         heightsArray: [CGFloat]
     ) {
         self._sliderValue = sliderValue
         self._isThumbTouchDown = isThumbTouchDown
         self._thumbSize = thumbSize
+        self.direction = direction
         self.spectrumFrameWidth = spectrumFrameWidth
         self.status = status
-        self.isActive = isActive
-        self.isUploading = isUploading
+        self.isProcessing = isProcessing
         self.heightsArray = heightsArray
     }
     
@@ -49,50 +49,66 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView: View {
     let progressIndicatorWidth: CGFloat = 18
     let progressBarAnimation: Animation = .linear(duration: 5).repeatForever(autoreverses: false)
     
-    var spectrumColor: Color {
-        isActive
-        ? .activeSpectrum
-        : .primary.opacity(colorScheme == .dark ? 0.3 : 0.19)
+    var thumbTintColor: UIColor {
+        switch direction {
+        case .left:
+                .appLogoBased
+        case .right:
+            status == .seen ? .sliderThumbOnSeen : .sliderThumb
+        }
     }
     
     @State private var alignment: Alignment = .bottomLeading
+    @State private var maskFrameWidth: CGFloat = 0
     
     // MARK: - BODY
     var body: some View {
-        HStack(spacing: values.spacingPerSpectrumFrame) {
-            ForEach(heightsArray, id: \.self) {
-                Capsule()
-                    .fill(spectrumColor)
-                    .frame(width: values.widthPerSpectrumFrame, height: $0)
+        spectrum
+            .overlay(alignment: .leading) {
+                maskOverlay
+                    .mask(alignment: .leading) { spectrum }
             }
-        }
-        .frame(width: spectrumFrameWidth, height: values.spectrumMaxHeight)
-        .overlay {
-            if !isUploading {
-                slider
-            } else {
-                progressBar
+            .opacity(isProcessing ? 0 : 1)
+            .overlay {
+                slider.opacity(isProcessing ? 0 : 1)
+                if isProcessing { progressBar }
             }
-        }
     }
 }
 
 // MARK: - PREVIEWS
 #Preview("Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView") {
     Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView(
-        sliderValue: .constant(0),
+        sliderValue: .constant(.random(in: 0...1)),
         isThumbTouchDown: .constant(false),
         thumbSize: .constant(15),
-        spectrumFrameWidth: 150,
-        status: .seen,
-        isActive: false,
+        direction: .random(),
+        spectrumFrameWidth: VoiceRecordBubbleValues.actualSpectrumWidth,
+        status: .random(),
         heightsArray: VoiceRecordBubbleValues.getMockArrayOfHeights()
     )
 }
 
 // MARK: - EXTENSIONS
 extension Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView {
-    // MARK: -
+    // MARK: - spectrum
+    private var spectrum: some View {
+        HStack(spacing: values.spacingPerSpectrumFrame) {
+            ForEach(heightsArray, id: \.self) {
+                Capsule()
+                    .fill(direction == .right ? .inactiveSpectrumSender : .inactiveSpectrumReceiver)
+                    .frame(width: values.widthPerSpectrumFrame, height: $0)
+            }
+        }
+        .frame(width: spectrumFrameWidth, height: values.spectrumMaxHeight)
+    }
+    
+    // MARK: - maskOverlay
+    private var maskOverlay: some View {
+        Rectangle()
+            .fill(direction == .right ? .activeSpectrumSender : .activeSpectrumReceiver)
+            .frame(width: maskWidthHandler())
+    }
     
     // MARK: - slider
     private var slider: some View {
@@ -101,7 +117,7 @@ extension Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView {
             isThumbTouchDown: $isThumbTouchDown,
             thumbSize: $thumbSize,
             scale: thumbScale,
-            thumbTintColor: status == .seen ? .sliderThumbOnSeen : .sliderThumb,
+            thumbTintColor: thumbTintColor,
             minimumTrackTintColor: .clear,
             maximumTrackTintColor: .clear
         )
@@ -129,5 +145,10 @@ extension Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView {
     // MARK: - onProgressBarAppear
     private func onProgressBarAppear() {
         alignment = .bottomTrailing
+    }
+    
+    // MARK: - maskWidthHandler
+    private func maskWidthHandler() -> CGFloat {
+        spectrumFrameWidth * sliderValue
     }
 }

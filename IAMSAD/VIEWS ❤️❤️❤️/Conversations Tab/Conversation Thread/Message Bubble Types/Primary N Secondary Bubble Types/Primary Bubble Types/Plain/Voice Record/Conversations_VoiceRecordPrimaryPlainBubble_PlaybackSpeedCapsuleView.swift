@@ -11,10 +11,12 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView: Vie
     // MARK: - PROPERTIES
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
+    let direction: BubbleShapeValues.Directions
     let action: () -> Void
     
     // MARK: INITILAIZER
-    init(action: @escaping () -> Void) {
+    init(direction: BubbleShapeValues.Directions, action: @escaping () -> Void) {
+        self.direction = direction
         self.action = action
     }
     
@@ -43,7 +45,7 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView: Vie
 
 // MARK: - PREVIEWS
 #Preview("Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView") {
-    Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView {
+    Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView(direction: .random()) {
         print("Clicked on Capsule!")
     }
     .previewViewModifier
@@ -54,8 +56,9 @@ extension Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView {
     // MARK: - capsule
     private var capsule: some View {
         Capsule()
-            .fill(.voiceRecordPlaybackSpeedCapsule)
+            .fill(direction == .right ? .voiceRecordPlaybackSpeedCapsuleSender : .voiceRecordPlaybackSpeedCapsuleReceiver)
             .frame(width: capsuleWidth, height: capsuleHeight)
+            .frame(width: values.imageSize, alignment: direction == .right ? .trailing : .leading)
     }
     
     // MARK: - text

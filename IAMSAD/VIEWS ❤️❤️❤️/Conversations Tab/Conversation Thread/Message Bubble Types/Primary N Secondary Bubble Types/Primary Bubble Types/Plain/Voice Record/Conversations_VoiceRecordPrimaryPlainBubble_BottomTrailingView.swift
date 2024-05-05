@@ -54,13 +54,13 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_BottomTrailingView: View {
 // MARK: - PREVIEWS
 #Preview("Conversations_VoiceRecordPrimaryPlainBubble_BottomTrailingView") {
     Conversations_VoiceRecordPrimaryPlainBubble_BottomTrailingView(
-        width: 170,
+        width: VoiceRecordBubbleValues.actualSpectrumWidth,
         fileSize: "19 KB",
         duration: "0:05",
-        type: .duration,
+        type: .random(),
         timestamp: "12:15 PM",
-        status: .seen,
-        shouldAnimate: false
+        status: .random(),
+        shouldAnimate: .random()
     )
 }
 

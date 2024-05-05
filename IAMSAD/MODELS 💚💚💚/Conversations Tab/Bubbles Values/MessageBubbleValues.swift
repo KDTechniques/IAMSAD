@@ -28,6 +28,7 @@ struct MessageBubbleValues {
     static let stickerFrameSize: CGFloat = 138
     static let mediaTypeFont: Font = .footnote
     static let mediaTypeIconToTextHPadding: CGFloat = 4
+    static let anyImagePlaceholderColor: Color = .primary.opacity(0.1)
     
     static var maxContentWidth: CGFloat {
         screenWidth -

@@ -9,42 +9,73 @@ import SwiftUI
 
 struct Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView: View {
     // MARK: - PROPERTIES
+    let direction: BubbleShapeValues.Directions
     let actionType: VoiceRecordBubbleValues.ActionTypes
     let action: () -> Void
     
     // MARK: - PRIVATE PROPERTIES
     let values = VoiceRecordBubbleValues.self
-    var iconName: String {
+    var iconImage: Image {
         switch actionType {
         case .play:
-            "play.fill"
+                .init(.play)
         case .pause:
-            "pause.fill"
+                .init(.pause)
         case .cancel:
-            "xmark"
+                .init(systemName: "xmark")
+        case .upload:
+                .init(.arrowUpCircle)
         }
     }
     
+    var iconFrameWidth: CGFloat {
+        switch actionType {
+        case .play, .pause:
+            values.actionIconsFrameWidth
+        case .cancel:
+            values.actionIconsFrameWidth - 5
+        case .upload:
+            values.actionIconsFrameWidth + 10
+        }
+    }
+    
+    var rotationDegree: CGFloat {
+        actionType == .upload && direction == .left ? 180 : 0
+    }
+    
     // MARK: - INITILAIZER
-    init(actionType: VoiceRecordBubbleValues.ActionTypes, action: @escaping () -> Void) {
+    init(
+        direction: BubbleShapeValues.Directions,
+        actionType: VoiceRecordBubbleValues.ActionTypes,
+        action: @escaping () -> Void
+    ) {
+        self.direction = direction
         self.actionType = actionType
         self.action = action
     }
     
     // MARK: - BODY
     var body: some View {
-        Image(systemName: iconName)
+        iconImage
+            .renderingMode(.template)
             .resizable()
             .scaledToFit()
-            .frame(width: values.actionIconsFrameWidth - 0) // change here for the xmark
+            .frame(width: iconFrameWidth)
             .frame(width: values.actionIconsFrameWidth)
-            .foregroundStyle(.micPlaybackNCancelIcons)
+            .foregroundStyle(direction == .right ? .micPlaybackNCancelIconsSender : .micPlaybackNCancelIconsReceiver)
+            .fontWeight(actionType == .cancel ? .bold : .regular)
+            .rotationEffect(.degrees(rotationDegree))
+            .padding(direction == .right ? .horizontal : .trailing, values.actionIconsHPadding)
+            .padding(.leading, direction == .left ? values.actionIconsHPadding/2 : 0)
             .onTapGesture { action() }
     }
 }
 
 #Preview("Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView") {
-    Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView(actionType: .play) {
+    Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView(
+        direction: .random(),
+        actionType: .random()
+    ) {
         print("Clicked!")
     }
     .previewViewModifier

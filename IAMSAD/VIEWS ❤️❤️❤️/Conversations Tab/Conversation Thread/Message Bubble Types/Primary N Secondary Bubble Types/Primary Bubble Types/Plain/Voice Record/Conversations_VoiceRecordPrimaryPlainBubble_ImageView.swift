@@ -11,10 +11,12 @@ import SDWebImageSwiftUI
 struct Conversations_VoiceRecordPrimaryPlainBubble_ImageView: View {
     // MARK: - PROPERTIES
     let urlString: String
+    let direction: BubbleShapeValues.Directions
     
     // MARK: - INITILAIZER
-    init(urlString: String) {
+    init(urlString: String, direction: BubbleShapeValues.Directions) {
         self.urlString = urlString
+        self.direction = direction
     }
     
     // MARK: - PRIVATE PROPERTIES
@@ -22,14 +24,17 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_ImageView: View {
     
     // MARK: - BODY
     var body: some View {
-        image.overlay(alignment: .bottomTrailing) { mic }
+        image
+            .overlay(alignment: direction == .right ? .bottomTrailing : .bottomLeading) { mic }
+            .offset(x: values.strokedMicImageWidth/3 * (direction == .right ? -1 : 1))
     }
 }
 
 // MARK: - PREVIEWS
 #Preview("Conversations_VoiceRecordPrimaryPlainBubble_ImageView") {
     Conversations_VoiceRecordPrimaryPlainBubble_ImageView(
-        urlString: "https://www.akc.org/wp-content/uploads/2018/08/nervous_lab_puppy-studio-portrait-lg-500x500.jpg"
+        urlString: "https://www.akc.org/wp-content/uploads/2018/08/nervous_lab_puppy-studio-portrait-lg-500x500.jpg",
+        direction: .random()
     )
     .previewViewModifier
 }
@@ -43,7 +48,7 @@ extension Conversations_VoiceRecordPrimaryPlainBubble_ImageView {
             options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
         )
         .resizable()
-        .defaultBColorPlaceholder()
+        .defaultBColorPlaceholder(MessageBubbleValues.anyImagePlaceholderColor)
         .scaledToFill()
         .frame(width: values.imageSize, height: values.imageSize)
         .clipShape(Circle())
@@ -54,12 +59,12 @@ extension Conversations_VoiceRecordPrimaryPlainBubble_ImageView {
     private var mic: some View {
         Image(.micStroked)
             .renderingMode(.template)
-            .foregroundStyle(.bubbleSender)
+            .foregroundStyle(direction == .right ? .bubbleSender : .bubbleReceiver)
             .overlay {
                 Image(.mic)
                     .renderingMode(.template)
-                    .foregroundStyle(.micPlaybackNCancelIcons)
+                    .foregroundStyle(direction == .right ? .micPlaybackNCancelIconsSender : .appLogoBased)
             }
-            .offset(x: values.strokedMicImageWidth/2)
+            .offset(x: values.strokedMicImageWidth/2 * (direction == .right ? 1 : -1))
     }
 }

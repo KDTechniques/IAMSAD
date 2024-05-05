@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct VoiceRecordBubbleValues {
-    enum ActionTypes { case play, pause, cancel }
+    enum ActionTypes: CaseIterable { case play, pause, cancel, upload }
     enum PlaybackSpeedTypes: String, CaseIterable { case _1x = "1", _1_5x = "1.5", _2x = "2" }
-    enum FileDatatypes { case fileSize, duration }
+    enum FileDatatypes: CaseIterable { case fileSize, duration }
     
     static let actionIconsFrameWidth: CGFloat = 15
     static let actionIconsHPadding: CGFloat = 16
@@ -34,6 +34,13 @@ struct VoiceRecordBubbleValues {
         let value2: Int = .init(widthPerSpectrumFrame + spacingPerSpectrumFrame)
         
         return value1 / value2
+    }
+    
+    static var actualSpectrumWidth: CGFloat {
+        let value1: CGFloat = CGFloat(framesCount) * widthPerSpectrumFrame
+        let value2: CGFloat = CGFloat(framesCount-1) * spacingPerSpectrumFrame
+        
+        return value1 + value2
     }
     
     static var strokedMicImageWidth: CGFloat {

@@ -41,7 +41,10 @@ struct Conversations_BubbleEditedTimestampReadReceiptsView: View {
             }
             
             Conversations_BubbleTimeStampView(timestamp)
-            Conversations_ReadReceiptShapesView(status: status, shouldAnimate: shouldAnimate)
+            
+            if status != .none {
+                Conversations_ReadReceiptShapesView(status: status, shouldAnimate: shouldAnimate)
+            }
         }
         .padding(.bottom, -2)
     }

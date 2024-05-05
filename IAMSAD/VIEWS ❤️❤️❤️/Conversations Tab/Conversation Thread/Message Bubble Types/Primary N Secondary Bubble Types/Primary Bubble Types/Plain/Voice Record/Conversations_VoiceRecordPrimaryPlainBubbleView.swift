@@ -13,28 +13,40 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
-    let imageURLString: String = "https://dynl.mktgcdn.com/p/fZYVExInA1kabvL66aVysERPQERyVk8ibBQoTCEMWfY/500x500"
-    let voiceRecordURLString: String = ""
-    let status: ReadReceiptStatusTypes = .seen
-    let shouldAnimate: Bool = false
-    let duration: String = "0:05"
-    let timestamp: String = "12:30 AM"
+    let direction: BubbleShapeValues.Directions
+    let showPointer: Bool
+    let imageURLString: String
+    let voiceRecordURLString: String
+    let status: ReadReceiptStatusTypes
+    let shouldAnimate: Bool
+    let timestamp: String
+    
+    // MARK: - INITIALIZER
+    init(
+        direction: BubbleShapeValues.Directions,
+        showPointer: Bool,
+        imageURLString: String,
+        voiceRecordURLString: String,
+        status: ReadReceiptStatusTypes,
+        shouldAnimate: Bool,
+        timestamp: String
+    ) {
+        self.direction = direction
+        self.showPointer = showPointer
+        self.imageURLString = imageURLString
+        self.voiceRecordURLString = voiceRecordURLString
+        self.status = status
+        self.shouldAnimate = shouldAnimate
+        self.timestamp = timestamp
+    }
+    
+    // MARK: - PRIVATE PROPERTIES
     let values = MessageBubbleValues.self
     let voiceRecordValues = VoiceRecordBubbleValues.self
     let extraHPadding: CGFloat = 10
     
-    var actualSpectrumWidth: CGFloat {
-        let value1: CGFloat = CGFloat(voiceRecordValues.framesCount) *
-        voiceRecordValues.widthPerSpectrumFrame
-        
-        let value2: CGFloat = CGFloat((voiceRecordValues.framesCount-1)) *
-        voiceRecordValues.spacingPerSpectrumFrame
-        
-        return value1 + value2
-    }
-    
     var thumbAlignedSpectrumWidth: CGFloat {
-        actualSpectrumWidth +
+        voiceRecordValues.actualSpectrumWidth +
         (thumbSize/2) +
         (voiceRecordValues.widthPerSpectrumFrame/2)
     }
@@ -47,57 +59,52 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
     @State private var sliderValue: CGFloat = 0
     @State private var isThumbTouchDown: Bool = false
     @State private var thumbSize: CGFloat = 0
-    @State private var fileSize: String = "23 KB"
     @State private var isActive: Bool = false
-    @State private var isUploading: Bool = false
+    @State private var isProcessing: Bool = false
+    @State private var action: VoiceRecordBubbleValues.ActionTypes = .upload
+    @State private var heightsArray: [CGFloat] = VoiceRecordBubbleValues.getMockArrayOfHeights()
+    @State private var duration: String = "0:00"
+    @State private var fileSize: String = "0 KB"
     
     // MARK: - BODY
     var body: some View {
         Conversations_MessageBubbleView(
-            direction: .right,
-            showPointer: true
+            direction: direction,
+            showPointer: showPointer
         ) {
             HStack(spacing: 0) {
-                if !isActive {
-                    Conversations_VoiceRecordPrimaryPlainBubble_ImageView(urlString: imageURLString)
-                        .offset(x: -voiceRecordValues.strokedMicImageWidth/3)
+                if !isActive, direction == .right {
+                    Conversations_VoiceRecordPrimaryPlainBubble_ImageView(urlString: imageURLString, direction: direction)
                 }
                 
                 HStack(alignment: .top, spacing: 0) {
                     HStack(spacing: 0) {
-                        if isActive {
-                            Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView { }
+                        if isActive, direction == .right {
+                            Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView(direction: direction) { }
                         }
                         
-                        Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView(actionType: .play) { }
-                            .padding(.horizontal, voiceRecordValues.actionIconsHPadding)
+                        Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView(
+                            direction: direction,
+                            actionType: action
+                        ) { }
                     }
                     .frame(height: voiceRecordValues.spectrumMaxHeight)
                     
                     VStack(spacing: vContainerSpacing) {
-                        Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView(
-                            sliderValue: $sliderValue,
-                            isThumbTouchDown: $isThumbTouchDown,
-                            thumbSize: $thumbSize,
-                            spectrumFrameWidth: thumbAlignedSpectrumWidth,
-                            status: status,
-                            isActive: isActive,
-                            isUploading: isUploading,
-                            heightsArray: voiceRecordValues.getMockArrayOfHeights()
-                        )
-                        
-                        Conversations_VoiceRecordPrimaryPlainBubble_BottomTrailingView(
-                            width: thumbAlignedSpectrumWidth,
-                            fileSize: "43 KB",
-                            duration: "1:45",
-                            type: .duration,
-                            timestamp: "05:36 AM",
-                            status: status,
-                            shouldAnimate: false
-                        )
+                        spectrum
+                        bottomContent
+                    }
+                    .padding(.trailing, direction == .right ? 0 : voiceRecordValues.actionIconsHPadding/2)
+                    
+                    if isActive, direction == .left {
+                        Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView(direction: direction) { }
                     }
                 }
                 .padding(.top, extraHPadding)
+                
+                if !isActive, direction == .left {
+                    Conversations_VoiceRecordPrimaryPlainBubble_ImageView(urlString: imageURLString, direction: direction)
+                }
             }
             .messageBubbleContentDefaultPadding
         }
@@ -106,6 +113,49 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
 
 // MARK: - PREVIEWS
 #Preview("Conversations_VoiceRecordPrimaryPlainBubbleView") {
-    Conversations_VoiceRecordPrimaryPlainBubbleView()
-        .previewViewModifier
+    ZStack {
+        Color.conversationBackground
+        
+        Conversations_VoiceRecordPrimaryPlainBubbleView(
+            direction: .random(),
+            showPointer: .random(),
+            imageURLString: "https://www.akc.org/wp-content/uploads/2018/08/nervous_lab_puppy-studio-portrait-lg-500x500.jpg",
+            voiceRecordURLString: "",
+            status: .random(),
+            shouldAnimate: .random(),
+            timestamp: "05:48 PM"
+        )
+    }
+    .ignoresSafeArea()
+    .previewViewModifier
+}
+
+// MARK: - EXTENSIONS
+extension Conversations_VoiceRecordPrimaryPlainBubbleView {
+    // MARK: - spectrum
+    private var spectrum: some View {
+        Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView(
+            sliderValue: $sliderValue,
+            isThumbTouchDown: $isThumbTouchDown,
+            thumbSize: $thumbSize,
+            direction: direction,
+            spectrumFrameWidth: thumbAlignedSpectrumWidth,
+            status: status,
+            isProcessing: isProcessing,
+            heightsArray: heightsArray
+        )
+    }
+    
+    // MARK: - bottomContent
+    private var bottomContent: some View {
+        Conversations_VoiceRecordPrimaryPlainBubble_BottomTrailingView(
+            width: thumbAlignedSpectrumWidth,
+            fileSize: "43 KB",
+            duration: "1:45",
+            type: isProcessing ? .fileSize : .duration,
+            timestamp: "05:36 AM",
+            status: status,
+            shouldAnimate: false
+        )
+    }
 }

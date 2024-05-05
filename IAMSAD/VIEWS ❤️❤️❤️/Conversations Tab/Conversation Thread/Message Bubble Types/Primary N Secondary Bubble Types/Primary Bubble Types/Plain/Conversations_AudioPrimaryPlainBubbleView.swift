@@ -6,10 +6,20 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct Conversations_AudioPrimaryPlainBubbleView: View {
     var body: some View {
-        Text("Hello, World!")
+        Conversations_MessageBubbleView(direction: .right, showPointer: true) {
+//            HStack(spacing: 0) {
+//                Image(systemName: "")
+//                .resizable()
+//                .defaultBColorPlaceholder(MessageBubbleValues.anyImagePlaceholderColor)
+//                .scaledToFill()
+//                .frame(width: values.imageSize, height: values.imageSize)
+//                .clipShape(Circle())
+//            }
+        }
     }
 }
 
