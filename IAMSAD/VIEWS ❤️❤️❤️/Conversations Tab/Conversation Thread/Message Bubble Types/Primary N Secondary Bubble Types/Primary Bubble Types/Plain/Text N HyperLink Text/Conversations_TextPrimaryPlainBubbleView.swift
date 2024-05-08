@@ -74,7 +74,7 @@ struct Conversations_TextPrimaryPlainBubbleView: View {
     
     var editedWidth: CGFloat {
         "Edited".widthOfHString(
-            usingFont: .from(values.editedFont),
+            usingFont: .from(values.timestampFont),
             dynamicTypeSize
         ) + values.editedToTimestampTrailingPadding
     }

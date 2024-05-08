@@ -11,9 +11,27 @@ struct Conversations_DocumentAudioPrimaryPlainBubbleView: View {
     // MARK: - PROPERTIES
     let direction: BubbleShapeValues.Directions
     let showPointer: Bool
+    let fileData: VoiceRecordNAudioBubbleValues.FileDataModel
+    let timestamp: String
+    let status: ReadReceiptStatusTypes
+    let shouldAnimate: Bool
     
     // MARK: - INITIALIZER
-    
+    init(
+        direction: BubbleShapeValues.Directions,
+        showPointer: Bool,
+        fileData: VoiceRecordNAudioBubbleValues.FileDataModel,
+        timestamp: String,
+        status: ReadReceiptStatusTypes,
+        shouldAnimate: Bool
+    ) {
+        self.direction = direction
+        self.showPointer = showPointer
+        self.fileData = fileData
+        self.timestamp = timestamp
+        self.status = status
+        self.shouldAnimate = shouldAnimate
+    }
     
     // MARK: - PRIVATE PROPERTIES
     
@@ -25,37 +43,8 @@ struct Conversations_DocumentAudioPrimaryPlainBubbleView: View {
             showPointer: showPointer
         ) {
             VStack(alignment: .trailing) {
-                HStack {
-                    Image(.file)
-                        .overlay {
-                            Text("M4A")
-                                .font(.system(size: 6, weight: .semibold))
-                                .foregroundStyle(.secondary)
-                                .offset(y: 1)
-                        }
-                    
-                    VStack(alignment: .leading) {
-                        Text("New Recording 2.m4a")
-                            .foregroundStyle(Color(uiColor: .darkGray))
-                        
-                        Text("23 KB · m4a")
-                            .font(MessageBubbleValues.timestampFont)
-                            .foregroundStyle(.secondary)
-                    }
-                    
-                    
-                }
-                .padding(10)
-                .background(.primary.opacity(0.08))
-                .clipShape(CustomRoundedRectangleShape(cornerRadius: BubbleShapeValues.cornerRadius - MessageBubbleValues.secondaryOuterPadding.1))
-                .padding(MessageBubbleValues.secondaryOuterPadding.0, MessageBubbleValues.secondaryOuterPadding.1)
-                
-                Conversations_BubbleEditedTimestampReadReceiptsView(
-                    timestamp: "12:16 PM",
-                    status: .seen,
-                    shouldAnimate: .random()
-                )
-                .padding(.trailing, MessageBubbleValues.innerHPadding)
+                Conversations_DocumentAudioPrimaryPlainBubble_InfoView(direction: direction, fileData: fileData)
+                bottomTrailingContent
             }
             .padding(.bottom, MessageBubbleValues.innerVPadding)
         }
@@ -69,8 +58,31 @@ struct Conversations_DocumentAudioPrimaryPlainBubbleView: View {
             .ignoresSafeArea()
         
         Conversations_DocumentAudioPrimaryPlainBubbleView(
-            direction: .right,
-            showPointer: .random()
+            direction: .left,
+            showPointer: .random(),
+            fileData: .init(
+                fileURLString: "",
+                fileName: "New Recording.m4a",
+                fileSize: "12 KB",
+                fileExtension: "m4a",
+                duration: .zero
+            ),
+            timestamp: "12:45 PM",
+            status: .random(),
+            shouldAnimate: .random()
         )
+    }
+}
+
+// MARK: - EXTENSIONS
+extension Conversations_DocumentAudioPrimaryPlainBubbleView {
+    // MARK: - bottomTrailingContent
+    private var bottomTrailingContent: some View {
+        Conversations_BubbleEditedTimestampReadReceiptsView(
+            timestamp: timestamp,
+            status: status,
+            shouldAnimate: shouldAnimate
+        )
+        .padding(.trailing, MessageBubbleValues.innerHPadding)
     }
 }

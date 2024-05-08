@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
+import CoreMedia
 
 struct Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView: View {
     // MARK: - PROPERTIES
     let width: CGFloat?
     let fileSize: String
-    let duration: String
-    let type: VoiceRecordBubbleValues.FileDatatypes
+    let duration: CMTime
+    let type: VoiceRecordNAudioBubbleValues.FileDatatypes
     let timestamp: String
     let status: ReadReceiptStatusTypes
     let shouldAnimate: Bool
@@ -21,8 +22,8 @@ struct Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView: Vie
     init(
         width: CGFloat? = nil,
         fileSize: String,
-        duration: String,
-        type: VoiceRecordBubbleValues.FileDatatypes,
+        duration: CMTime,
+        type: VoiceRecordNAudioBubbleValues.FileDatatypes,
         timestamp: String,
         status: ReadReceiptStatusTypes,
         shouldAnimate: Bool
@@ -38,7 +39,7 @@ struct Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView: Vie
     
     // MARK: - PRIVATE PROPERTIES
     let values = MessageBubbleValues.self
-    let voiceRecordValues = VoiceRecordBubbleValues.self
+    let voiceRecordValues = VoiceRecordNAudioBubbleValues.self
     
     // MARK: - BODY
     var body: some View {
@@ -54,9 +55,9 @@ struct Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView: Vie
 // MARK: - PREVIEWS
 #Preview("Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView") {
     Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView(
-        width: VoiceRecordBubbleValues.actualSpectrumWidth,
+        width: VoiceRecordNAudioBubbleValues.actualSpectrumWidth,
         fileSize: "19 KB",
-        duration: "0:05",
+        duration: .zero,
         type: .random(),
         timestamp: "12:15 PM",
         status: .random(),
@@ -68,7 +69,7 @@ struct Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView: Vie
 extension Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView {
     //MARK: - fileSizeOrDuration
     private var fileSizeOrDuration: some View {
-        Text(type == .fileSize ? fileSize : duration)
+        Text(type == .fileSize ? fileSize : duration.asString())
             .font(values.timestampFont)
             .foregroundStyle(.secondary)
             .padding(.bottom, values.bottomTrailingContentBottomPadding)
@@ -88,7 +89,7 @@ extension View {
     // MARK: - setWidth
     @ViewBuilder
     fileprivate func setWidth(_ width: CGFloat? = nil) -> some View {
-        if let width {
+        if let width: CGFloat {
             self
         } else {
             self.frame(width: width)

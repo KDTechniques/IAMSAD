@@ -1,16 +1,25 @@
 //
-//  VoiceRecordBubbleValues.swift
+//  VoiceRecordNAudioBubbleValues.swift
 //  IAMSAD
 //
 //  Created by Mr. Kavinda Dilshan on 2024-05-03.
 //
 
 import SwiftUI
+import CoreMedia
 
-struct VoiceRecordBubbleValues {
+struct VoiceRecordNAudioBubbleValues {
     enum ActionTypes: CaseIterable { case play, pause, cancel, process }
     enum PlaybackSpeedTypes: String, CaseIterable { case _1x = "1", _1_5x = "1.5", _2x = "2" }
     enum FileDatatypes: CaseIterable { case fileSize, duration }
+    
+    struct FileDataModel {
+        let fileURLString: String
+        let fileName: String
+        let fileSize: String
+        let fileExtension: String
+        let duration: CMTime
+    }
     
     static let actionIconsFrameWidth: CGFloat = 15
     static let actionIconsHPadding: CGFloat = 16

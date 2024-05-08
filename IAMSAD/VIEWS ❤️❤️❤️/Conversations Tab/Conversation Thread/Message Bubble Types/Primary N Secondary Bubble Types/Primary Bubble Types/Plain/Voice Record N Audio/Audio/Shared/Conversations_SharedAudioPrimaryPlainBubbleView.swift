@@ -16,6 +16,7 @@ struct Conversations_SharedAudioPrimaryPlainBubbleView: View {
     let timestamp: String
     let status: ReadReceiptStatusTypes
     let shouldAnimate: Bool
+    let fileData: VoiceRecordNAudioBubbleValues.FileDataModel
     
     // MARK: - INITITILAZER
     init(
@@ -23,23 +24,23 @@ struct Conversations_SharedAudioPrimaryPlainBubbleView: View {
         showPointer: Bool,
         timestamp: String,
         status: ReadReceiptStatusTypes,
-        shouldAnimate: Bool
+        shouldAnimate: Bool,
+        fileData: VoiceRecordNAudioBubbleValues.FileDataModel
     ) {
         self.direction = direction
         self.showPointer = showPointer
         self.timestamp = timestamp
         self.status = status
         self.shouldAnimate = shouldAnimate
+        self.fileData = fileData
     }
     
     // MARK: - PRIVATE PROPERTIES
-    let values = VoiceRecordBubbleValues.self
+    let values = VoiceRecordNAudioBubbleValues.self
     
     @State private var sliderValue: CGFloat = 0
     @State private var isProcessing: Bool = false
-    @State private var action: VoiceRecordBubbleValues.ActionTypes = .process
-    @State private var duration: String = "0:00"
-    @State private var fileSize: String = "0 KB"
+    @State private var action: VoiceRecordNAudioBubbleValues.ActionTypes = .process
     
     // MARK: - BODY
     var body: some View {
@@ -53,10 +54,17 @@ struct Conversations_SharedAudioPrimaryPlainBubbleView: View {
                     direction: direction,
                     actionType: action) { }
                 
-                slider
-                    .background { sliderTrack }
-                    .overlay(alignment: .bottom) { bottomContent }
-                    .padding(.trailing, direction == .left ? values.actionIconsHPadding/2 : 0)
+                Group {
+                    if isProcessing {
+                        Conversations_VoiceRecordNAudioPrimaryPlainBubble_HProgressBarView()
+                    } else {
+                        slider
+                            .background { sliderTrack }
+                    }
+                }
+                .frame(height: values.imageSize)
+                .overlay(alignment: .bottom) { bottomContent }
+                .padding(.trailing, direction == .left ? values.actionIconsHPadding/2 : 0)
                 
                 if direction == .left {
                     Conversations_SharedAudioPrimaryPlainBubble_ImageView(direction: direction)
@@ -78,7 +86,14 @@ struct Conversations_SharedAudioPrimaryPlainBubbleView: View {
             showPointer: .random(),
             timestamp: "12:16 AM",
             status: .random(),
-            shouldAnimate: .random()
+            shouldAnimate: .random(),
+            fileData: .init(
+                fileURLString: "",
+                fileName: "",
+                fileSize: "16 KB",
+                fileExtension: "",
+                duration: .zero
+            )
         )
     }
     .previewViewModifier
@@ -95,7 +110,6 @@ extension Conversations_SharedAudioPrimaryPlainBubbleView {
             minimumTrackTintColor: .clear,
             maximumTrackTintColor: .clear
         )
-        .frame(height: values.imageSize)
     }
     
     // MARK - sliderTrack
@@ -108,8 +122,8 @@ extension Conversations_SharedAudioPrimaryPlainBubbleView {
     // MARK: - bottomContent
     private var bottomContent: some View {
         Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView(
-            fileSize: fileSize,
-            duration: duration,
+            fileSize: fileData.fileSize,
+            duration: fileData.duration,
             type: isProcessing ? .fileSize : .duration,
             timestamp: timestamp,
             status: status,

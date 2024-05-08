@@ -10,11 +10,11 @@ import SwiftUI
 struct Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView: View {
     // MARK: - PROPERTIES
     let direction: BubbleShapeValues.Directions
-    let actionType: VoiceRecordBubbleValues.ActionTypes
+    let actionType: VoiceRecordNAudioBubbleValues.ActionTypes
     let action: () -> Void
     
     // MARK: - PRIVATE PROPERTIES
-    let values = VoiceRecordBubbleValues.self
+    let values = VoiceRecordNAudioBubbleValues.self
     var iconImage: Image {
         switch actionType {
         case .play:
@@ -46,7 +46,7 @@ struct Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView: View
     // MARK: - INITILAIZER
     init(
         direction: BubbleShapeValues.Directions,
-        actionType: VoiceRecordBubbleValues.ActionTypes,
+        actionType: VoiceRecordNAudioBubbleValues.ActionTypes,
         action: @escaping () -> Void
     ) {
         self.direction = direction
@@ -62,7 +62,7 @@ struct Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView: View
             .scaledToFit()
             .frame(width: iconFrameWidth)
             .frame(width: values.actionIconsFrameWidth)
-            .foregroundStyle(direction == .right ? .micPlaybackNCancelIconsSender : .micPlaybackNCancelIconsReceiver)
+            .foregroundStyle(direction == .right ? .micNActionIconsSender : .micNActionIconsReceiver)
             .fontWeight(actionType == .cancel ? .bold : .regular)
             .rotationEffect(.degrees(rotationDegree))
             .padding(direction == .right ? .horizontal : .trailing, values.actionIconsHPadding)

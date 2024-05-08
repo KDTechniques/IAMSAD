@@ -42,11 +42,7 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView: View {
     }
     
     // MARK: - PRIVATE PROPERTIES
-    let values = VoiceRecordBubbleValues.self
-    let progressBarHeight: CGFloat = 4
-    var progressIndicatorHeight: CGFloat { progressBarHeight + 1 }
-    let progressIndicatorWidth: CGFloat = 18
-    let progressBarAnimation: Animation = .linear(duration: 5).repeatForever(autoreverses: false)
+    let values = VoiceRecordNAudioBubbleValues.self
     
     var thumbTintColor: UIColor {
         switch direction {
@@ -56,9 +52,6 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView: View {
             status == .seen ? .sliderThumbOnSeen : .sliderThumb
         }
     }
-    
-    @State private var alignment: Alignment = .bottomLeading
-    @State private var maskFrameWidth: CGFloat = 0
     
     // MARK: - BODY
     var body: some View {
@@ -70,7 +63,7 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView: View {
             .opacity(isProcessing ? 0 : 1)
             .overlay {
                 slider.opacity(isProcessing ? 0 : 1)
-                if isProcessing { progressBar }
+                if isProcessing { Conversations_VoiceRecordNAudioPrimaryPlainBubble_HProgressBarView() }
             }
     }
 }
@@ -82,9 +75,9 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView: View {
         isThumbTouchDown: .constant(false),
         thumbSize: .constant(15),
         direction: .random(),
-        spectrumFrameWidth: VoiceRecordBubbleValues.actualSpectrumWidth,
+        spectrumFrameWidth: VoiceRecordNAudioBubbleValues.actualSpectrumWidth,
         status: .random(),
-        heightsArray: VoiceRecordBubbleValues.getMockArrayOfHeights()
+        heightsArray: VoiceRecordNAudioBubbleValues.getMockArrayOfHeights()
     )
 }
 
@@ -122,29 +115,7 @@ extension Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView {
         )
     }
     
-    // MARK: - progressIndicator
-    private var progressIndicator: some View {
-        Rectangle()
-            .fill(.rectangleProgressIndicator)
-            .frame(width: progressIndicatorWidth, height: progressIndicatorHeight)
-    }
-    
-    // MARK: - progressBar
-    private var progressBar: some View {
-        Capsule()
-            .fill(.black.opacity(0.1))
-            .frame(height: progressBarHeight)
-            .overlay(alignment: alignment) { progressIndicator }
-            .animation(progressBarAnimation, value: alignment)
-            .onAppear { onProgressBarAppear() }
-    }
-    
     // MARK: - FUNCTIONS
-    
-    // MARK: - onProgressBarAppear
-    private func onProgressBarAppear() {
-        alignment = .bottomTrailing
-    }
     
     // MARK: - maskWidthHandler
     private func maskWidthHandler() -> CGFloat {

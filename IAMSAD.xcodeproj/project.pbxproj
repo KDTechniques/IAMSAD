@@ -29,7 +29,7 @@
 		0B1CEC892BE4FA8F006DB5E1 /* Conversations_VoiceRecordPrimaryPlainBubble_ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1CEC882BE4FA8F006DB5E1 /* Conversations_VoiceRecordPrimaryPlainBubble_ImageView.swift */; };
 		0B1CEC8B2BE4FCD7006DB5E1 /* Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1CEC8A2BE4FCD7006DB5E1 /* Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView.swift */; };
 		0B1CEC8D2BE4FD01006DB5E1 /* Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1CEC8C2BE4FD01006DB5E1 /* Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView.swift */; };
-		0B1CEC8F2BE4FEC4006DB5E1 /* VoiceRecordBubbleValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1CEC8E2BE4FEC4006DB5E1 /* VoiceRecordBubbleValues.swift */; };
+		0B1CEC8F2BE4FEC4006DB5E1 /* VoiceRecordNAudioBubbleValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1CEC8E2BE4FEC4006DB5E1 /* VoiceRecordNAudioBubbleValues.swift */; };
 		0B1CEC912BE50629006DB5E1 /* Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1CEC902BE50629006DB5E1 /* Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView.swift */; };
 		0B1CEC932BE51497006DB5E1 /* Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1CEC922BE51497006DB5E1 /* Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView.swift */; };
 		0B20D7D72B96067300B71C10 /* Profile_GeneralNShareButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20D7D62B96067300B71C10 /* Profile_GeneralNShareButtonsView.swift */; };
@@ -183,6 +183,9 @@
 		0BB588572BC50DFA003ACABB /* Conversations_BubbleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB588562BC50DFA003ACABB /* Conversations_BubbleShape.swift */; };
 		0BB6173D2B758CB400BABB89 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB6173C2B758CB400BABB89 /* ProfileView.swift */; };
 		0BBAEF982BA9CE1C005330FD /* TabTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBAEF972BA9CE1C005330FD /* TabTypes.swift */; };
+		0BBB69F02BE98AA7009AD90C /* CustomCircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBB69EF2BE98AA7009AD90C /* CustomCircularProgressBarView.swift */; };
+		0BBB8B2E2BEC064D00D69F93 /* Conversations_VoiceRecordNAudioPrimaryPlainBubble_HProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBB8B2D2BEC064D00D69F93 /* Conversations_VoiceRecordNAudioPrimaryPlainBubble_HProgressBarView.swift */; };
+		0BBB8B302BEC0CF300D69F93 /* CMTime+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBB8B2F2BEC0CF300D69F93 /* CMTime+EXT.swift */; };
 		0BBD2AAC2BA136F4006990AA /* Profile_TabContentOffsetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD2AAB2BA136F4006990AA /* Profile_TabContentOffsetModel.swift */; };
 		0BBD2AAE2BA13729006990AA /* Profile_CoverTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD2AAD2BA13729006990AA /* Profile_CoverTypes.swift */; };
 		0BBD2AB02BA13750006990AA /* Profile_GeneralButtonTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD2AAF2BA13750006990AA /* Profile_GeneralButtonTypes.swift */; };
@@ -480,6 +483,8 @@
 		0BC7DA902BCC4CB300C4D356 /* Conversations_VideoBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC7DA8F2BCC4CB300C4D356 /* Conversations_VideoBadgeView.swift */; };
 		0BCAA0D82BE82F5100045125 /* Conversations_SharedAudioPrimaryPlainBubble_ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCAA0D72BE82F5100045125 /* Conversations_SharedAudioPrimaryPlainBubble_ImageView.swift */; };
 		0BCAA0DC2BE8379200045125 /* Conversations_DocumentAudioPrimaryPlainBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCAA0DB2BE8379200045125 /* Conversations_DocumentAudioPrimaryPlainBubbleView.swift */; };
+		0BCC7B112BE8C396009F35CD /* Conversations_DocumentAudioPrimaryPlainBubble_InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCC7B102BE8C396009F35CD /* Conversations_DocumentAudioPrimaryPlainBubble_InfoView.swift */; };
+		0BCC7B132BE8C868009F35CD /* Conversations_DocumentAudioPrimaryPlainBubble_ProcessingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCC7B122BE8C868009F35CD /* Conversations_DocumentAudioPrimaryPlainBubble_ProcessingView.swift */; };
 		0BD00C1B2B6294A4000C3236 /* SeeAllAvatarSheetContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD00C1A2B6294A4000C3236 /* SeeAllAvatarSheetContentView.swift */; };
 		0BD595622BE3693C0088F7AE /* CustomSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD595612BE3693C0088F7AE /* CustomSliderView.swift */; };
 		0BD876A72B8CC1DB00E66184 /* Profile_CoverContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD876A62B8CC1DB00E66184 /* Profile_CoverContentView.swift */; };
@@ -524,7 +529,7 @@
 		0B1CEC882BE4FA8F006DB5E1 /* Conversations_VoiceRecordPrimaryPlainBubble_ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_VoiceRecordPrimaryPlainBubble_ImageView.swift; sourceTree = "<group>"; };
 		0B1CEC8A2BE4FCD7006DB5E1 /* Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView.swift; sourceTree = "<group>"; };
 		0B1CEC8C2BE4FD01006DB5E1 /* Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView.swift; sourceTree = "<group>"; };
-		0B1CEC8E2BE4FEC4006DB5E1 /* VoiceRecordBubbleValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecordBubbleValues.swift; sourceTree = "<group>"; };
+		0B1CEC8E2BE4FEC4006DB5E1 /* VoiceRecordNAudioBubbleValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecordNAudioBubbleValues.swift; sourceTree = "<group>"; };
 		0B1CEC902BE50629006DB5E1 /* Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView.swift; sourceTree = "<group>"; };
 		0B1CEC922BE51497006DB5E1 /* Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView.swift; sourceTree = "<group>"; };
 		0B20D7D62B96067300B71C10 /* Profile_GeneralNShareButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_GeneralNShareButtonsView.swift; sourceTree = "<group>"; };
@@ -675,6 +680,9 @@
 		0BB588562BC50DFA003ACABB /* Conversations_BubbleShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_BubbleShape.swift; sourceTree = "<group>"; };
 		0BB6173C2B758CB400BABB89 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		0BBAEF972BA9CE1C005330FD /* TabTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTypes.swift; sourceTree = "<group>"; };
+		0BBB69EF2BE98AA7009AD90C /* CustomCircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCircularProgressBarView.swift; sourceTree = "<group>"; };
+		0BBB8B2D2BEC064D00D69F93 /* Conversations_VoiceRecordNAudioPrimaryPlainBubble_HProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_VoiceRecordNAudioPrimaryPlainBubble_HProgressBarView.swift; sourceTree = "<group>"; };
+		0BBB8B2F2BEC0CF300D69F93 /* CMTime+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime+EXT.swift"; sourceTree = "<group>"; };
 		0BBD2AAB2BA136F4006990AA /* Profile_TabContentOffsetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_TabContentOffsetModel.swift; sourceTree = "<group>"; };
 		0BBD2AAD2BA13729006990AA /* Profile_CoverTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_CoverTypes.swift; sourceTree = "<group>"; };
 		0BBD2AAF2BA13750006990AA /* Profile_GeneralButtonTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_GeneralButtonTypes.swift; sourceTree = "<group>"; };
@@ -972,6 +980,8 @@
 		0BC7DA8F2BCC4CB300C4D356 /* Conversations_VideoBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_VideoBadgeView.swift; sourceTree = "<group>"; };
 		0BCAA0D72BE82F5100045125 /* Conversations_SharedAudioPrimaryPlainBubble_ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_SharedAudioPrimaryPlainBubble_ImageView.swift; sourceTree = "<group>"; };
 		0BCAA0DB2BE8379200045125 /* Conversations_DocumentAudioPrimaryPlainBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_DocumentAudioPrimaryPlainBubbleView.swift; sourceTree = "<group>"; };
+		0BCC7B102BE8C396009F35CD /* Conversations_DocumentAudioPrimaryPlainBubble_InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_DocumentAudioPrimaryPlainBubble_InfoView.swift; sourceTree = "<group>"; };
+		0BCC7B122BE8C868009F35CD /* Conversations_DocumentAudioPrimaryPlainBubble_ProcessingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_DocumentAudioPrimaryPlainBubble_ProcessingView.swift; sourceTree = "<group>"; };
 		0BD00C1A2B6294A4000C3236 /* SeeAllAvatarSheetContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllAvatarSheetContentView.swift; sourceTree = "<group>"; };
 		0BD595612BE3693C0088F7AE /* CustomSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSliderView.swift; sourceTree = "<group>"; };
 		0BD876A62B8CC1DB00E66184 /* Profile_CoverContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_CoverContentView.swift; sourceTree = "<group>"; };
@@ -1156,6 +1166,7 @@
 				0B7204C02B9662B200C705B8 /* SDWebImage+EXT.swift */,
 				0B12FB952BCAA4F8002E0048 /* Enum + EXT.swift */,
 				0B12FB992BCAD629002E0048 /* UIFont + EXT.swift */,
+				0BBB8B2F2BEC0CF300D69F93 /* CMTime+EXT.swift */,
 			);
 			path = EXTENSIONS;
 			sourceTree = "<group>";
@@ -1240,6 +1251,7 @@
 				0B4F90B52BA590D900C79C0A /* CustomNoProfileImageView.swift */,
 				0B5C492D2BAE8DFC00616181 /* CustomProfileImageView.swift */,
 				0B08F1C72BC5C291009E8538 /* CustomRoundedRectangleShape.swift */,
+				0BBB69EF2BE98AA7009AD90C /* CustomCircularProgressBarView.swift */,
 			);
 			path = Reusable;
 			sourceTree = "<group>";
@@ -1969,6 +1981,7 @@
 				0B1CEC922BE51497006DB5E1 /* Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView.swift */,
 				0B1CEC872BE4FA35006DB5E1 /* Voice Record */,
 				0BCAA0CF2BE7F81900045125 /* Audio */,
+				0BBB8B2D2BEC064D00D69F93 /* Conversations_VoiceRecordNAudioPrimaryPlainBubble_HProgressBarView.swift */,
 			);
 			path = "Voice Record N Audio";
 			sourceTree = "<group>";
@@ -2034,6 +2047,8 @@
 			isa = PBXGroup;
 			children = (
 				0BCAA0DB2BE8379200045125 /* Conversations_DocumentAudioPrimaryPlainBubbleView.swift */,
+				0BCC7B102BE8C396009F35CD /* Conversations_DocumentAudioPrimaryPlainBubble_InfoView.swift */,
+				0BCC7B122BE8C868009F35CD /* Conversations_DocumentAudioPrimaryPlainBubble_ProcessingView.swift */,
 			);
 			path = Document;
 			sourceTree = "<group>";
@@ -2107,7 +2122,7 @@
 				0BDE95262BCE53D5003A211E /* SecondaryBubbleValues.swift */,
 				0BC7DA842BCC3C9100C4D356 /* ReadReceiptShapesValues.swift */,
 				0BFC0BF52BDE1A0C0033E682 /* SocialMediaBubbleValues.swift */,
-				0B1CEC8E2BE4FEC4006DB5E1 /* VoiceRecordBubbleValues.swift */,
+				0B1CEC8E2BE4FEC4006DB5E1 /* VoiceRecordNAudioBubbleValues.swift */,
 			);
 			path = "Bubbles Values";
 			sourceTree = "<group>";
@@ -2533,6 +2548,7 @@
 				0BFB38112B56FDB300227CB2 /* OnboardingLastView.swift in Sources */,
 				0B0C797F2BE2BD29007C24C4 /* Conversations_DeletedPrimaryPlainBubbleView.swift in Sources */,
 				0BCAA0D82BE82F5100045125 /* Conversations_SharedAudioPrimaryPlainBubble_ImageView.swift in Sources */,
+				0BCC7B132BE8C868009F35CD /* Conversations_DocumentAudioPrimaryPlainBubble_ProcessingView.swift in Sources */,
 				0B4434662B527C200041E8BF /* OTPVerificationView.swift in Sources */,
 				0B6E745B2B5A9A87008B4CFB /* Utilities.swift in Sources */,
 				0B7A99CC2BAC5F4800D5D3E2 /* Conversation_CellMoreSheetView.swift in Sources */,
@@ -2569,7 +2585,7 @@
 				0B9974692B55D683001AD3F6 /* UIApplication+EXT.swift in Sources */,
 				0B1CEC932BE51497006DB5E1 /* Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView.swift in Sources */,
 				0B20D7E52B9618D000B71C10 /* Profile_TopClearView.swift in Sources */,
-				0B1CEC8F2BE4FEC4006DB5E1 /* VoiceRecordBubbleValues.swift in Sources */,
+				0B1CEC8F2BE4FEC4006DB5E1 /* VoiceRecordNAudioBubbleValues.swift in Sources */,
 				0B26237A2B4D422D0063D71C /* OnboardingListItemView.swift in Sources */,
 				0BBD2AB42BA14602006990AA /* Profile_RepliesTabView.swift in Sources */,
 				0B99746B2B55D6DE001AD3F6 /* CustomSearchBarView.swift in Sources */,
@@ -2596,6 +2612,7 @@
 				0BA4E5A82BE2196A004E7945 /* Conversations_PhotoVideoGIFPlainBubbleView.swift in Sources */,
 				0B20D7D72B96067300B71C10 /* Profile_GeneralNShareButtonsView.swift in Sources */,
 				0B939B702BC290D600DC5F1E /* Conversations_CellMoreDeleteConversationView.swift in Sources */,
+				0BBB69F02BE98AA7009AD90C /* CustomCircularProgressBarView.swift in Sources */,
 				0BBAEF982BA9CE1C005330FD /* TabTypes.swift in Sources */,
 				0BA4E5A22BE218EB004E7945 /* Conversations_VoiceRecordPrimaryPlainBubbleView.swift in Sources */,
 				0BBD2AB62BA1460F006990AA /* Profile_MediaTabView.swift in Sources */,
@@ -2606,6 +2623,7 @@
 				0B00D1E22B54192B00CE721C /* CustomCountryCodeSearchSheetView.swift in Sources */,
 				0B2623A32B4E789A0063D71C /* DimensionTypes.swift in Sources */,
 				0BA4E5AC2BE219DB004E7945 /* Conversations_EditedTextView.swift in Sources */,
+				0BBB8B2E2BEC064D00D69F93 /* Conversations_VoiceRecordNAudioPrimaryPlainBubble_HProgressBarView.swift in Sources */,
 				0B58AE982B6D340E0057CCFE /* Int+EXT.swift in Sources */,
 				0BBD7CB52BA8075900AE8542 /* ConversationsView.swift in Sources */,
 				0B2623742B4D35F70063D71C /* GenderTypes.swift in Sources */,
@@ -2648,6 +2666,7 @@
 				0B20D7DB2B960F5300B71C10 /* Profile_PrimaryPhotoView.swift in Sources */,
 				0B939B682BC1E6BF00DC5F1E /* ConversationsVM.swift in Sources */,
 				0BE0F7EF2B71414B00BD01BB /* RepliesTestingView.swift in Sources */,
+				0BCC7B112BE8C396009F35CD /* Conversations_DocumentAudioPrimaryPlainBubble_InfoView.swift in Sources */,
 				0BC560B92BA87C4100EAAD75 /* Avatar.swift in Sources */,
 				0B58AE942B6CF0360057CCFE /* CustomTransitioningCounterTextView.swift in Sources */,
 				0BC7DA8E2BCC473300C4D356 /* Conversations_MediaBadgeTextView.swift in Sources */,
@@ -2676,6 +2695,7 @@
 				0BC7DA832BCC393700C4D356 /* MessageBubbleValues.swift in Sources */,
 				0B26239F2B4DD9280063D71C /* CustomSelectableAvatarView.swift in Sources */,
 				0B2623A52B4E81530063D71C /* CustomColorSliderView.swift in Sources */,
+				0BBB8B302BEC0CF300D69F93 /* CMTime+EXT.swift in Sources */,
 				0B729F712B667B16009BDFD2 /* AvatarImageView.swift in Sources */,
 				0B8F37912B952CE0003D0824 /* CustomUIScrollView.swift in Sources */,
 				0BA4E59C2BE21873004E7945 /* Conversations_PhotoVideoGIFSecondaryReplyBubbleView.swift in Sources */,

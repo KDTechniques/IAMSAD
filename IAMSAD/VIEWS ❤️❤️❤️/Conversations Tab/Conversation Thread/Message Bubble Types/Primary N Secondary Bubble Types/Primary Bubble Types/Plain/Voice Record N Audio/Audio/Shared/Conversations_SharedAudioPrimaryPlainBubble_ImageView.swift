@@ -17,7 +17,7 @@ struct Conversations_SharedAudioPrimaryPlainBubble_ImageView: View {
     }
     
     // MARK: - PRIVATE PROPERTIES
-    let values = VoiceRecordBubbleValues.self
+    let values = VoiceRecordNAudioBubbleValues.self
     
     // MARK: - BODY
     var body: some View {

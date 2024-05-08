@@ -24,18 +24,23 @@ struct IAMSADApp: App {
         WindowGroup {
             ZStack {
                 Color.conversationBackground
+                    .ignoresSafeArea()
                 
-                Conversations_VoiceRecordPrimaryPlainBubbleView(
+                Conversations_DocumentAudioPrimaryPlainBubbleView(
                     direction: .random(),
                     showPointer: .random(),
-                    imageURLString: "https://www.akc.org/wp-content/uploads/2018/08/nervous_lab_puppy-studio-portrait-lg-500x500.jpg",
-                    voiceRecordURLString: "",
+                    fileData: .init(
+                        fileURLString: "",
+                        fileName: "New Recording.m4a",
+                        fileSize: "12 KB",
+                        fileExtension: "m4a",
+                        duration: .zero
+                    ),
+                    timestamp: "12:45 PM",
                     status: .random(),
-                    shouldAnimate: .random(),
-                    timestamp: "05:48 PM"
+                    shouldAnimate: .random()
                 )
             }
-            .ignoresSafeArea()
             .dynamicTypeSize(...DynamicTypeSize.xLarge)
             .environmentObject(avatar)
             .environmentObject(avatarSheetVM)
