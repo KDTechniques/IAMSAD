@@ -1,16 +1,25 @@
 //
-//  VoiceRecordBubbleValues.swift
+//  VoiceRecordNAudioBubbleValues.swift
 //  IAMSAD
 //
 //  Created by Mr. Kavinda Dilshan on 2024-05-03.
 //
 
 import SwiftUI
+import CoreMedia
 
-struct VoiceRecordBubbleValues {
-    enum ActionTypes: CaseIterable { case play, pause, cancel, upload }
+struct VoiceRecordNAudioBubbleValues {
+    enum ActionTypes: CaseIterable { case play, pause, cancel, process }
     enum PlaybackSpeedTypes: String, CaseIterable { case _1x = "1", _1_5x = "1.5", _2x = "2" }
     enum FileDatatypes: CaseIterable { case fileSize, duration }
+    
+    struct FileDataModel {
+        let fileURLString: String
+        let fileName: String
+        let fileSize: String
+        let fileExtension: String
+        let duration: CMTime
+    }
     
     static let actionIconsFrameWidth: CGFloat = 15
     static let actionIconsHPadding: CGFloat = 16
@@ -18,6 +27,7 @@ struct VoiceRecordBubbleValues {
     static let widthPerSpectrumFrame: CGFloat = 2.5
     static let spectrumMaxHeight: CGFloat = 24
     static let spacingPerSpectrumFrame: CGFloat = 1.8
+    static let thumbScale: CGFloat = 0.45
     
     static var spectrumSafeWidth: CGFloat {
         let safeValue: CGFloat = 50 // an eye accurate value
@@ -57,5 +67,9 @@ struct VoiceRecordBubbleValues {
         let heightsArray: [CGFloat] = (1...framesCount).map { _ in randomHeight }
         
         return heightsArray
+    }
+    
+    static func getImageOffsetX(_ direction: BubbleShapeValues.Directions) -> CGFloat {
+        strokedMicImageWidth/3 * (direction == .right ? -1 : 1)
     }
 }

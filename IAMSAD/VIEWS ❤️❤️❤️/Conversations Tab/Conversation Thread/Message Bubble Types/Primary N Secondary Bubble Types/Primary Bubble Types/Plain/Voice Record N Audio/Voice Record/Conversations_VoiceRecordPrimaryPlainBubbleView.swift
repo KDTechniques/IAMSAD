@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import CoreMedia
 
 struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
     // MARK: - PROPERTIES
@@ -20,6 +21,7 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
     let status: ReadReceiptStatusTypes
     let shouldAnimate: Bool
     let timestamp: String
+    let fileData: VoiceRecordNAudioBubbleValues.FileDataModel
     
     // MARK: - INITIALIZER
     init(
@@ -29,7 +31,8 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
         voiceRecordURLString: String,
         status: ReadReceiptStatusTypes,
         shouldAnimate: Bool,
-        timestamp: String
+        timestamp: String,
+        fileData: VoiceRecordNAudioBubbleValues.FileDataModel
     ) {
         self.direction = direction
         self.showPointer = showPointer
@@ -38,11 +41,12 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
         self.status = status
         self.shouldAnimate = shouldAnimate
         self.timestamp = timestamp
+        self.fileData = fileData
     }
     
     // MARK: - PRIVATE PROPERTIES
     let values = MessageBubbleValues.self
-    let voiceRecordValues = VoiceRecordBubbleValues.self
+    let voiceRecordValues = VoiceRecordNAudioBubbleValues.self
     let extraHPadding: CGFloat = 10
     
     var thumbAlignedSpectrumWidth: CGFloat {
@@ -61,10 +65,8 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
     @State private var thumbSize: CGFloat = 0
     @State private var isActive: Bool = false
     @State private var isProcessing: Bool = false
-    @State private var action: VoiceRecordBubbleValues.ActionTypes = .upload
-    @State private var heightsArray: [CGFloat] = VoiceRecordBubbleValues.getMockArrayOfHeights()
-    @State private var duration: String = "0:00"
-    @State private var fileSize: String = "0 KB"
+    @State private var action: VoiceRecordNAudioBubbleValues.ActionTypes = .process
+    @State private var heightsArray: [CGFloat] = VoiceRecordNAudioBubbleValues.getMockArrayOfHeights()
     
     // MARK: - BODY
     var body: some View {
@@ -83,7 +85,7 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
                             Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView(direction: direction) { }
                         }
                         
-                        Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView(
+                        Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView(
                             direction: direction,
                             actionType: action
                         ) { }
@@ -123,7 +125,14 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
             voiceRecordURLString: "",
             status: .random(),
             shouldAnimate: .random(),
-            timestamp: "05:48 PM"
+            timestamp: "05:48 PM",
+            fileData: .init(
+                fileURLString: "",
+                fileName: "",
+                fileSize: "25 KB",
+                fileExtension: "",
+                duration: .zero
+            )
         )
     }
     .ignoresSafeArea()
@@ -148,14 +157,14 @@ extension Conversations_VoiceRecordPrimaryPlainBubbleView {
     
     // MARK: - bottomContent
     private var bottomContent: some View {
-        Conversations_VoiceRecordPrimaryPlainBubble_BottomTrailingView(
+        Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView(
             width: thumbAlignedSpectrumWidth,
-            fileSize: "43 KB",
-            duration: "1:45",
+            fileSize: fileData.fileSize,
+            duration: fileData.duration,
             type: isProcessing ? .fileSize : .duration,
-            timestamp: "05:36 AM",
+            timestamp: timestamp,
             status: status,
-            shouldAnimate: false
+            shouldAnimate: shouldAnimate
         )
     }
 }

@@ -20,13 +20,13 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_ImageView: View {
     }
     
     // MARK: - PRIVATE PROPERTIES
-    let values = VoiceRecordBubbleValues.self
+    let values = VoiceRecordNAudioBubbleValues.self
     
     // MARK: - BODY
     var body: some View {
         image
             .overlay(alignment: direction == .right ? .bottomTrailing : .bottomLeading) { mic }
-            .offset(x: values.strokedMicImageWidth/3 * (direction == .right ? -1 : 1))
+            .offset(x: values.getImageOffsetX(direction))
     }
 }
 
@@ -63,7 +63,7 @@ extension Conversations_VoiceRecordPrimaryPlainBubble_ImageView {
             .overlay {
                 Image(.mic)
                     .renderingMode(.template)
-                    .foregroundStyle(direction == .right ? .micPlaybackNCancelIconsSender : .appLogoBased)
+                    .foregroundStyle(direction == .right ? .micNActionIconsSender : .appLogoBased)
             }
             .offset(x: values.strokedMicImageWidth/2 * (direction == .right ? 1 : -1))
     }

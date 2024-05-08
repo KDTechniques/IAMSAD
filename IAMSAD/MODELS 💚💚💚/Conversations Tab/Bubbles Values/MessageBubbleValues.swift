@@ -22,13 +22,13 @@ struct MessageBubbleValues {
     static let editedToTimestampTrailingPadding: CGFloat = 2
     static let textFont: Font = .body
     static let timestampFont: Font = .caption
-    static var editedFont: Font { self.timestampFont }
     static let bottomTrailingContentBottomPadding: CGFloat = -2
     static let bubbleToBubbleVPadding: CGFloat = 3
     static let stickerFrameSize: CGFloat = 138
     static let mediaTypeFont: Font = .footnote
     static let mediaTypeIconToTextHPadding: CGFloat = 4
     static let anyImagePlaceholderColor: Color = .primary.opacity(0.1)
+    static let secondaryOuterPadding: (Edge.Set, CGFloat) = ([.horizontal, .top], 4)
     
     static var maxContentWidth: CGFloat {
         screenWidth -

@@ -1,5 +1,5 @@
 //
-//  Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView.swift
+//  Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView.swift
 //  IAMSAD
 //
 //  Created by Mr. Kavinda Dilshan on 2024-05-03.
@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView: View {
+struct Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView: View {
     // MARK: - PROPERTIES
     let direction: BubbleShapeValues.Directions
-    let actionType: VoiceRecordBubbleValues.ActionTypes
+    let actionType: VoiceRecordNAudioBubbleValues.ActionTypes
     let action: () -> Void
     
     // MARK: - PRIVATE PROPERTIES
-    let values = VoiceRecordBubbleValues.self
+    let values = VoiceRecordNAudioBubbleValues.self
     var iconImage: Image {
         switch actionType {
         case .play:
@@ -23,7 +23,7 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView: View {
                 .init(.pause)
         case .cancel:
                 .init(systemName: "xmark")
-        case .upload:
+        case .process:
                 .init(.arrowUpCircle)
         }
     }
@@ -34,19 +34,19 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView: View {
             values.actionIconsFrameWidth
         case .cancel:
             values.actionIconsFrameWidth - 5
-        case .upload:
+        case .process:
             values.actionIconsFrameWidth + 10
         }
     }
     
     var rotationDegree: CGFloat {
-        actionType == .upload && direction == .left ? 180 : 0
+        actionType == .process && direction == .left ? 180 : 0
     }
     
     // MARK: - INITILAIZER
     init(
         direction: BubbleShapeValues.Directions,
-        actionType: VoiceRecordBubbleValues.ActionTypes,
+        actionType: VoiceRecordNAudioBubbleValues.ActionTypes,
         action: @escaping () -> Void
     ) {
         self.direction = direction
@@ -62,7 +62,7 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView: View {
             .scaledToFit()
             .frame(width: iconFrameWidth)
             .frame(width: values.actionIconsFrameWidth)
-            .foregroundStyle(direction == .right ? .micPlaybackNCancelIconsSender : .micPlaybackNCancelIconsReceiver)
+            .foregroundStyle(direction == .right ? .micNActionIconsSender : .micNActionIconsReceiver)
             .fontWeight(actionType == .cancel ? .bold : .regular)
             .rotationEffect(.degrees(rotationDegree))
             .padding(direction == .right ? .horizontal : .trailing, values.actionIconsHPadding)
@@ -71,8 +71,8 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView: View {
     }
 }
 
-#Preview("Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView") {
-    Conversations_VoiceRecordPrimaryPlainBubble_ActionButtonsView(
+#Preview("Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView") {
+    Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView(
         direction: .random(),
         actionType: .random()
     ) {

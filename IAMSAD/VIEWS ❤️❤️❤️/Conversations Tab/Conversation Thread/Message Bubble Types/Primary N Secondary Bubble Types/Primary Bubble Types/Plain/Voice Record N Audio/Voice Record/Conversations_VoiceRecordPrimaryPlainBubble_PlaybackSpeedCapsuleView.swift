@@ -21,13 +21,13 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView: Vie
     }
     
     // MARK: - PRIVATE PROPERTIES
-    let values = VoiceRecordBubbleValues.self
+    let values = VoiceRecordNAudioBubbleValues.self
     var capsuleWidth: CGFloat { values.imageSize - 2 }
     var capsuleHeight: CGFloat { values.actionIconsFrameWidth + 8 }
     let font: Font = .caption
-    let speedsArray: [VoiceRecordBubbleValues.PlaybackSpeedTypes] = Array(VoiceRecordBubbleValues.PlaybackSpeedTypes.allCases)
+    let speedsArray: [VoiceRecordNAudioBubbleValues.PlaybackSpeedTypes] = Array(VoiceRecordNAudioBubbleValues.PlaybackSpeedTypes.allCases)
     
-    @State private var currentPlaybackSpeed: VoiceRecordBubbleValues.PlaybackSpeedTypes = ._1x
+    @State private var currentPlaybackSpeed: VoiceRecordNAudioBubbleValues.PlaybackSpeedTypes = ._1x
     
     // MARK: - BODY
     var body: some View {

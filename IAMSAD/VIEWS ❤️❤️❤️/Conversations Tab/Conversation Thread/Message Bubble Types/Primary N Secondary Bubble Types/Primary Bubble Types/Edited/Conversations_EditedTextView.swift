@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Conversations_EditedTextView: View {
     // MARK: - PROPERTIES
-    let font: Font = MessageBubbleValues.editedFont
+    let font: Font = MessageBubbleValues.timestampFont
     
     // MARK: - BODY
     var body: some View {

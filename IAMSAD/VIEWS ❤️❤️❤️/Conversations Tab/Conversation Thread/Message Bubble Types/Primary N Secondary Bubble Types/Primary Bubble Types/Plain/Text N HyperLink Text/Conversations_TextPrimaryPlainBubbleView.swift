@@ -11,6 +11,7 @@ struct Conversations_TextPrimaryPlainBubbleView: View {
     // MARK: - PROPERTIES
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
+    let direction: BubbleShapeValues.Directions
     let isEdited: Bool
     let text: String
     let timestamp: String
@@ -21,6 +22,7 @@ struct Conversations_TextPrimaryPlainBubbleView: View {
     
     // MARK: - INITIALIZER
     init(
+        direction: BubbleShapeValues.Directions,
         isEdited: Bool = false,
         text: String,
         timestamp: String,
@@ -29,6 +31,7 @@ struct Conversations_TextPrimaryPlainBubbleView: View {
         height: CGFloat,
         withSecondaryContent: Bool
     ) {
+        self.direction = direction
         self.isEdited = isEdited
         self.text = text
         self.timestamp = timestamp
@@ -71,9 +74,18 @@ struct Conversations_TextPrimaryPlainBubbleView: View {
     
     var editedWidth: CGFloat {
         "Edited".widthOfHString(
-            usingFont: .from(values.editedFont),
+            usingFont: .from(values.timestampFont),
             dynamicTypeSize
         ) + values.editedToTimestampTrailingPadding
+    }
+    
+    var editedToTimestampToReadReceiptSpacing: CGFloat {
+        values.editedToTimestampToReadReceiptSpacing *
+        (
+            isEdited
+            ? 2 - (direction == .left ? 1 : 0)
+            : 1 - (direction == .left ? 1 : 0)
+        )
     }
     
     var bubbleWidthNScreenToBubblePadding: CGFloat {
@@ -82,8 +94,8 @@ struct Conversations_TextPrimaryPlainBubbleView: View {
         fromTextToSpacing +
         (isEdited ? editedWidth : 0) +
         timeStampWidth +
-        (values.editedToTimestampToReadReceiptSpacing * (isEdited ? 2 : 1)) +
-        values.readReceiptShapesValues(dynamicTypeSize).size +
+        editedToTimestampToReadReceiptSpacing +
+        (direction == .right ? values.readReceiptShapesValues(dynamicTypeSize).size : 0) +
         values.bubbleShapeValues.pointerWidth +
         values.screenToBubblePadding
     }
@@ -119,17 +131,19 @@ struct Conversations_TextPrimaryPlainBubbleView: View {
 // MARK: - PREVIEWS
 #Preview("Conversations_MessageBubbleView") {
     let values = MessageBubbleValues.self
+    let direction: BubbleShapeValues.Directions = .random()
     
     return ScrollView(.vertical) {
         Conversations_MessageBubbleView(
-            direction: .right,
-            showPointer: true) {
+            direction: direction,
+            showPointer: .random()) {
                 Conversations_TextPrimaryPlainBubbleView(
+                    direction: direction,
                     isEdited: .random(),
-                    text: "Check out this website: https://www.example.com and also this one: https://www.anotherexample.com",
+                    text: "Hi there 👋👋👋",
                     timestamp: "12:12 PM",
-                    status: .seen,
-                    shouldAnimate: true,
+                    status: .none,
+                    shouldAnimate: .random(),
                     height: 0,
                     withSecondaryContent: false
                 )
@@ -143,15 +157,21 @@ struct Conversations_TextPrimaryPlainBubbleView: View {
                     .opacity(0)
             }
     }
+    .background {
+        Color.conversationBackground
+            .ignoresSafeArea()
+    }
     .previewViewModifier
 }
 
 #Preview("Conversations_TextPrimaryPlainBubbleView") {
     Conversations_TextPrimaryPlainBubbleView(
+        direction: .random(),
+        isEdited: .random(),
         text: "Hi there 👋👋👋",
         timestamp: "12:12 PM",
         status: .delivered,
-        shouldAnimate: false,
+        shouldAnimate: .random(),
         height: 0,
         withSecondaryContent: false
     )
