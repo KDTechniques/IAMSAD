@@ -12,17 +12,13 @@ struct Conversations_SecondaryBubbleView: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
     // MARK: - PROPERTIES
+    let model: MessageBubbleValues.MessageBubbleModel
     let primaryMediaType: ConversationMediaTypes
     let secondaryMediaType: ConversationMediaTypes
     let userName: String = "Wifey ❤️"
     let replyText: String = "Hi there."
-    let timestamp: String = "03:15 PM"
-    let status: ReadReceiptStatusTypes = .seen
     let stripColor: Color = .cyan
     let replyingTo: MessageBubbleUserTypes = .receiver
-    let userType: MessageBubbleUserTypes = .sender
-    let showPointer: Bool = true
-    let shouldAnimate: Bool = false
     
     let values = MessageBubbleValues.self
     var secondaryBubbleValues: SecondaryBubbleValues.Type { values.secondaryBubbleValues }
@@ -34,13 +30,9 @@ struct Conversations_SecondaryBubbleView: View {
     // MARK: - BODY
     var body: some View {
         Conversations_PrimaryNSecondaryBubbleView(
+            model: model,
             primaryMediaType: primaryMediaType,
             text: replyText,
-            timestamp: timestamp,
-            status: status,
-            userType: userType,
-            showPointer: showPointer,
-            shouldAnimate: shouldAnimate,
             withSecondaryContent: true
         ) { type, width in
             var messageBubbleWidth: CGFloat {
@@ -62,7 +54,7 @@ struct Conversations_SecondaryBubbleView: View {
                 default: EmptyView()
                 }
             }
-            .background(userType == .sender ? .replyShapeSender : .replyShapeReceiver)
+            .background(model.direction == .right ? .replyShapeSender : .replyShapeReceiver)
             .clipShape(CustomRoundedRectangleShape(cornerRadius: values.bubbleShapeValues.cornerRadius - outerPadding.1))
             .padding(outerPadding.0, outerPadding.1)
         }
@@ -71,7 +63,11 @@ struct Conversations_SecondaryBubbleView: View {
 
 // MARK: - PREVIEWS
 #Preview("Conversations_SecondaryBubbleView") {
-    Conversations_SecondaryBubbleView(primaryMediaType: .sticker, secondaryMediaType: .photo)
+    Conversations_SecondaryBubbleView(
+        model: .getRandomMockObject(),
+        primaryMediaType: .sticker,
+        secondaryMediaType: .photo
+    )
 }
 
 // MARK: -  EXTENSIONS

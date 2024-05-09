@@ -11,32 +11,20 @@ struct Conversations_TextPrimaryPlainBubbleView: View {
     // MARK: - PROPERTIES
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
-    let direction: BubbleShapeValues.Directions
-    let isEdited: Bool
+    let model: MessageBubbleValues.MessageBubbleModel
     let text: String
-    let timestamp: String
-    let status: ReadReceiptStatusTypes
-    let shouldAnimate: Bool
     let height: CGFloat
     let withSecondaryContent: Bool
     
     // MARK: - INITIALIZER
     init(
-        direction: BubbleShapeValues.Directions,
-        isEdited: Bool = false,
+        model: MessageBubbleValues.MessageBubbleModel,
         text: String,
-        timestamp: String,
-        status: ReadReceiptStatusTypes,
-        shouldAnimate: Bool,
         height: CGFloat,
         withSecondaryContent: Bool
     ) {
-        self.direction = direction
-        self.isEdited = isEdited
+        self.model = model
         self.text = text
-        self.timestamp = timestamp
-        self.status = status
-        self.shouldAnimate = shouldAnimate
         self.height = height
         self.withSecondaryContent = withSecondaryContent
     }
@@ -66,7 +54,7 @@ struct Conversations_TextPrimaryPlainBubbleView: View {
     }
     
     var timeStampWidth: CGFloat {
-        timestamp.widthOfHString(
+        model.timestamp.widthOfHString(
             usingFont: .from(values.timestampFont),
             dynamicTypeSize
         )
@@ -82,9 +70,9 @@ struct Conversations_TextPrimaryPlainBubbleView: View {
     var editedToTimestampToReadReceiptSpacing: CGFloat {
         values.editedToTimestampToReadReceiptSpacing *
         (
-            isEdited
-            ? 2 - (direction == .left ? 1 : 0)
-            : 1 - (direction == .left ? 1 : 0)
+            model.isEdited
+            ? 2 - (model.direction == .left ? 1 : 0)
+            : 1 - (model.direction == .left ? 1 : 0)
         )
     }
     
@@ -92,10 +80,10 @@ struct Conversations_TextPrimaryPlainBubbleView: View {
         (values.innerHPadding * 2) +
         textWidth +
         fromTextToSpacing +
-        (isEdited ? editedWidth : 0) +
+        (model.isEdited ? editedWidth : 0) +
         timeStampWidth +
         editedToTimestampToReadReceiptSpacing +
-        (direction == .right ? values.readReceiptShapesValues(dynamicTypeSize).size : 0) +
+        (model.direction == .right ? values.readReceiptShapesValues(dynamicTypeSize).size : 0) +
         values.bubbleShapeValues.pointerWidth +
         values.screenToBubblePadding
     }
@@ -123,39 +111,33 @@ struct Conversations_TextPrimaryPlainBubbleView: View {
                 expandedBubble
             }
         }
-        .padding(.horizontal, values.innerHPadding)
-        .padding(.vertical, values.innerVPadding)
+        .messageBubbleContentDefaultPadding
+        .forwardedPaddingViewModifier(model.isForwarded)
     }
 }
 
 // MARK: - PREVIEWS
 #Preview("Conversations_MessageBubbleView") {
     let values = MessageBubbleValues.self
-    let direction: BubbleShapeValues.Directions = .random()
+    let obj: MessageBubbleValues.MessageBubbleModel = .getRandomMockObject(true, true)
     
     return ScrollView(.vertical) {
-        Conversations_MessageBubbleView(
-            direction: direction,
-            showPointer: .random()) {
-                Conversations_TextPrimaryPlainBubbleView(
-                    direction: direction,
-                    isEdited: .random(),
-                    text: "Hi there 👋👋👋",
-                    timestamp: "12:12 PM",
-                    status: .none,
-                    shouldAnimate: .random(),
-                    height: 0,
-                    withSecondaryContent: false
-                )
-            }
-            .overlay {
-                Rectangle()
-                    .fill(.red)
-                    .frame(width: 1)
-                    .frame(width: screenWidth, alignment:  .leading)
-                    .offset(x: values.maxWidthLimitationPadding)
-                    .opacity(0)
-            }
+        Conversations_MessageBubbleView(obj) {
+            Conversations_TextPrimaryPlainBubbleView(
+                model: obj,
+                text: "Hi there 👋👋👋",
+                height: 0,
+                withSecondaryContent: false
+            )
+        }
+        .overlay {
+            Rectangle()
+                .fill(.red)
+                .frame(width: 1)
+                .frame(width: screenWidth, alignment:  .leading)
+                .offset(x: values.maxWidthLimitationPadding)
+                .opacity(0)
+        }
     }
     .background {
         Color.conversationBackground
@@ -166,12 +148,8 @@ struct Conversations_TextPrimaryPlainBubbleView: View {
 
 #Preview("Conversations_TextPrimaryPlainBubbleView") {
     Conversations_TextPrimaryPlainBubbleView(
-        direction: .random(),
-        isEdited: .random(),
+        model: .getRandomMockObject(true, true),
         text: "Hi there 👋👋👋",
-        timestamp: "12:12 PM",
-        status: .delivered,
-        shouldAnimate: .random(),
         height: 0,
         withSecondaryContent: false
     )
@@ -238,11 +216,6 @@ extension Conversations_TextPrimaryPlainBubbleView {
     
     // MARK: - timestampNReadReceipts
     private var timestampNReadReceipts: some View {
-        Conversations_BubbleEditedTimestampReadReceiptsView(
-            isEdited: isEdited,
-            timestamp: timestamp,
-            status: status,
-            shouldAnimate: shouldAnimate
-        )
+        Conversations_BubbleEditedTimestampReadReceiptsView(model)
     }
 }

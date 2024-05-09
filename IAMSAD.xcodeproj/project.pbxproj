@@ -1303,6 +1303,17 @@
 			path = "Toolbar Items";
 			sourceTree = "<group>";
 		};
+		0B367ECE2BECE09600EC1471 /* Edited, Timestamp & Read Receipts */ = {
+			isa = PBXGroup;
+			children = (
+				0B12FB972BCAAB2F002E0048 /* Conversations_BubbleEditedTimestampReadReceiptsView.swift */,
+				0BA4E58A2BE215F8004E7945 /* Edited */,
+				0BA4E5AF2BE21B90004E7945 /* Time Stamp */,
+				0BA4E5AE2BE21B4C004E7945 /* Read Receipts */,
+			);
+			path = "Edited, Timestamp & Read Receipts";
+			sourceTree = "<group>";
+		};
 		0B3872572B67F7AF00199A37 /* Animal Faces */ = {
 			isa = PBXGroup;
 			children = (
@@ -1529,10 +1540,7 @@
 				0BA4E5882BE215DF004E7945 /* Plain */,
 				0BA4E5892BE215EA004E7945 /* Forwarded */,
 				0BA4E5AD2BE21ADA004E7945 /* Read More */,
-				0BA4E58A2BE215F8004E7945 /* Edited */,
-				0BA4E5AF2BE21B90004E7945 /* Time Stamp */,
-				0BA4E5AE2BE21B4C004E7945 /* Read Receipts */,
-				0B12FB972BCAAB2F002E0048 /* Conversations_BubbleEditedTimestampReadReceiptsView.swift */,
+				0B367ECE2BECE09600EC1471 /* Edited, Timestamp & Read Receipts */,
 			);
 			path = "Primary Bubble Types";
 			sourceTree = "<group>";

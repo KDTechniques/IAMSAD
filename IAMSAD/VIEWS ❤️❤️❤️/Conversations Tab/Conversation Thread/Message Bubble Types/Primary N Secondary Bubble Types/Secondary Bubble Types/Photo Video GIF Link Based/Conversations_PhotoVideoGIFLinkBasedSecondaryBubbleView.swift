@@ -121,8 +121,12 @@ struct Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView: View {
 
 // MARK: - PREVIEWS
 #Preview("Conversations_SecondaryBubbleView") {
-    Conversations_SecondaryBubbleView(primaryMediaType: .sticker, secondaryMediaType: .socialMediaInfo)
-        .previewViewModifier
+    Conversations_SecondaryBubbleView(
+        model: .getRandomMockObject(),
+        primaryMediaType: .sticker,
+        secondaryMediaType: .socialMediaInfo
+    )
+    .previewViewModifier
 }
 
 #Preview("Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView") {

@@ -81,5 +81,21 @@
             landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "800C88A7-B8DB-4C7E-83F3-326CD3067023"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IAMSAD/VIEWS &#x2764;&#xfe0f;&#x2764;&#xfe0f;&#x2764;&#xfe0f;/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Conversations_PrimaryNSecondaryBubbleView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

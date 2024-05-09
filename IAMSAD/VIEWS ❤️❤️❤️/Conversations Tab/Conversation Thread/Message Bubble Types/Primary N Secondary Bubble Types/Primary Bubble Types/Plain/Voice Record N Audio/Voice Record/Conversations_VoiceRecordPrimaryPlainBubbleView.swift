@@ -14,33 +14,21 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
-    let direction: BubbleShapeValues.Directions
-    let showPointer: Bool
+    let model: MessageBubbleValues.MessageBubbleModel
     let imageURLString: String
     let voiceRecordURLString: String
-    let status: ReadReceiptStatusTypes
-    let shouldAnimate: Bool
-    let timestamp: String
     let fileData: VoiceRecordNAudioBubbleValues.FileDataModel
     
     // MARK: - INITIALIZER
     init(
-        direction: BubbleShapeValues.Directions,
-        showPointer: Bool,
+        model: MessageBubbleValues.MessageBubbleModel,
         imageURLString: String,
         voiceRecordURLString: String,
-        status: ReadReceiptStatusTypes,
-        shouldAnimate: Bool,
-        timestamp: String,
         fileData: VoiceRecordNAudioBubbleValues.FileDataModel
     ) {
-        self.direction = direction
-        self.showPointer = showPointer
+        self.model = model
         self.imageURLString = imageURLString
         self.voiceRecordURLString = voiceRecordURLString
-        self.status = status
-        self.shouldAnimate = shouldAnimate
-        self.timestamp = timestamp
         self.fileData = fileData
     }
     
@@ -70,45 +58,37 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
     
     // MARK: - BODY
     var body: some View {
-        Conversations_MessageBubbleView(
-            direction: direction,
-            showPointer: showPointer
-        ) {
+        Conversations_MessageBubbleView(model) {
             HStack(spacing: 0) {
-                if !isActive, direction == .right {
-                    Conversations_VoiceRecordPrimaryPlainBubble_ImageView(urlString: imageURLString, direction: direction)
-                }
+                if model.direction == .right { image(model.direction) }
                 
                 HStack(alignment: .top, spacing: 0) {
                     HStack(spacing: 0) {
-                        if isActive, direction == .right {
-                            Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView(direction: direction) { }
+                        if model.direction == .right {
+                            playbackSpeedCapsule(model.direction) {
+                                // action goes here...
+                            }
                         }
                         
                         Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView(
-                            direction: direction,
+                            direction: model.direction,
                             actionType: action
                         ) { }
                     }
                     .frame(height: voiceRecordValues.spectrumMaxHeight)
                     
-                    VStack(spacing: vContainerSpacing) {
-                        spectrum
-                        bottomContent
-                    }
-                    .padding(.trailing, direction == .right ? 0 : voiceRecordValues.actionIconsHPadding/2)
+                    vContainer
                     
-                    if isActive, direction == .left {
-                        Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView(direction: direction) { }
+                    playbackSpeedCapsule(model.direction) {
+                        // action goes here...
                     }
                 }
                 .padding(.top, extraHPadding)
                 
-                if !isActive, direction == .left {
-                    Conversations_VoiceRecordPrimaryPlainBubble_ImageView(urlString: imageURLString, direction: direction)
-                }
+                if model.direction == .left { image(model.direction) }
             }
             .messageBubbleContentDefaultPadding
+            .forwardedPaddingViewModifier(model.isForwarded, fraction: 1)
         }
     }
 }
@@ -119,13 +99,9 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
         Color.conversationBackground
         
         Conversations_VoiceRecordPrimaryPlainBubbleView(
-            direction: .random(),
-            showPointer: .random(),
+            model: .getRandomMockObject(true),
             imageURLString: "https://www.akc.org/wp-content/uploads/2018/08/nervous_lab_puppy-studio-portrait-lg-500x500.jpg",
             voiceRecordURLString: "",
-            status: .random(),
-            shouldAnimate: .random(),
-            timestamp: "05:48 PM",
             fileData: .init(
                 fileURLString: "",
                 fileName: "",
@@ -141,15 +117,36 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
 
 // MARK: - EXTENSIONS
 extension Conversations_VoiceRecordPrimaryPlainBubbleView {
+    // MARK: - image
+    @ViewBuilder
+    private func image(_ direction: BubbleShapeValues.Directions) -> some View {
+        if !isActive {
+            Conversations_VoiceRecordPrimaryPlainBubble_ImageView(urlString: imageURLString, direction: direction)
+        }
+    }
+    
+    // MARK: - playbackSpeedCapsule
+    @ViewBuilder
+    private func playbackSpeedCapsule(
+        _ direction: BubbleShapeValues.Directions,
+        action: @escaping () -> Void
+    ) -> some View {
+        if isActive {
+            Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView(direction: direction) {
+                action()
+            }
+        }
+    }
+    
     // MARK: - spectrum
     private var spectrum: some View {
         Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView(
             sliderValue: $sliderValue,
             isThumbTouchDown: $isThumbTouchDown,
             thumbSize: $thumbSize,
-            direction: direction,
+            direction: model.direction,
             spectrumFrameWidth: thumbAlignedSpectrumWidth,
-            status: status,
+            status: model.status,
             isProcessing: isProcessing,
             heightsArray: heightsArray
         )
@@ -158,13 +155,20 @@ extension Conversations_VoiceRecordPrimaryPlainBubbleView {
     // MARK: - bottomContent
     private var bottomContent: some View {
         Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView(
+            model: model,
             width: thumbAlignedSpectrumWidth,
             fileSize: fileData.fileSize,
             duration: fileData.duration,
-            type: isProcessing ? .fileSize : .duration,
-            timestamp: timestamp,
-            status: status,
-            shouldAnimate: shouldAnimate
+            type: isProcessing ? .fileSize : .duration
         )
+    }
+    
+    // MARK: - vContainer
+    private var vContainer: some View {
+        VStack(spacing: vContainerSpacing) {
+            spectrum
+            bottomContent
+        }
+        .padding(.trailing, model.direction == .right ? 0 : voiceRecordValues.actionIconsHPadding/2)
     }
 }
