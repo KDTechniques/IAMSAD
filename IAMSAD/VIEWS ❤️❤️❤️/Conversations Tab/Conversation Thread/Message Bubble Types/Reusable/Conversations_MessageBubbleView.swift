@@ -12,6 +12,7 @@ struct Conversations_MessageBubbleView<T: View>: View {
     // MARK: - PROPERTIES
     @Environment(\.colorScheme) private var colorScheme
     
+    let isForwarded: Bool
     let direction: BubbleShapeValues.Directions
     let showPointer: Bool
     let content: () -> T
@@ -20,10 +21,12 @@ struct Conversations_MessageBubbleView<T: View>: View {
     
     // MARK: - INITIALIZER
     init(
+        isForwarded: Bool = false,
         direction: BubbleShapeValues.Directions,
         showPointer: Bool,
         @ViewBuilder content: @escaping () -> T
     ) {
+        self.isForwarded = isForwarded
         self.direction = direction
         self.showPointer = showPointer
         self.content = content
@@ -31,16 +34,19 @@ struct Conversations_MessageBubbleView<T: View>: View {
     
     // MARK: - BODY
     var body: some View {
-        content()
-            .padding([direction == .left ? .leading : .trailing], values.bubbleShapeValues.pointerWidth)
-            .background(direction == .right ? .bubbleSender : .bubbleReceiver)
-            .clipShape(Conversations_BubbleShape(direction: direction, showPointer: showPointer))
-            .conversationsBubbleShadowViewModifier(colorScheme) {
-                AnyShape(Conversations_BubbleShape(direction: direction, showPointer: showPointer))
-            }
-            .frame(maxWidth: .infinity, alignment: direction == .left ? .leading : .trailing)
-            .padding([direction == .left ? .leading : .trailing], values.screenToBubblePadding)
-            .padding([direction == .left ? .trailing : .leading], values.maxWidthLimitationPadding)
+        VStack(alignment: .leading, spacing: 0) {
+            if isForwarded { Conversations_ForwardedTextView() }
+            content()
+        }
+        .padding([direction == .left ? .leading : .trailing], values.bubbleShapeValues.pointerWidth)
+        .background(direction == .right ? .bubbleSender : .bubbleReceiver)
+        .clipShape(Conversations_BubbleShape(direction: direction, showPointer: showPointer))
+        .conversationsBubbleShadowViewModifier(colorScheme) {
+            AnyShape(Conversations_BubbleShape(direction: direction, showPointer: showPointer))
+        }
+        .frame(maxWidth: .infinity, alignment: direction == .left ? .leading : .trailing)
+        .padding([direction == .left ? .leading : .trailing], values.screenToBubblePadding)
+        .padding([direction == .left ? .trailing : .leading], values.maxWidthLimitationPadding)
     }
 }
 

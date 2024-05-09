@@ -1979,9 +1979,9 @@
 			children = (
 				0B1CEC8A2BE4FCD7006DB5E1 /* Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView.swift */,
 				0B1CEC922BE51497006DB5E1 /* Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView.swift */,
+				0BBB8B2D2BEC064D00D69F93 /* Conversations_VoiceRecordNAudioPrimaryPlainBubble_HProgressBarView.swift */,
 				0B1CEC872BE4FA35006DB5E1 /* Voice Record */,
 				0BCAA0CF2BE7F81900045125 /* Audio */,
-				0BBB8B2D2BEC064D00D69F93 /* Conversations_VoiceRecordNAudioPrimaryPlainBubble_HProgressBarView.swift */,
 			);
 			path = "Voice Record N Audio";
 			sourceTree = "<group>";
