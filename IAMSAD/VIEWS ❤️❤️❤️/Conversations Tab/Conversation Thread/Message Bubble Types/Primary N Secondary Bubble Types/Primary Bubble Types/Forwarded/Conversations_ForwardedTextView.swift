@@ -8,11 +8,27 @@
 import SwiftUI
 
 struct Conversations_ForwardedTextView: View {
+    // MARK: - PROPERTIES
+    let values = MessageBubbleValues.self
+    
+    // MARK: - BODY
     var body: some View {
-        Text("Hello, World!")
+        HStack(spacing: 5) {
+            Image(.forwarded)
+                .renderingMode(.template)
+            
+            Text("Forwarded")
+                .italic()
+                .font(.footnote)
+        }
+        
+        .foregroundStyle(.secondary)
+        .padding(.leading, values.innerHPadding)
+        .padding(.top, values.innerVPadding)
     }
 }
 
+// MARK: - PREVIEWS
 #Preview("Conversations_ForwardedTextView") {
     Conversations_ForwardedTextView()
         .previewViewModifier

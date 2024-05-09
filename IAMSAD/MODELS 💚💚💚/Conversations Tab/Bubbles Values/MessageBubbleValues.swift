@@ -49,4 +49,65 @@ struct MessageBubbleValues {
     static func readReceiptShapesValues(_ dynamicTypeSize: DynamicTypeSize) -> ReadReceiptShapesValues {
         ReadReceiptShapesValues(dynamicTypeSize: dynamicTypeSize)
     }
+    
+    // MARK: - MessageBubbleModel
+    struct MessageBubbleModel {
+        // MARK: - PROPERTIES
+        let direction: BubbleShapeValues.Directions
+        let showPointer: Bool
+        let isForwarded: Bool
+        let isEdited: Bool
+        let timestamp: String
+        let status: ReadReceiptStatusTypes
+        let shouldAnimate: Bool
+        
+        // MARK: - INITIALIZER
+        init(
+            direction: BubbleShapeValues.Directions,
+            showPointer: Bool,
+            isForwarded: Bool = false,
+            isEdited: Bool = false,
+            timestamp: String,
+            status: ReadReceiptStatusTypes,
+            shouldAnimate: Bool = false
+        ) {
+            self.direction = direction
+            self.showPointer = showPointer
+            self.isEdited = isEdited
+            self.isForwarded = isForwarded
+            self.timestamp = timestamp
+            self.status = status
+            self.shouldAnimate = shouldAnimate
+        }
+        
+        // MARK: - FUNCTIONS
+        
+        // MARK: - getRandomMockObject
+        static func getRandomMockObject(_ withForwarded: Bool = false, _ withEdited: Bool = false) -> Self {
+            .init(
+                direction: .random(),
+                showPointer: .random(),
+                isForwarded: withForwarded ? .random() : false,
+                isEdited: withEdited ? .random() : false,
+                timestamp: getRandomTimestamp(),
+                status: .random(),
+                shouldAnimate: .random()
+            )
+        }
+        
+        // MARK: - getRandomTimestamp
+        private static func getRandomTimestamp() -> String {
+            enum Types: String, CaseIterable { case am, pm }
+            
+            let type: String = Types.random().rawValue.uppercased()
+            let hour: Int = .random(in: 1...12)
+            var minute: String {
+                let value: Int = Int.random(in: 00...59)
+                
+                return value < 10 ? "0\(value)" : value.description
+            }
+            
+            return "\(hour):\(minute) \(type)"
+        }
+    }
 }

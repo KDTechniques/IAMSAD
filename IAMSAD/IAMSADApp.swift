@@ -27,18 +27,14 @@ struct IAMSADApp: App {
                     .ignoresSafeArea()
                 
                 Conversations_DocumentAudioPrimaryPlainBubbleView(
-                    direction: .random(),
-                    showPointer: .random(),
+                    model: .getRandomMockObject(true),
                     fileData: .init(
                         fileURLString: "",
                         fileName: "New Recording.m4a",
                         fileSize: "12 KB",
                         fileExtension: "m4a",
                         duration: .zero
-                    ),
-                    timestamp: "12:45 PM",
-                    status: .random(),
-                    shouldAnimate: .random()
+                    )
                 )
             }
             .dynamicTypeSize(...DynamicTypeSize.xLarge)

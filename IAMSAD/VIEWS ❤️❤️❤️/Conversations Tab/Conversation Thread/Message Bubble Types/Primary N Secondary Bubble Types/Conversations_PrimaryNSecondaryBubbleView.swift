@@ -11,13 +11,9 @@ struct Conversations_PrimaryNSecondaryBubbleView<T: View>: View {
     // MARK: - PROPERTIES
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
+    let model: MessageBubbleValues.MessageBubbleModel
     let primaryMediaType: ConversationMediaTypes
     let text: String
-    let timestamp: String
-    let status: ReadReceiptStatusTypes
-    let userType: MessageBubbleUserTypes
-    let showPointer: Bool
-    let shouldAnimate: Bool
     let withSecondaryContent: Bool
     let secondaryContent: (ConversationMediaTypes, CGFloat) -> T
     
@@ -40,24 +36,16 @@ struct Conversations_PrimaryNSecondaryBubbleView<T: View>: View {
     
     // MARK: - INITILAIZER
     init(
+        model: MessageBubbleValues.MessageBubbleModel,
         primaryMediaType: ConversationMediaTypes,
         text: String,
-        timestamp: String,
-        status: ReadReceiptStatusTypes,
-        userType: MessageBubbleUserTypes,
-        showPointer: Bool,
-        shouldAnimate: Bool,
         withSecondaryContent: Bool,
         @ViewBuilder secondaryContent: @escaping (ConversationMediaTypes, CGFloat) -> T = { _, _  in EmptyView()
         }
     ) {
+        self.model = model
         self.primaryMediaType = primaryMediaType
         self.text = text
-        self.timestamp = timestamp
-        self.status = status
-        self.userType = userType
-        self.showPointer = showPointer
-        self.shouldAnimate = shouldAnimate
         self.withSecondaryContent = withSecondaryContent
         self.secondaryContent = secondaryContent
     }
@@ -90,18 +78,15 @@ struct Conversations_PrimaryNSecondaryBubbleView<T: View>: View {
             case .sticker:
                 Conversations_StickerOnlyBubbleTypeView(
                     url: .init(string: "https://cdn.pixabay.com/animation/2022/10/11/09/05/09-05-26-529_512.gif"),
-                    timestamp: timestamp,
-                    userType: userType
+                    timestamp: model.timestamp,
+                    userType: .random()
                 )
                 
             default:
                 EmptyView()
             }
         } else { // Secondary + Primary Bubble Types
-            Conversations_MessageBubbleView(
-                direction: values.getDirection(userType),
-                showPointer: showPointer
-            ) {
+            Conversations_MessageBubbleView(model) {
                 VStack(alignment: vStackAlignment, spacing: 0) {
                     // MARK: - SECONDARY CONTENT
                     secondaryContent(primaryMediaType, bubbleWidth)
@@ -139,15 +124,11 @@ struct Conversations_PrimaryNSecondaryBubbleView<T: View>: View {
     ScrollView(.vertical) {
         LazyVStack {
             Conversations_PrimaryNSecondaryBubbleView(
+                model: .getRandomMockObject(),
                 primaryMediaType: .sticker,
                 text: "Hello there 👋👋👋",
-                timestamp: "06:12 PM",
-                status: .random(),
-                userType: .sender,
-                showPointer: true,
-                shouldAnimate: .random(),
                 withSecondaryContent: false
-            ) { _, _ in }
+            )
         }
     }
 }
@@ -157,11 +138,8 @@ extension Conversations_PrimaryNSecondaryBubbleView {
     // MARK: - textBased
     private var textBased: some View {
         Conversations_TextPrimaryPlainBubbleView(
-            direction: .random(),
+            model: model,
             text: text,
-            timestamp: timestamp,
-            status: status,
-            shouldAnimate: shouldAnimate,
             height: height,
             withSecondaryContent: withSecondaryContent
         )
@@ -182,10 +160,6 @@ extension Conversations_PrimaryNSecondaryBubbleView {
     
     // MARK: - timestampNReadReceipts
     private var timestampNReadReceipts: some View {
-        Conversations_BubbleEditedTimestampReadReceiptsView(
-            timestamp: timestamp,
-            status: status,
-            shouldAnimate: shouldAnimate
-        )
+        Conversations_BubbleEditedTimestampReadReceiptsView(model)
     }
 }

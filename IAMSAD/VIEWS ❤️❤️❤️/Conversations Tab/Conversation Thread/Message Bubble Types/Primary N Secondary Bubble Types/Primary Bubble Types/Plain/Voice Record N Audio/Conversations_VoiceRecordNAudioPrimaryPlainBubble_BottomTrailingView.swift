@@ -10,31 +10,25 @@ import CoreMedia
 
 struct Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView: View {
     // MARK: - PROPERTIES
+    let model: MessageBubbleValues.MessageBubbleModel
     let width: CGFloat?
     let fileSize: String
     let duration: CMTime
     let type: VoiceRecordNAudioBubbleValues.FileDatatypes
-    let timestamp: String
-    let status: ReadReceiptStatusTypes
-    let shouldAnimate: Bool
     
     // MARK: - INITIALIZER
     init(
+        model: MessageBubbleValues.MessageBubbleModel,
         width: CGFloat? = nil,
         fileSize: String,
         duration: CMTime,
-        type: VoiceRecordNAudioBubbleValues.FileDatatypes,
-        timestamp: String,
-        status: ReadReceiptStatusTypes,
-        shouldAnimate: Bool
+        type: VoiceRecordNAudioBubbleValues.FileDatatypes
     ) {
+        self.model = model
         self.width = width
         self.fileSize = fileSize
         self.duration = duration
         self.type = type
-        self.timestamp = timestamp
-        self.status = status
-        self.shouldAnimate = shouldAnimate
     }
     
     // MARK: - PRIVATE PROPERTIES
@@ -55,13 +49,11 @@ struct Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView: Vie
 // MARK: - PREVIEWS
 #Preview("Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView") {
     Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView(
+        model: .getRandomMockObject(),
         width: VoiceRecordNAudioBubbleValues.actualSpectrumWidth,
         fileSize: "19 KB",
         duration: .zero,
-        type: .random(),
-        timestamp: "12:15 PM",
-        status: .random(),
-        shouldAnimate: .random()
+        type: .random()
     )
 }
 
@@ -77,11 +69,7 @@ extension Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView {
     
     // MARK: - timeStampNReadReceipts
     private var timeStampNReadReceipts: some View {
-        Conversations_BubbleEditedTimestampReadReceiptsView(
-            timestamp: timestamp,
-            status: status,
-            shouldAnimate: shouldAnimate
-        )
+        Conversations_BubbleEditedTimestampReadReceiptsView(model)
     }
 }
 
@@ -89,7 +77,7 @@ extension View {
     // MARK: - setWidth
     @ViewBuilder
     fileprivate func setWidth(_ width: CGFloat? = nil) -> some View {
-        if let width: CGFloat {
+        if width != nil {
             self
         } else {
             self.frame(width: width)

@@ -11,27 +11,15 @@ import SDWebImageSwiftUI
 struct Conversations_SharedAudioPrimaryPlainBubbleView: View {
     
     // MARK: - PROPERTIES
-    let direction: BubbleShapeValues.Directions
-    let showPointer: Bool
-    let timestamp: String
-    let status: ReadReceiptStatusTypes
-    let shouldAnimate: Bool
+    let model: MessageBubbleValues.MessageBubbleModel
     let fileData: VoiceRecordNAudioBubbleValues.FileDataModel
     
     // MARK: - INITITILAZER
     init(
-        direction: BubbleShapeValues.Directions,
-        showPointer: Bool,
-        timestamp: String,
-        status: ReadReceiptStatusTypes,
-        shouldAnimate: Bool,
+        model: MessageBubbleValues.MessageBubbleModel,
         fileData: VoiceRecordNAudioBubbleValues.FileDataModel
     ) {
-        self.direction = direction
-        self.showPointer = showPointer
-        self.timestamp = timestamp
-        self.status = status
-        self.shouldAnimate = shouldAnimate
+        self.model = model
         self.fileData = fileData
     }
     
@@ -44,14 +32,14 @@ struct Conversations_SharedAudioPrimaryPlainBubbleView: View {
     
     // MARK: - BODY
     var body: some View {
-        Conversations_MessageBubbleView(direction: direction, showPointer: showPointer) {
+        Conversations_MessageBubbleView(model) {
             HStack(spacing: 0) {
-                if direction == .right {
-                    Conversations_SharedAudioPrimaryPlainBubble_ImageView(direction: direction)
+                if model.direction == .right {
+                    Conversations_SharedAudioPrimaryPlainBubble_ImageView(direction: model.direction)
                 }
                 
                 Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView(
-                    direction: direction,
+                    direction: model.direction,
                     actionType: action) { }
                 
                 Group {
@@ -64,13 +52,14 @@ struct Conversations_SharedAudioPrimaryPlainBubbleView: View {
                 }
                 .frame(height: values.imageSize)
                 .overlay(alignment: .bottom) { bottomContent }
-                .padding(.trailing, direction == .left ? values.actionIconsHPadding/2 : 0)
+                .padding(.trailing, model.direction == .left ? values.actionIconsHPadding/2 : 0)
                 
-                if direction == .left {
-                    Conversations_SharedAudioPrimaryPlainBubble_ImageView(direction: direction)
+                if model.direction == .left {
+                    Conversations_SharedAudioPrimaryPlainBubble_ImageView(direction: model.direction)
                 }
             }
             .messageBubbleContentDefaultPadding
+            .forwardedPaddingViewModifier(model.isForwarded)
         }
     }
 }
@@ -82,11 +71,7 @@ struct Conversations_SharedAudioPrimaryPlainBubbleView: View {
             .ignoresSafeArea()
         
         Conversations_SharedAudioPrimaryPlainBubbleView(
-            direction: .random(),
-            showPointer: .random(),
-            timestamp: "12:16 AM",
-            status: .random(),
-            shouldAnimate: .random(),
+            model: .getRandomMockObject(true),
             fileData: .init(
                 fileURLString: "",
                 fileName: "",
@@ -122,12 +107,10 @@ extension Conversations_SharedAudioPrimaryPlainBubbleView {
     // MARK: - bottomContent
     private var bottomContent: some View {
         Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView(
+            model: model,
             fileSize: fileData.fileSize,
             duration: fileData.duration,
-            type: isProcessing ? .fileSize : .duration,
-            timestamp: timestamp,
-            status: status,
-            shouldAnimate: shouldAnimate
+            type: isProcessing ? .fileSize : .duration
         )
     }
 }

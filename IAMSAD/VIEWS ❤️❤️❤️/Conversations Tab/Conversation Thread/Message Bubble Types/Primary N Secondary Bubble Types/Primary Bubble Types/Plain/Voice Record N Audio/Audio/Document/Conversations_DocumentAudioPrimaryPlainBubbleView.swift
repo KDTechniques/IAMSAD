@@ -9,41 +9,27 @@ import SwiftUI
 
 struct Conversations_DocumentAudioPrimaryPlainBubbleView: View {
     // MARK: - PROPERTIES
-    let direction: BubbleShapeValues.Directions
-    let showPointer: Bool
+    let model: MessageBubbleValues.MessageBubbleModel
     let fileData: VoiceRecordNAudioBubbleValues.FileDataModel
-    let timestamp: String
-    let status: ReadReceiptStatusTypes
-    let shouldAnimate: Bool
     
     // MARK: - INITIALIZER
     init(
-        direction: BubbleShapeValues.Directions,
-        showPointer: Bool,
-        fileData: VoiceRecordNAudioBubbleValues.FileDataModel,
-        timestamp: String,
-        status: ReadReceiptStatusTypes,
-        shouldAnimate: Bool
+        model: MessageBubbleValues.MessageBubbleModel,
+        fileData: VoiceRecordNAudioBubbleValues.FileDataModel
     ) {
-        self.direction = direction
-        self.showPointer = showPointer
+        self.model = model
         self.fileData = fileData
-        self.timestamp = timestamp
-        self.status = status
-        self.shouldAnimate = shouldAnimate
     }
-    
-    // MARK: - PRIVATE PROPERTIES
-    
     
     // MARK: - BODY
     var body: some View {
-        Conversations_MessageBubbleView(
-            direction: direction,
-            showPointer: showPointer
-        ) {
+        Conversations_MessageBubbleView(model) {
             VStack(alignment: .trailing) {
-                Conversations_DocumentAudioPrimaryPlainBubble_InfoView(direction: direction, fileData: fileData)
+                Conversations_DocumentAudioPrimaryPlainBubble_InfoView(
+                    direction: model.direction,
+                    fileData: fileData
+                )
+                
                 bottomTrailingContent
             }
             .padding(.bottom, MessageBubbleValues.innerVPadding)
@@ -58,18 +44,14 @@ struct Conversations_DocumentAudioPrimaryPlainBubbleView: View {
             .ignoresSafeArea()
         
         Conversations_DocumentAudioPrimaryPlainBubbleView(
-            direction: .left,
-            showPointer: .random(),
+            model: .getRandomMockObject(true),
             fileData: .init(
                 fileURLString: "",
                 fileName: "New Recording.m4a",
                 fileSize: "12 KB",
                 fileExtension: "m4a",
                 duration: .zero
-            ),
-            timestamp: "12:45 PM",
-            status: .random(),
-            shouldAnimate: .random()
+            )
         )
     }
 }
@@ -78,11 +60,7 @@ struct Conversations_DocumentAudioPrimaryPlainBubbleView: View {
 extension Conversations_DocumentAudioPrimaryPlainBubbleView {
     // MARK: - bottomTrailingContent
     private var bottomTrailingContent: some View {
-        Conversations_BubbleEditedTimestampReadReceiptsView(
-            timestamp: timestamp,
-            status: status,
-            shouldAnimate: shouldAnimate
-        )
-        .padding(.trailing, MessageBubbleValues.innerHPadding)
+        Conversations_BubbleEditedTimestampReadReceiptsView(model)
+            .padding(.trailing, MessageBubbleValues.innerHPadding)
     }
 }

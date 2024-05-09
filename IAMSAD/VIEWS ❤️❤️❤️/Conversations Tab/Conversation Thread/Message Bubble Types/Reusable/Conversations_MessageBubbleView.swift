@@ -12,35 +12,52 @@ struct Conversations_MessageBubbleView<T: View>: View {
     // MARK: - PROPERTIES
     @Environment(\.colorScheme) private var colorScheme
     
-    let direction: BubbleShapeValues.Directions
-    let showPointer: Bool
-    let content: () -> T
+    let model: MessageBubbleValues.MessageBubbleModel
+    let content: T
     
+    // MARK: - PRIVATE PROPERTIES
     let values = MessageBubbleValues.self
     
     // MARK: - INITIALIZER
-    init(
-        direction: BubbleShapeValues.Directions,
-        showPointer: Bool,
-        @ViewBuilder content: @escaping () -> T
-    ) {
-        self.direction = direction
-        self.showPointer = showPointer
-        self.content = content
+    init(_ model: MessageBubbleValues.MessageBubbleModel, @ViewBuilder content: () -> T) {
+        self.model = model
+        self.content = content()
     }
     
     // MARK: - BODY
     var body: some View {
-        content()
-            .padding([direction == .left ? .leading : .trailing], values.bubbleShapeValues.pointerWidth)
-            .background(direction == .right ? .bubbleSender : .bubbleReceiver)
-            .clipShape(Conversations_BubbleShape(direction: direction, showPointer: showPointer))
-            .conversationsBubbleShadowViewModifier(colorScheme) {
-                AnyShape(Conversations_BubbleShape(direction: direction, showPointer: showPointer))
-            }
-            .frame(maxWidth: .infinity, alignment: direction == .left ? .leading : .trailing)
-            .padding([direction == .left ? .leading : .trailing], values.screenToBubblePadding)
-            .padding([direction == .left ? .trailing : .leading], values.maxWidthLimitationPadding)
+        VStack(alignment: .leading, spacing: 0) {
+            if model.isForwarded { Conversations_ForwardedTextView() }
+            content
+        }
+        .padding(
+            [model.direction == .left ? .leading : .trailing],
+            values.bubbleShapeValues.pointerWidth
+        )
+        .background(model.direction == .right ? .bubbleSender : .bubbleReceiver)
+        .clipShape(
+            Conversations_BubbleShape(
+                direction: model.direction,
+                showPointer: model.showPointer
+            )
+        )
+        .conversationsBubbleShadowViewModifier(colorScheme) {
+            AnyShape(
+                Conversations_BubbleShape(
+                    direction: model.direction,
+                    showPointer: model.showPointer
+                )
+            )
+        }
+        .frame(maxWidth: .infinity, alignment: model.direction == .left ? .leading : .trailing)
+        .padding(
+            [model.direction == .left ? .leading : .trailing],
+            values.screenToBubblePadding
+        )
+        .padding(
+            [model.direction == .left ? .trailing : .leading],
+            values.maxWidthLimitationPadding
+        )
     }
 }
 
@@ -50,15 +67,12 @@ struct Conversations_MessageBubbleView<T: View>: View {
         Color.conversationBackground
             .ignoresSafeArea()
         
-        Conversations_MessageBubbleView(direction: .right, showPointer: true) {
+        let obj: MessageBubbleValues.MessageBubbleModel = .getRandomMockObject(true, true)
+        Conversations_MessageBubbleView(obj) {
             HStack {
-                Text("Hi there 👋👋👋 ...") /// insert another '.' and the bubble will expand to a second line.
+                Text("Hi there 👋👋👋") // don't add any more text as this will not go to a second line properly here. For testing purposes only.
                 
-                Conversations_BubbleEditedTimestampReadReceiptsView(
-                    timestamp: "12:35 PM",
-                    status: .seen,
-                    shouldAnimate: false
-                )
+                Conversations_BubbleEditedTimestampReadReceiptsView(obj)
             }
             .messageBubbleContentDefaultPadding
         }
@@ -66,7 +80,10 @@ struct Conversations_MessageBubbleView<T: View>: View {
         Rectangle()
             .fill(Color.debug)
             .frame(width: MessageBubbleValues.maxContentWidth, height: 5)
-            .frame(width: screenWidth, alignment: .trailing)
-            .offset(x: -MessageBubbleValues.screenToBubblePadding, y: 30)
+            .frame(width: screenWidth, alignment: obj.direction == .right ? .trailing : .leading)
+            .offset(
+                x: MessageBubbleValues.screenToBubblePadding * (obj.direction == .right ? -1 : 1),
+                y: 40
+            )
     }
 }

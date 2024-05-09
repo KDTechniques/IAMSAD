@@ -328,6 +328,12 @@ extension View {
             .padding(.vertical, values.innerVPadding)
             .padding(.horizontal, values.innerHPadding)
     }
+    
+    // MARK: - forwardedPaddingViewModifier
+    func forwardedPaddingViewModifier(_ isForwarded: Bool, fraction: CGFloat = 2) -> some View {
+        self
+            .padding(.top, isForwarded ? -MessageBubbleValues.innerVPadding/fraction : 0)
+    }
 }
 
 // MARK: - OTHER
