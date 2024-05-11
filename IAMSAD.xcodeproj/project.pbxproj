@@ -492,6 +492,7 @@
 		0BDE95272BCE53D5003A211E /* SecondaryBubbleValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDE95262BCE53D5003A211E /* SecondaryBubbleValues.swift */; };
 		0BE0AEA52BA1039600171298 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 0BE0AEA42BA1039600171298 /* SwiftUIIntrospect */; };
 		0BE0F7EF2B71414B00BD01BB /* RepliesTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0F7EE2B71414B00BD01BB /* RepliesTestingView.swift */; };
+		0BE1B1BE2BEFD67A006A1E51 /* CollageBubbleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE1B1BD2BEFD67A006A1E51 /* CollageBubbleModel.swift */; };
 		0BE6C0602BC9360900BAE66B /* Conversations_StickerPlaceholderShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6C05F2BC9360900BAE66B /* Conversations_StickerPlaceholderShapeView.swift */; };
 		0BE6C0632BC941CC00BAE66B /* DownloadStatusTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6C0622BC941CC00BAE66B /* DownloadStatusTypes.swift */; };
 		0BE75A662B99F741003C43DA /* Profile_CoverPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE75A652B99F741003C43DA /* Profile_CoverPhotoView.swift */; };
@@ -988,6 +989,7 @@
 		0BD9457E2B743D7F0091E845 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0BDE95262BCE53D5003A211E /* SecondaryBubbleValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryBubbleValues.swift; sourceTree = "<group>"; };
 		0BE0F7EE2B71414B00BD01BB /* RepliesTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepliesTestingView.swift; sourceTree = "<group>"; };
+		0BE1B1BD2BEFD67A006A1E51 /* CollageBubbleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageBubbleModel.swift; sourceTree = "<group>"; };
 		0BE6C05F2BC9360900BAE66B /* Conversations_StickerPlaceholderShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_StickerPlaceholderShapeView.swift; sourceTree = "<group>"; };
 		0BE6C0622BC941CC00BAE66B /* DownloadStatusTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadStatusTypes.swift; sourceTree = "<group>"; };
 		0BE75A652B99F741003C43DA /* Profile_CoverPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_CoverPhotoView.swift; sourceTree = "<group>"; };
@@ -1441,6 +1443,7 @@
 				0B4164B22BC9A52400B92311 /* ConversationMediaTypes.swift */,
 				0BB1F9C12BCA819100719F12 /* ReadReceiptStatusTypes.swift */,
 				0B83B8712BE3C14800078EC2 /* VoiceRecordBubbleStatusTypes.swift */,
+				0BE1B1BD2BEFD67A006A1E51 /* CollageBubbleModel.swift */,
 				0B1AF16D2BD510C800E3825C /* SocialMediaTypes.swift */,
 				0B1AF16F2BD5185800E3825C /* TikTokInfoModel.swift */,
 				0B1AF1712BD52B9200E3825C /* InstagramInfoModel.swift */,
@@ -2557,6 +2560,7 @@
 				0B0C797F2BE2BD29007C24C4 /* Conversations_DeletedPrimaryPlainBubbleView.swift in Sources */,
 				0BCAA0D82BE82F5100045125 /* Conversations_SharedAudioPrimaryPlainBubble_ImageView.swift in Sources */,
 				0BCC7B132BE8C868009F35CD /* Conversations_DocumentAudioPrimaryPlainBubble_ProcessingView.swift in Sources */,
+				0BE1B1BE2BEFD67A006A1E51 /* CollageBubbleModel.swift in Sources */,
 				0B4434662B527C200041E8BF /* OTPVerificationView.swift in Sources */,
 				0B6E745B2B5A9A87008B4CFB /* Utilities.swift in Sources */,
 				0B7A99CC2BAC5F4800D5D3E2 /* Conversation_CellMoreSheetView.swift in Sources */,

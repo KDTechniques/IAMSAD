@@ -24,19 +24,21 @@ struct IAMSADApp: App {
         WindowGroup {
             ZStack {
                 Color.conversationBackground
-                    .ignoresSafeArea()
                 
-                Conversations_DocumentAudioPrimaryPlainBubbleView(
+                Image(.whatsappchatbackgroundimage)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: screenWidth, height: screenHeight)
+                    .clipped()
+                    .ignoresSafeArea()
+                    .opacity(0.25)
+                
+                Conversations_CollagePlainBubbleView(
                     model: .getRandomMockObject(true),
-                    fileData: .init(
-                        fileURLString: "",
-                        fileName: "New Recording.m4a",
-                        fileSize: "12 KB",
-                        fileExtension: "m4a",
-                        duration: .zero
-                    )
+                    dataArray: CollageBubbleModel.getMockArray()
                 )
             }
+            .ignoresSafeArea()
             .dynamicTypeSize(...DynamicTypeSize.xLarge)
             .environmentObject(avatar)
             .environmentObject(avatarSheetVM)

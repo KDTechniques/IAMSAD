@@ -45,13 +45,7 @@ struct Conversations_DocumentAudioPrimaryPlainBubbleView: View {
         
         Conversations_DocumentAudioPrimaryPlainBubbleView(
             model: .getRandomMockObject(true),
-            fileData: .init(
-                fileURLString: "",
-                fileName: "New Recording.m4a",
-                fileSize: "12 KB",
-                fileExtension: "m4a",
-                duration: .zero
-            )
+            fileData: .getRandomObject()
         )
     }
 }

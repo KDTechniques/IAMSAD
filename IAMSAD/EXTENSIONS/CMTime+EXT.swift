@@ -23,4 +23,9 @@ extension CMTime {
             return String(format: "0:%02i", seconds)
         }
     }
+    
+    // MARK: - getRandomCTTime
+    static func getRandomCTTime() -> Self {
+        .init(seconds:  .random(in: 1...360), preferredTimescale: 1)
+    }
 }

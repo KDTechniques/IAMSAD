@@ -10,6 +10,7 @@ import SwiftUI
 struct Conversations_BubbleEditedTimestampReadReceiptsView: View {
     // MARK: - PROPERTIES
     let model: MessageBubbleValues.MessageBubbleModel
+    let color: Color?
     
     let values = MessageBubbleValues.self
     var hSpacing: CGFloat {
@@ -17,8 +18,9 @@ struct Conversations_BubbleEditedTimestampReadReceiptsView: View {
     }
     
     // MARK: - INITIALIIZER
-    init(_ model: MessageBubbleValues.MessageBubbleModel) {
+    init(_ model: MessageBubbleValues.MessageBubbleModel, color: Color? = nil) {
         self.model = model
+        self.color = color
     }
     
     // MARK: - BODY
@@ -29,12 +31,13 @@ struct Conversations_BubbleEditedTimestampReadReceiptsView: View {
                     .padding(.trailing, values.editedToTimestampTrailingPadding)
             }
             
-            Conversations_BubbleTimeStampView(model.timestamp)
+            Conversations_BubbleTimeStampView(model.timestamp, color: color)
             
             if model.status != .none, model.direction == .right {
                 Conversations_ReadReceiptShapesView(
                     status: model.status,
-                    shouldAnimate: model.shouldAnimate
+                    shouldAnimate: model.shouldAnimate,
+                    color: color
                 )
             }
         }

@@ -11,7 +11,7 @@ extension CaseIterable {
     // MARK: - random
     static func random() -> Self {
         let tempArray: [Self] = Array(Self.allCases)
-        let randomIndex: Int = Int.random(in: 0...tempArray.count-1)
+        let randomIndex: Int = .random(in: 0...tempArray.count-1)
         
         return tempArray[randomIndex]
     }
