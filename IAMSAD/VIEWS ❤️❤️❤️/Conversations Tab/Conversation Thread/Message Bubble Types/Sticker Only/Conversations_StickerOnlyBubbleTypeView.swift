@@ -80,9 +80,6 @@ struct Conversations_StickerOnlyBubbleTypeView: View {
                 )
                 .padding(.top, screenHeight/2)
             }
-            .introspect(.scrollView, on: .iOS(.v17)) { scrollview in
-                print("Is Tracking: \(scrollview.isTracking)")
-            }
         }
     }
     .previewViewModifier

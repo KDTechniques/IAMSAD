@@ -13,14 +13,6 @@ struct VoiceRecordNAudioBubbleValues {
     enum PlaybackSpeedTypes: String, CaseIterable { case _1x = "1", _1_5x = "1.5", _2x = "2" }
     enum FileDatatypes: CaseIterable { case fileSize, duration }
     
-    struct FileDataModel {
-        let fileURLString: String
-        let fileName: String
-        let fileSize: String
-        let fileExtension: String
-        let duration: CMTime
-    }
-    
     static let actionIconsFrameWidth: CGFloat = 15
     static let actionIconsHPadding: CGFloat = 16
     static let imageSize: CGFloat = 45
@@ -71,5 +63,37 @@ struct VoiceRecordNAudioBubbleValues {
     
     static func getImageOffsetX(_ direction: BubbleShapeValues.Directions) -> CGFloat {
         strokedMicImageWidth/3 * (direction == .right ? -1 : 1)
+    }
+    
+    // MARK: - FileDataModel
+    struct FileDataModel {
+        // MARK: - PROPERTIES
+        let fileURLString: String
+        let fileName: String
+        let fileSize: String
+        let fileExtension: String
+        let duration: CMTime
+        
+        // MARK: - INITIALIZER
+        init(fileURLString: String, fileName: String, fileSize: String, fileExtension: String, duration: CMTime) {
+            self.fileURLString = fileURLString
+            self.fileName = fileName
+            self.fileSize = fileSize
+            self.fileExtension = fileExtension
+            self.duration = duration
+        }
+        
+        // MARK: - FUNCTIONS
+        
+        // MARK: - getRandomObject
+        static func getRandomObject() -> Self {
+            .init(
+                fileURLString: "",
+                fileName: "New Recording \(Int.random(in: 2...10))",
+                fileSize: "\(Int.random(in: 10...500)) KB",
+                fileExtension: ["mp3", "m4a", "wav", "wma", "flac", "aac", "ogg", "amr"].randomElement()!,
+                duration: .getRandomCTTime()
+            )
+        }
     }
 }

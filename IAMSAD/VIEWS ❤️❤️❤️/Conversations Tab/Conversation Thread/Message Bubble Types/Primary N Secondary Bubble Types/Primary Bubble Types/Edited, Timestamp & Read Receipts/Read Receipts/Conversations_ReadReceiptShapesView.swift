@@ -14,19 +14,21 @@ struct Conversations_ReadReceiptShapesView: View {
     
     let status: ReadReceiptStatusTypes
     let shouldAnimate: Bool
+    let color: Color?
     
     var values: ReadReceiptShapesValues { .init(dynamicTypeSize: dynamicTypeSize) }
     @State private var trimValue: CGFloat = 0
     var strokeColor: Color {
         status == .seen
         ? colorScheme == .dark ? .accent : .checkmarkSeenLight
-        : .primary.opacity(colorScheme == .dark ? 0.3 : 0.37)
+        : color ?? .primary.opacity(colorScheme == .dark ? 0.3 : 0.37)
     }
     
     // MARK: - INITIALIZER
-    init(status: ReadReceiptStatusTypes, shouldAnimate: Bool = false) {
+    init(status: ReadReceiptStatusTypes, shouldAnimate: Bool = false, color: Color? = nil) {
         self.status = status
         self.shouldAnimate = shouldAnimate
+        self.color = color
     }
     
     // MARK: - BODY

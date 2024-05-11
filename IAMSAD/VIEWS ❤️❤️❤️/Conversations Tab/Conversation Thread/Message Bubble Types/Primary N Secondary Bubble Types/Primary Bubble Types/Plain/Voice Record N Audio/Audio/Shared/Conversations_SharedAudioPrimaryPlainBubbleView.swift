@@ -72,13 +72,7 @@ struct Conversations_SharedAudioPrimaryPlainBubbleView: View {
         
         Conversations_SharedAudioPrimaryPlainBubbleView(
             model: .getRandomMockObject(true),
-            fileData: .init(
-                fileURLString: "",
-                fileName: "",
-                fileSize: "16 KB",
-                fileExtension: "",
-                duration: .zero
-            )
+            fileData: .getRandomObject()
         )
     }
     .previewViewModifier

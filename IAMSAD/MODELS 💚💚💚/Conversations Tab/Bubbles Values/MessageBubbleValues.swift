@@ -96,13 +96,13 @@ struct MessageBubbleValues {
         }
         
         // MARK: - getRandomTimestamp
-        private static func getRandomTimestamp() -> String {
+        static func getRandomTimestamp() -> String {
             enum Types: String, CaseIterable { case am, pm }
             
             let type: String = Types.random().rawValue.uppercased()
             let hour: Int = .random(in: 1...12)
             var minute: String {
-                let value: Int = Int.random(in: 00...59)
+                let value: Int = .random(in: 00...59)
                 
                 return value < 10 ? "0\(value)" : value.description
             }

@@ -62,7 +62,7 @@ extension UserNameTextFieldView {
             .onTapGesture {
                 // remove this tap gesture later...
                 let array = UserNameStatusTypes.allCases
-                let randomNumber = Int.random(in: 0..<array.count)
+                let randomNumber: Int = .random(in: 0..<array.count)
                 userNameStatus = array[randomNumber]
             }
     }

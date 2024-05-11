@@ -102,13 +102,7 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
             model: .getRandomMockObject(true),
             imageURLString: "https://www.akc.org/wp-content/uploads/2018/08/nervous_lab_puppy-studio-portrait-lg-500x500.jpg",
             voiceRecordURLString: "",
-            fileData: .init(
-                fileURLString: "",
-                fileName: "",
-                fileSize: "25 KB",
-                fileExtension: "",
-                duration: .zero
-            )
+            fileData: .getRandomObject()
         )
     }
     .ignoresSafeArea()
