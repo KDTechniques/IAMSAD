@@ -11,6 +11,8 @@ import SDWebImageSwiftUI
 // To qualify as a collage, there must be at least 4 photos arranged in order.
 struct Conversations_CollagePlainBubbleView: View {
     // MARK: - PROPERTIES
+    @Environment(\.colorScheme) private var colorScheme
+    
     let model: MessageBubbleValues.MessageBubbleModel
     let dataArray: [CollageBubbleModel]
     
@@ -26,6 +28,8 @@ struct Conversations_CollagePlainBubbleView: View {
     let blur: CGFloat = 5
     var imageCornerRadius: CGFloat { bubbleShapeValues.cornerRadius - values.secondaryOuterPadding.1 }
     var imageSize: CGFloat { (values.maxContentWidth - (values.secondaryOuterPadding.1 * 3)) / 2 }
+    let circleSize: CGFloat = 54
+    let stopRectangleSize: CGFloat = 10
     
     // MARK: - BODY
     var body: some View {
@@ -42,6 +46,13 @@ struct Conversations_CollagePlainBubbleView: View {
                     }
                     
                 }
+            }
+            .overlay {
+                StandardMediaCircularProgressView(value: 0.5, showProgress: .random()) {
+                    
+                }
+                
+                collageInfoCapsule
             }
             .padding(values.secondaryOuterPadding.1)
             .padding(.top, model.isForwarded ? values.innerVPadding : 0)
@@ -110,6 +121,28 @@ extension Conversations_CollagePlainBubbleView {
             .padding(.horizontal, values.innerHPadding/1.5)
             .padding(.bottom, values.innerVPadding/1.3)
         }
+    }
+    
+    // MARK: - collageInfoCapsule
+    private var collageInfoCapsule: some View {
+        HStack(spacing: 20) {
+            StandardMediaCircularProgress_ArrowDownView()
+            
+            VStack(spacing: 0) {
+                Text("669 KB")
+                    .fontWeight(.medium)
+                
+                Text("\(dataArray.count) items")
+                    .fontWeight(.light)
+            }
+        }
+        .font(.footnote)
+        .foregroundStyle(.arrowDown)
+        .frame(height: StandardMediaCircularProgressValues.frameSize)
+        .padding(.horizontal, 23.5)
+        .offset(x: -4)
+        .standardCircularProgressBackgroundViewModifier(colorScheme)
+        .clipShape(Capsule())
     }
     
     // MARK: - FUNCTIONS

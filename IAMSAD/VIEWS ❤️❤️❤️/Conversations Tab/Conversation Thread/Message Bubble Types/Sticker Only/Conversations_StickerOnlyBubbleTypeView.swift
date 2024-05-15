@@ -24,9 +24,6 @@ struct Conversations_StickerOnlyBubbleTypeView: View {
         userType == .sender ? .trailing : .leading
     }
     let size: CGFloat = 138
-    let circleSize: CGFloat = 54
-    let arrowDownSize: CGFloat = 14
-    let stopRectangleSize: CGFloat = 10
     @State private var imageLoadOperation: SDWebImageOperation? = nil
     @State private var progress: CGFloat = 0
     @State private var status: DownloadStatusTypes = .none
@@ -74,7 +71,7 @@ struct Conversations_StickerOnlyBubbleTypeView: View {
             
             ScrollView(.vertical) {
                 Conversations_StickerOnlyBubbleTypeView(
-                    url: .init(string: "https://cdn.pixabay.com/animation/2022/10/11/09/05/09-05-26-529_512.gif"),
+                    url: .init(string: "https://i.pinimg.com/originals/5b/54/39/5b543923641d0ef1df257706e19ee255.gif"),
                     timestamp: "10:44 PM",
                     userType: .receiver
                 )
@@ -102,52 +99,25 @@ extension Conversations_StickerOnlyBubbleTypeView {
             .clipped()
     }
     
-    // MARK: - circle
-    private var circle: some View {
-        Circle()
-            .fill(.arrowDownCircle)
-    }
-    
-    // MARK: - circularProgress
-    private var circularProgress: some View {
-        Group {
-            Circle()
-                .trim(from: 0, to: progress)
-                .stroke(.arrowDown, style: .init(lineWidth: 2, lineCap: .round))
-                .padding(3)
-                .rotationEffect(.degrees(-90))
-            
-            RoundedRectangle(cornerRadius: 2)
-                .fill(.arrowDown)
-                .frame(width: stopRectangleSize, height: stopRectangleSize)
-        }
-        .onTapGesture { cancelImageDownload() }
-    }
-    
-    // MARK: - arrowDown
-    private var arrowDown: some View {
-        Image(systemName: "arrow.down")
-            .resizable()
-            .scaledToFit()
-            .frame(width: arrowDownSize, height: arrowDownSize)
-            .fontWeight(.semibold)
-            .foregroundStyle(.arrowDown)
-            .onTapGesture { startImageDownload() }
-    }
-    
     // MARK: - placeholder
+    @ViewBuilder
     private var placeholder: some View {
+        var showProgress: Bool {
+            switch status {
+            case .onProgress:
+                true
+            case .none, .failure:
+                false
+            default:
+                false
+            }
+        }
+        
         Conversations_StickerPlaceholderShapeView()
             .overlay {
-                circle
-                    .overlay {
-                        if status == .onProgress {
-                            circularProgress
-                        } else if status == .none || status == .failure {
-                            arrowDown
-                        }
-                    }
-                    .frame(width: circleSize, height: circleSize)
+                StandardMediaCircularProgressView(value: progress, showProgress: showProgress) {
+                    showProgress ? cancelImageDownload() : startImageDownload()
+                }
             }
     }
     

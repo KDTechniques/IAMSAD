@@ -334,6 +334,15 @@ extension View {
         self
             .padding(.top, isForwarded ? -MessageBubbleValues.innerVPadding/fraction : 0)
     }
+    
+    // MARK: - standardCircularProgressBackgroundViewModifier
+    nonisolated
+    func standardCircularProgressBackgroundViewModifier(_ colorScheme: ColorScheme) -> some View {
+        self
+            .background(.white.opacity(colorScheme == .dark ? 0.8 : 0.5))
+            .background(.ultraThinMaterial)
+        
+    }
 }
 
 // MARK: - OTHER

@@ -24,7 +24,8 @@ struct Conversations_VoiceRecordBadgeView: View {
     // MARK: - BODY
     var body: some View {
         HStack(spacing: values.mediaTypeIconToTextHPadding) {
-            Image(systemName: "mic.fill")
+            Image(.mic)
+                .renderingMode(.template)
                 .resizable()
                 .scaledToFit()
                 .foregroundStyle(.mic)
