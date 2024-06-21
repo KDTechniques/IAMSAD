@@ -11,6 +11,8 @@ import SDWebImageSwiftUI
 // To qualify as a collage, there must be at least 4 photos arranged in order.
 struct Conversations_CollagePlainBubbleView: View {
     // MARK: - PROPERTIES
+    @Environment(\.colorScheme) private var colorScheme
+    
     let model: MessageBubbleValues.MessageBubbleModel
     let dataArray: [CollageBubbleModel]
     
@@ -23,9 +25,16 @@ struct Conversations_CollagePlainBubbleView: View {
     // MARK: - PRIVATE PROPERTIES
     let values = MessageBubbleValues.self
     let bubbleShapeValues = BubbleShapeValues.self
-    let blur: CGFloat = 5
+    let blur: CGFloat = 4
     var imageCornerRadius: CGFloat { bubbleShapeValues.cornerRadius - values.secondaryOuterPadding.1 }
     var imageSize: CGFloat { (values.maxContentWidth - (values.secondaryOuterPadding.1 * 3)) / 2 }
+    let circleSize: CGFloat = 54
+    let stopRectangleSize: CGFloat = 10
+    
+    @State private var modifiedDataArray: [CollageBubbleModel.CollageBubbleCacheModel] = []
+    var isAnyNonExist: Bool { modifiedDataArray.contains(where: { !$0.isExist }) }
+    @State private var downloadStatus: DownloadStatusTypes = .none
+    @State private var imageLoadOperationsArray: [SDWebImageOperation?] = []
     
     // MARK: - BODY
     var body: some View {
@@ -35,6 +44,7 @@ struct Conversations_CollagePlainBubbleView: View {
                     HStack(spacing: values.secondaryOuterPadding.1) {
                         ForEach(0...1, id: \.self) { index2 in
                             let index: Int = (index1*2) + index2
+                            
                             image(index)
                                 .overlay { overlayCount(index) }
                                 .overlay(alignment: .bottom) { bottomContent(index) }
@@ -43,27 +53,59 @@ struct Conversations_CollagePlainBubbleView: View {
                     
                 }
             }
+            .overlay {
+                if isAnyNonExist {
+                    DownloadableInfoCapsuleProgressView(
+                        isCompressed: progressCompressionHandler(),
+                        totalSize: Utilities.formatFileSize(getDownloadableTotalSize()),
+                        itemsCount: dataArray.count
+                    ) { startDownloadInQueue() } cancelAction: { cancelAllDownloads() }
+                }
+            }
             .padding(values.secondaryOuterPadding.1)
             .padding(.top, model.isForwarded ? values.innerVPadding : 0)
         }
+        .onAppear { cacheNFileExistenceChecker() }
     }
 }
 
 // MARK: - PREVIEWS
 #Preview("Conversations_CollagePlainBubbleView") {
-    Conversations_CollagePlainBubbleView(
-        model: .getRandomMockObject(true),
-        dataArray: CollageBubbleModel.getMockArray()
-    )
+    ZStack {
+        Color.conversationBackground.ignoresSafeArea()
+        
+        Image(.whatsappchatbackgroundimage)
+            .resizable()
+            .scaledToFill()
+            .frame(width: screenWidth, height: screenHeight)
+            .clipped()
+            .opacity(0.3)
+        
+        Conversations_CollagePlainBubbleView(
+            model: .getRandomMockObject(true),
+            dataArray: CollageBubbleModel.getMockArray()
+        )
+    }
     .previewViewModifier
 }
 
 // MARK: - EXTENSIONS
 extension Conversations_CollagePlainBubbleView {
     // MARK: - image
+    @ViewBuilder
     private func image(_ index: Int) -> some View {
+        var urlString: String {
+            if modifiedDataArray.isEmpty {
+                return dataArray[index].urlString
+            } else {
+                let obj: CollageBubbleModel.CollageBubbleCacheModel = modifiedDataArray[index]
+                
+                return obj.isExist ? obj.urlString : obj.placeholderImageURLString
+            }
+        }
+        
         WebImage(
-            url: .init(string: dataArray[index].urlString),
+            url: .init(string: urlString),
             options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
         )
         .resizable()
@@ -88,7 +130,7 @@ extension Conversations_CollagePlainBubbleView {
     // MARK: - mediaIcon
     @ViewBuilder
     private func mediaIcon(_ index: Int) -> some View {
-        if dataArray[index].type == .video {
+        if dataArray[index].mediaType == .video {
             Image(systemName: "video.fill")
                 .font(values.timestampFont)
         }
@@ -116,11 +158,160 @@ extension Conversations_CollagePlainBubbleView {
     
     // MARK: - getBlur
     private func getBlur(_ index: Int) -> CGFloat {
-        index == 3 && dataArray.count != 4 ? blur : 0
+        modifiedDataArray.contains(where: { !$0.isExist })
+        ? blur
+        : index == 3 && dataArray.count != 4 ? blur : 0
     }
     
     // MARK: - getImageSize
     private func getImageSize(_ index: Int) -> CGFloat {
-        index == 3 && dataArray.count != 4 ? imageSize + blur*2 : imageSize
+        let expandSize: CGFloat = imageSize + blur*2
+        
+        return modifiedDataArray.contains(where: { !$0.isExist })
+        ? expandSize
+        : index == 3 && dataArray.count != 4 ? expandSize : imageSize
+    }
+    
+    // MARK: - cacheNFileExistenceChecker
+    private func cacheNFileExistenceChecker() {
+        modifiedDataArray = dataArray.map { model in
+            CollageBubbleModel.CollageBubbleCacheModel(
+                mediaType: model.mediaType,
+                urlType: .serverURL,
+                isExist: Utilities.isCached(.init(string: model.urlString)),
+                urlString: model.urlString,
+                placeholderImageURLString: model.placeholderImageURLString,
+                mediaSize: model.mediaSize
+            )
+        }
+    }
+    
+    // MARK: - getDownloadableTotalSize
+    private func getDownloadableTotalSize() -> UInt64 {
+        modifiedDataArray
+            .filter({ !$0.isExist })
+            .map({ $0.mediaSize })
+            .reduce(0, +)
+    }
+    
+    // MARK: - expansionTriggerHandler
+    private func progressCompressionHandler() -> Binding<Bool> {
+        downloadStatus == .onProgress ? .constant(true) : .constant(false)
+    }
+    
+    // MARK: - startDownloadInQueue
+    private func startDownloadInQueue() {
+        print("Download started in a queue.")
+        setStatus(.onProgress)
+        // start the downloading all the image files in a queue here...
+    }
+    
+    // MARK: - cancelAllDownloads
+    private func cancelAllDownloads() {
+        print("All the downlods has been cancelled.")
+        setStatus(.failure)
+    }
+    
+    // MARK: - startImageDownload
+    private func startImageDownload(urlString: String) {
+        let imageLoadOperation: SDWebImageOperation? = SDWebImageManager.shared.loadImage(
+            with: .init(string: urlString),
+            options: [.retryFailed, .highPriority],
+            progress: {_, _, _ in }, completed: { image, data, error, _, finished, imageURL in
+                DispatchQueue.main.async {
+                    if let _ = image, error == nil, finished {
+                        // Save  the image data to local file directory and return the file directory url
+                        
+                        modifiedDataArray.removeAll(where: { $0.urlString == urlString })
+                    }
+                }
+            }
+        )
+        
+        imageLoadOperationsArray.append(imageLoadOperation)
+        
+    }
+    
+    // MARK: - setStatus
+    private func setStatus(_ status: DownloadStatusTypes) {
+        withAnimation(.smooth(duration: 1)) {
+            downloadStatus = status
+        }
+    }
+}
+
+
+
+
+struct DownloadableInfoCapsuleProgressView: View {
+    // MARK: - PROPERTIES
+    @Environment(\.colorScheme) private var colorScheme
+    
+    @Binding var isCompressed: Bool
+    let totalSize: String
+    let itemsCount: Int
+    let defaultAction: () -> Void
+    let cancelAction: () -> Void
+    
+    // MARK: - PRIVATE PROPERTIES
+    let progressValues = StandardMediaCircularProgressValues.self
+    var circleSize: CGFloat { progressValues.frameSize }
+    var animation: Animation { progressValues.expandableAnimation }
+    
+    // MARK: - INITIALIZER
+    init(
+        isCompressed: Binding<Bool>,
+        totalSize: String,
+        itemsCount: Int,
+        defaultAction: @escaping () -> Void,
+        cancelAction:  @escaping () -> Void
+    ) {
+        _isCompressed = isCompressed
+        self.totalSize = totalSize
+        self.itemsCount = itemsCount
+        self.defaultAction = defaultAction
+        self.cancelAction = cancelAction
+    }
+    
+    // MARK: - BODY
+    var body: some View {
+        ZStack(alignment: isCompressed ? .center : .leading) {
+            VStack(alignment: .leading, spacing: 0) {
+                Text(totalSize)
+                    .fontWeight(.medium)
+                    .fixedSize()
+                
+                Text("\(itemsCount) items")
+                    .fontWeight(.light)
+                    .fixedSize()
+            }
+            .opacity(isCompressed ? 0 : 1)
+            .padding(.leading, isCompressed ? 0 : circleSize)
+            .padding(.trailing, isCompressed ? 0 : circleSize/2)
+            .onTapGesture { handleTapGesture() }
+            
+            StandardMediaCircularProgressView(
+                value: 0.75,
+                showProgress: isCompressed,
+                rotateProgress: true,
+                withBackground: false
+            ) { handleTapGesture() }
+        }
+        .font(.footnote)
+        .foregroundStyle(.arrowDown)
+        .frame(width: isCompressed ? circleSize : nil)
+        .standardCircularProgressBackgroundViewModifier(colorScheme)
+        .clipShape(Capsule())
+        .animation(animation, value: isCompressed)
+    }
+}
+
+// MARK: - EXTENSIONS
+extension DownloadableInfoCapsuleProgressView {
+    // MARK: - FUNCTIONS
+    
+    // MARK: - handleTapGesture
+    private func handleTapGesture() {
+        isCompressed ? cancelAction() : defaultAction()
     }
 }

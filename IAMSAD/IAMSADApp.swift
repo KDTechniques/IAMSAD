@@ -30,8 +30,7 @@ struct IAMSADApp: App {
                     .scaledToFill()
                     .frame(width: screenWidth, height: screenHeight)
                     .clipped()
-                    .ignoresSafeArea()
-                    .opacity(0.25)
+                    .opacity(0.3)
                 
                 Conversations_CollagePlainBubbleView(
                     model: .getRandomMockObject(true),

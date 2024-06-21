@@ -334,6 +334,21 @@ extension View {
         self
             .padding(.top, isForwarded ? -MessageBubbleValues.innerVPadding/fraction : 0)
     }
+    
+    // MARK: - standardCircularProgressBackgroundViewModifier
+    @ViewBuilder nonisolated
+    func standardCircularProgressBackgroundViewModifier(
+        _ colorScheme: ColorScheme,
+        _ withBackground: Bool = true
+    ) -> some View {
+        if withBackground {
+            self
+                .background(.white.opacity(colorScheme == .dark ? 0.8 : 0.5))
+                .background(.ultraThinMaterial)
+        } else {
+            self
+        }
+    }
 }
 
 // MARK: - OTHER

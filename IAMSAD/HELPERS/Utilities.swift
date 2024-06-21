@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVFoundation
+import SDWebImageSwiftUI
 
 struct Utilities {
     // MARK: - getThumbnailFrom
@@ -175,5 +176,28 @@ struct Utilities {
         }
         
         return modifiedText
+    }
+    
+    // MARK: - isCached
+    static func isCached(_ url: URL?) -> Bool {
+        let key: String? = SDWebImageManager.shared.cacheKey(for: url)
+        return SDImageCache.shared.diskImageDataExists(withKey: key)
+    }
+    
+    // MARK: - formatFileSize
+    static func formatFileSize(_ fileSizeBytes: UInt64) -> String {
+        let units: [String] = ["Bytes", "KB", "MB", "GB"]
+        let base: Double = 1024.0
+        var fileSize = Double(fileSizeBytes)
+        var unitIndex = 0
+        
+        while fileSize >= base, unitIndex < units.count - 1 {
+            fileSize /= base
+            unitIndex += 1
+        }
+        
+        let formattedSize = String(format: "%.0f %@", fileSize, units[unitIndex])
+        
+        return formattedSize
     }
 }

@@ -19,14 +19,10 @@ struct Conversations_StickerOnlyBubbleTypeView: View {
     let timestamp: String
     let userType: MessageBubbleUserTypes
     
+    // MARK: - PRIVATE PROPERTIES
     let values = MessageBubbleValues.self
-    var alignment: Alignment {
-        userType == .sender ? .trailing : .leading
-    }
+    var alignment: Alignment { userType == .sender ? .trailing : .leading }
     let size: CGFloat = 138
-    let circleSize: CGFloat = 54
-    let arrowDownSize: CGFloat = 14
-    let stopRectangleSize: CGFloat = 10
     @State private var imageLoadOperation: SDWebImageOperation? = nil
     @State private var progress: CGFloat = 0
     @State private var status: DownloadStatusTypes = .none
@@ -42,7 +38,7 @@ struct Conversations_StickerOnlyBubbleTypeView: View {
     var body: some View {
         VStack(alignment: alignment.horizontal, spacing: values.bubbleToBubbleVPadding) {
             ZStack {
-                if isAlreadyCached(url) {
+                if Utilities.isCached(url) {
                     image
                 } else {
                     placeholder
@@ -59,7 +55,9 @@ struct Conversations_StickerOnlyBubbleTypeView: View {
 
 // MARK: - PREVIEWS
 #Preview("Conversations_StickerOnlyBubbleTypeView") {
-    NavigationStack {
+    let urlString: String = "https://www.icegif.com/wp-content/uploads/2023/03/icegif-1393.gif"
+    
+    return NavigationStack {
         ZStack {
             Color.conversationBackground
                 .ignoresSafeArea()
@@ -74,7 +72,7 @@ struct Conversations_StickerOnlyBubbleTypeView: View {
             
             ScrollView(.vertical) {
                 Conversations_StickerOnlyBubbleTypeView(
-                    url: .init(string: "https://cdn.pixabay.com/animation/2022/10/11/09/05/09-05-26-529_512.gif"),
+                    url: .init(string: urlString),
                     timestamp: "10:44 PM",
                     userType: .receiver
                 )
@@ -102,52 +100,25 @@ extension Conversations_StickerOnlyBubbleTypeView {
             .clipped()
     }
     
-    // MARK: - circle
-    private var circle: some View {
-        Circle()
-            .fill(.arrowDownCircle)
-    }
-    
-    // MARK: - circularProgress
-    private var circularProgress: some View {
-        Group {
-            Circle()
-                .trim(from: 0, to: progress)
-                .stroke(.arrowDown, style: .init(lineWidth: 2, lineCap: .round))
-                .padding(3)
-                .rotationEffect(.degrees(-90))
-            
-            RoundedRectangle(cornerRadius: 2)
-                .fill(.arrowDown)
-                .frame(width: stopRectangleSize, height: stopRectangleSize)
-        }
-        .onTapGesture { cancelImageDownload() }
-    }
-    
-    // MARK: - arrowDown
-    private var arrowDown: some View {
-        Image(systemName: "arrow.down")
-            .resizable()
-            .scaledToFit()
-            .frame(width: arrowDownSize, height: arrowDownSize)
-            .fontWeight(.semibold)
-            .foregroundStyle(.arrowDown)
-            .onTapGesture { startImageDownload() }
-    }
-    
     // MARK: - placeholder
+    @ViewBuilder
     private var placeholder: some View {
+        var showProgress: Bool {
+            switch status {
+            case .onProgress:
+                true
+            case .none, .failure:
+                false
+            default:
+                false
+            }
+        }
+        
         Conversations_StickerPlaceholderShapeView()
             .overlay {
-                circle
-                    .overlay {
-                        if status == .onProgress {
-                            circularProgress
-                        } else if status == .none || status == .failure {
-                            arrowDown
-                        }
-                    }
-                    .frame(width: circleSize, height: circleSize)
+                StandardMediaCircularProgressView(value: progress, showProgress: showProgress) {
+                    showProgress ? cancelImageDownload() : startImageDownload()
+                }
             }
     }
     
@@ -164,12 +135,6 @@ extension Conversations_StickerOnlyBubbleTypeView {
     }
     
     // MARK: - FUNCTIONS
-    
-    // MARK: - isAlreadyCached
-    private func isAlreadyCached(_ url: URL?) -> Bool {
-        let key: String? = SDWebImageManager.shared.cacheKey(for: url)
-        return SDImageCache.shared.diskImageDataExists(withKey: key)
-    }
     
     // MARK: - startImageDownload
     private func startImageDownload() {
