@@ -15,6 +15,7 @@ struct CustomCircularProgressBarView: View {
     let progressStrokeColor: Color
     let strokeWidth: CGFloat
     let circleSize: CGFloat?
+    let rotateProgress: Bool
     
     // Stop - Rounded Rectangle
     let stopRectangleColor: Color
@@ -28,6 +29,7 @@ struct CustomCircularProgressBarView: View {
         progressStrokeColor: Color,
         strokeWidth: CGFloat,
         circleSize: CGFloat? = nil,
+        rotateProgress: Bool = false,
         stopRectangleColor: Color,
         stopRectanglePadding: CGFloat,
         cornerRadius: CGFloat,
@@ -38,13 +40,17 @@ struct CustomCircularProgressBarView: View {
         self.progressStrokeColor = progressStrokeColor
         self.strokeWidth = strokeWidth * scale
         self.circleSize = circleSize != nil ? circleSize! * scale : circleSize
+        self.rotateProgress = rotateProgress
         self.stopRectangleColor = stopRectangleColor
         self.stopRectanglePadding = stopRectanglePadding * scale
         self.cornerRadius = cornerRadius * scale
     }
     
     // MARK: - PRIVATE PROPERTIES
+    let progressValues = StandardMediaCircularProgressValues.self
     var progressStrokeWidth: CGFloat { strokeWidth + 0.2 }
+    var animation: Animation { progressValues.rotatableAnimation }
+    @State private var rotateProgressOnAppear: Bool = false
     
     // MARK: - BODY
     var body: some View {
@@ -57,26 +63,31 @@ struct CustomCircularProgressBarView: View {
                     .stroke(progressStrokeColor, style: .init(lineWidth: progressStrokeWidth, lineCap: .round))
                     .rotationEffect(.degrees(-90))
             }
+            .rotationEffect(.degrees(rotateProgressOnAppear ? 360 : 0))
             .overlay {
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .fill(stopRectangleColor)
                     .padding(stopRectanglePadding)
             }
+            .animation(animation, value: rotateProgressOnAppear)
+            .onAppear { rotateProgressOnAppear = rotateProgress }
     }
 }
 
 // MARK: - PREVIEWS
 #Preview("CustomCircularProgressBarView") {
     CustomCircularProgressBarView(
-        value: CGFloat.random(in: 0...1),
+        value: 0.75,
         circleStrokeColor: .init(uiColor: .systemGray6),
         progressStrokeColor: .accentColor,
         strokeWidth: 2,
         circleSize: VoiceRecordNAudioBubbleValues.actionIconsFrameWidth + 10,
+        rotateProgress: true,
         stopRectangleColor: .accent,
         stopRectanglePadding: 8.6,
         cornerRadius: 1
     )
+    .previewViewModifier
 }
 
 // MARK: - EXTENSIONS

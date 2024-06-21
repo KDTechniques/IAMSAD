@@ -97,5 +97,37 @@
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AF8E2B32-8AA4-4B76-84C7-10793B9B9A8C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IAMSAD/VIEWS &#x2764;&#xfe0f;&#x2764;&#xfe0f;&#x2764;&#xfe0f;/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Primary Bubble Types/Plain/Collage/Conversations_CollagePlainBubbleView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
+            landmarkName = "startImageDownload(urlString:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "021B5134-763F-4013-AEF2-0E3CD6D2895F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IAMSAD/VIEWS &#x2764;&#xfe0f;&#x2764;&#xfe0f;&#x2764;&#xfe0f;/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Primary Bubble Types/Plain/Collage/Conversations_CollagePlainBubbleView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
+            landmarkName = "DownloadableInfoCapsuleProgressView"
+            landmarkType = "14">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

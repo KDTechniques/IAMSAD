@@ -941,6 +941,147 @@
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>176</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>175</string>
+					<key>Timestamp</key>
+					<string>740697078.298564</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/VIEWS ❤️❤️❤️/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Primary Bubble Types/Plain/Collage/Conversations_CollagePlainBubbleView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>    private func cacheNFileExistenceChecker() {
+</string>
+				<key>leading</key>
+				<string>    
+    // MARK: - cacheNFileExistenceChecker
+</string>
+				<key>trailing</key>
+				<string>        modifiedDataArray = dataArray.map { model in
+            CollageBubbleModel.CollageBubbleCacheModel(
+                mediaType: model.mediaType,
+</string>
+			</dict>
+			<key>title</key>
+			<string>expand this function to check both cache and file directory existence</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>206</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>205</string>
+					<key>Timestamp</key>
+					<string>740697078.298526</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/VIEWS ❤️❤️❤️/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Primary Bubble Types/Plain/Collage/Conversations_CollagePlainBubbleView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        // start the downloading all the image files in a queue here...
+</string>
+				<key>leading</key>
+				<string>        print("Download started in a queue.")
+        setStatus(.onProgress)
+</string>
+				<key>trailing</key>
+				<string>    }
+    
+    // MARK: - cancelAllDownloads
+</string>
+			</dict>
+			<key>title</key>
+			<string>start the downloading all the image files in a queue here...</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>210</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>209</string>
+					<key>Timestamp</key>
+					<string>740697078.298449</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>IAMSAD/VIEWS ❤️❤️❤️/Conversations Tab/Conversation Thread/Message Bubble Types/Primary N Secondary Bubble Types/Primary Bubble Types/Plain/Collage/Conversations_CollagePlainBubbleView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>    private func cancelAllDownloads() {
+</string>
+				<key>leading</key>
+				<string>    
+    // MARK: - cancelAllDownloads
+</string>
+				<key>trailing</key>
+				<string>        print("All the downlods has been cancelled.")
+        setStatus(.failure)
+    }
+</string>
+			</dict>
+			<key>title</key>
+			<string>cancell all the downloads here...</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
 	</array>
 </dict>
 </plist>

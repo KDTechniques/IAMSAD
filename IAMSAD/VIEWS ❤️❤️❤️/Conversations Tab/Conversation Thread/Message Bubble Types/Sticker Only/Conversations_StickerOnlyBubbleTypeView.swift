@@ -19,10 +19,9 @@ struct Conversations_StickerOnlyBubbleTypeView: View {
     let timestamp: String
     let userType: MessageBubbleUserTypes
     
+    // MARK: - PRIVATE PROPERTIES
     let values = MessageBubbleValues.self
-    var alignment: Alignment {
-        userType == .sender ? .trailing : .leading
-    }
+    var alignment: Alignment { userType == .sender ? .trailing : .leading }
     let size: CGFloat = 138
     @State private var imageLoadOperation: SDWebImageOperation? = nil
     @State private var progress: CGFloat = 0
@@ -39,7 +38,7 @@ struct Conversations_StickerOnlyBubbleTypeView: View {
     var body: some View {
         VStack(alignment: alignment.horizontal, spacing: values.bubbleToBubbleVPadding) {
             ZStack {
-                if isAlreadyCached(url) {
+                if Utilities.isCached(url) {
                     image
                 } else {
                     placeholder
@@ -56,7 +55,9 @@ struct Conversations_StickerOnlyBubbleTypeView: View {
 
 // MARK: - PREVIEWS
 #Preview("Conversations_StickerOnlyBubbleTypeView") {
-    NavigationStack {
+    let urlString: String = "https://www.icegif.com/wp-content/uploads/2023/03/icegif-1393.gif"
+    
+    return NavigationStack {
         ZStack {
             Color.conversationBackground
                 .ignoresSafeArea()
@@ -71,7 +72,7 @@ struct Conversations_StickerOnlyBubbleTypeView: View {
             
             ScrollView(.vertical) {
                 Conversations_StickerOnlyBubbleTypeView(
-                    url: .init(string: "https://i.pinimg.com/originals/5b/54/39/5b543923641d0ef1df257706e19ee255.gif"),
+                    url: .init(string: urlString),
                     timestamp: "10:44 PM",
                     userType: .receiver
                 )
@@ -134,12 +135,6 @@ extension Conversations_StickerOnlyBubbleTypeView {
     }
     
     // MARK: - FUNCTIONS
-    
-    // MARK: - isAlreadyCached
-    private func isAlreadyCached(_ url: URL?) -> Bool {
-        let key: String? = SDWebImageManager.shared.cacheKey(for: url)
-        return SDImageCache.shared.diskImageDataExists(withKey: key)
-    }
     
     // MARK: - startImageDownload
     private func startImageDownload() {

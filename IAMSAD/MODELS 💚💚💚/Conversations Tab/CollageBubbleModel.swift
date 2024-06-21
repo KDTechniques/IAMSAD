@@ -9,18 +9,36 @@ import SwiftUI
 
 struct CollageBubbleModel {
     // MARK: - PROPERTIES
-    let type: Types
+    let mediaType: MediaTypes
     let urlString: String
     let placeholderImageURLString: String
+    let mediaSize: UInt64
     let msgBubbleObj: MessageBubbleValues.MessageBubbleModel
     
-    enum Types: CaseIterable { case photo, video }
+    enum MediaTypes: CaseIterable { case photo, video }
+    enum URLTypes { case serverURL, fileDirectoryURL }
+    
+    struct CollageBubbleCacheModel {
+        let mediaType: MediaTypes
+        let urlType: URLTypes
+        let isExist: Bool
+        let urlString: String
+        let placeholderImageURLString: String
+        var mediaSize: UInt64
+    }
     
     // MARK: - INITITLAIZER
-    init(type: Types, urlString: String, placeholderImageURLString: String, msgBubbleObj: MessageBubbleValues.MessageBubbleModel) {
-        self.type = type
+    init(
+        mediaType: MediaTypes,
+        urlString: String,
+        placeholderImageURLString: String,
+        mediaSize: UInt64,
+        msgBubbleObj: MessageBubbleValues.MessageBubbleModel
+    ) {
+        self.mediaType = mediaType
         self.urlString = urlString
         self.placeholderImageURLString = placeholderImageURLString
+        self.mediaSize = mediaSize
         self.msgBubbleObj = msgBubbleObj
     }
     
@@ -31,11 +49,12 @@ struct CollageBubbleModel {
         var tempArray: [Self] = []
         
         for _ in 1...Int.random(in: 4...10) {
-            let randomNumber: Int = .random(in: 100...200)
+            let randomNumber: Int = .random(in: 400...504)
             let obj: Self = self.init(
-                type: .random(),
+                mediaType: .random(),
                 urlString: "https://picsum.photos/id/\(randomNumber)/500",
-                placeholderImageURLString: "https://picsum.photos/id/\(randomNumber)/10",
+                placeholderImageURLString: "https://picsum.photos/id/\(randomNumber)/50",
+                mediaSize: .random(in: 50000...100000),
                 msgBubbleObj: .getRandomMockObject()
             )
             

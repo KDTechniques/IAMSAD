@@ -13,24 +13,36 @@ struct StandardMediaCircularProgressView: View {
     
     let value: CGFloat
     let showProgress: Bool
+    let rotateProgress: Bool
+    let withBackground: Bool
     let action: () -> Void
     
     // MARK: - INITIALIZER
-    init(value: CGFloat, showProgress: Bool, action: @escaping () -> Void) {
+    init(
+        value: CGFloat,
+        showProgress: Bool,
+        rotateProgress: Bool = false,
+        withBackground: Bool = true,
+        action: @escaping () -> Void
+    ) {
         self.value = value
         self.showProgress = showProgress
+        self.rotateProgress = rotateProgress
+        self.withBackground = withBackground
         self.action = action
     }
     
     // MARK: - PRIVATE PROPERTIES
-    let circleSize: CGFloat = StandardMediaCircularProgressValues.frameSize
-    var progressFrameSize: CGFloat { circleSize - 6}
+    let progressValues = StandardMediaCircularProgressValues.self
+    var circleSize: CGFloat { progressValues.frameSize }
+    var progressFrameSize: CGFloat { circleSize - 6 }
+    var animation: Animation { progressValues.expandableAnimation }
     
     // MARK: - BODY
     var body: some View {
         Color.clear
             .frame(width: circleSize, height: circleSize)
-            .standardCircularProgressBackgroundViewModifier(colorScheme)
+            .standardCircularProgressBackgroundViewModifier(colorScheme, withBackground)
             .clipShape(Circle())
             .overlay {
                 if showProgress {
@@ -39,13 +51,19 @@ struct StandardMediaCircularProgressView: View {
                     StandardMediaCircularProgress_ArrowDownView()
                 }
             }
+            .transition(.scale)
+            .animation(animation, value: showProgress)
             .onTapGesture { action() }
     }
 }
 
 // MARK: - PREVIEWS
 #Preview("StandardMediaCircularProgressView") {
-    StandardMediaCircularProgressView(value: .random(in: 0.2...0.75), showProgress: .random()) {
+    StandardMediaCircularProgressView(
+        value: 0.75,
+        showProgress: .random(),
+        rotateProgress: .random()
+    ) {
         print("Action triggered!")
     }
 }
@@ -60,6 +78,7 @@ extension StandardMediaCircularProgressView {
             progressStrokeColor: .arrowDown,
             strokeWidth: 2,
             circleSize: progressFrameSize,
+            rotateProgress: rotateProgress,
             stopRectangleColor: .arrowDown,
             stopRectanglePadding: 19,
             cornerRadius: 2
@@ -70,4 +89,6 @@ extension StandardMediaCircularProgressView {
 // MARK: - OTHER
 struct StandardMediaCircularProgressValues {
     static let frameSize: CGFloat = 54
+    static let expandableAnimation: Animation = .smooth(duration: 0.25)
+    static let rotatableAnimation: Animation = .easeInOut(duration: 1.25).repeatForever(autoreverses: false)
 }
