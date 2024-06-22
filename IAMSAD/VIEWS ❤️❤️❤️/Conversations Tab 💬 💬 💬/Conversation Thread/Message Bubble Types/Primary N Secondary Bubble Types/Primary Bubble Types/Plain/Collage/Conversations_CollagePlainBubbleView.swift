@@ -55,7 +55,7 @@ struct Conversations_CollagePlainBubbleView: View {
             }
             .overlay {
                 if isAnyNonExist {
-                    DownloadableInfoCapsuleProgressView(
+                    Conversations_ExpandableInfoCapsuleProgressView(
                         isCompressed: progressCompressionHandler(),
                         totalSize: Utilities.formatFileSize(getDownloadableTotalSize()),
                         itemsCount: dataArray.count
@@ -237,81 +237,5 @@ extension Conversations_CollagePlainBubbleView {
         withAnimation(.smooth(duration: 1)) {
             downloadStatus = status
         }
-    }
-}
-
-
-
-
-struct DownloadableInfoCapsuleProgressView: View {
-    // MARK: - PROPERTIES
-    @Environment(\.colorScheme) private var colorScheme
-    
-    @Binding var isCompressed: Bool
-    let totalSize: String
-    let itemsCount: Int
-    let defaultAction: () -> Void
-    let cancelAction: () -> Void
-    
-    // MARK: - PRIVATE PROPERTIES
-    let progressValues = StandardMediaCircularProgressValues.self
-    var circleSize: CGFloat { progressValues.frameSize }
-    var animation: Animation { progressValues.expandableAnimation }
-    
-    // MARK: - INITIALIZER
-    init(
-        isCompressed: Binding<Bool>,
-        totalSize: String,
-        itemsCount: Int,
-        defaultAction: @escaping () -> Void,
-        cancelAction:  @escaping () -> Void
-    ) {
-        _isCompressed = isCompressed
-        self.totalSize = totalSize
-        self.itemsCount = itemsCount
-        self.defaultAction = defaultAction
-        self.cancelAction = cancelAction
-    }
-    
-    // MARK: - BODY
-    var body: some View {
-        ZStack(alignment: isCompressed ? .center : .leading) {
-            VStack(alignment: .leading, spacing: 0) {
-                Text(totalSize)
-                    .fontWeight(.medium)
-                    .fixedSize()
-                
-                Text("\(itemsCount) items")
-                    .fontWeight(.light)
-                    .fixedSize()
-            }
-            .opacity(isCompressed ? 0 : 1)
-            .padding(.leading, isCompressed ? 0 : circleSize)
-            .padding(.trailing, isCompressed ? 0 : circleSize/2)
-            .onTapGesture { handleTapGesture() }
-            
-            StandardMediaCircularProgressView(
-                value: 0.75,
-                showProgress: isCompressed,
-                rotateProgress: true,
-                withBackground: false
-            ) { handleTapGesture() }
-        }
-        .font(.footnote)
-        .foregroundStyle(.arrowDown)
-        .frame(width: isCompressed ? circleSize : nil)
-        .standardCircularProgressBackgroundViewModifier(colorScheme)
-        .clipShape(Capsule())
-        .animation(animation, value: isCompressed)
-    }
-}
-
-// MARK: - EXTENSIONS
-extension DownloadableInfoCapsuleProgressView {
-    // MARK: - FUNCTIONS
-    
-    // MARK: - handleTapGesture
-    private func handleTapGesture() {
-        isCompressed ? cancelAction() : defaultAction()
     }
 }

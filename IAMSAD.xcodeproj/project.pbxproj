@@ -90,6 +90,8 @@
 		0B28303F2B8C97C6006061BF /* ToolbarTopLeadingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B28303E2B8C97C6006061BF /* ToolbarTopLeadingItemView.swift */; };
 		0B2830412B8CA495006061BF /* ToolbarTopTrailingItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2830402B8CA495006061BF /* ToolbarTopTrailingItemsView.swift */; };
 		0B28C9FE2B6B076E00AC4725 /* CustomLikeHeartAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B28C9FD2B6B076E00AC4725 /* CustomLikeHeartAnimationView.swift */; };
+		0B33195F2C26717000358340 /* Conversations_ExpandableInfoCapsuleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B33195E2C26717000358340 /* Conversations_ExpandableInfoCapsuleProgressView.swift */; };
+		0B3319622C26765500358340 /* Conversations_VerticalInfoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3319612C26765500358340 /* Conversations_VerticalInfoContainerView.swift */; };
 		0B38726D2B67F7BE00199A37 /* Animal Faces_21.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B3872582B67F7BD00199A37 /* Animal Faces_21.png */; };
 		0B38726E2B67F7BE00199A37 /* Animal Faces_16.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B3872592B67F7BD00199A37 /* Animal Faces_16.png */; };
 		0B38726F2B67F7BE00199A37 /* Animal Faces_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B38725A2B67F7BD00199A37 /* Animal Faces_5.png */; };
@@ -594,6 +596,8 @@
 		0B28303E2B8C97C6006061BF /* ToolbarTopLeadingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarTopLeadingItemView.swift; sourceTree = "<group>"; };
 		0B2830402B8CA495006061BF /* ToolbarTopTrailingItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarTopTrailingItemsView.swift; sourceTree = "<group>"; };
 		0B28C9FD2B6B076E00AC4725 /* CustomLikeHeartAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLikeHeartAnimationView.swift; sourceTree = "<group>"; };
+		0B33195E2C26717000358340 /* Conversations_ExpandableInfoCapsuleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_ExpandableInfoCapsuleProgressView.swift; sourceTree = "<group>"; };
+		0B3319612C26765500358340 /* Conversations_VerticalInfoContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_VerticalInfoContainerView.swift; sourceTree = "<group>"; };
 		0B3872582B67F7BD00199A37 /* Animal Faces_21.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Animal Faces_21.png"; sourceTree = "<group>"; };
 		0B3872592B67F7BD00199A37 /* Animal Faces_16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Animal Faces_16.png"; sourceTree = "<group>"; };
 		0B38725A2B67F7BD00199A37 /* Animal Faces_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Animal Faces_5.png"; sourceTree = "<group>"; };
@@ -1103,11 +1107,11 @@
 				0B4392FD2B4F0DD80075E5D1 /* Testing */,
 				0B2623622B4C9F130063D71C /* Reusable */,
 				0B2623562B4C92D30063D71C /* Onboarding */,
-				0BBD7CB12BA806E900AE8542 /* Home Tab */,
-				0BBD7CB32BA8071D00AE8542 /* Search Tab */,
-				0BBD7CB22BA806F600AE8542 /* Conversations Tab */,
-				0BBD7CB02BA806D600AE8542 /* Activity Tab */,
-				0BB6173B2B758C6C00BABB89 /* Profile Tab */,
+				0BBD7CB12BA806E900AE8542 /* Home Tab 🏠 🏠 🏠 */,
+				0BBD7CB32BA8071D00AE8542 /* Search Tab 🔎 🔎 🔎 */,
+				0BBD7CB22BA806F600AE8542 /* Conversations Tab 💬 💬 💬 */,
+				0BBD7CB02BA806D600AE8542 /* Activity Tab 📣 📣 📣 */,
+				0BB6173B2B758C6C00BABB89 /* Profile Tab 👨🏻 👨🏻 👨🏻 */,
 			);
 			path = "VIEWS ❤️❤️❤️";
 			sourceTree = "<group>";
@@ -1308,6 +1312,15 @@
 				0B2830402B8CA495006061BF /* ToolbarTopTrailingItemsView.swift */,
 			);
 			path = "Toolbar Items";
+			sourceTree = "<group>";
+		};
+		0B3319602C2675F100358340 /* Expandable Info Capsule Progress */ = {
+			isa = PBXGroup;
+			children = (
+				0B33195E2C26717000358340 /* Conversations_ExpandableInfoCapsuleProgressView.swift */,
+				0B3319612C26765500358340 /* Conversations_VerticalInfoContainerView.swift */,
+			);
+			path = "Expandable Info Capsule Progress";
 			sourceTree = "<group>";
 		};
 		0B367ECE2BECE09600EC1471 /* Edited, Timestamp & Read Receipts */ = {
@@ -1584,7 +1597,7 @@
 			path = "Message Bubble Types";
 			sourceTree = "<group>";
 		};
-		0BB6173B2B758C6C00BABB89 /* Profile Tab */ = {
+		0BB6173B2B758C6C00BABB89 /* Profile Tab 👨🏻 👨🏻 👨🏻 */ = {
 			isa = PBXGroup;
 			children = (
 				0BB6173C2B758CB400BABB89 /* ProfileView.swift */,
@@ -1597,7 +1610,7 @@
 				0B89BB872BA6A3A9007C9721 /* ProfileSearch */,
 				0B052FE72BA56688008D07F1 /* ProfileSettings */,
 			);
-			path = "Profile Tab";
+			path = "Profile Tab 👨🏻 👨🏻 👨🏻";
 			sourceTree = "<group>";
 		};
 		0BBD2AAA2BA136CF006990AA /* Profile Tab */ = {
@@ -1611,21 +1624,21 @@
 			path = "Profile Tab";
 			sourceTree = "<group>";
 		};
-		0BBD7CB02BA806D600AE8542 /* Activity Tab */ = {
+		0BBD7CB02BA806D600AE8542 /* Activity Tab 📣 📣 📣 */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = "Activity Tab";
+			path = "Activity Tab 📣 📣 📣";
 			sourceTree = "<group>";
 		};
-		0BBD7CB12BA806E900AE8542 /* Home Tab */ = {
+		0BBD7CB12BA806E900AE8542 /* Home Tab 🏠 🏠 🏠 */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = "Home Tab";
+			path = "Home Tab 🏠 🏠 🏠";
 			sourceTree = "<group>";
 		};
-		0BBD7CB22BA806F600AE8542 /* Conversations Tab */ = {
+		0BBD7CB22BA806F600AE8542 /* Conversations Tab 💬 💬 💬 */ = {
 			isa = PBXGroup;
 			children = (
 				0BBD7CB42BA8075900AE8542 /* ConversationsView.swift */,
@@ -1634,14 +1647,14 @@
 				0B939B632BC13B4200DC5F1E /* Conversation Cell More */,
 				0BB588522BC48D11003ACABB /* Conversation Thread */,
 			);
-			path = "Conversations Tab";
+			path = "Conversations Tab 💬 💬 💬";
 			sourceTree = "<group>";
 		};
-		0BBD7CB32BA8071D00AE8542 /* Search Tab */ = {
+		0BBD7CB32BA8071D00AE8542 /* Search Tab 🔎 🔎 🔎 */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = "Search Tab";
+			path = "Search Tab 🔎 🔎 🔎";
 			sourceTree = "<group>";
 		};
 		0BC362972B66CBBA008BD184 /* Avatar Icons */ = {
@@ -2022,6 +2035,7 @@
 		0BCAA0D22BE82C5400045125 /* Collage */ = {
 			isa = PBXGroup;
 			children = (
+				0B3319602C2675F100358340 /* Expandable Info Capsule Progress */,
 				0BA4E5A52BE2192B004E7945 /* Conversations_CollagePlainBubbleView.swift */,
 			);
 			path = Collage;
@@ -2616,6 +2630,7 @@
 				0B26237A2B4D422D0063D71C /* OnboardingListItemView.swift in Sources */,
 				0BBD2AB42BA14602006990AA /* Profile_RepliesTabView.swift in Sources */,
 				0B99746B2B55D6DE001AD3F6 /* CustomSearchBarView.swift in Sources */,
+				0B3319622C26765500358340 /* Conversations_VerticalInfoContainerView.swift in Sources */,
 				0B26238B2B4D5F710063D71C /* Binding+EXT.swift in Sources */,
 				0BC7DA852BCC3C9100C4D356 /* ReadReceiptShapesValues.swift in Sources */,
 				0B1AF1742BD52BA800E3825C /* FacebookInfoModel.swift in Sources */,
@@ -2709,6 +2724,7 @@
 				0BB588552BC48D8D003ACABB /* Conversations_MessageThreadView.swift in Sources */,
 				0B8900BB2BC69D7B0054B056 /* Conversations_BubbleTimeStampView.swift in Sources */,
 				0B5B0EA22B7B31BD001A950C /* CustomStripTabContentView.swift in Sources */,
+				0B33195F2C26717000358340 /* Conversations_ExpandableInfoCapsuleProgressView.swift in Sources */,
 				0B5C492E2BAE8DFC00616181 /* CustomProfileImageView.swift in Sources */,
 				0BB1F9C22BCA819100719F12 /* ReadReceiptStatusTypes.swift in Sources */,
 				0B12FB982BCAAB2F002E0048 /* Conversations_BubbleEditedTimestampReadReceiptsView.swift in Sources */,

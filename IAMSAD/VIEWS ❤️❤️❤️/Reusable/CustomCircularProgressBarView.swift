@@ -57,18 +57,9 @@ struct CustomCircularProgressBarView: View {
         Circle()
             .stroke(circleStrokeColor, lineWidth: strokeWidth)
             .setCircleFrame(circleSize)
-            .overlay {
-                Circle()
-                    .trim(from: 0, to: value)
-                    .stroke(progressStrokeColor, style: .init(lineWidth: progressStrokeWidth, lineCap: .round))
-                    .rotationEffect(.degrees(-90))
-            }
+            .overlay { circularProgressStroke }
             .rotationEffect(.degrees(rotateProgressOnAppear ? 360 : 0))
-            .overlay {
-                RoundedRectangle(cornerRadius: cornerRadius)
-                    .fill(stopRectangleColor)
-                    .padding(stopRectanglePadding)
-            }
+            .overlay { centerRectangle }
             .animation(animation, value: rotateProgressOnAppear)
             .onAppear { rotateProgressOnAppear = rotateProgress }
     }
@@ -91,6 +82,23 @@ struct CustomCircularProgressBarView: View {
 }
 
 // MARK: - EXTENSIONS
+extension CustomCircularProgressBarView {
+    // MARK: - circularProgressStroke
+    private var circularProgressStroke: some View {
+        Circle()
+            .trim(from: 0, to: value)
+            .stroke(progressStrokeColor, style: .init(lineWidth: progressStrokeWidth, lineCap: .round))
+            .rotationEffect(.degrees(-90))
+    }
+    
+    // MARK: - centerRectangle
+    private var centerRectangle: some View {
+        RoundedRectangle(cornerRadius: cornerRadius)
+            .fill(stopRectangleColor)
+            .padding(stopRectanglePadding)
+    }
+}
+
 extension View {
     // MARK: - setCircleFrame
     @ViewBuilder
