@@ -92,7 +92,11 @@ fileprivate struct Preview1: View {
     var body: some View {
         HStack {
             HStack(spacing: -12) {
-                CustomLikeHeartAnimationView(like: item.like, size: 55)
+                CustomLikeHeartAnimationView(
+                    like: item.like,
+                    size: 55,
+                    backgroundViewColor: .colorScheme
+                )
                 
                 CustomTransitioningCounterTextView(
                     count: item.count,
@@ -154,7 +158,11 @@ fileprivate struct Preview2: View {
     var body: some View {
         HStack {
             HStack(spacing: -12) {
-                CustomLikeHeartAnimationView(like: item.like, size: 55)
+                CustomLikeHeartAnimationView(
+                    like: item.like,
+                    size: 55,
+                    backgroundViewColor: .colorScheme
+                )
                 
                 CustomTransitioningCounterTextView(
                     count: item.count,

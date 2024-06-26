@@ -54,23 +54,19 @@ struct Conversations_ExpandableInfoCapsuleProgressView: View {
 
 // MARK: - PREVIEWS
 #Preview("Conversations_ExpandableInfoCapsuleProgressView") {
-    Preview().previewViewModifier
-}
-
-fileprivate struct Preview: View {
-    @State private var isCompressed: Bool = false
-    var body: some View {
-        Conversations_ExpandableInfoCapsuleProgressView(
-            isCompressed: $isCompressed,
-            totalSize: "16.1 MB",
-            itemsCount: .random(in: 4...10)) {
-                isCompressed.toggle()
-                print("Download Started.")
-            } cancelAction: {
-                isCompressed.toggle()
-                print("Downloads Cancelled.")
-            }
-    }
+    @Previewable @State var isCompressed: Bool = false
+    
+    Conversations_ExpandableInfoCapsuleProgressView(
+        isCompressed: $isCompressed,
+        totalSize: "16.1 MB",
+        itemsCount: .random(in: 4...10)) {
+            isCompressed.toggle()
+            print("Download Started.")
+        } cancelAction: {
+            isCompressed.toggle()
+            print("Downloads Cancelled.")
+        }
+        .previewViewModifier
 }
 
 // MARK: - EXTENSIONS

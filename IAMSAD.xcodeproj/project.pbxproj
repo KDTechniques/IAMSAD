@@ -505,6 +505,7 @@
 		0BE75A6C2B99FAAB003C43DA /* Profile_ProgressIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE75A6B2B99FAAB003C43DA /* Profile_ProgressIndicatorView.swift */; };
 		0BE75A6E2B99FB2B003C43DA /* Profile_CoverTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE75A6D2B99FB2B003C43DA /* Profile_CoverTextView.swift */; };
 		0BEBFBC72BAC71FC008A997A /* CustomActionSheetButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEBFBC62BAC71FC008A997A /* CustomActionSheetButtonsView.swift */; };
+		0BEC957A2C2A5B87000CA409 /* Conversations_CollageImagesContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEC95792C2A5B87000CA409 /* Conversations_CollageImagesContainerView.swift */; };
 		0BFB38112B56FDB300227CB2 /* OnboardingLastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFB38102B56FDB300227CB2 /* OnboardingLastView.swift */; };
 		0BFB38132B56FEDC00227CB2 /* ThumbsUpLightSkinTone.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BFB38122B56FEDC00227CB2 /* ThumbsUpLightSkinTone.png */; };
 		0BFC0BF62BDE1A0C0033E682 /* SocialMediaBubbleValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFC0BF52BDE1A0C0033E682 /* SocialMediaBubbleValues.swift */; };
@@ -1006,6 +1007,7 @@
 		0BE75A6B2B99FAAB003C43DA /* Profile_ProgressIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_ProgressIndicatorView.swift; sourceTree = "<group>"; };
 		0BE75A6D2B99FB2B003C43DA /* Profile_CoverTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_CoverTextView.swift; sourceTree = "<group>"; };
 		0BEBFBC62BAC71FC008A997A /* CustomActionSheetButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionSheetButtonsView.swift; sourceTree = "<group>"; };
+		0BEC95792C2A5B87000CA409 /* Conversations_CollageImagesContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_CollageImagesContainerView.swift; sourceTree = "<group>"; };
 		0BEE056A2B51A05D002478D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0BFB38102B56FDB300227CB2 /* OnboardingLastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingLastView.swift; sourceTree = "<group>"; };
 		0BFB38122B56FEDC00227CB2 /* ThumbsUpLightSkinTone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ThumbsUpLightSkinTone.png; sourceTree = "<group>"; };
@@ -2035,6 +2037,7 @@
 		0BCAA0D22BE82C5400045125 /* Collage */ = {
 			isa = PBXGroup;
 			children = (
+				0BEC957C2C2A5B90000CA409 /* Images Container */,
 				0B3319602C2675F100358340 /* Expandable Info Capsule Progress */,
 				0BA4E5A52BE2192B004E7945 /* Conversations_CollagePlainBubbleView.swift */,
 			);
@@ -2142,6 +2145,14 @@
 				0B20D7E22B96182B00B71C10 /* Profile_FollowersCountNLinkView.swift */,
 			);
 			path = ProfileInfoContent;
+			sourceTree = "<group>";
+		};
+		0BEC957C2C2A5B90000CA409 /* Images Container */ = {
+			isa = PBXGroup;
+			children = (
+				0BEC95792C2A5B87000CA409 /* Conversations_CollageImagesContainerView.swift */,
+			);
+			path = "Images Container";
 			sourceTree = "<group>";
 		};
 		0BFB380F2B56F4E900227CB2 /* OnboardingPhoneNumber */ = {
@@ -2648,6 +2659,7 @@
 				0B2623202B4BD8CC0063D71C /* NetworkManager.swift in Sources */,
 				0B8900BF2BC6E74F0054B056 /* Conversations_PrimaryNSecondaryBubbleView.swift in Sources */,
 				0B939B6E2BC2877B00DC5F1E /* Conversations_CellMoreBlockConversationView.swift in Sources */,
+				0BEC957A2C2A5B87000CA409 /* Conversations_CollageImagesContainerView.swift in Sources */,
 				0BA4E59A2BE2183E004E7945 /* Conversations_AudioSecondaryReplyBubbleView.swift in Sources */,
 				0B2623222B4BD9730063D71C /* UserDefaultsManager.swift in Sources */,
 				0B1CEC8D2BE4FD01006DB5E1 /* Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView.swift in Sources */,
@@ -2890,7 +2902,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2929,7 +2941,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

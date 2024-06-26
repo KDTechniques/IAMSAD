@@ -48,7 +48,7 @@ struct MockText: View {
         HStack {
             MockView(item: item)
             
-            CustomLikeHeartAnimationView(like: like, size: 60)
+            CustomLikeHeartAnimationView(like: like, size: 60, backgroundViewColor: .colorScheme)
                 .onTapGesture {
                     like.toggle()
                 }

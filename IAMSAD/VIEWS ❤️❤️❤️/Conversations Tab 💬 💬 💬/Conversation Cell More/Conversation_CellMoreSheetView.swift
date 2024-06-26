@@ -76,6 +76,7 @@ struct Conversation_CellMoreSheetView: View {
 struct Conversation_CellMoreSheetView_Preview: View {
     @EnvironmentObject private var conversationsVM: ConversationsVM
     @State private var height: CGFloat = 0
+    
     var body: some View {
         Color.clear
             .sheet(item: $conversationsVM.sheetItem) { $0.content }
