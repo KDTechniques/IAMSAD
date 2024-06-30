@@ -179,15 +179,15 @@ fileprivate struct AvatarCollectionSheetContentView: View {
             
             Divider()
                 .topPartBackgroundEffectOnScrollViewModifier(
-                    minY: minY,
-                    maxY: $maxY,
+                    bottomPartMinY: minY,
+                    topPartMaxY: $maxY,
                     showBackgroundEffect: $showDivider
                 )
                 .opacity(showDivider ? 1 : 0)
             
             ScrollView(.vertical, showsIndicators: false) {
                 AvatarListView(collection: item.collectionName)
-                    .bottomPartBackgroundEffectOnScrollViewModifier(minY: $minY)
+                    .bottomPartBackgroundEffectOnScrollViewModifier(bottomPartMinY: $minY)
                     .padding(.vertical)
                     .padding(.bottom, 100)
             }

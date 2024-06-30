@@ -20,24 +20,15 @@ struct IAMSADApp: App {
         
     }
     
+    @State var sliderValue: CGFloat = 0
+    @State var color: ColorPaletteModel = Color.defaultAvatarColorPaletteArray[2]
+    
     var body: some Scene {
         WindowGroup {
-            ZStack {
-                Color.conversationBackground
-                
-                Image(.whatsappchatbackgroundimage)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: screenWidth, height: screenHeight)
-                    .clipped()
-                    .opacity(0.3)
-                
-                Conversations_CollagePlainBubbleView(
-                    model: .getRandomMockObject(true),
-                    dataArray: CollageBubbleModel.getMockArray()
-                )
+            ScrollView(.vertical) {
+                AvatarSheetView()
             }
-            .ignoresSafeArea()
+            .scrollDisabled(true)
             .dynamicTypeSize(...DynamicTypeSize.xLarge)
             .environmentObject(avatar)
             .environmentObject(avatarSheetVM)

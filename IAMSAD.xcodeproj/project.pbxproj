@@ -489,6 +489,9 @@
 		0BCAA0DC2BE8379200045125 /* Conversations_DocumentAudioPrimaryPlainBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCAA0DB2BE8379200045125 /* Conversations_DocumentAudioPrimaryPlainBubbleView.swift */; };
 		0BCC7B112BE8C396009F35CD /* Conversations_DocumentAudioPrimaryPlainBubble_InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCC7B102BE8C396009F35CD /* Conversations_DocumentAudioPrimaryPlainBubble_InfoView.swift */; };
 		0BCC7B132BE8C868009F35CD /* Conversations_DocumentAudioPrimaryPlainBubble_ProcessingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCC7B122BE8C868009F35CD /* Conversations_DocumentAudioPrimaryPlainBubble_ProcessingView.swift */; };
+		0BCE51352C2D95D200CBE336 /* SliderTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE51342C2D95D200CBE336 /* SliderTrackView.swift */; };
+		0BCE51392C2DAD1C00CBE336 /* AvatarBackgroundColorSelectionHeaderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE51382C2DAD1C00CBE336 /* AvatarBackgroundColorSelectionHeaderTextView.swift */; };
+		0BCE513C2C2DAE4D00CBE336 /* AvatarBackgroundColorSelectionColorPaletteGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE513B2C2DAE4D00CBE336 /* AvatarBackgroundColorSelectionColorPaletteGridView.swift */; };
 		0BD00C1B2B6294A4000C3236 /* SeeAllAvatarSheetContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD00C1A2B6294A4000C3236 /* SeeAllAvatarSheetContentView.swift */; };
 		0BD595622BE3693C0088F7AE /* CustomSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD595612BE3693C0088F7AE /* CustomSliderView.swift */; };
 		0BD876A72B8CC1DB00E66184 /* Profile_CoverContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD876A62B8CC1DB00E66184 /* Profile_CoverContentView.swift */; };
@@ -992,6 +995,9 @@
 		0BCAA0DB2BE8379200045125 /* Conversations_DocumentAudioPrimaryPlainBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_DocumentAudioPrimaryPlainBubbleView.swift; sourceTree = "<group>"; };
 		0BCC7B102BE8C396009F35CD /* Conversations_DocumentAudioPrimaryPlainBubble_InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_DocumentAudioPrimaryPlainBubble_InfoView.swift; sourceTree = "<group>"; };
 		0BCC7B122BE8C868009F35CD /* Conversations_DocumentAudioPrimaryPlainBubble_ProcessingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_DocumentAudioPrimaryPlainBubble_ProcessingView.swift; sourceTree = "<group>"; };
+		0BCE51342C2D95D200CBE336 /* SliderTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTrackView.swift; sourceTree = "<group>"; };
+		0BCE51382C2DAD1C00CBE336 /* AvatarBackgroundColorSelectionHeaderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarBackgroundColorSelectionHeaderTextView.swift; sourceTree = "<group>"; };
+		0BCE513B2C2DAE4D00CBE336 /* AvatarBackgroundColorSelectionColorPaletteGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarBackgroundColorSelectionColorPaletteGridView.swift; sourceTree = "<group>"; };
 		0BD00C1A2B6294A4000C3236 /* SeeAllAvatarSheetContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllAvatarSheetContentView.swift; sourceTree = "<group>"; };
 		0BD595612BE3693C0088F7AE /* CustomSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSliderView.swift; sourceTree = "<group>"; };
 		0BD876A62B8CC1DB00E66184 /* Profile_CoverContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_CoverContentView.swift; sourceTree = "<group>"; };
@@ -1253,7 +1259,7 @@
 				0B58AE922B6CEFF00057CCFE /* Post Buttons */,
 				0B729F6F2B667A0C009BDFD2 /* Custom Avatar Image */,
 				0B2623632B4C9F3D0063D71C /* CustomStandardAccentBottomButtonView.swift */,
-				0B2623A42B4E81530063D71C /* CustomColorSliderView.swift */,
+				0BCE51332C2D959F00CBE336 /* Custom Color Slider */,
 				0B4392FE2B4F0DE90075E5D1 /* CustomPageIndexIndicatorView.swift */,
 				0B99746A2B55D6DE001AD3F6 /* CustomSearchBarView.swift */,
 				0B00D1E12B54192B00CE721C /* CustomCountryCodeSearchSheetView.swift */,
@@ -1301,7 +1307,7 @@
 			children = (
 				0B26239C2B4DB38A0063D71C /* AvatarSheetView.swift */,
 				0B27C3F62B52A61C00680676 /* AvatarSelectionView.swift */,
-				0B27C3FA2B52A68B00680676 /* AvatarBackgroundColorSelectionView.swift */,
+				0BCE513A2C2DAD2400CBE336 /* Avatar Background Color Selection */,
 				0BD00C1A2B6294A4000C3236 /* SeeAllAvatarSheetContentView.swift */,
 			);
 			path = "Avatar Sheet";
@@ -2110,6 +2116,25 @@
 			path = ProfileTabsContent;
 			sourceTree = "<group>";
 		};
+		0BCE51332C2D959F00CBE336 /* Custom Color Slider */ = {
+			isa = PBXGroup;
+			children = (
+				0B2623A42B4E81530063D71C /* CustomColorSliderView.swift */,
+				0BCE51342C2D95D200CBE336 /* SliderTrackView.swift */,
+			);
+			path = "Custom Color Slider";
+			sourceTree = "<group>";
+		};
+		0BCE513A2C2DAD2400CBE336 /* Avatar Background Color Selection */ = {
+			isa = PBXGroup;
+			children = (
+				0B27C3FA2B52A68B00680676 /* AvatarBackgroundColorSelectionView.swift */,
+				0BCE51382C2DAD1C00CBE336 /* AvatarBackgroundColorSelectionHeaderTextView.swift */,
+				0BCE513B2C2DAE4D00CBE336 /* AvatarBackgroundColorSelectionColorPaletteGridView.swift */,
+			);
+			path = "Avatar Background Color Selection";
+			sourceTree = "<group>";
+		};
 		0BE5A0EF2BAD9EE00026DFFA /* CustomActionSheet */ = {
 			isa = PBXGroup;
 			children = (
@@ -2574,6 +2599,7 @@
 				0B7704982BADA08300C7EC22 /* CustomActionSheetSubHeadlineView.swift in Sources */,
 				0B2623682B4CA1D50063D71C /* UIDevice+EXT.swift in Sources */,
 				0BC7DA812BCC38F200C4D356 /* BubbleShapeValues.swift in Sources */,
+				0BCE513C2C2DAE4D00CBE336 /* AvatarBackgroundColorSelectionColorPaletteGridView.swift in Sources */,
 				0BEBFBC72BAC71FC008A997A /* CustomActionSheetButtonsView.swift in Sources */,
 				0BC7DA8C2BCC452B00C4D356 /* Conversations_VoiceRecordBadgeView.swift in Sources */,
 				0B20D7E12B9616A500B71C10 /* Profile_BioView.swift in Sources */,
@@ -2615,6 +2641,7 @@
 				0B59DCB72BF4A58900722DC4 /* StandardMediaCircularProgressView.swift in Sources */,
 				0BC560B72BA8730300EAAD75 /* Conversations_ListItemView.swift in Sources */,
 				0BBD2AAE2BA13729006990AA /* Profile_CoverTypes.swift in Sources */,
+				0BCE51392C2DAD1C00CBE336 /* AvatarBackgroundColorSelectionHeaderTextView.swift in Sources */,
 				0B939B742BC2926F00DC5F1E /* Conversations_CellMoreClearConversationView.swift in Sources */,
 				0B26236A2B4CB4CF0063D71C /* Color+EXT.swift in Sources */,
 				0B2623662B4CA0F70063D71C /* View+EXT.swift in Sources */,
@@ -2703,6 +2730,7 @@
 				0B20D7DD2B96126400B71C10 /* Profile_NameGenderNJoinedDateView.swift in Sources */,
 				0B20D7E72B961C3C00B71C10 /* Profile_BackgroundView.swift in Sources */,
 				0BC7DA7F2BCC13C500C4D356 /* Conversations_GIFBadgeView.swift in Sources */,
+				0BCE51352C2D95D200CBE336 /* SliderTrackView.swift in Sources */,
 				0B2623262B4BDA1B0063D71C /* AnalyticsManager.swift in Sources */,
 				0BFEFEA12B91E9130005DE9B /* TapCoordinatesModel.swift in Sources */,
 				0B2622FE2B4B4E120063D71C /* IAMSADApp.swift in Sources */,

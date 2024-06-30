@@ -19,7 +19,9 @@ struct AvatarSheetView: View {
                 sheetHeader
                 avatarPreview
                 AvatarSelectionView()
+                
                 Spacer()
+                
                 AvatarBackgroundColorSelectionView()
                     .padding(.bottom, 60)
             }
@@ -52,6 +54,14 @@ struct AvatarSheetView: View {
 #Preview("OnboardingAvatarView") {
     OnboardingAvatarView()
         .previewViewModifier
+}
+
+#Preview("AvatarSheetView") {
+    ScrollView(.vertical) {
+        AvatarSheetView()
+    }
+    .scrollDisabled(true)
+    .previewViewModifier
 }
 
 // MARK: - EXTENSIONS
