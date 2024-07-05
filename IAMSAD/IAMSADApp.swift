@@ -20,20 +20,14 @@ struct IAMSADApp: App {
         
     }
     
-    @State var sliderValue: CGFloat = 0
-    @State var color: ColorPaletteModel = Color.defaultAvatarColorPaletteArray[2]
-    
     var body: some Scene {
         WindowGroup {
-            ScrollView(.vertical) {
-                AvatarSheetView()
-            }
-            .scrollDisabled(true)
-            .dynamicTypeSize(...DynamicTypeSize.xLarge)
-            .environmentObject(avatar)
-            .environmentObject(avatarSheetVM)
-            .environmentObject(profileVM)
-            .environmentObject(conversationsVM)
+            ContentView()
+                .dynamicTypeSize(...DynamicTypeSize.xLarge)
+                .environmentObject(avatar)
+                .environmentObject(avatarSheetVM)
+                .environmentObject(profileVM)
+                .environmentObject(conversationsVM)
         }
     }
 }

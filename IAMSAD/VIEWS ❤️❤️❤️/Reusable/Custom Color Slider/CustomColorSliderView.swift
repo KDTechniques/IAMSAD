@@ -21,7 +21,7 @@ struct CustomColorSliderView: View {
     // MARK: - BODY
     var body: some View {
         ZStack {
-            SliderTrackView(sliderWidth: $sliderWidth, hue: avatarSheetVM.selectedBackgroundColor.hue)
+            sliderTrack
             trackThumb
         }
     }
@@ -36,6 +36,17 @@ struct CustomColorSliderView: View {
 
 // MARK: - EXTENSIONS
 extension CustomColorSliderView {
+    // MARK: - sliderTrack
+    private var sliderTrack: some View {
+        SliderTrackView(
+            sliderWidth: $sliderWidth,
+            hue: avatarSheetVM.selectedBackgroundColor.hue
+        )
+        .onChange(of: avatarSheetVM.sliderValue) { setOffsetX($1) }
+        .onChange(of: avatarSheetVM.sliderValueWithAnimation) { setOffsetX($1, animate: true) }
+        .onAppear { setOffsetX(avatarSheetVM.sliderValue) }
+    }
+    
     // MARK: - trackThumb
     private var trackThumb: some View {
         Circle()
@@ -53,9 +64,6 @@ extension CustomColorSliderView {
                     .onChanged { onDragGestureChanged($0) }
                     .onEnded { onDragGestureEnded($0) }
             )
-            .onChange(of: avatarSheetVM.sliderValue) { setOffsetX($1) }
-            .onChange(of: avatarSheetVM.sliderValueWithAnimation) { setOffsetX($1, animate: true) }
-            .onAppear { setOffsetX(avatarSheetVM.sliderValue) }
     }
     
     // MARK: - FUNCTIONS

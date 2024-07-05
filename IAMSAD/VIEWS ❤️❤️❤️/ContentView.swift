@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     // MARK: - PROPERTIES
-    @State private var tabSelection: TabTypes = .conversations
+    @State private var tabSelection: TabTypes = .profile
     
     // MARK: - BODY
     var body: some View {

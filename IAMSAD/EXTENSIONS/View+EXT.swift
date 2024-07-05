@@ -233,7 +233,7 @@ extension View {
     // MARK: - profileTabContentsIntrospect
     func profileTabContentsIntrospect(vm profileVM: ProfileVM, tab: Profile_TabLabelTypes) -> some View {
         self
-            .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
+            .introspect(.scrollView, on: .iOS(.v18)) { scrollView in
                 // Handles scroll view's vertical content offset
                 let condition1: Bool = profileVM.selectedTabType != tab
                 let condition2: Bool = scrollView.contentOffset.y <= profileVM.contentOffsetMaxY
@@ -255,7 +255,9 @@ extension View {
                         scrollView.setContentOffset(.init(x: 0, y: OffsetY), animated: true)
                     }
                     
-                    profileVM.scrollToTopContentOffsetY = nil
+                    DispatchQueue.main.async {
+                        profileVM.scrollToTopContentOffsetY = nil
+                    }
                 }
                 
                 // Handles vertical scroll indicator insets

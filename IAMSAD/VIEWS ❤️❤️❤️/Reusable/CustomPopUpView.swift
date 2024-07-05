@@ -58,7 +58,7 @@ struct CustomPopUpView: View {
             )
             .frame(maxHeight: .infinity, alignment: .top)
         }, customize: {
-            $0.appearFrom(.top)
+            $0.appearFrom(.topSlide)
                 .animation(.smooth)
                 .autohideIn(5)
         })
