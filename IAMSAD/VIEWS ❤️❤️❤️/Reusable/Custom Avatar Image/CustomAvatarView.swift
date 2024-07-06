@@ -35,12 +35,7 @@ struct CustomAvatarView: View {
             AvatarImageView(color: color, avatar: avatar, showBorder: withBorder)
                 .imageSizeViewModifier(imageSize)
         } else {
-            Image(systemName: "person.circle.fill")
-                .resizable()
-                .scaledToFit()
-                .imageSizeViewModifier(imageSize)
-                .foregroundStyle(Color.secondary.gradient)
-                .symbolRenderingMode(.multicolor)
+            placeholderImage
         }
     }
 }
@@ -58,6 +53,19 @@ struct CustomAvatarView: View {
     CustomAvatarView(avatar: Avatar.shared.publicAvatarsArray[0])
         .frame(width: 100, height: 100)
         .previewViewModifier
+}
+
+// MARK: - EXTENSIONS
+extension CustomAvatarView {
+    // MARK: - placeholderImage
+    private var placeholderImage: some View {
+        Image(systemName: "person.circle.fill")
+            .resizable()
+            .scaledToFit()
+            .imageSizeViewModifier(imageSize)
+            .foregroundStyle(Color.secondary.gradient)
+            .symbolRenderingMode(.multicolor)
+    }
 }
 
 extension View {

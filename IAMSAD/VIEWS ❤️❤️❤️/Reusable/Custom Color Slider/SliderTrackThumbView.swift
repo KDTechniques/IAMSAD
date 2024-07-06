@@ -44,7 +44,7 @@ struct SliderTrackThumbView: View {
 }
 
 // MARK: - PREVIEWS
-#Preview("Preview") {
+#Preview("SliderTrackThumbView") {
     SliderTrackThumbView(sliderWidth: 0, offsetX: 0)
         .previewViewModifier
 }

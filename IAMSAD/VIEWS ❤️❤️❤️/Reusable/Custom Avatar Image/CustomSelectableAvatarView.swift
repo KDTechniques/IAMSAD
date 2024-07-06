@@ -25,7 +25,7 @@ struct CustomSelectableAvatarView: View {
             hue: 0,
             saturation: 0,
             brightness: 0
-        )), // white
+        )), // => white
         avatar: AvatarModel,
         staticColor: Color = .white,
         isAutoColorOn: Bool = false,
@@ -58,10 +58,12 @@ struct CustomSelectableAvatarView: View {
 
 // MARK: - PREVIEWS
 #Preview("CustomSelectableAvatarView") {
+    @Previewable @State var selectedAvatar: AvatarModel? = Avatar.shared.publicAvatarsArray[2]
+    
     HStack {
         ForEach(0..<5, id: \.self) { /// From Featured Collection
             CustomSelectableAvatarView(
-                selectedAvatar: .constant(Avatar.shared.publicAvatarsArray[0]),
+                selectedAvatar: $selectedAvatar,
                 avatar: Avatar.shared.publicAvatarsArray[$0]
             )
             .frame(width: 70, height: 70)

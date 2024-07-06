@@ -16,7 +16,7 @@ struct AvatarSheetView: View {
     var body: some View {
         ViewThatFits(in: .vertical) {
             VStack {
-                sheetHeader
+                AvatarSheetHeaderTitleView()
                 avatarPreview
                 AvatarSelectionView()
                 
@@ -27,7 +27,7 @@ struct AvatarSheetView: View {
             }
             
             VStack {
-                sheetHeader
+                AvatarSheetHeaderTitleView()
                 avatarPreview
                 
                 VStack(spacing: 0) {
@@ -45,7 +45,7 @@ struct AvatarSheetView: View {
             }
         }
         .padding(.top)
-        .overlay(alignment: .topTrailing) { topTrailingButton }
+        .overlay(alignment: .topTrailing) { AvatarSheetTopTrailingButtonView() }
         .ignoresSafeArea()
     }
 }
@@ -65,15 +65,7 @@ struct AvatarSheetView: View {
 }
 
 // MARK: - EXTENSIONS
-@MainActor
 extension AvatarSheetView {
-    // MARK: - sheetHeader
-    private var sheetHeader: some View {
-        Text("Pick Your Avatar")
-            .font(.headline)
-            .frame(maxWidth: .infinity)
-    }
-    
     // MARK: - avatarPreview
     private var avatarPreview: some View {
         CustomAvatarView(
@@ -86,15 +78,5 @@ extension AvatarSheetView {
             )
         )
         .padding()
-    }
-    
-    // MARK: - topTrailingButton
-    private var topTrailingButton: some View {
-        Button { avatarSheetVM.isPresentedAvatarSheet = false } label: {
-            Text("Done")
-                .fontWeight(.semibold)
-                .foregroundStyle(.accent)
-                .padding()
-        }
     }
 }

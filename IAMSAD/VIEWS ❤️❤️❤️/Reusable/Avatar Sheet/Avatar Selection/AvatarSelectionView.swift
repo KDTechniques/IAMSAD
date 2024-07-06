@@ -9,14 +9,9 @@ import SwiftUI
 
 struct AvatarSelectionView: View {
     // MARK: - PROPERTIES
-    @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject private var avatar: Avatar
     @Environment(AvatarSheetVM.self) private var avatarSheetVM
     @State private var avatarSheetVM$: AvatarSheetVM = .shared
-    
-    private var sectionHeaderColor: Color {
-        colorScheme == .dark ? Color(uiColor: .lightGray) : Color(uiColor: .darkGray)
-    }
     
     // MARK: - INITIALIZER
     init() {
@@ -27,10 +22,10 @@ struct AvatarSelectionView: View {
     // MARK: - BODY
     var body: some View {
         VStack(spacing: 20) {
-            avatarCollectionNameText
+            AvatarSelectionHeaderTitleView()
             tabContent
         }
-        .overlay(alignment: .topTrailing) { seeAllButton }
+        .overlay(alignment: .topTrailing) { AvatarSelectionHeaderButtonView() }
         .font(.subheadline)
         .sheet(
             isPresented: $avatarSheetVM$.isPresentedSeeAllSheet,
@@ -68,15 +63,6 @@ extension AvatarSelectionView {
         }
     }
     
-    // MARK: - avatarCollectionNameText
-    private var avatarCollectionNameText: some View {
-        Text(avatarSheetVM.selectedTabCollection.rawValue)
-            .fontWeight(.semibold)
-            .foregroundStyle(sectionHeaderColor)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.leading, 20)
-    }
-    
     // MARK: - tabContent
     private var tabContent: some View {
         TabView(selection: $avatarSheetVM$.selectedTabCollection) {
@@ -88,14 +74,5 @@ extension AvatarSelectionView {
         .frame(height: avatarSheetVM.lazyVGridHeight+90)
         .frame(height: avatarSheetVM.lazyVGridHeight+45, alignment: .bottom)
         .tabViewStyle(.page(indexDisplayMode: .always))
-    }
-    
-    // MARK: - seeAllButton
-    private var seeAllButton: some View {
-        Button { avatarSheetVM.isPresentedSeeAllSheet = true } label: {
-            Text("See All")
-                .fontWeight(.medium)
-                .padding(.horizontal, 20)
-        }
     }
 }
