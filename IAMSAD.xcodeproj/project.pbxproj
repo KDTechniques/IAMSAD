@@ -180,6 +180,8 @@
 		0BA4E5AA2BE219B9004E7945 /* Conversations_ForwardedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4E5A92BE219B9004E7945 /* Conversations_ForwardedTextView.swift */; };
 		0BA4E5AC2BE219DB004E7945 /* Conversations_EditedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4E5AB2BE219DB004E7945 /* Conversations_EditedTextView.swift */; };
 		0BA54BE92B79196100100C71 /* CustomStripTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA54BE82B79196100100C71 /* CustomStripTabView.swift */; };
+		0BAE19202C39523700DB46BB /* SliderTrackThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE191F2C39523700DB46BB /* SliderTrackThumbView.swift */; };
+		0BAE19222C3953EF00DB46BB /* CustomColorSliderValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE19212C3953EF00DB46BB /* CustomColorSliderValues.swift */; };
 		0BAE579F2BD0486D0024735C /* Conversations_TextPrimaryPlainBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE579E2BD0486D0024735C /* Conversations_TextPrimaryPlainBubbleView.swift */; };
 		0BB1F9C02BCA795400719F12 /* Conversations_ReadReceiptShapesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F9BF2BCA795400719F12 /* Conversations_ReadReceiptShapesView.swift */; };
 		0BB1F9C22BCA819100719F12 /* ReadReceiptStatusTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F9C12BCA819100719F12 /* ReadReceiptStatusTypes.swift */; };
@@ -686,6 +688,8 @@
 		0BA4E5A92BE219B9004E7945 /* Conversations_ForwardedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_ForwardedTextView.swift; sourceTree = "<group>"; };
 		0BA4E5AB2BE219DB004E7945 /* Conversations_EditedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_EditedTextView.swift; sourceTree = "<group>"; };
 		0BA54BE82B79196100100C71 /* CustomStripTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStripTabView.swift; sourceTree = "<group>"; };
+		0BAE191F2C39523700DB46BB /* SliderTrackThumbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTrackThumbView.swift; sourceTree = "<group>"; };
+		0BAE19212C3953EF00DB46BB /* CustomColorSliderValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorSliderValues.swift; sourceTree = "<group>"; };
 		0BAE579E2BD0486D0024735C /* Conversations_TextPrimaryPlainBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_TextPrimaryPlainBubbleView.swift; sourceTree = "<group>"; };
 		0BB1F9BF2BCA795400719F12 /* Conversations_ReadReceiptShapesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_ReadReceiptShapesView.swift; sourceTree = "<group>"; };
 		0BB1F9C12BCA819100719F12 /* ReadReceiptStatusTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadReceiptStatusTypes.swift; sourceTree = "<group>"; };
@@ -2121,6 +2125,8 @@
 			children = (
 				0B2623A42B4E81530063D71C /* CustomColorSliderView.swift */,
 				0BCE51342C2D95D200CBE336 /* SliderTrackView.swift */,
+				0BAE191F2C39523700DB46BB /* SliderTrackThumbView.swift */,
+				0BAE19212C3953EF00DB46BB /* CustomColorSliderValues.swift */,
 			);
 			path = "Custom Color Slider";
 			sourceTree = "<group>";
@@ -2682,6 +2688,7 @@
 				0B1AF16E2BD510C800E3825C /* SocialMediaTypes.swift in Sources */,
 				0B2830412B8CA495006061BF /* ToolbarTopTrailingItemsView.swift in Sources */,
 				0B2623162B4BD4200063D71C /* ViewThatFitsTypes.swift in Sources */,
+				0BAE19202C39523700DB46BB /* SliderTrackThumbView.swift in Sources */,
 				0B6D740F2BCFBF5A001CE339 /* Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView.swift in Sources */,
 				0B2623202B4BD8CC0063D71C /* NetworkManager.swift in Sources */,
 				0B8900BF2BC6E74F0054B056 /* Conversations_PrimaryNSecondaryBubbleView.swift in Sources */,
@@ -2729,6 +2736,7 @@
 				0BC2EB1E2BC82DB100003941 /* Conversations_StickerOnlyBubbleTypeView.swift in Sources */,
 				0B20D7DD2B96126400B71C10 /* Profile_NameGenderNJoinedDateView.swift in Sources */,
 				0B20D7E72B961C3C00B71C10 /* Profile_BackgroundView.swift in Sources */,
+				0BAE19222C3953EF00DB46BB /* CustomColorSliderValues.swift in Sources */,
 				0BC7DA7F2BCC13C500C4D356 /* Conversations_GIFBadgeView.swift in Sources */,
 				0BCE51352C2D95D200CBE336 /* SliderTrackView.swift in Sources */,
 				0B2623262B4BDA1B0063D71C /* AnalyticsManager.swift in Sources */,
