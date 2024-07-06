@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 struct Profile_SwitchProfilesSheetView: View {
     // MARK: - PROPERTIES
     @EnvironmentObject private var profileVM: ProfileVM
-    @EnvironmentObject private var avatarSheetVM: AvatarSheetVM
+    @Environment(AvatarSheetVM.self) private var avatarSheetVM
     
     @Binding var isPresented: Bool
     

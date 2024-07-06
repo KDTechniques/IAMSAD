@@ -10,7 +10,7 @@ import SwiftUI
 struct AvatarSheetView: View {
     // MARK: - PROPEORTIES
     @Environment(\.colorScheme) private var colorScheme
-    @EnvironmentObject private var avatarSheetVM: AvatarSheetVM
+    @Environment(AvatarSheetVM.self) private var avatarSheetVM
     
     // MARK: - BODY
     var body: some View {

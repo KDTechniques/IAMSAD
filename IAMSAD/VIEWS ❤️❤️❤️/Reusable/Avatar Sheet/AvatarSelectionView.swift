@@ -11,7 +11,8 @@ struct AvatarSelectionView: View {
     // MARK: - PROPERTIES
     @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject private var avatar: Avatar
-    @EnvironmentObject private var avatarSheetVM: AvatarSheetVM
+    @Environment(AvatarSheetVM.self) private var avatarSheetVM
+    @State private var avatarSheetVM$: AvatarSheetVM = .shared
     
     private var sectionHeaderColor: Color {
         colorScheme == .dark ? Color(uiColor: .lightGray) : Color(uiColor: .darkGray)
@@ -32,7 +33,7 @@ struct AvatarSelectionView: View {
         .overlay(alignment: .topTrailing) { seeAllButton }
         .font(.subheadline)
         .sheet(
-            isPresented: $avatarSheetVM.isPresentedSeeAllSheet,
+            isPresented: $avatarSheetVM$.isPresentedSeeAllSheet,
             onDismiss: { avatarSheetVM.setSliderValueWithAnimation() }
         ) { SeeAllAvatarSheetContentView() }
     }
@@ -55,7 +56,7 @@ extension AvatarSelectionView {
         LazyVGrid(columns: avatarSheetVM.avatarColumns) {
             ForEach(avatarsArray) {
                 CustomSelectableAvatarView(
-                    selectedAvatar: $avatarSheetVM.selectedAvatar,
+                    selectedAvatar: $avatarSheetVM$.selectedAvatar,
                     avatar: $0,
                     staticColor: Color(
                         hue: avatarSheetVM.selectedBackgroundColor.hue,
@@ -78,10 +79,10 @@ extension AvatarSelectionView {
     
     // MARK: - tabContent
     private var tabContent: some View {
-        TabView(selection: $avatarSheetVM.selectedTabCollection) {
+        TabView(selection: $avatarSheetVM$.selectedTabCollection) {
             ForEach(AvatarCollectionTypes.allCases, id: \.self) { avatarCell(collectionName: $0) }
                 .padding(.horizontal, 20)
-                .geometryReaderDimensionViewModifier($avatarSheetVM.lazyVGridHeight, dimension: .height)
+                .geometryReaderDimensionViewModifier($avatarSheetVM$.lazyVGridHeight, dimension: .height)
                 .frame(maxHeight: avatarSheetVM.lazyVGridHeight)
         }
         .frame(height: avatarSheetVM.lazyVGridHeight+90)

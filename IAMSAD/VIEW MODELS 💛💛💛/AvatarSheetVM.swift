@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 @MainActor
-final class AvatarSheetVM: ObservableObject {
+@Observable final class AvatarSheetVM {
     // MARK: - PROPERTIES
     static let shared: AvatarSheetVM = .init()
     
@@ -25,19 +25,22 @@ final class AvatarSheetVM: ObservableObject {
     private var cancelable: Set<AnyCancellable> = []
     
     // MARK: - AvatarSheetView
-    @Published var selectedAvatar: AvatarModel? = nil
-    @Published var selectedBackgroundColor: ColorPaletteModel = Color.defaultAvatarColorPaletteArray[2]
-    @Published var isPresentedAvatarSheet: Bool = false
+    var selectedAvatar: AvatarModel? = nil
+    var selectedBackgroundColor: ColorPaletteModel = Color.defaultAvatarColorPaletteArray[2] {
+        didSet { selectedBackgroundColor$.send(selectedBackgroundColor) }
+    }
+    private var selectedBackgroundColor$ = CurrentValueSubject<ColorPaletteModel, Never>(Color.defaultAvatarColorPaletteArray[2])
+    var isPresentedAvatarSheet: Bool = false
     
     // MARK: - AvatarSelectionView
-    @Published var selectedTabCollection: AvatarCollectionTypes = .featured
-    @Published var lazyVGridHeight: CGFloat = 0
-    @Published var isPresentedSeeAllSheet: Bool = false
+    var selectedTabCollection: AvatarCollectionTypes = .featured
+    var lazyVGridHeight: CGFloat = 0
+    var isPresentedSeeAllSheet: Bool = false
     
     // MARK: - AvatarBackgroundColorSelectionView
-    @Published var colorPalettesArray: [ColorPaletteModel] = Color.defaultAvatarColorPaletteArray
-    @Published var sliderValue: CGFloat = -0.5
-    @Published var sliderValueWithAnimation: CGFloat = -0.5
+    var colorPalettesArray: [ColorPaletteModel] = Color.defaultAvatarColorPaletteArray
+    var sliderValue: CGFloat = -0.5
+    var sliderValueWithAnimation: CGFloat = -0.5
     let backgroundColorColumns: [GridItem] = [
         .init(.flexible()),
         .init(.flexible()),
@@ -58,7 +61,8 @@ final class AvatarSheetVM: ObservableObject {
     
     // MARK: - backgroundColorSubscriber
     private func backgroundColorSubscriber() {
-        $selectedBackgroundColor
+        selectedBackgroundColor$
+            .removeDuplicates()
             .sink { [weak self] newValue in
                 guard let self = self else { return }
                 

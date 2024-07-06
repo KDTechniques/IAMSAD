@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AvatarBackgroundColorSelectionColorPaletteGridView: View {
     // MARK: - PROPERTIES
-    @EnvironmentObject private var avatarSheetVM: AvatarSheetVM
+    @Environment(AvatarSheetVM.self) private var avatarSheetVM
     
     // MARK: - BODY
     var body: some View {
@@ -29,7 +29,7 @@ struct AvatarBackgroundColorSelectionColorPaletteGridView: View {
 // MARK: - SUBVIEWS
 fileprivate struct ColorCircle: View {
     // MARK: - PROPERTIES
-    @EnvironmentObject private var avatarSheetVM: AvatarSheetVM
+    @Environment(AvatarSheetVM.self) private var avatarSheetVM
     
     let color: ColorPaletteModel
     

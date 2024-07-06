@@ -14,7 +14,7 @@ extension View {
         self
             .dynamicTypeSize(...DynamicTypeSize.xLarge)
             .environmentObject(Avatar.shared)
-            .environmentObject(AvatarSheetVM.shared)
+            .environment(AvatarSheetVM.shared)
             .environmentObject(ProfileVM.shared)
             .environmentObject(ConversationsVM.shared)
             .tint(.accent)

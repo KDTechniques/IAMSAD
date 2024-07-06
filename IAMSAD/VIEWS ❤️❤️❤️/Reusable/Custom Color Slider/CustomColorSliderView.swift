@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CustomColorSliderView: View {
     // MARK: - PROPERTIES
-    @EnvironmentObject private var avatarSheetVM: AvatarSheetVM
+    @Environment(AvatarSheetVM.self) private var avatarSheetVM
     
     // MARK: - PRIVATE PROPERTIES
     @State private var offsetX: CGFloat = 0
@@ -56,6 +56,7 @@ extension CustomColorSliderView {
                 brightness: avatarSheetVM.selectedBackgroundColor.brightness
             ))
             .frame(width: thumbCircleWidth)
+            .overlay { Color.debug }
             .background(BackgroundView1())
             .background(BackgroundView2())
             .offset(x: offsetX)

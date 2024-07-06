@@ -12,7 +12,7 @@ import SwiftUIIntrospect
 struct IAMSADApp: App {
     
     let avatar: Avatar = .shared
-    @StateObject private var avatarSheetVM: AvatarSheetVM = .shared
+    @State private var avatarSheetVM: AvatarSheetVM = .shared
     @StateObject private var profileVM: ProfileVM = .shared
     @StateObject private var conversationsVM: ConversationsVM = .shared
     
@@ -25,7 +25,7 @@ struct IAMSADApp: App {
             ContentView()
                 .dynamicTypeSize(...DynamicTypeSize.xLarge)
                 .environmentObject(avatar)
-                .environmentObject(avatarSheetVM)
+                .environment(avatarSheetVM)
                 .environmentObject(profileVM)
                 .environmentObject(conversationsVM)
         }

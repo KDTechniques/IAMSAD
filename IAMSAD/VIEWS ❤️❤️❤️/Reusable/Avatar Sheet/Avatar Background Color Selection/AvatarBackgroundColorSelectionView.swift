@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AvatarBackgroundColorSelectionView: View {
     // MARK: - PROPERTIES
-    @EnvironmentObject private var avatarSheetVM: AvatarSheetVM
+    @Environment(AvatarSheetVM.self) private var avatarSheetVM
     
     // MARK: - BODY
     var body: some View {

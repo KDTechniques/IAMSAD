@@ -158,7 +158,7 @@ fileprivate struct AvatarSheetCollectionRowView: View {
 // MARK: - AvatarCollectionSheetContentView
 fileprivate struct AvatarCollectionSheetContentView: View {
     @Environment(\.colorScheme) private var colorScheme
-    @EnvironmentObject private var avatarSheetVM: AvatarSheetVM
+    @Environment(AvatarSheetVM.self) private var avatarSheetVM
     
     @Binding var showRowBackground: Bool
     let item: AvatarCollectionModel
@@ -208,7 +208,8 @@ fileprivate struct AvatarCollectionSheetContentView: View {
 fileprivate struct AvatarListView: View {
     // MARK: - PROPERTIES
     @EnvironmentObject private var avatar: Avatar
-    @EnvironmentObject private var avatarSheetVM: AvatarSheetVM
+    @Environment(AvatarSheetVM.self) private var avatarSheetVM
+    @State private var avatarSheetVM$: AvatarSheetVM = .shared
     
     let collection: AvatarCollectionTypes
     
@@ -233,8 +234,8 @@ fileprivate struct AvatarListView: View {
                         
                         if cellIndex < totalItems {
                             CustomSelectableAvatarView(
-                                selectedAvatar: $avatarSheetVM.selectedAvatar,
-                                dynamicColor: $avatarSheetVM.selectedBackgroundColor,
+                                selectedAvatar: $avatarSheetVM$.selectedAvatar,
+                                dynamicColor: $avatarSheetVM$.selectedBackgroundColor,
                                 avatar: avatarsArray[cellIndex],
                                 staticColor: Color(
                                     hue: avatarSheetVM.selectedBackgroundColor.hue,
