@@ -23,25 +23,28 @@ struct ConversationsView: View {
     @State var editMode: EditMode = .inactive
     @State private var showTabBar: Bool = true
     @State private var showBottomBar: Bool = false
+    let avatar: Avatar = .shared
     
     // MARK: - BODY
     var body: some View {
         NavigationStack {
             List(0...50, id: \.self, selection: $selection) { index in
-                Conversations_ListItemView(
-                    accountType: .anonymous,
-                    avatar: Avatar.shared.publicAvatarsArray[index],
-                    imageURL: .init(string: "https://picsum.photos/id/\(Int.random(in: 100...300))/150"),
-                    name: "Deepashika Sajeewanie",
-                    badgeType: .blue,
-                    time: "Friday",
-                    text: "Don't you worry okay, i will help you go through this. Leave a message if you need me anytime. I'll get back to you as soon as i can.",
-                    conversationType: .conversationOnPost(isOnMyPost: false)
-                )
-                .leadingSwipeGestures
-                .trailingSwipeGestures(name: "Deepashika Sajeewanie")
-                .listRowBackground(Color.clear)
-                .listSectionSeparator(.hidden)
+                if let avatarsArray: [AvatarModel] = avatar.publicAvatarsDictionary[.random()] {
+                    Conversations_ListItemView(
+                        accountType: .anonymous,
+                        avatar: avatarsArray[index],
+                        imageURL: .init(string: "https://picsum.photos/id/\(Int.random(in: 100...300))/150"),
+                        name: "Deepashika Sajeewanie",
+                        badgeType: .blue,
+                        time: "Friday",
+                        text: "Don't you worry okay, i will help you go through this. Leave a message if you need me anytime. I'll get back to you as soon as i can.",
+                        conversationType: .conversationOnPost(isOnMyPost: false)
+                    )
+                    .leadingSwipeGestures
+                    .trailingSwipeGestures(name: "Deepashika Sajeewanie")
+                    .listRowBackground(Color.clear)
+                    .listSectionSeparator(.hidden)
+                }
             }
             .listStyle(.plain)
             .navigationTitle("Conversations")

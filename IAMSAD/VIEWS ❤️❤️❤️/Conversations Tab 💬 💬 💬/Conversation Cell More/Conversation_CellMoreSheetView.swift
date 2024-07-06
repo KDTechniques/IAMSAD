@@ -12,7 +12,7 @@ struct Conversation_CellMoreSheetView: View {
     // MARK: - PROPERTIES
     let imageURL: URL? = .init(string: "https://picsum.photos/id/\(Int.random(in: 100...300))/100")
     let accountType:  AccountTypes = .personal
-    let avatar: AvatarModel? = Avatar.shared.publicAvatarsArray.first
+    let avatar: AvatarModel? = Avatar.shared.publicAvatarsDictionary[.random()]?.first
     let name: String
     var dismissAction: () {
         DispatchQueue.main.async {

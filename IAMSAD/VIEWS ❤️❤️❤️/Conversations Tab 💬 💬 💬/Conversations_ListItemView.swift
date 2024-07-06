@@ -76,18 +76,22 @@ struct Conversations_ListItemView: View {
 #Preview("Conversations_ListItemView") {
     let url: URL? = .init(string: "https://picsum.photos/id/\(Int.random(in: 1...500))/300")
     
-    return Conversations_ListItemView(
-        accountType: .personal,
-        avatar: Avatar.shared.publicAvatarsArray[50],
-        imageURL: url,
-        name: "Deepashika Sajeewanie",
-        badgeType: .blue,
-        time: "6:24 PM",
-        text: "Don't you worry okay, i will help you go through this. Leave a message if you need me anytime. I'll get back to you as soon as i can.",
-        conversationType: .conversationOnPost(isOnMyPost: true)
-    )
-    .padding(.horizontal)
-    .previewViewModifier
+    return Group {
+        if let avatar: AvatarModel = Avatar.shared.publicAvatarsDictionary[.random()]?.first {
+            Conversations_ListItemView(
+                accountType: .personal,
+                avatar: avatar,
+                imageURL: url,
+                name: "Deepashika Sajeewanie",
+                badgeType: .blue,
+                time: "6:24 PM",
+                text: "Don't you worry okay, i will help you go through this. Leave a message if you need me anytime. I'll get back to you as soon as i can.",
+                conversationType: .conversationOnPost(isOnMyPost: true)
+            )
+            .padding(.horizontal)
+            .previewViewModifier
+        }
+    }
 }
 
 // MARK: - EXTENSIONS

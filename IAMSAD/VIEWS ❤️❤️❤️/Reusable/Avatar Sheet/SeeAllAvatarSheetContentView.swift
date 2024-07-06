@@ -121,7 +121,7 @@ extension SeeAllAvatarSheetContentView {
 // MARK: - AvatarSheetCollectionRowView
 fileprivate struct AvatarSheetCollectionRowView: View {
     // MARK: - PROPERTIES
-    @EnvironmentObject private var avatar: Avatar
+    let avatar: Avatar = .shared
     
     let collectionName: AvatarCollectionTypes
     
@@ -134,10 +134,7 @@ fileprivate struct AvatarSheetCollectionRowView: View {
     var body: some View {
         HStack(spacing: 10) {
             let avatarsArray: [AvatarModel] = Array(
-                avatar
-                    .publicAvatarsArray
-                    .filter({ $0.collection == collectionName })
-                    .prefix(6)
+                avatar.publicAvatarsDictionary[collectionName]?.prefix(6) ?? []
             )
             
             ForEach(avatarsArray) {
@@ -207,12 +204,12 @@ fileprivate struct AvatarCollectionSheetContentView: View {
 // MARK: - AvatarListView
 fileprivate struct AvatarListView: View {
     // MARK: - PROPERTIES
-    @EnvironmentObject private var avatar: Avatar
-    @Environment(AvatarSheetVM.self) private var avatarSheetVM
-    @State private var avatarSheetVM$: AvatarSheetVM = .shared
-    
     let collection: AvatarCollectionTypes
     
+    // MARK: - PRIVATE PROPERTIES
+    let avatar: Avatar = .shared
+    @Environment(AvatarSheetVM.self) private var avatarSheetVM
+    @State private var avatarSheetVM$: AvatarSheetVM = .shared
     let numberOfColumns: Int = 4
     
     // MARK: - INITIALIZER
@@ -220,31 +217,29 @@ fileprivate struct AvatarListView: View {
     
     // MARK: - BODY
     var body: some View {
-        let avatarsArray: [AvatarModel] = avatar
-            .publicAvatarsArray
-            .filter({ $0.collection == collection })
-        
-        let totalItems: Int = avatarsArray.count
-        
-        VStack(alignment: .leading) {
-            ForEach(getVerticalRange(totalItems: totalItems), id: \.self) { row in
-                HStack(spacing: 10) {
-                    ForEach(getHorizontalRange(), id: \.self) { column in
-                        let cellIndex: Int = getCellIndex(row: row, column: column) - 1
-                        
-                        if cellIndex < totalItems {
-                            CustomSelectableAvatarView(
-                                selectedAvatar: $avatarSheetVM$.selectedAvatar,
-                                dynamicColor: $avatarSheetVM$.selectedBackgroundColor,
-                                avatar: avatarsArray[cellIndex],
-                                staticColor: Color(
-                                    hue: avatarSheetVM.selectedBackgroundColor.hue,
-                                    saturation: avatarSheetVM.selectedBackgroundColor.saturation,
-                                    brightness: avatarSheetVM.selectedBackgroundColor.brightness
-                                ),
-                                isAutoColorOn: true
-                            )
-                        } else { Color.clear }
+        if let avatarsArray: [AvatarModel] = avatar.publicAvatarsDictionary[collection] {
+            let totalItems: Int = avatarsArray.count
+            
+            VStack(alignment: .leading) {
+                ForEach(getVerticalRange(totalItems: totalItems), id: \.self) { row in
+                    HStack(spacing: 10) {
+                        ForEach(getHorizontalRange(), id: \.self) { column in
+                            let cellIndex: Int = getCellIndex(row: row, column: column) - 1
+                            
+                            if cellIndex < totalItems {
+                                CustomSelectableAvatarView(
+                                    selectedAvatar: $avatarSheetVM$.selectedAvatar,
+                                    dynamicColor: $avatarSheetVM$.selectedBackgroundColor,
+                                    avatar: avatarsArray[cellIndex],
+                                    staticColor: Color(
+                                        hue: avatarSheetVM.selectedBackgroundColor.hue,
+                                        saturation: avatarSheetVM.selectedBackgroundColor.saturation,
+                                        brightness: avatarSheetVM.selectedBackgroundColor.brightness
+                                    ),
+                                    isAutoColorOn: true
+                                )
+                            } else { Color.clear }
+                        }
                     }
                 }
             }

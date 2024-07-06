@@ -75,15 +75,13 @@ struct AvatarImageView: View {
 // MARK: - PREVIEWS
 #Preview("AvatarImageView") {
     HStack(spacing: 20) {
-        AvatarImageView(avatar: Avatar.shared.publicAvatarsArray[0])
+        if let avatars: [AvatarModel] = Avatar.shared.publicAvatarsDictionary[.random()] {
+            AvatarImageView(avatar: avatars[0])
+        }
         
-        AvatarImageView(avatar: Array(
-            Avatar
-                .shared
-                .publicAvatarsArray
-                .filter({ $0.collection == .animals })
-                .prefix(1)
-        ).first!)
+        if let avatars: [AvatarModel] = Avatar.shared.publicAvatarsDictionary[.random()] {
+            AvatarImageView(avatar: avatars[0])
+        }
     }
     .padding(100)
     .previewViewModifier

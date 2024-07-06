@@ -42,17 +42,21 @@ struct CustomAvatarView: View {
 // MARK: - PREVIEWS
 #Preview("CustomAvatarView - with imageSize") {
     HStack {
-        ForEach(0..<5, id: \.self) {
-            CustomAvatarView(avatar: Avatar.shared.publicAvatarsArray[$0])
+        if let avatarsArray: [AvatarModel] = Avatar.shared.publicAvatarsDictionary[.random()] {
+            ForEach(0..<5, id: \.self) {
+                CustomAvatarView(avatar: avatarsArray[$0])
+            }
         }
     }
     .previewViewModifier
 }
 
 #Preview("CustomAvatarView - No imageSize, but Frame Size") {
-    CustomAvatarView(avatar: Avatar.shared.publicAvatarsArray[0])
-        .frame(width: 100, height: 100)
-        .previewViewModifier
+    if let avatarsArray: [AvatarModel] = Avatar.shared.publicAvatarsDictionary[.random()] {
+        CustomAvatarView(avatar: avatarsArray[0])
+            .frame(width: 100, height: 100)
+            .previewViewModifier
+    }
 }
 
 // MARK: - EXTENSIONS

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AvatarSelectionView: View {
     // MARK: - PROPERTIES
-    @EnvironmentObject private var avatar: Avatar
     @Environment(AvatarSheetVM.self) private var avatarSheetVM
     @State private var avatarSheetVM$: AvatarSheetVM = .shared
     
@@ -43,30 +42,10 @@ struct AvatarSelectionView: View {
 // MARK: - EXTENSIONS
 @MainActor
 extension AvatarSelectionView {
-    // MARK: - avatarCell
-    @ViewBuilder
-    private func avatarCell(collectionName: AvatarCollectionTypes) -> some View {
-        let avatarsArray: [AvatarModel] = Array(avatar.publicAvatarsArray.filter({ $0.collection == collectionName }).prefix(20))
-        
-        LazyVGrid(columns: avatarSheetVM.avatarColumns) {
-            ForEach(avatarsArray) {
-                CustomSelectableAvatarView(
-                    selectedAvatar: $avatarSheetVM$.selectedAvatar,
-                    avatar: $0,
-                    staticColor: Color(
-                        hue: avatarSheetVM.selectedBackgroundColor.hue,
-                        saturation: avatarSheetVM.selectedBackgroundColor.saturation,
-                        brightness: avatarSheetVM.selectedBackgroundColor.brightness
-                    )
-                )
-            }
-        }
-    }
-    
     // MARK: - tabContent
     private var tabContent: some View {
         TabView(selection: $avatarSheetVM$.selectedTabCollection) {
-            ForEach(AvatarCollectionTypes.allCases, id: \.self) { avatarCell(collectionName: $0) }
+            ForEach(AvatarCollectionTypes.allCases, id: \.self) { AvatarSelectionVGridView(collectionName: $0) }
                 .padding(.horizontal, 20)
                 .geometryReaderDimensionViewModifier($avatarSheetVM$.lazyVGridHeight, dimension: .height)
                 .frame(maxHeight: avatarSheetVM.lazyVGridHeight)

@@ -186,6 +186,7 @@
 		0BAE19272C3962A000DB46BB /* AvatarSheetTopTrailingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE19262C3962A000DB46BB /* AvatarSheetTopTrailingButtonView.swift */; };
 		0BAE192B2C39713D00DB46BB /* AvatarSelectionHeaderTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE192A2C39713D00DB46BB /* AvatarSelectionHeaderTitleView.swift */; };
 		0BAE192D2C39723A00DB46BB /* AvatarSelectionHeaderButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE192C2C39723A00DB46BB /* AvatarSelectionHeaderButtonView.swift */; };
+		0BAE19302C39AFE600DB46BB /* AvatarSelectionVGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE192F2C39AFE600DB46BB /* AvatarSelectionVGridView.swift */; };
 		0BAE579F2BD0486D0024735C /* Conversations_TextPrimaryPlainBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE579E2BD0486D0024735C /* Conversations_TextPrimaryPlainBubbleView.swift */; };
 		0BB1F9C02BCA795400719F12 /* Conversations_ReadReceiptShapesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F9BF2BCA795400719F12 /* Conversations_ReadReceiptShapesView.swift */; };
 		0BB1F9C22BCA819100719F12 /* ReadReceiptStatusTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F9C12BCA819100719F12 /* ReadReceiptStatusTypes.swift */; };
@@ -698,6 +699,7 @@
 		0BAE19262C3962A000DB46BB /* AvatarSheetTopTrailingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSheetTopTrailingButtonView.swift; sourceTree = "<group>"; };
 		0BAE192A2C39713D00DB46BB /* AvatarSelectionHeaderTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSelectionHeaderTitleView.swift; sourceTree = "<group>"; };
 		0BAE192C2C39723A00DB46BB /* AvatarSelectionHeaderButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSelectionHeaderButtonView.swift; sourceTree = "<group>"; };
+		0BAE192F2C39AFE600DB46BB /* AvatarSelectionVGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSelectionVGridView.swift; sourceTree = "<group>"; };
 		0BAE579E2BD0486D0024735C /* Conversations_TextPrimaryPlainBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_TextPrimaryPlainBubbleView.swift; sourceTree = "<group>"; };
 		0BB1F9BF2BCA795400719F12 /* Conversations_ReadReceiptShapesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_ReadReceiptShapesView.swift; sourceTree = "<group>"; };
 		0BB1F9C12BCA819100719F12 /* ReadReceiptStatusTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadReceiptStatusTypes.swift; sourceTree = "<group>"; };
@@ -1587,6 +1589,7 @@
 		0BAE19282C3970DA00DB46BB /* Avatar Selection */ = {
 			isa = PBXGroup;
 			children = (
+				0BAE192E2C39AF9500DB46BB /* Avatar Grid */,
 				0BAE19292C39711800DB46BB /* Header */,
 				0B27C3F62B52A61C00680676 /* AvatarSelectionView.swift */,
 			);
@@ -1600,6 +1603,14 @@
 				0BAE192C2C39723A00DB46BB /* AvatarSelectionHeaderButtonView.swift */,
 			);
 			path = Header;
+			sourceTree = "<group>";
+		};
+		0BAE192E2C39AF9500DB46BB /* Avatar Grid */ = {
+			isa = PBXGroup;
+			children = (
+				0BAE192F2C39AFE600DB46BB /* AvatarSelectionVGridView.swift */,
+			);
+			path = "Avatar Grid";
 			sourceTree = "<group>";
 		};
 		0BAE579D2BD048220024735C /* Primary N Secondary Bubble Types */ = {
@@ -2671,6 +2682,7 @@
 				0BE1B1BE2BEFD67A006A1E51 /* CollageBubbleModel.swift in Sources */,
 				0B4434662B527C200041E8BF /* OTPVerificationView.swift in Sources */,
 				0B6E745B2B5A9A87008B4CFB /* Utilities.swift in Sources */,
+				0BAE19302C39AFE600DB46BB /* AvatarSelectionVGridView.swift in Sources */,
 				0B7A99CC2BAC5F4800D5D3E2 /* Conversation_CellMoreSheetView.swift in Sources */,
 				0B2623182B4BD4420063D71C /* AlertModel.swift in Sources */,
 				0B9E806D2BA0D2250018FDE3 /* Profile_PostsTabView.swift in Sources */,

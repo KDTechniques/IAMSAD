@@ -13,7 +13,6 @@ extension View {
     var previewViewModifier: some View {
         self
             .dynamicTypeSize(...DynamicTypeSize.xLarge)
-            .environmentObject(Avatar.shared)
             .environment(AvatarSheetVM.shared)
             .environmentObject(ProfileVM.shared)
             .environmentObject(ConversationsVM.shared)

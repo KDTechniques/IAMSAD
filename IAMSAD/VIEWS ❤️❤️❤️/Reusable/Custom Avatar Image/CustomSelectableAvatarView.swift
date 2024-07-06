@@ -58,15 +58,17 @@ struct CustomSelectableAvatarView: View {
 
 // MARK: - PREVIEWS
 #Preview("CustomSelectableAvatarView") {
-    @Previewable @State var selectedAvatar: AvatarModel? = Avatar.shared.publicAvatarsArray[2]
+    @Previewable @State var selectedAvatar: AvatarModel? = Avatar.shared.publicAvatarsDictionary[.random()]?.first
     
     HStack {
-        ForEach(0..<5, id: \.self) { /// From Featured Collection
-            CustomSelectableAvatarView(
-                selectedAvatar: $selectedAvatar,
-                avatar: Avatar.shared.publicAvatarsArray[$0]
-            )
-            .frame(width: 70, height: 70)
+        if let avatarsArray: [AvatarModel] = Avatar.shared.publicAvatarsDictionary[.random()] {
+            ForEach(0..<5, id: \.self) { /// From Featured Collection
+                CustomSelectableAvatarView(
+                    selectedAvatar: $selectedAvatar,
+                    avatar: avatarsArray[$0]
+                )
+                .frame(width: 70, height: 70)
+            }
         }
     }
     .previewViewModifier

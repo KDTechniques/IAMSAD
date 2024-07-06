@@ -17,7 +17,6 @@ struct AvatarSelectionHeaderButtonView: View {
             Text("See All")
                 .fontWeight(.medium)
                 .padding(.horizontal, 20)
-                .foregroundStyle(Color.debug)
         }
     }
 }

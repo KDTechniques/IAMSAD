@@ -49,7 +49,7 @@ struct Profile_SwitchProfilesSheetView: View {
         .presentationDetents([.height(contentHeight)])
         .presentationCornerRadius(30)
         .onAppear {
-            avatarSheetVM.selectedAvatar = Avatar.shared.publicAvatarsArray[78]
+            avatarSheetVM.selectedAvatar = Avatar.shared.publicAvatarsDictionary[.random()]?.first
         }
     }
 }
