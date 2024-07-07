@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CustomColorSliderView: View {
     // MARK: - PROPERTIES
-    @Environment(AvatarSheetVM.self) private var avatarSheetVM
+    @Environment(AvatarSheetVM.self) private var vm
     
     // MARK: - PRIVATE PROPERTIES
     @State private var offsetX: CGFloat = 0
@@ -22,11 +22,11 @@ struct CustomColorSliderView: View {
         ZStack {
             SliderTrackView(
                 sliderWidth: $sliderWidth,
-                hue: avatarSheetVM.selectedBackgroundColor.hue
+                hue: vm.selectedBackgroundColor.hue
             )
-            .onChange(of: avatarSheetVM.sliderValue) { setOffsetX($1) }
-            .onChange(of: avatarSheetVM.sliderValueWithAnimation) { setOffsetX($1, animate: true) }
-            .onAppear { setOffsetX(avatarSheetVM.sliderValue) }
+            .onChange(of: vm.sliderValue) { setOffsetX($1) }
+            .onChange(of: vm.sliderValueWithAnimation) { setOffsetX($1, animate: true) }
+            .onAppear { setOffsetX(vm.sliderValue) }
             
             SliderTrackThumbView(sliderWidth: sliderWidth, offsetX: offsetX)
         }

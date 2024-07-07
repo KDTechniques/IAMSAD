@@ -22,7 +22,7 @@ struct AvatarSelectionView: View {
     var body: some View {
         VStack(spacing: 20) {
             AvatarSelectionHeaderTitleView()
-            tabContent
+            AvatarSelectionTabContentView()
         }
         .overlay(alignment: .topTrailing) { AvatarSelectionHeaderButtonView() }
         .font(.subheadline)
@@ -37,21 +37,4 @@ struct AvatarSelectionView: View {
 #Preview("AvatarSelectionView") {
     AvatarSelectionView()
         .previewViewModifier
-}
-
-// MARK: - EXTENSIONS
-@MainActor
-extension AvatarSelectionView {
-    // MARK: - tabContent
-    private var tabContent: some View {
-        TabView(selection: $avatarSheetVM$.selectedTabCollection) {
-            ForEach(AvatarCollectionTypes.allCases, id: \.self) { AvatarSelectionVGridView(collectionName: $0) }
-                .padding(.horizontal, 20)
-                .geometryReaderDimensionViewModifier($avatarSheetVM$.lazyVGridHeight, dimension: .height)
-                .frame(maxHeight: avatarSheetVM.lazyVGridHeight)
-        }
-        .frame(height: avatarSheetVM.lazyVGridHeight+90)
-        .frame(height: avatarSheetVM.lazyVGridHeight+45, alignment: .bottom)
-        .tabViewStyle(.page(indexDisplayMode: .always))
-    }
 }

@@ -21,7 +21,10 @@ struct IAMSADApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Color.clear
+                .sheet(isPresented: .constant(true), content: {
+                    AvatarSheetView()
+                })
                 .dynamicTypeSize(...DynamicTypeSize.xLarge)
                 .environment(avatarSheetVM)
                 .environmentObject(profileVM)

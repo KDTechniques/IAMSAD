@@ -15,21 +15,16 @@ import Combine
     
     // MARK: - Common
     let haptic: HapticFeedbackGenerator = .init()
-    let avatarColumns: [GridItem] = [
-        .init(.flexible()),
-        .init(.flexible()),
-        .init(.flexible()),
-        .init(.flexible()),
-        .init(.flexible())
-    ]
+    let avatarColumns: [GridItem] = Array(repeating: .init(.flexible()), count: 5)
     private var cancelable: Set<AnyCancellable> = []
     
     // MARK: - AvatarSheetView
     var selectedAvatar: AvatarModel? = nil
     var selectedBackgroundColor: ColorPaletteModel = Color.defaultAvatarColorPaletteArray[2] {
-        didSet { selectedBackgroundColor$.send(selectedBackgroundColor) }
+        didSet { selectedBackgroundColor$ = selectedBackgroundColor }
     }
-    private var selectedBackgroundColor$ = CurrentValueSubject<ColorPaletteModel, Never>(Color.defaultAvatarColorPaletteArray[2])
+    @ObservationIgnored
+    @Published private var selectedBackgroundColor$: ColorPaletteModel = Color.defaultAvatarColorPaletteArray[2]
     var isPresentedAvatarSheet: Bool = false
     
     // MARK: - AvatarSelectionView
@@ -41,14 +36,7 @@ import Combine
     var colorPalettesArray: [ColorPaletteModel] = Color.defaultAvatarColorPaletteArray
     var sliderValue: CGFloat = -0.5
     var sliderValueWithAnimation: CGFloat = -0.5
-    let backgroundColorColumns: [GridItem] = [
-        .init(.flexible()),
-        .init(.flexible()),
-        .init(.flexible()),
-        .init(.flexible()),
-        .init(.flexible()),
-        .init(.flexible())
-    ]
+    let backgroundColorColumns: [GridItem] = Array(repeating: .init(.flexible()), count: 6)
     
     // MARK: - INITIALIZER
     private init() {
@@ -61,15 +49,14 @@ import Combine
     
     // MARK: - backgroundColorSubscriber
     private func backgroundColorSubscriber() {
-        selectedBackgroundColor$
+        $selectedBackgroundColor$
             .removeDuplicates()
+            .debounce(for: .seconds(1), scheduler: RunLoop.main)
             .sink { [weak self] newValue in
                 guard let self = self else { return }
-                
                 selectedAvatar?.updateBackgroundColor(newValue.toColor())
             }
             .store(in: &cancelable)
-        
     }
     
     // MARK: - setSliderValueWithAnimation

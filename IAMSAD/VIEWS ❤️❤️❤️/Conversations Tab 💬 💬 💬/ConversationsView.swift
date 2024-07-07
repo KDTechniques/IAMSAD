@@ -28,7 +28,7 @@ struct ConversationsView: View {
     // MARK: - BODY
     var body: some View {
         NavigationStack {
-            List(0...50, id: \.self, selection: $selection) { index in
+            List(0...20, id: \.self, selection: $selection) { index in
                 if let avatarsArray: [AvatarModel] = avatar.publicAvatarsDictionary[.random()] {
                     Conversations_ListItemView(
                         accountType: .anonymous,

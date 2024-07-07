@@ -45,14 +45,6 @@ struct AvatarSelectionVGridView: View {
 
 // MARK: - PREVIEWS
 #Preview("AvatarSelectionVGridView") {
-    @Previewable @State var name: AvatarCollectionTypes = .random()
-    
-    VStack {
-        AvatarSelectionVGridView(collectionName: name)
-        
-        Button("Click me") {
-            name = .random()
-        }
-    }
-    .previewViewModifier
+    AvatarSelectionVGridView(collectionName: .random())
+        .previewViewModifier
 }
