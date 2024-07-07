@@ -17,6 +17,7 @@ struct AvatarImageView: View {
     let showBorder: Bool
     let borderSize: CGFloat
     
+    // MARK: - PRIVATE PROPERTIES
     @State private var state: AvatarStateTypes = .loading
     
     // MARK: - INITIALIZER
@@ -73,22 +74,17 @@ struct AvatarImageView: View {
 
 // MARK: - PREVIEWS
 #Preview("AvatarImageView") {
-    Color.clear
-        .sheet(isPresented: .constant(true)) {
-            HStack(spacing: 20) {
-                AvatarImageView(avatar: Avatar.shared.publicAvatarsArray[0])
-                
-                AvatarImageView(avatar: Array(
-                    Avatar
-                        .shared
-                        .publicAvatarsArray
-                        .filter({ $0.collection == .animals })
-                        .prefix(1)
-                ).first!)
-            }
-            .padding(100)
+    HStack(spacing: 20) {
+        if let avatars: [AvatarModel] = Avatar.shared.publicAvatarsDictionary[.random()] {
+            AvatarImageView(avatar: avatars[0])
         }
-        .previewViewModifier
+        
+        if let avatars: [AvatarModel] = Avatar.shared.publicAvatarsDictionary[.random()] {
+            AvatarImageView(avatar: avatars[0])
+        }
+    }
+    .padding(100)
+    .previewViewModifier
 }
 
 // MARK: - EXTENSIONS

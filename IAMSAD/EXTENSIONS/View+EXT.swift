@@ -13,8 +13,7 @@ extension View {
     var previewViewModifier: some View {
         self
             .dynamicTypeSize(...DynamicTypeSize.xLarge)
-            .environmentObject(Avatar.shared)
-            .environmentObject(AvatarSheetVM.shared)
+            .environment(AvatarSheetVM.shared)
             .environmentObject(ProfileVM.shared)
             .environmentObject(ConversationsVM.shared)
             .tint(.accent)
@@ -51,8 +50,8 @@ extension View {
     
     // MARK: - topPartBackgroundEffectOnScrollViewModifier
     func topPartBackgroundEffectOnScrollViewModifier(
-        minY: CGFloat,
-        maxY: Binding<CGFloat>,
+        bottomPartMinY: CGFloat,
+        topPartMaxY: Binding<CGFloat>,
         showBackgroundEffect: Binding<Bool>
     ) -> some View {
         self
@@ -64,15 +63,17 @@ extension View {
                             value: proxy.frame(in: .global).maxY
                         )
                         .onPreferenceChange(CustomCGFloatPreferenceKey.self) {
-                            maxY.wrappedValue = $0
-                            showBackgroundEffect.wrappedValue = $0 > minY
+                            /// we get the maxY changes of the top part and send the value back to view level for more calculations to be done.
+                            topPartMaxY.wrappedValue = $0
+                            /// we trigger the background effect when the maxY of the top part is greater than rounded min Y of the bottom part.
+                            showBackgroundEffect.wrappedValue = $0 > bottomPartMinY
                         }
                 }
             )
     }
     
     // MARK: - bottomPartBackgroundEffectOnScrollViewModifier
-    func bottomPartBackgroundEffectOnScrollViewModifier(minY: Binding<CGFloat>) -> some View {
+    func bottomPartBackgroundEffectOnScrollViewModifier(bottomPartMinY: Binding<CGFloat>) -> some View {
         self
             .background(
                 GeometryReader { proxy in
@@ -81,7 +82,11 @@ extension View {
                             key: CustomCGFloatPreferenceKey.self,
                             value: proxy.frame(in: .global).minY
                         )
-                        .onPreferenceChange(CustomCGFloatPreferenceKey.self) { minY.wrappedValue = $0.rounded() }
+                        .onPreferenceChange(CustomCGFloatPreferenceKey.self) {
+                            /// rounded() is used to trigger an event even before the top part reaches the bottom part for better UX.
+                            /// we send the minY value back to view level for other calculations to be done.
+                            bottomPartMinY.wrappedValue = $0.rounded()
+                        }
                 }
             )
     }
@@ -227,7 +232,7 @@ extension View {
     // MARK: - profileTabContentsIntrospect
     func profileTabContentsIntrospect(vm profileVM: ProfileVM, tab: Profile_TabLabelTypes) -> some View {
         self
-            .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
+            .introspect(.scrollView, on: .iOS(.v18)) { scrollView in
                 // Handles scroll view's vertical content offset
                 let condition1: Bool = profileVM.selectedTabType != tab
                 let condition2: Bool = scrollView.contentOffset.y <= profileVM.contentOffsetMaxY
@@ -249,7 +254,9 @@ extension View {
                         scrollView.setContentOffset(.init(x: 0, y: OffsetY), animated: true)
                     }
                     
-                    profileVM.scrollToTopContentOffsetY = nil
+                    DispatchQueue.main.async {
+                        profileVM.scrollToTopContentOffsetY = nil
+                    }
                 }
                 
                 // Handles vertical scroll indicator insets

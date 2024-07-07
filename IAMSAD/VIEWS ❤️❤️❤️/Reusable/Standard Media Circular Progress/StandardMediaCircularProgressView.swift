@@ -45,11 +45,10 @@ struct StandardMediaCircularProgressView: View {
             .standardCircularProgressBackgroundViewModifier(colorScheme, withBackground)
             .clipShape(Circle())
             .overlay {
-                if showProgress {
-                    circularProgress
-                } else {
-                    StandardMediaCircularProgress_ArrowDownView()
-                }
+                if showProgress { circularProgress }
+                
+                StandardMediaCircularProgress_ArrowDownView()
+                    .opacity(showProgress ? 0 : 1)
             }
             .transition(.scale)
             .animation(animation, value: showProgress)
@@ -63,9 +62,7 @@ struct StandardMediaCircularProgressView: View {
         value: 0.75,
         showProgress: .random(),
         rotateProgress: .random()
-    ) {
-        print("Action triggered!")
-    }
+    ) { print("Action triggered!") }
 }
 
 // MARK: - EXTENSIONS

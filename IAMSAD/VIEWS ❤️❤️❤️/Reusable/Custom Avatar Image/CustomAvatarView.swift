@@ -35,29 +35,41 @@ struct CustomAvatarView: View {
             AvatarImageView(color: color, avatar: avatar, showBorder: withBorder)
                 .imageSizeViewModifier(imageSize)
         } else {
-            Image(systemName: "person.circle.fill")
-                .resizable()
-                .scaledToFit()
-                .imageSizeViewModifier(imageSize)
-                .foregroundStyle(Color.secondary.gradient)
-                .symbolRenderingMode(.multicolor)
+            placeholderImage
         }
     }
 }
 // MARK: - PREVIEWS
 #Preview("CustomAvatarView - with imageSize") {
     HStack {
-        ForEach(0..<5, id: \.self) {
-            CustomAvatarView(avatar: Avatar.shared.publicAvatarsArray[$0])
+        if let avatarsArray: [AvatarModel] = Avatar.shared.publicAvatarsDictionary[.random()] {
+            ForEach(0..<5, id: \.self) {
+                CustomAvatarView(avatar: avatarsArray[$0])
+            }
         }
     }
     .previewViewModifier
 }
 
 #Preview("CustomAvatarView - No imageSize, but Frame Size") {
-    CustomAvatarView(avatar: Avatar.shared.publicAvatarsArray[0])
-        .frame(width: 100, height: 100)
-        .previewViewModifier
+    if let avatarsArray: [AvatarModel] = Avatar.shared.publicAvatarsDictionary[.random()] {
+        CustomAvatarView(avatar: avatarsArray[0])
+            .frame(width: 100, height: 100)
+            .previewViewModifier
+    }
+}
+
+// MARK: - EXTENSIONS
+extension CustomAvatarView {
+    // MARK: - placeholderImage
+    private var placeholderImage: some View {
+        Image(systemName: "person.circle.fill")
+            .resizable()
+            .scaledToFit()
+            .imageSizeViewModifier(imageSize)
+            .foregroundStyle(Color.secondary.gradient)
+            .symbolRenderingMode(.multicolor)
+    }
 }
 
 extension View {
