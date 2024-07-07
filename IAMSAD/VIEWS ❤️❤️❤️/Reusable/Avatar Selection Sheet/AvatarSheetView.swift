@@ -17,7 +17,7 @@ struct AvatarSheetView: View {
         ViewThatFits(in: .vertical) {
             VStack {
                 AvatarSheetHeaderTitleView()
-                avatarPreview
+                AvatarSheetPreviewImageView()
                 AvatarSelectionView()
                 
                 Spacer()
@@ -28,7 +28,7 @@ struct AvatarSheetView: View {
             
             VStack {
                 AvatarSheetHeaderTitleView()
-                avatarPreview
+                AvatarSheetPreviewImageView()
                 
                 VStack(spacing: 0) {
                     Divider()
@@ -64,19 +64,3 @@ struct AvatarSheetView: View {
     .previewViewModifier
 }
 
-// MARK: - EXTENSIONS
-extension AvatarSheetView {
-    // MARK: - avatarPreview
-    private var avatarPreview: some View {
-        CustomAvatarView(
-            avatar: avatarSheetVM.selectedAvatar,
-            imageSize: 80,
-            color: Color(
-                hue: avatarSheetVM.selectedBackgroundColor.hue,
-                saturation: avatarSheetVM.selectedBackgroundColor.saturation,
-                brightness: avatarSheetVM.selectedBackgroundColor.brightness
-            )
-        )
-        .padding()
-    }
-}

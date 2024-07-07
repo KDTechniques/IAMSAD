@@ -79,7 +79,7 @@ struct Conversations_ListItemView: View {
     return Group {
         if let avatar: AvatarModel = Avatar.shared.publicAvatarsDictionary[.random()]?.first {
             Conversations_ListItemView(
-                accountType: .personal,
+                accountType: .random(),
                 avatar: avatar,
                 imageURL: url,
                 name: "Deepashika Sajeewanie",

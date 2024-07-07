@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AvatarBackgroundColorSelectionView: View {
     // MARK: - PROPERTIES
-    @Environment(AvatarSheetVM.self) private var avatarSheetVM
+    @Environment(AvatarSheetVM.self) private var vm
     
     // MARK: - BODY
     var body: some View {
@@ -21,9 +21,9 @@ struct AvatarBackgroundColorSelectionView: View {
                 .padding(.horizontal, 8)
         }
         .padding(.horizontal, 20)
-        .onChange(of: avatarSheetVM.selectedBackgroundColor) { avatarSheetVM.onColorChange($1) }
-        .onAppear { avatarSheetVM.setSliderValue() }
-        .onDisappear { avatarSheetVM.setSliderValue() }
+        .onChange(of: vm.selectedBackgroundColor) { vm.onColorChange($1) }
+        .onAppear { vm.setSliderValue() }
+        .onDisappear { vm.setSliderValue() }
     }
 }
 

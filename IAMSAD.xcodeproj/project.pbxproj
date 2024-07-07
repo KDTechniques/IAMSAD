@@ -187,6 +187,7 @@
 		0BAE192B2C39713D00DB46BB /* AvatarSelectionHeaderTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE192A2C39713D00DB46BB /* AvatarSelectionHeaderTitleView.swift */; };
 		0BAE192D2C39723A00DB46BB /* AvatarSelectionHeaderButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE192C2C39723A00DB46BB /* AvatarSelectionHeaderButtonView.swift */; };
 		0BAE19302C39AFE600DB46BB /* AvatarSelectionVGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE192F2C39AFE600DB46BB /* AvatarSelectionVGridView.swift */; };
+		0BAE19322C39EC8000DB46BB /* AvatarSelectionTabContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE19312C39EC7F00DB46BB /* AvatarSelectionTabContentView.swift */; };
 		0BAE579F2BD0486D0024735C /* Conversations_TextPrimaryPlainBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE579E2BD0486D0024735C /* Conversations_TextPrimaryPlainBubbleView.swift */; };
 		0BB1F9C02BCA795400719F12 /* Conversations_ReadReceiptShapesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F9BF2BCA795400719F12 /* Conversations_ReadReceiptShapesView.swift */; };
 		0BB1F9C22BCA819100719F12 /* ReadReceiptStatusTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F9C12BCA819100719F12 /* ReadReceiptStatusTypes.swift */; };
@@ -516,6 +517,16 @@
 		0BE75A6E2B99FB2B003C43DA /* Profile_CoverTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE75A6D2B99FB2B003C43DA /* Profile_CoverTextView.swift */; };
 		0BEBFBC72BAC71FC008A997A /* CustomActionSheetButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEBFBC62BAC71FC008A997A /* CustomActionSheetButtonsView.swift */; };
 		0BEC957A2C2A5B87000CA409 /* Conversations_CollageImagesContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEC95792C2A5B87000CA409 /* Conversations_CollageImagesContainerView.swift */; };
+		0BED87972C3A46FA00EBD961 /* SeeAllAvatarSheetTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED87962C3A46FA00EBD961 /* SeeAllAvatarSheetTitleView.swift */; };
+		0BED87992C3A47B200EBD961 /* SeeAllAvatarSheetScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED87982C3A47B200EBD961 /* SeeAllAvatarSheetScrollView.swift */; };
+		0BED879C2C3A8BF500EBD961 /* SeeAllAvatarSheetCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED879B2C3A8BF500EBD961 /* SeeAllAvatarSheetCollectionHeaderView.swift */; };
+		0BED879E2C3A8DAF00EBD961 /* SeeAllAvatarSheetCollectionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED879D2C3A8DAF00EBD961 /* SeeAllAvatarSheetCollectionRowView.swift */; };
+		0BED87A22C3ABBA700EBD961 /* AvatarCollectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED87A12C3ABBA700EBD961 /* AvatarCollectionListView.swift */; };
+		0BED87A42C3ACA7B00EBD961 /* AvatarSheetPreviewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED87A32C3ACA7B00EBD961 /* AvatarSheetPreviewImageView.swift */; };
+		0BED87A62C3AF58100EBD961 /* AvatarCollectionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED87A52C3AF58100EBD961 /* AvatarCollectionSheetView.swift */; };
+		0BED87A82C3AF5E400EBD961 /* AvatarCollectionSheetHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED87A72C3AF5E400EBD961 /* AvatarCollectionSheetHeaderView.swift */; };
+		0BED87AA2C3AF7D400EBD961 /* AvatarCollectionSheetFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED87A92C3AF7D400EBD961 /* AvatarCollectionSheetFooterView.swift */; };
+		0BED87AC2C3AFB7000EBD961 /* AvatarCollectionSheetDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED87AB2C3AFB7000EBD961 /* AvatarCollectionSheetDividerView.swift */; };
 		0BFB38112B56FDB300227CB2 /* OnboardingLastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFB38102B56FDB300227CB2 /* OnboardingLastView.swift */; };
 		0BFB38132B56FEDC00227CB2 /* ThumbsUpLightSkinTone.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BFB38122B56FEDC00227CB2 /* ThumbsUpLightSkinTone.png */; };
 		0BFC0BF62BDE1A0C0033E682 /* SocialMediaBubbleValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFC0BF52BDE1A0C0033E682 /* SocialMediaBubbleValues.swift */; };
@@ -700,6 +711,7 @@
 		0BAE192A2C39713D00DB46BB /* AvatarSelectionHeaderTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSelectionHeaderTitleView.swift; sourceTree = "<group>"; };
 		0BAE192C2C39723A00DB46BB /* AvatarSelectionHeaderButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSelectionHeaderButtonView.swift; sourceTree = "<group>"; };
 		0BAE192F2C39AFE600DB46BB /* AvatarSelectionVGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSelectionVGridView.swift; sourceTree = "<group>"; };
+		0BAE19312C39EC7F00DB46BB /* AvatarSelectionTabContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSelectionTabContentView.swift; sourceTree = "<group>"; };
 		0BAE579E2BD0486D0024735C /* Conversations_TextPrimaryPlainBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_TextPrimaryPlainBubbleView.swift; sourceTree = "<group>"; };
 		0BB1F9BF2BCA795400719F12 /* Conversations_ReadReceiptShapesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_ReadReceiptShapesView.swift; sourceTree = "<group>"; };
 		0BB1F9C12BCA819100719F12 /* ReadReceiptStatusTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadReceiptStatusTypes.swift; sourceTree = "<group>"; };
@@ -1028,6 +1040,16 @@
 		0BE75A6D2B99FB2B003C43DA /* Profile_CoverTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_CoverTextView.swift; sourceTree = "<group>"; };
 		0BEBFBC62BAC71FC008A997A /* CustomActionSheetButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionSheetButtonsView.swift; sourceTree = "<group>"; };
 		0BEC95792C2A5B87000CA409 /* Conversations_CollageImagesContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_CollageImagesContainerView.swift; sourceTree = "<group>"; };
+		0BED87962C3A46FA00EBD961 /* SeeAllAvatarSheetTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllAvatarSheetTitleView.swift; sourceTree = "<group>"; };
+		0BED87982C3A47B200EBD961 /* SeeAllAvatarSheetScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllAvatarSheetScrollView.swift; sourceTree = "<group>"; };
+		0BED879B2C3A8BF500EBD961 /* SeeAllAvatarSheetCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllAvatarSheetCollectionHeaderView.swift; sourceTree = "<group>"; };
+		0BED879D2C3A8DAF00EBD961 /* SeeAllAvatarSheetCollectionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllAvatarSheetCollectionRowView.swift; sourceTree = "<group>"; };
+		0BED87A12C3ABBA700EBD961 /* AvatarCollectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCollectionListView.swift; sourceTree = "<group>"; };
+		0BED87A32C3ACA7B00EBD961 /* AvatarSheetPreviewImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSheetPreviewImageView.swift; sourceTree = "<group>"; };
+		0BED87A52C3AF58100EBD961 /* AvatarCollectionSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCollectionSheetView.swift; sourceTree = "<group>"; };
+		0BED87A72C3AF5E400EBD961 /* AvatarCollectionSheetHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCollectionSheetHeaderView.swift; sourceTree = "<group>"; };
+		0BED87A92C3AF7D400EBD961 /* AvatarCollectionSheetFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCollectionSheetFooterView.swift; sourceTree = "<group>"; };
+		0BED87AB2C3AFB7000EBD961 /* AvatarCollectionSheetDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCollectionSheetDividerView.swift; sourceTree = "<group>"; };
 		0BEE056A2B51A05D002478D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0BFB38102B56FDB300227CB2 /* OnboardingLastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingLastView.swift; sourceTree = "<group>"; };
 		0BFB38122B56FEDC00227CB2 /* ThumbsUpLightSkinTone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ThumbsUpLightSkinTone.png; sourceTree = "<group>"; };
@@ -1273,13 +1295,12 @@
 				0B58AE922B6CEFF00057CCFE /* Post Buttons */,
 				0B729F6F2B667A0C009BDFD2 /* Custom Avatar Image */,
 				0B2623632B4C9F3D0063D71C /* CustomStandardAccentBottomButtonView.swift */,
-				0BCE51332C2D959F00CBE336 /* Custom Color Slider */,
 				0B4392FE2B4F0DE90075E5D1 /* CustomPageIndexIndicatorView.swift */,
 				0B99746A2B55D6DE001AD3F6 /* CustomSearchBarView.swift */,
 				0B00D1E12B54192B00CE721C /* CustomCountryCodeSearchSheetView.swift */,
 				0B6E745C2B5AA21D008B4CFB /* CustomContentNotAvailableView.swift */,
 				0BE5A0EF2BAD9EE00026DFFA /* CustomActionSheet */,
-				0B27C3F52B52A5F500680676 /* Avatar Sheet */,
+				0B27C3F52B52A5F500680676 /* Avatar Selection Sheet */,
 				0B5B0E9E2B7B305A001A950C /* Custom Strip Tab */,
 				0B4F90B52BA590D900C79C0A /* CustomNoProfileImageView.swift */,
 				0B5C492D2BAE8DFC00616181 /* CustomProfileImageView.swift */,
@@ -1316,16 +1337,16 @@
 			path = OnboardingAvatar;
 			sourceTree = "<group>";
 		};
-		0B27C3F52B52A5F500680676 /* Avatar Sheet */ = {
+		0B27C3F52B52A5F500680676 /* Avatar Selection Sheet */ = {
 			isa = PBXGroup;
 			children = (
-				0BAE19232C39600000DB46BB /* Header */,
 				0B26239C2B4DB38A0063D71C /* AvatarSheetView.swift */,
-				0BAE19282C3970DA00DB46BB /* Avatar Selection */,
-				0BCE513A2C2DAD2400CBE336 /* Avatar Background Color Selection */,
-				0BD00C1A2B6294A4000C3236 /* SeeAllAvatarSheetContentView.swift */,
+				0BAE19232C39600000DB46BB /* Header */,
+				0BAE19282C3970DA00DB46BB /* Avatar Selection Grid */,
+				0BCE513A2C2DAD2400CBE336 /* Avatar Background Color Selection Palette */,
+				0BED87952C3A467B00EBD961 /* See All Avatars Sheet */,
 			);
-			path = "Avatar Sheet";
+			path = "Avatar Selection Sheet";
 			sourceTree = "<group>";
 		};
 		0B28303B2B8C977D006061BF /* Toolbar Items */ = {
@@ -1582,18 +1603,19 @@
 			children = (
 				0BAE19242C39601600DB46BB /* AvatarSheetHeaderTitleView.swift */,
 				0BAE19262C3962A000DB46BB /* AvatarSheetTopTrailingButtonView.swift */,
+				0BED87A32C3ACA7B00EBD961 /* AvatarSheetPreviewImageView.swift */,
 			);
 			path = Header;
 			sourceTree = "<group>";
 		};
-		0BAE19282C3970DA00DB46BB /* Avatar Selection */ = {
+		0BAE19282C3970DA00DB46BB /* Avatar Selection Grid */ = {
 			isa = PBXGroup;
 			children = (
+				0B27C3F62B52A61C00680676 /* AvatarSelectionView.swift */,
 				0BAE192E2C39AF9500DB46BB /* Avatar Grid */,
 				0BAE19292C39711800DB46BB /* Header */,
-				0B27C3F62B52A61C00680676 /* AvatarSelectionView.swift */,
 			);
-			path = "Avatar Selection";
+			path = "Avatar Selection Grid";
 			sourceTree = "<group>";
 		};
 		0BAE19292C39711800DB46BB /* Header */ = {
@@ -1609,6 +1631,7 @@
 			isa = PBXGroup;
 			children = (
 				0BAE192F2C39AFE600DB46BB /* AvatarSelectionVGridView.swift */,
+				0BAE19312C39EC7F00DB46BB /* AvatarSelectionTabContentView.swift */,
 			);
 			path = "Avatar Grid";
 			sourceTree = "<group>";
@@ -2178,14 +2201,15 @@
 			path = "Custom Color Slider";
 			sourceTree = "<group>";
 		};
-		0BCE513A2C2DAD2400CBE336 /* Avatar Background Color Selection */ = {
+		0BCE513A2C2DAD2400CBE336 /* Avatar Background Color Selection Palette */ = {
 			isa = PBXGroup;
 			children = (
+				0BCE51332C2D959F00CBE336 /* Custom Color Slider */,
 				0B27C3FA2B52A68B00680676 /* AvatarBackgroundColorSelectionView.swift */,
 				0BCE51382C2DAD1C00CBE336 /* AvatarBackgroundColorSelectionHeaderTextView.swift */,
 				0BCE513B2C2DAE4D00CBE336 /* AvatarBackgroundColorSelectionColorPaletteGridView.swift */,
 			);
-			path = "Avatar Background Color Selection";
+			path = "Avatar Background Color Selection Palette";
 			sourceTree = "<group>";
 		};
 		0BE5A0EF2BAD9EE00026DFFA /* CustomActionSheet */ = {
@@ -2231,6 +2255,47 @@
 				0BEC95792C2A5B87000CA409 /* Conversations_CollageImagesContainerView.swift */,
 			);
 			path = "Images Container";
+			sourceTree = "<group>";
+		};
+		0BED87952C3A467B00EBD961 /* See All Avatars Sheet */ = {
+			isa = PBXGroup;
+			children = (
+				0BD00C1A2B6294A4000C3236 /* SeeAllAvatarSheetContentView.swift */,
+				0BED87962C3A46FA00EBD961 /* SeeAllAvatarSheetTitleView.swift */,
+				0BED879A2C3A8B9A00EBD961 /* Scroll Content */,
+				0BED87A02C3ABB7400EBD961 /* Avatar Collection Content */,
+			);
+			path = "See All Avatars Sheet";
+			sourceTree = "<group>";
+		};
+		0BED879A2C3A8B9A00EBD961 /* Scroll Content */ = {
+			isa = PBXGroup;
+			children = (
+				0BED87982C3A47B200EBD961 /* SeeAllAvatarSheetScrollView.swift */,
+				0BED879B2C3A8BF500EBD961 /* SeeAllAvatarSheetCollectionHeaderView.swift */,
+				0BED879D2C3A8DAF00EBD961 /* SeeAllAvatarSheetCollectionRowView.swift */,
+			);
+			path = "Scroll Content";
+			sourceTree = "<group>";
+		};
+		0BED87A02C3ABB7400EBD961 /* Avatar Collection Content */ = {
+			isa = PBXGroup;
+			children = (
+				0BED87AD2C3AFBCC00EBD961 /* Header */,
+				0BED87A52C3AF58100EBD961 /* AvatarCollectionSheetView.swift */,
+				0BED87A12C3ABBA700EBD961 /* AvatarCollectionListView.swift */,
+				0BED87A92C3AF7D400EBD961 /* AvatarCollectionSheetFooterView.swift */,
+			);
+			path = "Avatar Collection Content";
+			sourceTree = "<group>";
+		};
+		0BED87AD2C3AFBCC00EBD961 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				0BED87A72C3AF5E400EBD961 /* AvatarCollectionSheetHeaderView.swift */,
+				0BED87AB2C3AFB7000EBD961 /* AvatarCollectionSheetDividerView.swift */,
+			);
+			path = Header;
 			sourceTree = "<group>";
 		};
 		0BFB380F2B56F4E900227CB2 /* OnboardingPhoneNumber */ = {
@@ -2653,6 +2718,7 @@
 				0B2623682B4CA1D50063D71C /* UIDevice+EXT.swift in Sources */,
 				0BC7DA812BCC38F200C4D356 /* BubbleShapeValues.swift in Sources */,
 				0BCE513C2C2DAE4D00CBE336 /* AvatarBackgroundColorSelectionColorPaletteGridView.swift in Sources */,
+				0BED87A62C3AF58100EBD961 /* AvatarCollectionSheetView.swift in Sources */,
 				0BEBFBC72BAC71FC008A997A /* CustomActionSheetButtonsView.swift in Sources */,
 				0BC7DA8C2BCC452B00C4D356 /* Conversations_VoiceRecordBadgeView.swift in Sources */,
 				0B20D7E12B9616A500B71C10 /* Profile_BioView.swift in Sources */,
@@ -2666,6 +2732,7 @@
 				0BA4E5982BE21823004E7945 /* Conversations_VoiceRecordSecondaryReplyBubbleView.swift in Sources */,
 				0BDE95272BCE53D5003A211E /* SecondaryBubbleValues.swift in Sources */,
 				0BAE192B2C39713D00DB46BB /* AvatarSelectionHeaderTitleView.swift in Sources */,
+				0BED879C2C3A8BF500EBD961 /* SeeAllAvatarSheetCollectionHeaderView.swift in Sources */,
 				0B9E806B2BA0D0B40018FDE3 /* Profile_TabContentTopClearView.swift in Sources */,
 				0B8900C12BC6E8090054B056 /* MessageBubbleUserTypes.swift in Sources */,
 				0B1CEC892BE4FA8F006DB5E1 /* Conversations_VoiceRecordPrimaryPlainBubble_ImageView.swift in Sources */,
@@ -2695,6 +2762,7 @@
 				0B2623952B4D80850063D71C /* UserNameTextFieldView.swift in Sources */,
 				0B59DCB72BF4A58900722DC4 /* StandardMediaCircularProgressView.swift in Sources */,
 				0BC560B72BA8730300EAAD75 /* Conversations_ListItemView.swift in Sources */,
+				0BED87972C3A46FA00EBD961 /* SeeAllAvatarSheetTitleView.swift in Sources */,
 				0BBD2AAE2BA13729006990AA /* Profile_CoverTypes.swift in Sources */,
 				0BCE51392C2DAD1C00CBE336 /* AvatarBackgroundColorSelectionHeaderTextView.swift in Sources */,
 				0B939B742BC2926F00DC5F1E /* Conversations_CellMoreClearConversationView.swift in Sources */,
@@ -2705,11 +2773,13 @@
 				0B12FB962BCAA4F8002E0048 /* Enum + EXT.swift in Sources */,
 				0B939B6A2BC27CD500DC5F1E /* CustomActionSheetView.swift in Sources */,
 				0BE75A682B99F88E003C43DA /* Profile_SecondaryProfilePhotoView.swift in Sources */,
+				0BED87992C3A47B200EBD961 /* SeeAllAvatarSheetScrollView.swift in Sources */,
 				0B28C9FE2B6B076E00AC4725 /* CustomLikeHeartAnimationView.swift in Sources */,
 				0B2623582B4C92FB0063D71C /* OnboardingWelcomeView.swift in Sources */,
 				0B26237C2B4D43810063D71C /* OnboardingListView.swift in Sources */,
 				0B4392FF2B4F0DE90075E5D1 /* CustomPageIndexIndicatorView.swift in Sources */,
 				0B6FEC2E2BC901F9000EBC31 /* Conversations_StickerPlaceholderShape.swift in Sources */,
+				0BAE19322C39EC8000DB46BB /* AvatarSelectionTabContentView.swift in Sources */,
 				0B8900BD2BC6A3AF0054B056 /* Conversations_ReadMoreButtonView.swift in Sources */,
 				0BA4E5A62BE2192B004E7945 /* Conversations_CollagePlainBubbleView.swift in Sources */,
 				0BAE192D2C39723A00DB46BB /* AvatarSelectionHeaderButtonView.swift in Sources */,
@@ -2766,6 +2836,7 @@
 				0BBD7CB52BA8075900AE8542 /* ConversationsView.swift in Sources */,
 				0B2623742B4D35F70063D71C /* GenderTypes.swift in Sources */,
 				0B4F90B62BA590D900C79C0A /* CustomNoProfileImageView.swift in Sources */,
+				0BED87AA2C3AF7D400EBD961 /* AvatarCollectionSheetFooterView.swift in Sources */,
 				0B28303F2B8C97C6006061BF /* ToolbarTopLeadingItemView.swift in Sources */,
 				0B00D1DE2B5334A900CE721C /* OnboardingPhoneNumberView.swift in Sources */,
 				0B9071EF2B6EC164008D5AF4 /* LaunchScreen.swift in Sources */,
@@ -2776,8 +2847,10 @@
 				0B4164B32BC9A52400B92311 /* ConversationMediaTypes.swift in Sources */,
 				0BBD2AAC2BA136F4006990AA /* Profile_TabContentOffsetModel.swift in Sources */,
 				0B08F1C82BC5C291009E8538 /* CustomRoundedRectangleShape.swift in Sources */,
+				0BED87A22C3ABBA700EBD961 /* AvatarCollectionListView.swift in Sources */,
 				0BD876A72B8CC1DB00E66184 /* Profile_CoverContentView.swift in Sources */,
 				0BD00C1B2B6294A4000C3236 /* SeeAllAvatarSheetContentView.swift in Sources */,
+				0BED879E2C3A8DAF00EBD961 /* SeeAllAvatarSheetCollectionRowView.swift in Sources */,
 				0B26231C2B4BD6550063D71C /* ConfirmationDialogModel.swift in Sources */,
 				0BAE19252C39601600DB46BB /* AvatarSheetHeaderTitleView.swift in Sources */,
 				0BAE579F2BD0486D0024735C /* Conversations_TextPrimaryPlainBubbleView.swift in Sources */,
@@ -2791,6 +2864,7 @@
 				0BC7DA7F2BCC13C500C4D356 /* Conversations_GIFBadgeView.swift in Sources */,
 				0BCE51352C2D95D200CBE336 /* SliderTrackView.swift in Sources */,
 				0B2623262B4BDA1B0063D71C /* AnalyticsManager.swift in Sources */,
+				0BED87A82C3AF5E400EBD961 /* AvatarCollectionSheetHeaderView.swift in Sources */,
 				0BFEFEA12B91E9130005DE9B /* TapCoordinatesModel.swift in Sources */,
 				0B2622FE2B4B4E120063D71C /* IAMSADApp.swift in Sources */,
 				0BA4E58E2BE216B9004E7945 /* Conversations_SocialMediaInfoSecondaryPlainBubbleView.swift in Sources */,
@@ -2802,6 +2876,7 @@
 				0BA4E5A42BE2190A004E7945 /* Conversations_SharedAudioPrimaryPlainBubbleView.swift in Sources */,
 				0B6E745D2B5AA21D008B4CFB /* CustomContentNotAvailableView.swift in Sources */,
 				0BE75A662B99F741003C43DA /* Profile_CoverPhotoView.swift in Sources */,
+				0BED87AC2C3AFB7000EBD961 /* AvatarCollectionSheetDividerView.swift in Sources */,
 				0B26231E2B4BD8570063D71C /* HapticFeedbackGenerator.swift in Sources */,
 				0BE6C0602BC9360900BAE66B /* Conversations_StickerPlaceholderShapeView.swift in Sources */,
 				0B20D7DB2B960F5300B71C10 /* Profile_PrimaryPhotoView.swift in Sources */,
@@ -2820,6 +2895,7 @@
 				0B1AF1762BD52BC200E3825C /* YoutubeInfoModel.swift in Sources */,
 				0B9071F22B6EC8E7008D5AF4 /* CustomPopUpView.swift in Sources */,
 				0B12FB9A2BCAD629002E0048 /* UIFont + EXT.swift in Sources */,
+				0BED87A42C3ACA7B00EBD961 /* AvatarSheetPreviewImageView.swift in Sources */,
 				0BB588552BC48D8D003ACABB /* Conversations_MessageThreadView.swift in Sources */,
 				0B8900BB2BC69D7B0054B056 /* Conversations_BubbleTimeStampView.swift in Sources */,
 				0B5B0EA22B7B31BD001A950C /* CustomStripTabContentView.swift in Sources */,
