@@ -51,11 +51,6 @@ struct AvatarSheetView: View {
 }
 
 // MARK: - PREVIEWS
-#Preview("OnboardingAvatarView") {
-    OnboardingAvatarView()
-        .previewViewModifier
-}
-
 #Preview("AvatarSheetView") {
     ScrollView(.vertical) {
         AvatarSheetView()
@@ -64,3 +59,7 @@ struct AvatarSheetView: View {
     .previewViewModifier
 }
 
+#Preview("OnboardingAvatarView") {
+    OnboardingAvatarView()
+        .previewViewModifier
+}
