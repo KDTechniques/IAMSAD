@@ -15,7 +15,6 @@ struct OnboardingWelcomeView: View {
     @State private var minY: CGFloat = 0
     @State private var maxY: CGFloat = 0
     @State private var showBackgroundEffect: Bool = false
-    @State private var isDisabledScrolling: Bool = false
     
     // MARK: - BODY
     var body: some View {
@@ -28,17 +27,16 @@ struct OnboardingWelcomeView: View {
                 }
                 .padding(.vertical, 50)
                 .topPartBackgroundEffectOnScrollViewModifier(
-                    bottomPartMinY: minY,
-                    topPartMaxY: $maxY,
+                    minY: minY,
+                    maxY: $maxY,
                     showBackgroundEffect: $showBackgroundEffect
                 )
             }
-            .scrollDisabled(isDisabledScrolling)
             .safeAreaInset(edge: .bottom) {
                 bottomButton
-                    .bottomPartBackgroundEffectOnScrollViewModifier(bottomPartMinY: $minY)
+                    .bottomPartBackgroundEffectOnScrollViewModifier(minY: $minY)
             }
-            .onChange(of: minY) { handleOnChangeMinY($1) }
+            .onChange(of: minY) { showBackgroundEffect = maxY > $1 }
         }
     }
 }
@@ -46,7 +44,7 @@ struct OnboardingWelcomeView: View {
 // MARK: - PREVIEWS
 #Preview("OnboardingWelcomeView") {
     OnboardingWelcomeView()
-//        .previewViewModifier
+        .previewViewModifier
 }
 
 // MARK: - EXTENSIONS
@@ -123,20 +121,5 @@ extension OnboardingWelcomeView {
         }
         .padding(.top)
         .background(.ultraThinMaterial.opacity(showBackgroundEffect ? 1 : 0))
-    }
-    
-    // MARK: - FUNCTIONS
-    
-    // MARK: - handleOnChangeMinY
-    private func handleOnChangeMinY(_ minY: CGFloat) {
-        /// `onChange` is needed even though the following condition is checked by the top part view modifier.
-        /// This is because on larger models like the iPhone 15 Pro Max, the background effect gets triggered due to the bottom part appearing before the top part, leading to incorrect results on appear.
-        /// So using `onChange` with `minY` corrects that issue.
-        let boolean: Bool = maxY > minY
-        showBackgroundEffect = boolean
-        /// For larger models like the iPhone 15 Pro Max, the background effect doesn't get triggered.
-        /// That means the top part content isn't big enough to go under the bottom part.
-        /// Therefore, we disable scrolling to avoid confusing the user and enhance the overall user experience..
-        isDisabledScrolling = !boolean
     }
 }

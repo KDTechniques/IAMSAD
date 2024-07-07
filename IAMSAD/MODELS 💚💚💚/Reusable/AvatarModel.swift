@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AvatarModel: Identifiable {
+struct AvatarModel: Identifiable, Equatable {
     // MARK: - PROPERTIES
     var id: String { imageName }
     let imageName: String

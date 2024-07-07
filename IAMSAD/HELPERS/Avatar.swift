@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
-struct Avatar {
+
+final class Avatar: ObservableObject {
     // MARK: - PROPERTIES
     static let shared: Avatar = .init()
-    private(set) var publicAvatarsDictionary: [AvatarCollectionTypes: [AvatarModel]] = [:]
+    var publicAvatarsArray: [AvatarModel] = []
     
     // MARK: - INITIALIZER
     private init() { initializePublicAvatarArray() }
@@ -25,12 +26,10 @@ struct Avatar {
     }
     
     // MARK: - initializePublicAvatarArray
-    mutating private func initializePublicAvatarArray()  {
-        var tempDictionary: [AvatarCollectionTypes: [AvatarModel]] = [:]
+    private func initializePublicAvatarArray()  {
+        var tempArray: [AvatarModel] = []
         
         for item in AvatarCollectionTypes.avatarCollectionsArray {
-            var tempArray: [AvatarModel] = []
-            
             for index in 1...item.avatarCount {
                 tempArray.append(.init(
                     imageName: item.collectionName.rawValue+"_"+index.description,
@@ -38,10 +37,8 @@ struct Avatar {
                     position: getPosition(item.collectionName)
                 ))
             }
-            
-            tempDictionary[item.collectionName] = tempArray
         }
         
-        publicAvatarsDictionary = tempDictionary
+        publicAvatarsArray = tempArray
     }
 }

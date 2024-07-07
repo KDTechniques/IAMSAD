@@ -9,34 +9,43 @@ import SwiftUI
 import Combine
 
 @MainActor
-@Observable final class AvatarSheetVM {
+final class AvatarSheetVM: ObservableObject {
     // MARK: - PROPERTIES
     static let shared: AvatarSheetVM = .init()
     
     // MARK: - Common
     let haptic: HapticFeedbackGenerator = .init()
-    let avatarColumns: [GridItem] = Array(repeating: .init(.flexible()), count: 5)
+    let avatarColumns: [GridItem] = [
+        .init(.flexible()),
+        .init(.flexible()),
+        .init(.flexible()),
+        .init(.flexible()),
+        .init(.flexible())
+    ]
     private var cancelable: Set<AnyCancellable> = []
     
     // MARK: - AvatarSheetView
-    var selectedAvatar: AvatarModel? = nil
-    var selectedBackgroundColor: ColorPaletteModel = Color.defaultAvatarColorPaletteArray[2] {
-        didSet { selectedBackgroundColor$ = selectedBackgroundColor }
-    }
-    @ObservationIgnored
-    @Published private var selectedBackgroundColor$: ColorPaletteModel = Color.defaultAvatarColorPaletteArray[2]
-    var isPresentedAvatarSheet: Bool = false
+    @Published var selectedAvatar: AvatarModel? = nil
+    @Published var selectedBackgroundColor: ColorPaletteModel = Color.defaultAvatarColorPaletteArray[2]
+    @Published var isPresentedAvatarSheet: Bool = false
     
     // MARK: - AvatarSelectionView
-    var selectedTabCollection: AvatarCollectionTypes = .featured
-    var lazyVGridHeight: CGFloat = 0
-    var isPresentedSeeAllSheet: Bool = false
+    @Published var selectedTabCollection: AvatarCollectionTypes = .featured
+    @Published var lazyVGridHeight: CGFloat = 0
+    @Published var isPresentedSeeAllSheet: Bool = false
     
     // MARK: - AvatarBackgroundColorSelectionView
-    var colorPalettesArray: [ColorPaletteModel] = Color.defaultAvatarColorPaletteArray
-    var sliderValue: CGFloat = -0.5
-    var sliderValueWithAnimation: CGFloat = -0.5
-    let backgroundColorColumns: [GridItem] = Array(repeating: .init(.flexible()), count: 6)
+    @Published var colorPalettesArray: [ColorPaletteModel] = Color.defaultAvatarColorPaletteArray
+    @Published var sliderValue: CGFloat = -0.5
+    @Published var sliderValueWithAnimation: CGFloat = -0.5
+    let backgroundColorColumns: [GridItem] = [
+        .init(.flexible()),
+        .init(.flexible()),
+        .init(.flexible()),
+        .init(.flexible()),
+        .init(.flexible()),
+        .init(.flexible())
+    ]
     
     // MARK: - INITIALIZER
     private init() {
@@ -49,14 +58,14 @@ import Combine
     
     // MARK: - backgroundColorSubscriber
     private func backgroundColorSubscriber() {
-        $selectedBackgroundColor$
-            .removeDuplicates()
-            .debounce(for: .seconds(1), scheduler: RunLoop.main)
+        $selectedBackgroundColor
             .sink { [weak self] newValue in
                 guard let self = self else { return }
+                
                 selectedAvatar?.updateBackgroundColor(newValue.toColor())
             }
             .store(in: &cancelable)
+        
     }
     
     // MARK: - setSliderValueWithAnimation
