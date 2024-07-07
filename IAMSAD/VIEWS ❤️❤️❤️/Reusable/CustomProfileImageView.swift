@@ -63,11 +63,13 @@ struct CustomProfileImageView: View {
 
 // MARK: - PREVIEWS
 #Preview("CustomProfileImageView") {
-    CustomProfileImageView(
-        accountType: .anonymous,
-        imageURL: .init(string: "https://picsum.photos/id/\(Int.random(in: 100...300))/10"),
-        avatar: Avatar.shared.publicAvatarsArray.first!,
-        imageSize: 50,
-        borderSize: 1.5
-    )
+    if let avatar: AvatarModel = Avatar.shared.publicAvatarsDictionary[.random()]?.first {
+        CustomProfileImageView(
+            accountType: .random(),
+            imageURL: .init(string: "https://picsum.photos/id/\(Int.random(in: 100...300))/150"),
+            avatar: avatar,
+            imageSize: 50,
+            borderSize: 1.5
+        )
+    }
 }

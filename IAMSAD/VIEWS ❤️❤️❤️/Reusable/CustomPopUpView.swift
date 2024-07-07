@@ -46,7 +46,24 @@ struct CustomPopUpView: View {
 }
 
 // MARK: - PREVIEWS
-#Preview("CustomPopUpView - Icon") { Preview() }
+#Preview("CustomPopUpView - Icon") {
+    @Previewable @State var isPresented: Bool = false
+    
+    Button("Toggle") { isPresented.toggle() }
+        .popup(isPresented: $isPresented, view: {
+            CustomPopUpView(
+                isPresented: $isPresented,
+                leadingContentType: .icon(systemName: "wifi", color: .green),
+                text: "Your internet connection has been restored."
+            )
+            .frame(maxHeight: .infinity, alignment: .top)
+        }, customize: {
+            $0.appearFrom(.topSlide)
+                .animation(.smooth)
+                .autohideIn(5)
+        })
+        .previewViewModifier
+}
 
 #Preview("CustomPopUpView - Image+close") {
     Color.clear
@@ -90,28 +107,6 @@ struct CustomPopUpView: View {
             }
     }
     .previewViewModifier
-}
-
-fileprivate struct Preview: View {
-    
-    @State private var isPresented: Bool = false
-    
-    var body: some View {
-        Button("Toggle") { isPresented.toggle() }
-            .popup(isPresented: $isPresented, view: {
-                CustomPopUpView(
-                    isPresented: $isPresented,
-                    leadingContentType: .icon(systemName: "wifi", color: .green),
-                    text: "Your internet connection has been restored."
-                )
-                .frame(maxHeight: .infinity, alignment: .top)
-            }, customize: {
-                $0.appearFrom(.top)
-                    .animation(.smooth)
-                    .autohideIn(5)
-            })
-            .previewViewModifier
-    }
 }
 
 // MARK: - EXTENSIONS

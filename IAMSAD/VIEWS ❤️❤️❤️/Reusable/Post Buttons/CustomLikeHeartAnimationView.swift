@@ -11,6 +11,7 @@ struct CustomLikeHeartAnimationView: View {
     // MARK: - PROPERTIES
     let like: Bool
     let size: CGFloat
+    let backgroundViewColor: Color
     
     // primaryHeartImage
     let primaryHeartImageSize: CGFloat = 40
@@ -44,47 +45,42 @@ struct CustomLikeHeartAnimationView: View {
     let frameSize: CGFloat = 150
     
     // MARK: - INITIALIZER
-    init(like: Bool, size: CGFloat) {
+    init(like: Bool, size: CGFloat, backgroundViewColor: Color) {
         self.like = like
         self.size = size
+        self.backgroundViewColor = backgroundViewColor
     }
     
     // MARK: - BODY
     var body: some View {
-        VStack(spacing: 100) {
-            ZStack {
-                primaryHeartImage
-                invisibleCircle1
-                invisibleCircle2
-                primaryCircle
-                secondaryCircle
-                secondaryHeartImage
-            }
-            .frame(width: frameSize, height: frameSize)
-            .scaleEffect(size/frameSize)
-            .frame(width: size, height: size)
-            .clipShape(Rectangle())
-            .onAppear { handleOnAppear() }
-            .onChange(of: like) { oldValue, newValue in
-                animate(newValue)
-            }
+        ZStack {
+            primaryHeartImage
+            invisibleCircle1
+            invisibleCircle2
+            primaryCircle
+            secondaryCircle
+            secondaryHeartImage
+        }
+        .frame(width: frameSize, height: frameSize)
+        .scaleEffect(size/frameSize)
+        .frame(width: size, height: size)
+        .clipShape(Rectangle())
+        .onAppear { handleOnAppear() }
+        .onChange(of: like) { oldValue, newValue in
+            animate(newValue)
         }
     }
 }
 
 // MARK: - PREVIEWS
-#Preview("CustomLikeHeartAnimationView") { Preview() }
-
-fileprivate struct Preview: View {
-    @State private var like: Bool = false
-    var body: some View {
-        CustomLikeHeartAnimationView(like: like, size: 55)
-            .onTapGesture { like.toggle() }
-    }
+#Preview("CustomLikeHeartAnimationView") {
+    @Previewable @State var like: Bool = false
+    
+    CustomLikeHeartAnimationView(like: like, size: 255, backgroundViewColor: .colorScheme)
+        .onTapGesture { like.toggle() }
 }
 
 // MARK: - EXTENSIONS
-@MainActor
 extension CustomLikeHeartAnimationView {
     // MARK: - heartImage
     private var primaryHeartImage: some View {
@@ -117,7 +113,7 @@ extension CustomLikeHeartAnimationView {
     // MARK: - SecondaryCircle
     private var secondaryCircle: some View {
         Circle()
-            .fill(Color(uiColor: .systemBackground))
+            .fill(Color(backgroundViewColor))
             .frame(width: secondaryCircleSize, height: secondaryCircleSize)
     }
     
