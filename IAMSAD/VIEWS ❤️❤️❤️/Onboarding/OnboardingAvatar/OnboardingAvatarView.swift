@@ -10,8 +10,7 @@ import SDWebImageSwiftUI
 
 struct OnboardingAvatarView: View {
     // MARK: - PROPERTIES
-    @Environment(AvatarSheetVM.self) private var avatarSheetVM
-    @State private var avatarSheetVM$: AvatarSheetVM = .shared
+    @EnvironmentObject private var avatarSheetVM: AvatarSheetVM
     
     // MARK: - BODY
     var body: some View {
@@ -24,7 +23,7 @@ struct OnboardingAvatarView: View {
             }
             .padding(.vertical, 50)
         }
-        .sheet(isPresented: $avatarSheetVM$.isPresentedAvatarSheet) { AvatarSheetView() }
+        .sheet(isPresented: $avatarSheetVM.isPresentedAvatarSheet) { AvatarSheetView() }
     }
 }
 

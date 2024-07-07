@@ -25,7 +25,7 @@ struct CustomSelectableAvatarView: View {
             hue: 0,
             saturation: 0,
             brightness: 0
-        )), // => white
+        )), // white
         avatar: AvatarModel,
         staticColor: Color = .white,
         isAutoColorOn: Bool = false,
@@ -35,7 +35,7 @@ struct CustomSelectableAvatarView: View {
         _dynamicColor = dynamicColor
         self.avatar = avatar
         self.isAutoColorOn = isAutoColorOn
-        self.staticColor = selectedAvatar.wrappedValue?.id == avatar.id ? staticColor : .white
+        self.staticColor = selectedAvatar.wrappedValue == avatar ? staticColor : .white
         self.withBorder = withBorder
     }
     
@@ -50,7 +50,7 @@ struct CustomSelectableAvatarView: View {
                         lineCap: .round,
                         lineJoin: .round
                     ))
-                    .opacity(selectedAvatar?.id == avatar.id ? 1 : 0)
+                    .opacity(selectedAvatar == avatar ? 1 : 0)
             )
             .onTapGesture { handleTap() }
     }
@@ -58,17 +58,13 @@ struct CustomSelectableAvatarView: View {
 
 // MARK: - PREVIEWS
 #Preview("CustomSelectableAvatarView") {
-    @Previewable @State var selectedAvatar: AvatarModel? = Avatar.shared.publicAvatarsDictionary[.animalFaces]?[Int.random(in: 0..<5)]
-    
     HStack {
-        if let avatarsArray: [AvatarModel] = Avatar.shared.publicAvatarsDictionary[.animalFaces] {
-            ForEach(0..<5, id: \.self) { /// From Featured Collection
-                CustomSelectableAvatarView(
-                    selectedAvatar: $selectedAvatar,
-                    avatar: avatarsArray[$0]
-                )
-                .frame(width: 70, height: 70)
-            }
+        ForEach(0..<5, id: \.self) { /// From Featured Collection
+            CustomSelectableAvatarView(
+                selectedAvatar: .constant(Avatar.shared.publicAvatarsArray[0]),
+                avatar: Avatar.shared.publicAvatarsArray[$0]
+            )
+            .frame(width: 70, height: 70)
         }
     }
     .previewViewModifier
@@ -79,7 +75,7 @@ struct CustomSelectableAvatarView: View {
 extension CustomSelectableAvatarView {
     // MARK: - handleTap
     private func handleTap() {
-        withAnimation(.smooth) { AvatarSheetVM.shared.selectedAvatar = avatar }
+        withAnimation(.smooth) { selectedAvatar = avatar }
         
         if isAutoColorOn {
             let color: ColorPaletteModel = .init(

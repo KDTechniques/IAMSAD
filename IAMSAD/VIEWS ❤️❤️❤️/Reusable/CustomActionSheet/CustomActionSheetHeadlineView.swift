@@ -70,13 +70,11 @@ struct CustomActionSheetHeadlineView: View {
 }
 
 #Preview("CustomActionSheetHeadlineView - anonymous") {
-    if let avatar: AvatarModel = Avatar.shared.publicAvatarsDictionary[.random()]?.first {
-        CustomActionSheetHeadlineView(
-            text: "Clear all messages from \"Kasun Desitha\"",
-            accountType: .anonymous,
-            avatar: avatar
-        )
-    }
+    CustomActionSheetHeadlineView(
+        text: "Clear all messages from \"Kasun Desitha\"",
+        accountType: .anonymous,
+        avatar: Avatar.shared.publicAvatarsArray.first!
+    )
 }
 
 // MARK: - EXTENSIONS
