@@ -53,7 +53,7 @@ struct AvatarCollectionSheetView: View {
     @Previewable @State var showBackground: Bool = false
     let array: [AvatarCollectionModel] = AvatarCollectionTypes.avatarCollectionsArray
     let maxIndex: Int = array.count-1
-    let collection: AvatarCollectionModel = array[/*Int.random(in: 0...maxIndex)*/0]
+    let collection: AvatarCollectionModel = array[Int.random(in: 0...maxIndex)]
     
     AvatarCollectionSheetView(
         showRowBackground: $showBackground,
