@@ -138,7 +138,7 @@ extension CardView {
                 
             case .anonymous:
                 if let avatar {
-                    AvatarImageView(
+                    CustomAvatarImageView(
                         color: backgroundColor ?? .white,
                         avatar: avatar
                     )

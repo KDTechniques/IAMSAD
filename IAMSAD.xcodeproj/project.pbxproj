@@ -135,7 +135,7 @@
 		0B6E745D2B5AA21D008B4CFB /* CustomContentNotAvailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E745C2B5AA21D008B4CFB /* CustomContentNotAvailableView.swift */; };
 		0B6FEC2E2BC901F9000EBC31 /* Conversations_StickerPlaceholderShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6FEC2D2BC901F9000EBC31 /* Conversations_StickerPlaceholderShape.swift */; };
 		0B7204C12B9662B200C705B8 /* SDWebImage+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7204C02B9662B200C705B8 /* SDWebImage+EXT.swift */; };
-		0B729F712B667B16009BDFD2 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B729F702B667B16009BDFD2 /* AvatarImageView.swift */; };
+		0B729F712B667B16009BDFD2 /* CustomAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B729F702B667B16009BDFD2 /* CustomAvatarImageView.swift */; };
 		0B729F732B668084009BDFD2 /* AvatarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B729F722B668084009BDFD2 /* AvatarModel.swift */; };
 		0B7704982BADA08300C7EC22 /* CustomActionSheetSubHeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7704972BADA08300C7EC22 /* CustomActionSheetSubHeadlineView.swift */; };
 		0B7A99CC2BAC5F4800D5D3E2 /* Conversation_CellMoreSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7A99CB2BAC5F4800D5D3E2 /* Conversation_CellMoreSheetView.swift */; };
@@ -663,7 +663,7 @@
 		0B6E745C2B5AA21D008B4CFB /* CustomContentNotAvailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContentNotAvailableView.swift; sourceTree = "<group>"; };
 		0B6FEC2D2BC901F9000EBC31 /* Conversations_StickerPlaceholderShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_StickerPlaceholderShape.swift; sourceTree = "<group>"; };
 		0B7204C02B9662B200C705B8 /* SDWebImage+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SDWebImage+EXT.swift"; sourceTree = "<group>"; };
-		0B729F702B667B16009BDFD2 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
+		0B729F702B667B16009BDFD2 /* CustomAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAvatarImageView.swift; sourceTree = "<group>"; };
 		0B729F722B668084009BDFD2 /* AvatarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarModel.swift; sourceTree = "<group>"; };
 		0B7704972BADA08300C7EC22 /* CustomActionSheetSubHeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionSheetSubHeadlineView.swift; sourceTree = "<group>"; };
 		0B7A99CB2BAC5F4800D5D3E2 /* Conversation_CellMoreSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation_CellMoreSheetView.swift; sourceTree = "<group>"; };
@@ -1342,9 +1342,9 @@
 			children = (
 				0B26239C2B4DB38A0063D71C /* AvatarSheetView.swift */,
 				0BAE19232C39600000DB46BB /* Header */,
+				0BED87952C3A467B00EBD961 /* See All Avatars Sheet */,
 				0BAE19282C3970DA00DB46BB /* Avatar Selection Grid */,
 				0BCE513A2C2DAD2400CBE336 /* Avatar Background Color Selection Palette */,
-				0BED87952C3A467B00EBD961 /* See All Avatars Sheet */,
 			);
 			path = "Avatar Selection Sheet";
 			sourceTree = "<group>";
@@ -1466,7 +1466,7 @@
 		0B729F6F2B667A0C009BDFD2 /* Custom Avatar Image */ = {
 			isa = PBXGroup;
 			children = (
-				0B729F702B667B16009BDFD2 /* AvatarImageView.swift */,
+				0B729F702B667B16009BDFD2 /* CustomAvatarImageView.swift */,
 				0B2623A02B4E61460063D71C /* CustomAvatarView.swift */,
 				0B26239E2B4DD9280063D71C /* CustomSelectableAvatarView.swift */,
 			);
@@ -2916,7 +2916,7 @@
 				0B26239F2B4DD9280063D71C /* CustomSelectableAvatarView.swift in Sources */,
 				0B2623A52B4E81530063D71C /* CustomColorSliderView.swift in Sources */,
 				0BBB8B302BEC0CF300D69F93 /* CMTime+EXT.swift in Sources */,
-				0B729F712B667B16009BDFD2 /* AvatarImageView.swift in Sources */,
+				0B729F712B667B16009BDFD2 /* CustomAvatarImageView.swift in Sources */,
 				0B8F37912B952CE0003D0824 /* CustomUIScrollView.swift in Sources */,
 				0BA4E59C2BE21873004E7945 /* Conversations_PhotoVideoGIFSecondaryReplyBubbleView.swift in Sources */,
 				0B27C3FD2B52A6E700680676 /* AvatarCollectionModel.swift in Sources */,

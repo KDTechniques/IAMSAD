@@ -15,6 +15,7 @@ struct AvatarCollectionSheetView: View {
     @Binding var showRowBackground: Bool
     let item: AvatarCollectionModel
     
+    // MARK: - PRIVATE PROPERTIES
     @State private var minY: CGFloat = 0
     let avatarColumns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
     @State private var footerHeight: CGFloat = 0
@@ -30,7 +31,7 @@ struct AvatarCollectionSheetView: View {
             AvatarCollectionSheetHeaderView(item: item)
             AvatarCollectionSheetDividerView(minY: minY)
             
-            ScrollView(.vertical, showsIndicators: true) {
+            ScrollView(.vertical, showsIndicators: false) {
                 AvatarCollectionListView(collection: item.collectionName)
                     .bottomPartBackgroundEffectOnScrollViewModifier(bottomPartMinY: $minY)
                     .padding(.horizontal)
@@ -55,11 +56,14 @@ struct AvatarCollectionSheetView: View {
     let maxIndex: Int = array.count-1
     let collection: AvatarCollectionModel = array[Int.random(in: 0...maxIndex)]
     
-    AvatarCollectionSheetView(
-        showRowBackground: $showBackground,
-        item: collection
-    )
-    .previewViewModifier
+    Color.clear
+        .sheet(isPresented: .constant(true)) {
+            AvatarCollectionSheetView(
+                showRowBackground: $showBackground,
+                item: collection
+            )
+        }
+        .previewViewModifier
     
     
 }

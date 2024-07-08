@@ -32,7 +32,7 @@ struct CustomAvatarView: View {
     // MARK: - BODY
     var body: some View {
         if let avatar {
-            AvatarImageView(color: color, avatar: avatar, showBorder: withBorder)
+            CustomAvatarImageView(color: color, avatar: avatar, showBorder: withBorder)
                 .imageSizeViewModifier(imageSize)
         } else {
             placeholderImage

@@ -8,24 +8,25 @@
 import SwiftUI
 
 struct AvatarSheetView: View {
-    // MARK: - PROPEORTIES
-    @Environment(\.colorScheme) private var colorScheme
-    @Environment(AvatarSheetVM.self) private var avatarSheetVM
-    
     // MARK: - BODY
     var body: some View {
         ViewThatFits(in: .vertical) {
+            // For Larger Screen Models (ex: iPhone 15 Pro Max)
             VStack {
                 AvatarSheetHeaderTitleView()
                 AvatarSheetPreviewImageView()
                 AvatarSelectionView()
                 
                 Spacer()
+                Spacer()
                 
                 AvatarBackgroundColorSelectionView()
-                    .padding(.bottom, 60)
+                    .padding(.bottom)
+                
+                Spacer()
             }
             
+            // For Smaller Screen Models (ex: iPhone SE3)
             VStack {
                 AvatarSheetHeaderTitleView()
                 AvatarSheetPreviewImageView()
@@ -39,24 +40,21 @@ struct AvatarSheetView: View {
                             .padding(.top)
                         
                         AvatarBackgroundColorSelectionView()
-                            .padding(.bottom, 60)
+                            .padding(.bottom, 20)
                     }
                 }
             }
         }
         .padding(.top)
         .overlay(alignment: .topTrailing) { AvatarSheetTopTrailingButtonView() }
-        .ignoresSafeArea()
     }
 }
 
 // MARK: - PREVIEWS
 #Preview("AvatarSheetView") {
-    ScrollView(.vertical) {
-        AvatarSheetView()
-    }
-    .scrollDisabled(true)
-    .previewViewModifier
+    Color.clear
+        .sheet(isPresented: .constant(true)) { AvatarSheetView() }
+        .previewViewModifier
 }
 
 #Preview("OnboardingAvatarView") {
