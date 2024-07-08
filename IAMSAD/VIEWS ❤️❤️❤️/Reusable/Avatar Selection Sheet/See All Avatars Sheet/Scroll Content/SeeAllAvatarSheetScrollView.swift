@@ -15,7 +15,10 @@ struct SeeAllAvatarSheetScrollView: View {
     @Binding var showRowBackground: Bool
     
     // MARK: - INITIALIZER
-    
+    init(selectedCollection: Binding<AvatarCollectionModel?>, showRowBackground: Binding<Bool>) {
+        _selectedCollection = selectedCollection
+        _showRowBackground = showRowBackground
+    }
     
     // MARK: - BODY
     var body: some View {

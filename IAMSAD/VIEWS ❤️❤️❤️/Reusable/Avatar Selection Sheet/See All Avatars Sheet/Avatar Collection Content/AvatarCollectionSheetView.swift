@@ -15,6 +15,12 @@ struct AvatarCollectionSheetView: View {
     @Binding var showRowBackground: Bool
     let item: AvatarCollectionModel
     
+    // MARK: - INITIALIZER
+    init(showRowBackground: Binding<Bool>, item: AvatarCollectionModel) {
+        _showRowBackground = showRowBackground
+        self.item = item
+    }
+    
     // MARK: - PRIVATE PROPERTIES
     @State private var minY: CGFloat = 0
     let avatarColumns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)

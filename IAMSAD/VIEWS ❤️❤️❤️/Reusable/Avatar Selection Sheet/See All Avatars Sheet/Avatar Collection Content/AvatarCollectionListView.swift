@@ -20,7 +20,9 @@ struct AvatarCollectionListView: View {
     var columns: [GridItem] { Array(repeating: .init(.flexible()), count: numberOfColumns) }
     
     // MARK: - INITIALIZER
-    init(collection: AvatarCollectionTypes) { self.collection = collection }
+    init(collection: AvatarCollectionTypes) {
+        self.collection = collection
+    }
     
     // MARK: - BODY
     var body: some View {
