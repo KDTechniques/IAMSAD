@@ -30,8 +30,7 @@ struct AvatarCollectionSheetView: View {
     var body: some View {
         VStack(spacing: 0) {
             AvatarCollectionSheetHeaderView(item: item)
-            
-            divider
+            HidableDividerView(showDivider: showDivider)
             
             ScrollView(.vertical, showsIndicators: false) {
                 AvatarCollectionListView(collection: item.collectionName)
@@ -64,18 +63,10 @@ struct AvatarCollectionSheetView: View {
             )
         }
         .previewViewModifier
-    
-    
 }
 
 // MARK: - EXTENSIONS
 extension AvatarCollectionSheetView {
-    // MARK: - Divider
-    private var divider: some View {
-        Divider()
-            .opacity(showDivider ? 1 : 0)
-    }
-    
     // MARK: - FUNCTIONS
     
     // MARK: - handleOnAppear
