@@ -91,6 +91,8 @@
 		0B2830412B8CA495006061BF /* ToolbarTopTrailingItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2830402B8CA495006061BF /* ToolbarTopTrailingItemsView.swift */; };
 		0B28C9FE2B6B076E00AC4725 /* CustomLikeHeartAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B28C9FD2B6B076E00AC4725 /* CustomLikeHeartAnimationView.swift */; };
 		0B28E43C2C3DE137006B2D7A /* HidableDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B28E43B2C3DE137006B2D7A /* HidableDividerView.swift */; };
+		0B28E43F2C3DF26F006B2D7A /* OnboardingWelcomeScrollContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B28E43E2C3DF26F006B2D7A /* OnboardingWelcomeScrollContentView.swift */; };
+		0B28E4412C3DF30C006B2D7A /* OnboardingWelcomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B28E4402C3DF30C006B2D7A /* OnboardingWelcomeListView.swift */; };
 		0B33195F2C26717000358340 /* Conversations_ExpandableInfoCapsuleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B33195E2C26717000358340 /* Conversations_ExpandableInfoCapsuleProgressView.swift */; };
 		0B3319622C26765500358340 /* Conversations_VerticalInfoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3319612C26765500358340 /* Conversations_VerticalInfoContainerView.swift */; };
 		0B38726D2B67F7BE00199A37 /* Animal Faces_21.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B3872582B67F7BD00199A37 /* Animal Faces_21.png */; };
@@ -619,6 +621,8 @@
 		0B2830402B8CA495006061BF /* ToolbarTopTrailingItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarTopTrailingItemsView.swift; sourceTree = "<group>"; };
 		0B28C9FD2B6B076E00AC4725 /* CustomLikeHeartAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLikeHeartAnimationView.swift; sourceTree = "<group>"; };
 		0B28E43B2C3DE137006B2D7A /* HidableDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HidableDividerView.swift; sourceTree = "<group>"; };
+		0B28E43E2C3DF26F006B2D7A /* OnboardingWelcomeScrollContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWelcomeScrollContentView.swift; sourceTree = "<group>"; };
+		0B28E4402C3DF30C006B2D7A /* OnboardingWelcomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWelcomeListView.swift; sourceTree = "<group>"; };
 		0B33195E2C26717000358340 /* Conversations_ExpandableInfoCapsuleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_ExpandableInfoCapsuleProgressView.swift; sourceTree = "<group>"; };
 		0B3319612C26765500358340 /* Conversations_VerticalInfoContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_VerticalInfoContainerView.swift; sourceTree = "<group>"; };
 		0B3872582B67F7BD00199A37 /* Animal Faces_21.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Animal Faces_21.png"; sourceTree = "<group>"; };
@@ -1254,7 +1258,7 @@
 			isa = PBXGroup;
 			children = (
 				0B26237F2B4D4B060063D71C /* Reusable */,
-				0B2623572B4C92FB0063D71C /* OnboardingWelcomeView.swift */,
+				0B28E43D2C3DF22D006B2D7A /* Welcome */,
 				0B26236D2B4D32960063D71C /* OnboardingGenderNAgeView.swift */,
 				0B2623962B4D80C00063D71C /* OnboardingUserName */,
 				0B26239B2B4DB3380063D71C /* OnboardingAvatar */,
@@ -1357,6 +1361,16 @@
 				0B2830402B8CA495006061BF /* ToolbarTopTrailingItemsView.swift */,
 			);
 			path = "Toolbar Items";
+			sourceTree = "<group>";
+		};
+		0B28E43D2C3DF22D006B2D7A /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				0B2623572B4C92FB0063D71C /* OnboardingWelcomeView.swift */,
+				0B28E4402C3DF30C006B2D7A /* OnboardingWelcomeListView.swift */,
+				0B28E43E2C3DF26F006B2D7A /* OnboardingWelcomeScrollContentView.swift */,
+			);
+			path = Welcome;
 			sourceTree = "<group>";
 		};
 		0B3319602C2675F100358340 /* Expandable Info Capsule Progress */ = {
@@ -2776,6 +2790,7 @@
 				0BED87992C3A47B200EBD961 /* SeeAllAvatarSheetScrollView.swift in Sources */,
 				0B28C9FE2B6B076E00AC4725 /* CustomLikeHeartAnimationView.swift in Sources */,
 				0B2623582B4C92FB0063D71C /* OnboardingWelcomeView.swift in Sources */,
+				0B28E43F2C3DF26F006B2D7A /* OnboardingWelcomeScrollContentView.swift in Sources */,
 				0B26237C2B4D43810063D71C /* OnboardingListView.swift in Sources */,
 				0B4392FF2B4F0DE90075E5D1 /* CustomPageIndexIndicatorView.swift in Sources */,
 				0B6FEC2E2BC901F9000EBC31 /* Conversations_StickerPlaceholderShape.swift in Sources */,
@@ -2834,6 +2849,7 @@
 				0BBB8B2E2BEC064D00D69F93 /* Conversations_VoiceRecordNAudioPrimaryPlainBubble_HProgressBarView.swift in Sources */,
 				0B58AE982B6D340E0057CCFE /* Int+EXT.swift in Sources */,
 				0BBD7CB52BA8075900AE8542 /* ConversationsView.swift in Sources */,
+				0B28E4412C3DF30C006B2D7A /* OnboardingWelcomeListView.swift in Sources */,
 				0B2623742B4D35F70063D71C /* GenderTypes.swift in Sources */,
 				0B4F90B62BA590D900C79C0A /* CustomNoProfileImageView.swift in Sources */,
 				0BED87AA2C3AF7D400EBD961 /* AvatarCollectionSheetFooterView.swift in Sources */,
