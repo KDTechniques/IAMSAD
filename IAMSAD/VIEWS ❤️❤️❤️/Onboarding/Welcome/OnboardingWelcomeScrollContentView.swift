@@ -48,19 +48,19 @@ extension OnboardingWelcomeScrollContentView {
     // MARK: - list
     private var list: some View {
         VStack(alignment: .leading, spacing: 35) {
-            OnboardingWelcomeListView(
+            OnboardingWelcomeListItemView(
                 imageName: "FaceWithHeadBandage",
                 headline: "Solve Personal Problems",
                 subHeadline: "This platform is here to help with personal issues in relationships, family, health, finance, life events, mental health, career, and more."
             )
             
-            OnboardingWelcomeListView(
+            OnboardingWelcomeListItemView(
                 imageName: "SeeNoEvilMonkey",
                 headline: "Your Privacy Matters",
                 subHeadline: "It's 100% anonymous. You can choose when to reveal your identity."
             )
             
-            OnboardingWelcomeListView(
+            OnboardingWelcomeListItemView(
                 imageName: "Handshake",
                 headline: "Collaborate with Others",
                 subHeadline: "Ask for help when needed by posting and starting a conversation. You can also provide solutions to those who seek them."

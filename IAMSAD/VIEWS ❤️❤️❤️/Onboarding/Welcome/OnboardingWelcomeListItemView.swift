@@ -1,5 +1,5 @@
 //
-//  OnboardingWelcomeListView.swift
+//  OnboardingWelcomeListItemView.swift
 //  IAMSAD
 //
 //  Created by Mr. Kavinda Dilshan on 2024-07-10.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct OnboardingWelcomeListView: View {
+struct OnboardingWelcomeListItemView: View {
     // MARK: - PROPERTIES
     let imageName: String
     let headline: String
@@ -43,8 +43,8 @@ struct OnboardingWelcomeListView: View {
 }
 
 // MARK: - PREVIEWS
-#Preview("OnboardingWelcomeListView") {
-    OnboardingWelcomeListView(
+#Preview("OnboardingWelcomeListItemView") {
+    OnboardingWelcomeListItemView(
         imageName: "SeeNoEvilMonkey",
         headline: "Your Privacy Matters",
         subHeadline: "It's 100% anonymous. You can choose when to reveal your identity."
