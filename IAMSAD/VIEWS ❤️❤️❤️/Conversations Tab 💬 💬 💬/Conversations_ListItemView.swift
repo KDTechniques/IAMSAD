@@ -117,7 +117,7 @@ extension Conversations_ListItemView {
                 
             case .anonymous:
                 if let avatar {
-                    AvatarImageView(avatar: avatar, borderSize: 1.5)
+                    CustomAvatarImageView(avatar: avatar, borderSize: 1.5)
                 } else {
                     CustomNoProfileImageView()
                 }

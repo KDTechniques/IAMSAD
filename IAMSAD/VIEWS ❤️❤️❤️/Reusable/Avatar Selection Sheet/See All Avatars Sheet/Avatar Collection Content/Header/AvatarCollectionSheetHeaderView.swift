@@ -12,7 +12,9 @@ struct AvatarCollectionSheetHeaderView: View {
     let item: AvatarCollectionModel
     
     // MARK: - INITIALIZER
-    init(item: AvatarCollectionModel) { self.item = item }
+    init(item: AvatarCollectionModel) {
+        self.item = item
+    }
     
     // MARK: -  BODY
     var body: some View {

@@ -20,7 +20,9 @@ struct AvatarCollectionListView: View {
     var columns: [GridItem] { Array(repeating: .init(.flexible()), count: numberOfColumns) }
     
     // MARK: - INITIALIZER
-    init(collection: AvatarCollectionTypes) { self.collection = collection }
+    init(collection: AvatarCollectionTypes) {
+        self.collection = collection
+    }
     
     // MARK: - BODY
     var body: some View {
@@ -28,7 +30,7 @@ struct AvatarCollectionListView: View {
             let totalItems: Int = avatarsArray.count
             
             // Remove one of the closure content based on performance
-            if !true { // remove the following if manual grid contain flickers when scrolling
+            if true { // remove the following if manual grid contain flickers when scrolling
                 VStack(alignment: .leading) {
                     ForEach(getVerticalRange(totalItems: totalItems), id: \.self) { row in
                         HStack(spacing: 10) {

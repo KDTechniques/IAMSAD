@@ -15,36 +15,36 @@ struct AvatarCollectionSheetView: View {
     @Binding var showRowBackground: Bool
     let item: AvatarCollectionModel
     
-    @State private var minY: CGFloat = 0
-    let avatarColumns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
-    @State private var footerHeight: CGFloat = 0
-    let scrollContentTopPadding: CGFloat = 15
-    var scrollContentBottomPadding: CGFloat {
-        let extraPadding: CGFloat = 10
-        return footerHeight + extraPadding
+    // MARK: - INITIALIZER
+    init(showRowBackground: Binding<Bool>, item: AvatarCollectionModel) {
+        _showRowBackground = showRowBackground
+        self.item = item
     }
+    
+    // MARK: - PRIVATE PROPERTIES
+    let avatarColumns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
+    let scrollContentTopPadding: CGFloat = 15
+    @State private var showDivider: Bool = false
     
     // MARK: - BODY
     var body: some View {
         VStack(spacing: 0) {
             AvatarCollectionSheetHeaderView(item: item)
-            AvatarCollectionSheetDividerView(minY: minY)
+            HidableDividerView(showDivider: showDivider)
             
-            ScrollView(.vertical, showsIndicators: true) {
+            ScrollView(.vertical, showsIndicators: false) {
                 AvatarCollectionListView(collection: item.collectionName)
-                    .bottomPartBackgroundEffectOnScrollViewModifier(bottomPartMinY: $minY)
                     .padding(.horizontal)
                     .padding(.top, scrollContentTopPadding)
-                    .padding(.bottom, scrollContentBottomPadding)
+                    .padding(.bottom, 100)
             }
-            .contentMargins(.bottom, footerHeight, for: .scrollIndicators)
-            .contentMargins(.top, scrollContentTopPadding, for: .scrollIndicators)
+            .onScrollGeometryChange(for: Bool.self) { geo in
+                geo.contentOffset.y > scrollContentTopPadding
+            } action: { showDivider = $1 }
         }
         .presentationDragIndicator(.visible)
+        .overlay(alignment: .bottom) { AvatarCollectionSheetFooterView() }
         .onAppear { handleOnAppear() }
-        .overlay(alignment: .bottom) {
-            AvatarCollectionSheetFooterView(footerHeight: $footerHeight)
-        }
     }
 }
 
@@ -53,15 +53,16 @@ struct AvatarCollectionSheetView: View {
     @Previewable @State var showBackground: Bool = false
     let array: [AvatarCollectionModel] = AvatarCollectionTypes.avatarCollectionsArray
     let maxIndex: Int = array.count-1
-    let collection: AvatarCollectionModel = array[/*Int.random(in: 0...maxIndex)*/0]
+    let collection: AvatarCollectionModel = array[Int.random(in: 0...maxIndex)]
     
-    AvatarCollectionSheetView(
-        showRowBackground: $showBackground,
-        item: collection
-    )
-    .previewViewModifier
-    
-    
+    Color.clear
+        .sheet(isPresented: .constant(true)) {
+            AvatarCollectionSheetView(
+                showRowBackground: $showBackground,
+                item: collection
+            )
+        }
+        .previewViewModifier
 }
 
 // MARK: - EXTENSIONS

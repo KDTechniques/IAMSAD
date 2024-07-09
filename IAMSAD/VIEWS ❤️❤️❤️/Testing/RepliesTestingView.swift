@@ -14,7 +14,7 @@ struct RepliesTestingView: View {
             ForEach(1...5, id: \.self) { index in
                 HStack(alignment: .top) {
                     VStack {
-                        AvatarImageView(avatar: .init(
+                        CustomAvatarImageView(avatar: .init(
                             imageName: "Featured_\(index)",
                             collection: .featured,
                             position: .bottom

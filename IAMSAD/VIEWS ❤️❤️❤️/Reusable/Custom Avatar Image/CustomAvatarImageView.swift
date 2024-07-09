@@ -1,5 +1,5 @@
 //
-//  AvatarImageView.swift
+//  CustomAvatarImageView.swift
 //  IAMSAD
 //
 //  Created by Mr. Kavinda Dilshan on 2024-01-28.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct AvatarImageView: View {
+struct CustomAvatarImageView: View {
     // MARK: - PROPERTIES
     @Environment(\.colorScheme) private var colorScheme
     
@@ -73,14 +73,14 @@ struct AvatarImageView: View {
 }
 
 // MARK: - PREVIEWS
-#Preview("AvatarImageView") {
+#Preview("CustomAvatarImageView") {
     HStack(spacing: 20) {
         if let avatars: [AvatarModel] = Avatar.shared.publicAvatarsDictionary[.random()] {
-            AvatarImageView(avatar: avatars[0])
+            CustomAvatarImageView(avatar: avatars[Int.random(in: 0...20)], showBorder: true)
         }
         
         if let avatars: [AvatarModel] = Avatar.shared.publicAvatarsDictionary[.random()] {
-            AvatarImageView(avatar: avatars[0])
+            CustomAvatarImageView(avatar: avatars[Int.random(in: 0...20)], showBorder: false)
         }
     }
     .padding(100)
@@ -88,7 +88,7 @@ struct AvatarImageView: View {
 }
 
 // MARK: - EXTENSIONS
-extension AvatarImageView {
+extension CustomAvatarImageView {
     // MARK: - getFillColor
     private func getFillColor() -> Color {
         switch state {

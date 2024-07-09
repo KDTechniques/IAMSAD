@@ -9,6 +9,9 @@ import SwiftUI
 
 struct SeeAllAvatarSheetContentView: View {
     // MARK: - PROPERTIES
+    @Environment(AvatarSheetVM.self) private var vm
+    
+    // MARK: - PRIVATE PROPERTIES
     @State private var selectedCollection: AvatarCollectionModel? = nil
     @State private var showRowBackground: Bool = false
     
@@ -24,7 +27,9 @@ struct SeeAllAvatarSheetContentView: View {
         }
         .padding(.top, 50)
         .presentationDragIndicator(.visible)
-        .sheet(item: $selectedCollection) {
+        .sheet(item: $selectedCollection, onDismiss: {
+            handleOnDismiss()
+        }) {
             AvatarCollectionSheetView(
                 showRowBackground: $showRowBackground,
                 item: $0
@@ -38,4 +43,15 @@ struct SeeAllAvatarSheetContentView: View {
     Color.clear
         .sheet(isPresented: .constant(true)) { SeeAllAvatarSheetContentView() }
         .previewViewModifier
+}
+
+extension SeeAllAvatarSheetContentView {
+    // MARK: - FUNCTIONS
+    
+    // MARK: - handleOnAppear
+    private func handleOnDismiss() {
+        guard let selectedCollection: AvatarCollectionTypes = vm.selectedAvatar?.collection else { return }
+        
+        vm.selectedTabCollection = selectedCollection
+    }
 }

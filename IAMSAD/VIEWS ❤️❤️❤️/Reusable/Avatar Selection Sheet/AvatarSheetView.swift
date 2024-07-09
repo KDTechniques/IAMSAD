@@ -8,59 +8,81 @@
 import SwiftUI
 
 struct AvatarSheetView: View {
-    // MARK: - PROPEORTIES
-    @Environment(\.colorScheme) private var colorScheme
-    @Environment(AvatarSheetVM.self) private var avatarSheetVM
-    
     // MARK: - BODY
     var body: some View {
         ViewThatFits(in: .vertical) {
-            VStack {
-                AvatarSheetHeaderTitleView()
-                AvatarSheetPreviewImageView()
-                AvatarSelectionView()
-                
-                Spacer()
-                
-                AvatarBackgroundColorSelectionView()
-                    .padding(.bottom, 60)
-            }
-            
-            VStack {
-                AvatarSheetHeaderTitleView()
-                AvatarSheetPreviewImageView()
-                
-                VStack(spacing: 0) {
-                    Divider()
-                        .padding(.horizontal, 20)
-                    
-                    ScrollView(.vertical, showsIndicators: false) {
-                        AvatarSelectionView()
-                            .padding(.top)
-                        
-                        AvatarBackgroundColorSelectionView()
-                            .padding(.bottom, 60)
-                    }
-                }
-            }
+            View_1() /// For Larger Screen Models (ex: iPhone 15 Pro Max)
+            View_2() /// For Smaller Screen Models (ex: iPhone SE3)
         }
         .padding(.top)
         .overlay(alignment: .topTrailing) { AvatarSheetTopTrailingButtonView() }
-        .ignoresSafeArea()
     }
 }
 
 // MARK: - PREVIEWS
+#Preview("AvatarSheetView") {
+    Color.clear
+        .sheet(isPresented: .constant(true)) { AvatarSheetView() }
+        .previewViewModifier
+}
+
 #Preview("OnboardingAvatarView") {
     OnboardingAvatarView()
         .previewViewModifier
 }
 
-#Preview("AvatarSheetView") {
-    ScrollView(.vertical) {
-        AvatarSheetView()
+// MARK: - SUBVIEWS
+
+// MARK: - View_1
+fileprivate struct View_1: View {
+    // MARK: - BODY
+    var body: some View {
+        VStack {
+            AvatarSheetHeaderTitleView()
+            AvatarSheetPreviewImageView()
+            AvatarSelectionView()
+            
+            Spacer()
+            Spacer()
+            
+            AvatarBackgroundColorSelectionView()
+                .padding(.bottom)
+            
+            Spacer()
+        }
     }
-    .scrollDisabled(true)
-    .previewViewModifier
 }
 
+// MARK: - View_2
+fileprivate struct View_2: View {
+    // MARK: - PROPERTIES
+    @State private var showDivider: Bool = false
+    let scrollContentTopPadding: CGFloat = 15
+    
+    // MARK: - BODY
+    var body: some View {
+        VStack {
+            AvatarSheetHeaderTitleView()
+            AvatarSheetPreviewImageView()
+            
+            VStack(spacing: 0) {
+                HidableDividerView(showDivider: showDivider)
+                    .padding(.horizontal, 20)
+                
+                ScrollView(.vertical, showsIndicators: false) {
+                    AvatarSelectionView()
+                        .padding(.top, scrollContentTopPadding)
+                    
+                    AvatarBackgroundColorSelectionView()
+                        .padding(.bottom, 20)
+                }
+                .onScrollGeometryChange(for: Bool.self) { geo in
+                    geo.contentOffset.y > scrollContentTopPadding
+                } action: {
+                    showDivider = $1
+                }
+                
+            }
+        }
+    }
+}

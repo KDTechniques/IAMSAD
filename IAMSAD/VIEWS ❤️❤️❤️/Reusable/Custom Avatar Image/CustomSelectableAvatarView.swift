@@ -41,7 +41,7 @@ struct CustomSelectableAvatarView: View {
     
     // MARK: - BODY
     var body: some View {
-        AvatarImageView(color: staticColor, avatar: avatar, showBorder: withBorder)
+        CustomAvatarImageView(color: staticColor, avatar: avatar, showBorder: withBorder)
             .padding(5)
             .background(
                 Circle()

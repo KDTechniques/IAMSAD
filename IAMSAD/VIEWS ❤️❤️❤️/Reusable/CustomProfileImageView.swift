@@ -51,7 +51,7 @@ struct CustomProfileImageView: View {
                 
             case .anonymous:
                 if let avatar {
-                    AvatarImageView(avatar: avatar, borderSize: borderSize)
+                    CustomAvatarImageView(avatar: avatar, borderSize: borderSize)
                 } else {
                     CustomNoProfileImageView()
                 }
