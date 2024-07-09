@@ -11,13 +11,6 @@ struct AvatarCollectionSheetFooterView: View {
     // MARK: - PROPERTIES
     @Environment(\.colorScheme) private var colorScheme
     
-    @Binding var footerHeight: CGFloat
-    
-    // MARK: - INITIALIZER
-    init(footerHeight: Binding<CGFloat>) {
-        _footerHeight = footerHeight
-    }
-    
     // MARK: - BODY
     var body: some View {
         let blurBackgroundHeight: CGFloat = 35
@@ -51,13 +44,12 @@ struct AvatarCollectionSheetFooterView: View {
                 .blur(radius: 30)
                 .offset(y: -(blurBackgroundHeight+extraBlurBackgroundHeight)/2)
         }
-        .geometryReaderDimensionViewModifier($footerHeight, dimension: .height, extraValue: 25)
     }
 }
 
 // MARK: - PREVIEWS
 #Preview("AvatarCollectionSheetFooterView") {
-    AvatarCollectionSheetFooterView(footerHeight: .constant(0))
+    AvatarCollectionSheetFooterView()
         .frame(maxHeight: .infinity, alignment: .bottom)
         .previewViewModifier
 }

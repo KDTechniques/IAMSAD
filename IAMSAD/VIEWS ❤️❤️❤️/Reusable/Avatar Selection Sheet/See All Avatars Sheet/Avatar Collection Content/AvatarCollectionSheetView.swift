@@ -22,36 +22,30 @@ struct AvatarCollectionSheetView: View {
     }
     
     // MARK: - PRIVATE PROPERTIES
-    @State private var minY: CGFloat = 0
     let avatarColumns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
-    @State private var footerHeight: CGFloat = 0
     let scrollContentTopPadding: CGFloat = 15
-    var scrollContentBottomPadding: CGFloat {
-        let extraPadding: CGFloat = 10
-        return footerHeight + extraPadding
-    }
+    @State private var showDivider: Bool = false
     
     // MARK: - BODY
     var body: some View {
         VStack(spacing: 0) {
             AvatarCollectionSheetHeaderView(item: item)
-            AvatarCollectionSheetDividerView(minY: minY)
+            
+            divider
             
             ScrollView(.vertical, showsIndicators: false) {
                 AvatarCollectionListView(collection: item.collectionName)
-                    .bottomPartBackgroundEffectOnScrollViewModifier(bottomPartMinY: $minY)
                     .padding(.horizontal)
                     .padding(.top, scrollContentTopPadding)
-                    .padding(.bottom, scrollContentBottomPadding)
+                    .padding(.bottom, 100)
             }
-            .contentMargins(.bottom, footerHeight, for: .scrollIndicators)
-            .contentMargins(.top, scrollContentTopPadding, for: .scrollIndicators)
+            .onScrollGeometryChange(for: Bool.self) { geo in
+                geo.contentOffset.y > scrollContentTopPadding
+            } action: { showDivider = $1 }
         }
         .presentationDragIndicator(.visible)
+        .overlay(alignment: .bottom) { AvatarCollectionSheetFooterView() }
         .onAppear { handleOnAppear() }
-        .overlay(alignment: .bottom) {
-            AvatarCollectionSheetFooterView(footerHeight: $footerHeight)
-        }
     }
 }
 
@@ -76,6 +70,12 @@ struct AvatarCollectionSheetView: View {
 
 // MARK: - EXTENSIONS
 extension AvatarCollectionSheetView {
+    // MARK: - Divider
+    private var divider: some View {
+        Divider()
+            .opacity(showDivider ? 1 : 0)
+    }
+    
     // MARK: - FUNCTIONS
     
     // MARK: - handleOnAppear
