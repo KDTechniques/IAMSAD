@@ -19,6 +19,11 @@
 		0B12FB962BCAA4F8002E0048 /* Enum + EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B12FB952BCAA4F8002E0048 /* Enum + EXT.swift */; };
 		0B12FB982BCAAB2F002E0048 /* Conversations_BubbleEditedTimestampReadReceiptsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B12FB972BCAAB2F002E0048 /* Conversations_BubbleEditedTimestampReadReceiptsView.swift */; };
 		0B12FB9A2BCAD629002E0048 /* UIFont + EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B12FB992BCAD629002E0048 /* UIFont + EXT.swift */; };
+		0B185FF52C44469C00152860 /* CustomCountryCodeSearch_ListBuilderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B185FF42C44469C00152860 /* CustomCountryCodeSearch_ListBuilderView.swift */; };
+		0B185FF72C44471800152860 /* CustomCountryCodeSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B185FF62C44471800152860 /* CustomCountryCodeSearchViewModel.swift */; };
+		0B185FFB2C444CF900152860 /* CustomCountryCodeSearch_ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B185FFA2C444CF900152860 /* CustomCountryCodeSearch_ListRowView.swift */; };
+		0B185FFE2C444F0000152860 /* CustomCountryCodeSearch_ListRowItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B185FFD2C444F0000152860 /* CustomCountryCodeSearch_ListRowItemView.swift */; };
+		0B1860002C44527500152860 /* CustomCountryCodeSearch_ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B185FFF2C44527500152860 /* CustomCountryCodeSearch_ListView.swift */; };
 		0B1888EA2BD1151A00C8C59D /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0B1888E92BD1151A00C8C59D /* video.mp4 */; };
 		0B1888EC2BD12DD100C8C59D /* photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0B1888EB2BD12DD100C8C59D /* photo.jpg */; };
 		0B1AF16E2BD510C800E3825C /* SocialMediaTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1AF16D2BD510C800E3825C /* SocialMediaTypes.swift */; };
@@ -555,6 +560,11 @@
 		0B12FB952BCAA4F8002E0048 /* Enum + EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum + EXT.swift"; sourceTree = "<group>"; };
 		0B12FB972BCAAB2F002E0048 /* Conversations_BubbleEditedTimestampReadReceiptsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_BubbleEditedTimestampReadReceiptsView.swift; sourceTree = "<group>"; };
 		0B12FB992BCAD629002E0048 /* UIFont + EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + EXT.swift"; sourceTree = "<group>"; };
+		0B185FF42C44469C00152860 /* CustomCountryCodeSearch_ListBuilderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCountryCodeSearch_ListBuilderView.swift; sourceTree = "<group>"; };
+		0B185FF62C44471800152860 /* CustomCountryCodeSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCountryCodeSearchViewModel.swift; sourceTree = "<group>"; };
+		0B185FFA2C444CF900152860 /* CustomCountryCodeSearch_ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCountryCodeSearch_ListRowView.swift; sourceTree = "<group>"; };
+		0B185FFD2C444F0000152860 /* CustomCountryCodeSearch_ListRowItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCountryCodeSearch_ListRowItemView.swift; sourceTree = "<group>"; };
+		0B185FFF2C44527500152860 /* CustomCountryCodeSearch_ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCountryCodeSearch_ListView.swift; sourceTree = "<group>"; };
 		0B1888E92BD1151A00C8C59D /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
 		0B1888EB2BD12DD100C8C59D /* photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = photo.jpg; path = "IAMSAD/Preview Content/Preview Assets.xcassets/follower3.imageset/photo.jpg"; sourceTree = SOURCE_ROOT; };
 		0B1AF16D2BD510C800E3825C /* SocialMediaTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaTypes.swift; sourceTree = "<group>"; };
@@ -1109,6 +1119,16 @@
 			path = "Photo Video GIF Link Based";
 			sourceTree = "<group>";
 		};
+		0B185FFC2C444EDA00152860 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				0B185FFF2C44527500152860 /* CustomCountryCodeSearch_ListView.swift */,
+				0B185FFA2C444CF900152860 /* CustomCountryCodeSearch_ListRowView.swift */,
+				0B185FFD2C444F0000152860 /* CustomCountryCodeSearch_ListRowItemView.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
 		0B1CEC872BE4FA35006DB5E1 /* Voice Record */ = {
 			isa = PBXGroup;
 			children = (
@@ -1453,7 +1473,10 @@
 		0B4032F32C4162D100155BE5 /* Custom Country Code Search Sheet */ = {
 			isa = PBXGroup;
 			children = (
+				0B185FF62C44471800152860 /* CustomCountryCodeSearchViewModel.swift */,
 				0B00D1E12B54192B00CE721C /* CustomCountryCodeSearchSheetView.swift */,
+				0B185FF42C44469C00152860 /* CustomCountryCodeSearch_ListBuilderView.swift */,
+				0B185FFC2C444EDA00152860 /* List */,
 			);
 			path = "Custom Country Code Search Sheet";
 			sourceTree = "<group>";
@@ -2832,6 +2855,7 @@
 				0BED87992C3A47B200EBD961 /* SeeAllAvatarSheetScrollView.swift in Sources */,
 				0B28C9FE2B6B076E00AC4725 /* CustomLikeHeartAnimationView.swift in Sources */,
 				0B2623582B4C92FB0063D71C /* OnboardingWelcomeView.swift in Sources */,
+				0B185FF72C44471800152860 /* CustomCountryCodeSearchViewModel.swift in Sources */,
 				0B28E43F2C3DF26F006B2D7A /* OnboardingWelcomeScrollContentView.swift in Sources */,
 				0B26237C2B4D43810063D71C /* OnboardingListView.swift in Sources */,
 				0B4392FF2B4F0DE90075E5D1 /* CustomPageIndexIndicatorView.swift in Sources */,
@@ -2848,6 +2872,7 @@
 				0B1CEC932BE51497006DB5E1 /* Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView.swift in Sources */,
 				0B20D7E52B9618D000B71C10 /* Profile_TopClearView.swift in Sources */,
 				0B1CEC8F2BE4FEC4006DB5E1 /* VoiceRecordNAudioBubbleValues.swift in Sources */,
+				0B1860002C44527500152860 /* CustomCountryCodeSearch_ListView.swift in Sources */,
 				0B26237A2B4D422D0063D71C /* OnboardingListItemView.swift in Sources */,
 				0BBD2AB42BA14602006990AA /* Profile_RepliesTabView.swift in Sources */,
 				0B3319622C26765500358340 /* Conversations_VerticalInfoContainerView.swift in Sources */,
@@ -2919,6 +2944,7 @@
 				0BC7DA8A2BCC435D00C4D356 /* Conversations_PhotoBadgeView.swift in Sources */,
 				0BC2EB1E2BC82DB100003941 /* Conversations_StickerOnlyBubbleTypeView.swift in Sources */,
 				0B20D7DD2B96126400B71C10 /* Profile_NameGenderNJoinedDateView.swift in Sources */,
+				0B185FF52C44469C00152860 /* CustomCountryCodeSearch_ListBuilderView.swift in Sources */,
 				0B20D7E72B961C3C00B71C10 /* Profile_BackgroundView.swift in Sources */,
 				0BAE19222C3953EF00DB46BB /* CustomColorSliderValues.swift in Sources */,
 				0BC7DA7F2BCC13C500C4D356 /* Conversations_GIFBadgeView.swift in Sources */,
@@ -2930,6 +2956,7 @@
 				0B2622FE2B4B4E120063D71C /* IAMSADApp.swift in Sources */,
 				0BA4E58E2BE216B9004E7945 /* Conversations_SocialMediaInfoSecondaryPlainBubbleView.swift in Sources */,
 				0B0A6E382BDCB77E0000430F /* TikTokBasedSecondaryBubbleView.swift in Sources */,
+				0B185FFB2C444CF900152860 /* CustomCountryCodeSearch_ListRowView.swift in Sources */,
 				0B58AE962B6CF5730057CCFE /* String+EXT.swift in Sources */,
 				0BA4E5962BE21806004E7945 /* Conversations_StickerSecondaryReplyBubbleView.swift in Sources */,
 				0B20D7DF2B96134B00B71C10 /* VerifiedBadgeTypes.swift in Sources */,
@@ -2971,6 +2998,7 @@
 				0BA54BE92B79196100100C71 /* CustomStripTabView.swift in Sources */,
 				0B2623872B4D50A70063D71C /* OnboardingTitleTextView.swift in Sources */,
 				0BD9457F2B743D7F0091E845 /* ContentView.swift in Sources */,
+				0B185FFE2C444F0000152860 /* CustomCountryCodeSearch_ListRowItemView.swift in Sources */,
 				0BA4E5942BE217E1004E7945 /* Conversations_LinkWithPreviewSecondaryReplyBubbleView.swift in Sources */,
 				0BC7DA832BCC393700C4D356 /* MessageBubbleValues.swift in Sources */,
 				0B26239F2B4DD9280063D71C /* CustomSelectableAvatarView.swift in Sources */,

@@ -29,6 +29,6 @@ struct CustomSearchBar_PlaceholderTextView: View {
 
 //MARK: - PREVIEWS
 #Preview("CustomSearchBar_PlaceholderTextView") {
-    CustomSearchBar_PlaceholderTextView(placeholder: "Search", text: "12367890")
+    CustomSearchBar_PlaceholderTextView(placeholder: "Search", text: "")
         .previewViewModifier
 }

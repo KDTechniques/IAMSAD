@@ -31,12 +31,17 @@ struct CustomSearchBar_CancelButtonView: View {
 // MARK: - PREVIEWS
 #Preview("CustomSearchBar_CancelButtonView") {
     @Previewable @FocusState var isFocused: Bool
+    let vm: CustomSearchBar = .init()
+    
     CustomSearchBar_CancelButtonView(
         text: .constant("123"),
         isFocused: $isFocused,
-        vm: .init()
+        vm: vm
     )
     .previewViewModifier
+    .onAppear {
+        vm.cancelButtonOpacity = 1.0
+    }
 }
 
 // MARK: - EXTENSIONS

@@ -48,12 +48,21 @@ struct CustomSearchBarView: View {
 
 // MARK: - PREVIEWS
 #Preview("CustomSearchBarView") {
-    @Previewable @State var text: String = "1234567890"
-    CustomSearchBarView(
-        searchBarText: $text,
-        placeholder: "Search"
-    )
-    .previewViewModifier
+    @Previewable @State var text: String = ""
+    Color.clear
+        .sheet(isPresented: .constant(true)) {
+            VStack {
+                CustomSearchBarView(
+                    searchBarText: $text,
+                    placeholder: "Search"
+                )
+                .padding(.top, 20)
+                
+                Spacer()
+            }
+            .presentationDragIndicator(.visible)
+        }
+        .previewViewModifier
 }
 
 // MARK: - EXTENSIONS
