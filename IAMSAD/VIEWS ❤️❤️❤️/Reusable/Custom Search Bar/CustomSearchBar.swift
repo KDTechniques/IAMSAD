@@ -29,9 +29,9 @@ import SwiftUI
             }
         } else {
             withAnimation(.smooth(duration: 0.3)) {
-                searchBarTrailingPadding = .zero
-                cancelButtonOffsetX = 55
-                cancelButtonOpacity = .zero
+                searchBarTrailingPadding = 0
+                cancelButtonOffsetX = cancelButtonOffsetX + 5
+                cancelButtonOpacity = 0
             }
         }
     }
