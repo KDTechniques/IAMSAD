@@ -8,9 +8,11 @@
 import Foundation
 
 struct PhoneNumberModel: Decodable, Identifiable, Hashable {
+    // MARK: - PROPERTIES
     var id: String { name }
     let name, flag, countryCode, dialCode: String
     
+    // MARK: - CODING KEYS
     private enum CodingKeys: String, CodingKey {
         case name           = "name"
         case flag           = "flag"
@@ -18,6 +20,9 @@ struct PhoneNumberModel: Decodable, Identifiable, Hashable {
         case dialCode       = "dial_code"
     }
     
+    // MARK: - FUNCTIONS
+    
+    // MARK: - getCountryPhoneNumbersArray
     static func getCountryPhoneNumbersArray() -> [PhoneNumberModel]? {
         let jsonData = Data(jsonString.utf8)
         let decoder = JSONDecoder()
@@ -31,6 +36,7 @@ struct PhoneNumberModel: Decodable, Identifiable, Hashable {
         }
     }
     
+    // MARK: - PRIVATE PROPERTIES
     static let mockObject: PhoneNumberModel = .init(
         name: "Sri Lanka",
         flag: "🇱🇰",

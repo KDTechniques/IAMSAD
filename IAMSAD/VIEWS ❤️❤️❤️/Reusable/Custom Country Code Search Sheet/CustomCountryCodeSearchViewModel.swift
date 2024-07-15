@@ -22,19 +22,23 @@ import Algorithms
     var state: CountryCodeSearchStateTypes = .defaultArray
     let countryCodePhoneNumbersArray: [PhoneNumberModel] = PhoneNumberModel
         .getCountryPhoneNumbersArray()?
-        .sorted(by: { $0.name < $1.name }) ?? []
+        .sorted(by: { $0.name < $1.name }) ?? [] // A - Z
     
     private var defaultArray: [(String.Element?, Array<PhoneNumberModel>.SubSequence)] {
+        // Chunks on the First Character of the Name for Section Headers
         countryCodePhoneNumbersArray.chunked(on: \.name.first)
     }
     
     var arrayByAlphabet: [(String.Element?, Array<PhoneNumberModel>.SubSequence)] {
         switch state {
-        case .defaultArray:
-            defaultArray
-        case .filteredArray:
-            filteredCountryCodePhoneNumbersArray.chunked(on: \.name.first)
-        default: []
+        case .defaultArray: // when text is empty
+            return defaultArray
+            
+        case .filteredArray: // when text is NOT empty && contains matches
+            return filteredCountryCodePhoneNumbersArray.chunked(on: \.name.first)
+            
+        default: // when text is NOT empty BUT NO matches
+            return []
         }
     }
     
@@ -51,7 +55,8 @@ import Algorithms
             .removeDuplicates() // Prevent infinite loop
             .sink { [weak self] text in
                 guard let self = self else { return }
-                searchText = text
+                
+                searchText = text /// .removeDuplicates() prevents infinite loop here.
                 filterResults(text: text)
             }
             .store (in: &cancellables)
@@ -59,19 +64,26 @@ import Algorithms
     
     // MARK: - filterResults
     private func filterResults(text: String) {
-        if text == "" {
+        guard !text.isEmpty else {
+            // Following get executed if the text IS empty
             filteredCountryCodePhoneNumbersArray = []
             state = .defaultArray
-        } else {
-            let tempFilteredArray: [PhoneNumberModel] = countryCodePhoneNumbersArray
-                .filter({
-                    $0.name.uppercased().contains(text.uppercased())
-                    || $0.dialCode.contains(text)
-                    || $0.countryCode.contains(text.uppercased())
-                })
             
-            withAnimation { filteredCountryCodePhoneNumbersArray = tempFilteredArray }
-            state = tempFilteredArray.isEmpty ? .noResults : .filteredArray
+            return
         }
+        
+        // Following get executed if the text is NOT empty
+        let uppercasedText = text.uppercased()
+        let tempFilteredArray: [PhoneNumberModel] = countryCodePhoneNumbersArray.filter {
+            $0.name.uppercased().contains(uppercasedText) ||
+            $0.dialCode.contains(text) ||
+            $0.countryCode.contains(uppercasedText) // country code is uppercased in json string
+        }
+        
+        withAnimation {
+            filteredCountryCodePhoneNumbersArray = tempFilteredArray
+        }
+        
+        state = tempFilteredArray.isEmpty ? .noResults : .filteredArray
     }
 }
