@@ -28,7 +28,6 @@ import Algorithms
         countryCodePhoneNumbersArray.chunked(on: \.name.first)
     }
     
-    // use a subscriber if does't work properly
     var arrayByAlphabet: [(String.Element?, Array<PhoneNumberModel>.SubSequence)] {
         switch state {
         case .defaultArray:
