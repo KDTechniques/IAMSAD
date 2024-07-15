@@ -16,6 +16,7 @@ extension View {
             .environment(AvatarSheetVM.shared)
             .environmentObject(ProfileVM.shared)
             .environmentObject(ConversationsVM.shared)
+            .environment(CustomCountryCodeSearchViewModel())
             .tint(.accent)
     }
     
