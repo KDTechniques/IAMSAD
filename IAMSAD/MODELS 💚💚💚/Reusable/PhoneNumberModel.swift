@@ -14,10 +14,10 @@ struct PhoneNumberModel: Decodable, Identifiable, Hashable {
     
     // MARK: - CODING KEYS
     private enum CodingKeys: String, CodingKey {
-        case name           = "name"
-        case flag           = "flag"
-        case countryCode    = "code"
-        case dialCode       = "dial_code"
+        case name
+        case flag
+        case countryCode = "code"
+        case dialCode = "dial_code"
     }
     
     // MARK: - FUNCTIONS
