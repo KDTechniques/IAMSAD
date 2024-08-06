@@ -77,9 +77,10 @@ extension Conversations_CollageImagesContainerView {
         WebImage(
             url: .init(string: urlString),
             options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
-        )
+        ) { $0 } placeholder: {
+            Color.defaultBColorPlaceholder(values.anyImagePlaceholderColor)
+        }
         .resizable()
-        .defaultBColorPlaceholder(values.anyImagePlaceholderColor)
         .scaledToFill()
         .frame(width: getImageSize(index), height: getImageSize(index))
         .blur(radius: getBlur(index))

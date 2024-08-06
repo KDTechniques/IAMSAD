@@ -8,7 +8,6 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-@MainActor
 struct Profile_FollowersCountNLinkView: View {
     // MARK: - PROPERTIES
     @Environment(\.colorScheme) private var colorScheme
@@ -76,9 +75,10 @@ extension Profile_FollowersCountNLinkView {
                         WebImage(
                             url: .init(string: followerImageURL),
                             options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
-                        )
+                        ) { $0 } placeholder: {
+                            Color.defaultBColorPlaceholder()
+                        }
                         .resizable()
-                        .defaultBColorPlaceholder()
                         .scaledToFill()
                         .clipShape(Circle())
                         .padding(1.5)

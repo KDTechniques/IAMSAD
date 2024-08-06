@@ -183,12 +183,16 @@ extension Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView {
     private var photoBased: some View {
         let url: URL? = Bundle.main.url(forResource: "photo", withExtension: "jpg")
         
-        WebImage(url: url, options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad])
-            .resizable()
-            .defaultBColorPlaceholder()
-            .scaledToFill()
-            .frame(width: secondaryBubbleValues.mediaContentSize)
-            .clipped()
+        WebImage(
+            url: url,
+            options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
+        ) { $0 } placeholder: {
+            Color.defaultBColorPlaceholder()
+        }
+        .resizable()
+        .scaledToFill()
+        .frame(width: secondaryBubbleValues.mediaContentSize)
+        .clipped()
     }
     
     // MARK: - videoBased
@@ -212,12 +216,16 @@ extension Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView {
     private var gifBased: some View {
         let url: URL? = .init(string: "https://i0.wp.com/www.galvanizeaction.org/wp-content/uploads/2022/06/Wow-gif.gif?fit=450%2C250&ssl=1")
         
-        WebImage(url: url, options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad])
-            .resizable()
-            .defaultBColorPlaceholder()
-            .scaledToFill()
-            .frame(width: secondaryBubbleValues.mediaContentSize)
-            .clipped()
+        WebImage(
+            url: url,
+            options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
+        ) { $0 } placeholder: {
+            Color.defaultBColorPlaceholder()
+        }
+        .resizable()
+        .scaledToFill()
+        .frame(width: secondaryBubbleValues.mediaContentSize)
+        .clipped()
     }
     
     // MARK: - linkWithPreviewBased
@@ -225,12 +233,16 @@ extension Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView {
     private var linkWithPreviewBased: some View {
         let urlString: String = "https://img.youtube.com/vi/fdZwRDv9OWI/mqdefault.jpg"
         
-        WebImage(url: .init(string: urlString), options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad])
-            .resizable()
-            .defaultBColorPlaceholder(.clear)
-            .scaledToFill()
-            .frame(width: secondaryBubbleValues.mediaContentSize)
-            .clipped()
+        WebImage(
+            url: .init(string: urlString),
+            options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
+        ) { $0 } placeholder: {
+            Color.defaultBColorPlaceholder(.clear)
+        }
+        .resizable()
+        .scaledToFill()
+        .frame(width: secondaryBubbleValues.mediaContentSize)
+        .clipped()
     }
     
     // MARK: - socialMediaInfoBased

@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@MainActor
 struct Profile_CoverTextView: View {
     // MARK: - PROPERTIES
     @Binding var coverTextStaticHeight: CGFloat

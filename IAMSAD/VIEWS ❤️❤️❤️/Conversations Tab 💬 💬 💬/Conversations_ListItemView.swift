@@ -106,9 +106,10 @@ extension Conversations_ListItemView {
                     WebImage(
                         url: imageURL,
                         options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
-                    )
+                    ) { $0 } placeholder: {
+                        Color.defaultBColorPlaceholder()
+                    }
                     .resizable()
-                    .defaultBColorPlaceholder()
                     .scaledToFill()
                     .clipShape(Circle())
                 } else {
