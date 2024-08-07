@@ -14,6 +14,10 @@ struct SeeAllAvatarSheetScrollView: View {
     @Binding var selectedCollection: AvatarCollectionModel?
     @Binding var showRowBackground: Bool
     
+    // MARK: - PRIVATE PROPERTIES
+    let avatarCollectionsArray: [AvatarCollectionModel] = AvatarCollectionTypes.avatarCollectionsArray
+    private var lastCollectionID: String? { avatarCollectionsArray.last?.id }
+    
     // MARK: - INITIALIZER
     init(selectedCollection: Binding<AvatarCollectionModel?>, showRowBackground: Binding<Bool>) {
         _selectedCollection = selectedCollection
@@ -24,7 +28,7 @@ struct SeeAllAvatarSheetScrollView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 0) {
-                ForEach(AvatarCollectionTypes.avatarCollectionsArray) { item in
+                ForEach(avatarCollectionsArray) { item in
                     VStack(alignment: .leading) {
                         SeeAllAvatarSheetCollectionHeaderView(
                             collectionName: item.collectionName
@@ -35,7 +39,7 @@ struct SeeAllAvatarSheetScrollView: View {
                     .padding(.horizontal)
                     .padding(.top, 10)
                     .padding(.bottom)
-                    .overlay(alignment: .bottom) { Divider().padding(.horizontal) }
+                    .overlay(alignment: .bottom) { bottomOverlayDivider(id: item.id) }
                     .background(Color(uiColor: setSelectedRowBackgroundColor(item: item)))
                     .onTapGesture { handleTapGestures(item: item) }
                     .onLongPressGesture(minimumDuration: .zero) {
@@ -65,7 +69,36 @@ struct SeeAllAvatarSheetScrollView: View {
 
 // MARK: - EXTENSIONS
 extension SeeAllAvatarSheetScrollView {
+    // MARK: - bottomOverlayDivider
+    @ViewBuilder
+    private func bottomOverlayDivider(id: String) -> some View {
+        let currentNPreviousIDs: (cID: String, pID: String) = getSelectedNPreviousID()
+        
+        Divider()
+            .padding(.horizontal)
+            .opacity(id == (lastCollectionID ?? "") ? 0 : 1)
+            .opacity(currentNPreviousIDs.cID == id ? 0 : 1)
+            .opacity(currentNPreviousIDs.pID == id ? 0 : 1)
+    }
+    
     // MARK: - FUNCTIONS
+    
+    // MARK: - getSelectedNPreviousID
+    private func getSelectedNPreviousID() -> (cID: String, pID: String) {
+        guard showRowBackground,
+              let selectedCollectionID: String = selectedCollection?.id,
+              let index: Int = avatarCollectionsArray.firstIndex(where: { $0.id == selectedCollectionID }) else {
+            return ("", "")
+        }
+        
+        var previousCollectionID: String {
+            let previousIndex: Int = index-1
+            
+            return previousIndex >= 0 ? avatarCollectionsArray[previousIndex].id : ""
+        }
+        
+        return (selectedCollectionID, previousCollectionID)
+    }
     
     // MARK: - checkSelectedCollection
     private func checkSelectedCollection(_ item: AvatarCollectionModel) -> Bool {

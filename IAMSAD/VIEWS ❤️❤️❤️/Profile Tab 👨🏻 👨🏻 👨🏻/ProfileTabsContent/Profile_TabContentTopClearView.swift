@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@MainActor
 struct Profile_TabContentTopClearView: View {
     // MARK: - PROPERTIES
     let topContentHeight: CGFloat

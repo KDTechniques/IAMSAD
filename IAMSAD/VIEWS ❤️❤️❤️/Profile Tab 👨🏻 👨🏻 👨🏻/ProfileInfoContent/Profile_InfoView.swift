@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@MainActor
 struct Profile_InfoView: View {
     // MARK: - PROPERTIES
     @EnvironmentObject private var profileVM: ProfileVM

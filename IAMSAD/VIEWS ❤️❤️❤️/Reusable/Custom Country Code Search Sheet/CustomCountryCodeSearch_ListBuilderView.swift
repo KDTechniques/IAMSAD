@@ -37,11 +37,14 @@ struct CustomCountryCodeSearch_ListBuilderView: View {
 // MARK: - PREVIEWS
 #Preview("CustomCountryCodeSearch_ListBuilderView") {
     @Previewable @State var selectedCountryCode: PhoneNumberModel?
-    CustomCountryCodeSearch_ListBuilderView(
-        selectedCountryCode: $selectedCountryCode,
-        isPresented: .constant(false))
-    
-    .previewViewModifier
+    Color.clear
+        .sheet(isPresented: .constant(true)) {
+            CustomCountryCodeSearch_ListBuilderView(
+                selectedCountryCode: $selectedCountryCode,
+                isPresented: .constant(false)
+            )
+        }
+        .previewViewModifier
 }
 
 // MARK: - EXTENSIONS

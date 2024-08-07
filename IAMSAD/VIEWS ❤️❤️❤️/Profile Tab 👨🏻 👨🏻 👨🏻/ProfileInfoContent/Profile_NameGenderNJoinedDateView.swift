@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@MainActor
 struct Profile_NameGenderNJoinedDateView: View {
     // MARK: - PROPERTIES
     let name: String

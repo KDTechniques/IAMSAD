@@ -20,11 +20,13 @@ import Combine
     
     // MARK: - AvatarSheetView
     var selectedAvatar: AvatarModel? = nil
+    
     var selectedBackgroundColor: ColorPaletteModel = Color.defaultAvatarColorPaletteArray[2] {
         didSet { selectedBackgroundColor$ = selectedBackgroundColor }
     }
     @ObservationIgnored
     @Published private var selectedBackgroundColor$: ColorPaletteModel = Color.defaultAvatarColorPaletteArray[2]
+    
     var isPresentedAvatarSheet: Bool = false
     
     // MARK: - AvatarSelectionView

@@ -32,4 +32,9 @@ extension Color {
         .init(hue: 0.84, saturation: 0.5, brightness: 1.0), // 11
         .init(hue: 0.92, saturation: 0.5, brightness: 1.0)  // 12
     ]
+    
+    // MARK: - defaultBColorPlaceholder()
+    static func defaultBColorPlaceholder(_ backgroundColor: Color = Color(uiColor: .systemGray6)) -> some View {
+        backgroundColor
+    }
 }

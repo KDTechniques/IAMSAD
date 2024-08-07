@@ -8,7 +8,6 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-@MainActor
 struct Profile_SecondaryProfilePhotoView: View {
     // MARK: - PROPERTIES
     let profilePhotoURL: URL?
@@ -37,9 +36,10 @@ struct Profile_SecondaryProfilePhotoView: View {
                 WebImage(
                     url: profilePhotoURL,
                     options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
-                )
+                ) { $0 } placeholder: {
+                    Color.defaultBColorPlaceholder()
+                }
                 .resizable()
-                .defaultBColorPlaceholder()
                 .scaledToFill()
                 .clipShape(Circle())
                 .frame(

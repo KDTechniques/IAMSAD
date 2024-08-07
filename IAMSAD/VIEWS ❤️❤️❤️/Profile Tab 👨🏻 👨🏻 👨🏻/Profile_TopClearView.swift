@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@MainActor
 struct Profile_TopClearView: View {
     // MARK: - PROPERTIES
     let profileVM: ProfileVM = .shared
