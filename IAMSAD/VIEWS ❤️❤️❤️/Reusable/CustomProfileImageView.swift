@@ -40,9 +40,8 @@ struct CustomProfileImageView: View {
                     WebImage(
                         url: imageURL,
                         options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
-                    ) { $0 } placeholder: {
-                        Color.defaultBColorPlaceholder(Color(uiColor: .systemGray5))
-                    }
+                    )
+                    .placeholder { Color.defaultBColorPlaceholder(Color(uiColor: .systemGray5)) }
                     .resizable()
                     .scaledToFill()
                     .clipShape(Circle())

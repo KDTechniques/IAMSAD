@@ -46,9 +46,8 @@ extension Conversations_VoiceRecordPrimaryPlainBubble_ImageView {
         WebImage(
             url: .init(string: urlString),
             options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
-        ) { $0 } placeholder: {
-            Color.defaultBColorPlaceholder(MessageBubbleValues.anyImagePlaceholderColor)
-        }
+        )
+        .placeholder { Color.defaultBColorPlaceholder(MessageBubbleValues.anyImagePlaceholderColor) }
         .resizable()
         .scaledToFill()
         .frame(width: values.imageSize, height: values.imageSize)

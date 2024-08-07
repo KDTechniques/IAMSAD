@@ -88,15 +88,16 @@ struct Conversations_StickerOnlyBubbleTypeView: View {
 extension Conversations_StickerOnlyBubbleTypeView {
     // MARK: - image
     private var image: some View {
-        AnimatedImage(url: url, options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]) {
-            Conversations_StickerPlaceholderShapeView()
-                .overlay { ProgressView().tint(.secondary) }
-                .frame(width: size, height: size)
-        }
-        .resizable()
-        .scaledToFit()
-        .frame(width: size, height: size)
-        .clipped()
+        AnimatedImage(url: url, options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad])
+            .placeholder {
+                Conversations_StickerPlaceholderShapeView()
+                    .overlay { ProgressView().tint(.secondary) }
+                    .frame(width: size, height: size)
+            }
+            .resizable()
+            .scaledToFit()
+            .frame(width: size, height: size)
+            .clipped()
     }
     
     // MARK: - placeholder

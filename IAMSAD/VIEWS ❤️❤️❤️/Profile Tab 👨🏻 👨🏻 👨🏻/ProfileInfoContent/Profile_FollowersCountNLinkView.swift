@@ -75,9 +75,8 @@ extension Profile_FollowersCountNLinkView {
                         WebImage(
                             url: .init(string: followerImageURL),
                             options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
-                        ) { $0 } placeholder: {
-                            Color.defaultBColorPlaceholder()
-                        }
+                        )
+                        .placeholder { Color.defaultBColorPlaceholder() }
                         .resizable()
                         .scaledToFill()
                         .clipShape(Circle())
