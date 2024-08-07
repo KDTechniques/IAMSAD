@@ -14,6 +14,10 @@ struct SeeAllAvatarSheetScrollView: View {
     @Binding var selectedCollection: AvatarCollectionModel?
     @Binding var showRowBackground: Bool
     
+    // MARK: - PRIVATE PROPERTIES
+    let avatarCollectionsArray: [AvatarCollectionModel] = AvatarCollectionTypes.avatarCollectionsArray
+    var lastCollectionID: String? { avatarCollectionsArray.last?.id }
+    
     // MARK: - INITIALIZER
     init(selectedCollection: Binding<AvatarCollectionModel?>, showRowBackground: Binding<Bool>) {
         _selectedCollection = selectedCollection
@@ -24,18 +28,18 @@ struct SeeAllAvatarSheetScrollView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 0) {
-                ForEach(AvatarCollectionTypes.avatarCollectionsArray) { item in
+                ForEach(avatarCollectionsArray) { item in
                     VStack(alignment: .leading) {
                         SeeAllAvatarSheetCollectionHeaderView(
                             collectionName: item.collectionName
                         )
-                        
+                    
                         SeeAllAvatarSheetCollectionRowView(collectionName: item.collectionName)
                     }
                     .padding(.horizontal)
                     .padding(.top, 10)
                     .padding(.bottom)
-                    .overlay(alignment: .bottom) { Divider().padding(.horizontal) }
+                    .overlay(alignment: .bottom) { bottomOverlayDivider(id: item.id) }
                     .background(Color(uiColor: setSelectedRowBackgroundColor(item: item)))
                     .onTapGesture { handleTapGestures(item: item) }
                     .onLongPressGesture(minimumDuration: .zero) {
@@ -65,6 +69,13 @@ struct SeeAllAvatarSheetScrollView: View {
 
 // MARK: - EXTENSIONS
 extension SeeAllAvatarSheetScrollView {
+    // MARK: - bottomOverlayDivider
+    private func bottomOverlayDivider(id: String) -> some View {
+        Divider()
+            .padding(.horizontal)
+            .opacity(id == (lastCollectionID ?? "") ? 0 : 1)
+    }
+    
     // MARK: - FUNCTIONS
     
     // MARK: - checkSelectedCollection
