@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
 
 struct CustomActionSheetHeadlineView: View {
     // MARK: - PROPERTIES

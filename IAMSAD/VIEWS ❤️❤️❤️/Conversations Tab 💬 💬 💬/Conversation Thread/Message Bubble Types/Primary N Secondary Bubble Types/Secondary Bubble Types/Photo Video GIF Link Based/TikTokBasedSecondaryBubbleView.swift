@@ -87,9 +87,8 @@ extension TikTokBasedSecondaryBubbleView {
         WebImage(
             url: .init(string: tiktokObject.data.coverPhotoURL ?? ""),
             options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
-        ) { $0 } placeholder: {
-            Color.defaultBColorPlaceholder()
-        }
+        )
+        .placeholder { Color.defaultBColorPlaceholder() }
         .resizable()
         .scaledToFill()
         .blur(radius: withBlur ? 20 : 0)

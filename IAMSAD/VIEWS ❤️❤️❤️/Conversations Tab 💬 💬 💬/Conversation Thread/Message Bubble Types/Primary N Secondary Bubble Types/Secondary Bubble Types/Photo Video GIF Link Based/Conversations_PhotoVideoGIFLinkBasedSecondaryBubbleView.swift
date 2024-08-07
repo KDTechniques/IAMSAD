@@ -186,9 +186,8 @@ extension Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView {
         WebImage(
             url: url,
             options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
-        ) { $0 } placeholder: {
-            Color.defaultBColorPlaceholder()
-        }
+        )
+        .placeholder { Color.defaultBColorPlaceholder() }
         .resizable()
         .scaledToFill()
         .frame(width: secondaryBubbleValues.mediaContentSize)
@@ -219,9 +218,8 @@ extension Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView {
         WebImage(
             url: url,
             options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
-        ) { $0 } placeholder: {
-            Color.defaultBColorPlaceholder()
-        }
+        )
+        .placeholder { Color.defaultBColorPlaceholder() }
         .resizable()
         .scaledToFill()
         .frame(width: secondaryBubbleValues.mediaContentSize)
@@ -236,9 +234,8 @@ extension Conversations_PhotoVideoGIFLinkBasedSecondaryBubbleView {
         WebImage(
             url: .init(string: urlString),
             options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
-        ) { $0 } placeholder: {
-            Color.defaultBColorPlaceholder(.clear)
-        }
+        )
+        .placeholder { Color.defaultBColorPlaceholder() }
         .resizable()
         .scaledToFill()
         .frame(width: secondaryBubbleValues.mediaContentSize)

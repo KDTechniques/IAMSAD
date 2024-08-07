@@ -22,9 +22,8 @@ struct Profile_CoverPhotoView: View {
         WebImage(
             url: coverPhotoURL,
             options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
-        ) { $0 } placeholder: {
-            Color.defaultBColorPlaceholder()
-        }
+        )
+        .placeholder { Color.defaultBColorPlaceholder() }
         .resizable()
         .scaledToFill()
         .allowsHitTesting(false)

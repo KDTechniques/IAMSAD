@@ -24,9 +24,8 @@ struct Profile_PrimaryPhotoView: View {
                 WebImage(
                     url: profileVM.profilePhotoURL,
                     options: [.scaleDownLargeImages, .retryFailed, .progressiveLoad]
-                ) { $0 } placeholder: {
-                    Color.defaultBColorPlaceholder()
-                }
+                )
+                .placeholder { Color.defaultBColorPlaceholder() }
                 .resizable()
                 .scaledToFill()
                 .clipShape(Circle())
