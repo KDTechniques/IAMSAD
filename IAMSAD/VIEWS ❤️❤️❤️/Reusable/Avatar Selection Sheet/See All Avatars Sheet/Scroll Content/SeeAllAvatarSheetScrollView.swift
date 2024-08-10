@@ -27,7 +27,7 @@ struct SeeAllAvatarSheetScrollView: View {
     // MARK: - BODY
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            VStack(spacing: 0) {
+            LazyVStack(spacing: 0) {
                 ForEach(avatarCollectionsArray) { item in
                     VStack(alignment: .leading) {
                         SeeAllAvatarSheetCollectionHeaderView(
