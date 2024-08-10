@@ -30,7 +30,7 @@ struct AvatarCollectionListView: View {
             let totalItems: Int = avatarsArray.count
             
             // Remove one of the closure content based on performance
-            if true { // remove the following if manual grid contain flickers when scrolling
+            if false { // remove the following if manual grid contain flickers when scrolling
                 VStack(alignment: .leading) {
                     ForEach(getVerticalRange(totalItems: totalItems), id: \.self) { row in
                         HStack(spacing: 10) {
