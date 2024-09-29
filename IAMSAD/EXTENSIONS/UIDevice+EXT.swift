@@ -16,6 +16,7 @@ let modelSize: ViewThatFitsTypes = UIDevice.getViewThatFits()
 
 extension UIDevice {
     // MARK: - modelNameNSize
+    /// Reference: https://stackoverflow.com/questions/26028918/how-to-determine-the-current-iphone-device-model
     static let modelNameNSize: (String, Double?) = {
         var systemInfo = utsname()
         uname(&systemInfo)
@@ -54,12 +55,16 @@ extension UIDevice {
             case "iPhone15,5":                  return ("iPhone 15 Plus", 6.7)
             case "iPhone16,1":                  return ("iPhone 15 Pro", 6.1)
             case "iPhone16,2":                  return ("iPhone 15 Pro Max", 6.7)
-                // iPhone 16 lineup goes here in the future...
+            case "iPhone17,3":                  return ("iPhone 16", 6.1)
+            case "iPhone17,4":                  return ("iPhone 16 Plus", 6.7)
+            case "iPhone17,1":                  return ("iPhone 16 Pro", 6.3)
+            case "iPhone17,2":                  return ("iPhone 16 Pro Max", 6.9)
+                // iPhone 17 lineup goes here in the future...
             case "i386", "x86_64", "arm64":     return (
                 "Simulator \(mapToDevice(identifier: ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] ?? "iOS"))",
                 mapToDevice(identifier: ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] ?? "iOS").1
             )
-            default:                            return (identifier, nil)
+            default: return (identifier, nil)
             }
         }
         return mapToDevice(identifier: identifier)
