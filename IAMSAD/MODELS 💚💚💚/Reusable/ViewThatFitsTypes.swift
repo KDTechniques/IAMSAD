@@ -33,8 +33,11 @@ enum ViewThatFitsTypes: String, CaseIterable {
     // iPhone 14 Pro        - 6.1"
     // iPhone 15            - 6.1"
     // iPhone 15 Pro        - 6.1"
+    // iPhone 16            - 6.1"
     
     case xLarge
+    // iPhone 16 Pro        - 6.3"
+    
     // iPhone XS Max        - 6.5"
     // iPhone 11 Pro Max    - 6.5"
     
@@ -44,6 +47,7 @@ enum ViewThatFitsTypes: String, CaseIterable {
     // iPhone 14 Pro Max    - 6.7"
     // iPhone 15 Plus       - 6.7"
     // iPhone 15 Pro Max    - 6.7"
+    // iPhone 16 Plus       - 6.7"
     
-    // iPhone 16 lineup goes here...
+    // iPhone 16 Pro Max    - 6.9"
 }
