@@ -72,11 +72,13 @@ struct Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView: View
 }
 
 #Preview("Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView") {
-    Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView(
-        direction: .random(),
-        actionType: .random()
-    ) {
-        print("Clicked!")
+    BubbleVariator_Preview { boolean in
+        Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView(
+            direction: boolean ? .left : .right,
+            actionType: .random()
+        ) {
+            print("Clicked!")
+        }
     }
     .previewViewModifier
 }

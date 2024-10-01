@@ -55,29 +55,16 @@ struct Conversations_StickerOnlyBubbleTypeView: View {
 
 // MARK: - PREVIEWS
 #Preview("Conversations_StickerOnlyBubbleTypeView") {
-    let urlString: String = "https://www.icegif.com/wp-content/uploads/2023/03/icegif-1393.gif"
+    let urlString: String = "https://cdn.pixabay.com/animation/2022/10/11/09/05/09-05-26-529_512.gif"
     
-    return NavigationStack {
-        ZStack {
-            Color.conversationBackground
-                .ignoresSafeArea()
-            
-            Image(.whatsappchatbackgroundimage)
-                .resizable()
-                .scaledToFill()
-                .frame(width: screenWidth, height: screenHeight)
-                .clipped()
-                .ignoresSafeArea()
-                .opacity(0.25)
-            
-            ScrollView(.vertical) {
-                Conversations_StickerOnlyBubbleTypeView(
-                    url: .init(string: urlString),
-                    timestamp: "10:44 PM",
-                    userType: .receiver
-                )
-                .padding(.top, screenHeight/2)
-            }
+    BubbleVariator_Preview { boolean in
+        ScrollView(.vertical) {
+            Conversations_StickerOnlyBubbleTypeView(
+                url: .init(string: urlString),
+                timestamp: "10:44 PM",
+                userType: boolean ? .receiver : .sender
+            )
+            .padding(.top, screenHeight/2)
         }
     }
     .previewViewModifier

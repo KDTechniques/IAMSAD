@@ -95,17 +95,14 @@ struct Conversations_VoiceRecordPrimaryPlainBubbleView: View {
 
 // MARK: - PREVIEWS
 #Preview("Conversations_VoiceRecordPrimaryPlainBubbleView") {
-    ZStack {
-        Color.conversationBackground
-        
+    BubbleVariator_Preview { boolean in
         Conversations_VoiceRecordPrimaryPlainBubbleView(
-            model: .getRandomMockObject(true),
+            model: .getRandomMockObject(boolean),
             imageURLString: "https://www.akc.org/wp-content/uploads/2018/08/nervous_lab_puppy-studio-portrait-lg-500x500.jpg",
             voiceRecordURLString: "",
             fileData: .getRandomObject()
         )
     }
-    .ignoresSafeArea()
     .previewViewModifier
 }
 

@@ -58,14 +58,14 @@ struct Conversations_DocumentAudioPrimaryPlainBubble_ProcessingView: View {
 
 // MARK: - PREVIEWS
 #Preview("Conversations_DocumentAudioPrimaryPlainBubble_ProcessingView") {
-    let bool: Bool = .random()
-    
-    return Conversations_DocumentAudioPrimaryPlainBubble_ProcessingView(
-        direction: .random(),
-        progressValue: 0,
-        showProgressIcon: !bool,
-        showProgressBar: bool,
-        isExist: false) { print("Tapped") }
+    BubbleVariator_Preview {
+        Conversations_DocumentAudioPrimaryPlainBubble_ProcessingView(
+            direction: .random(),
+            progressValue: 0,
+            showProgressIcon: $0,
+            showProgressBar: !$0,
+            isExist: false) { print("Tapped") }
+    }
 }
 
 // MARK: - EXTENSIONS

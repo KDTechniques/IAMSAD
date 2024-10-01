@@ -46,8 +46,10 @@ struct Conversations_ReadReceiptShapesView: View {
 
 // MARK: - PREVIEWS
 #Preview("Conversations_ReadReceiptShapesView") {
-    Conversations_ReadReceiptShapesView(status: .random(), shouldAnimate: .random())
-        .previewViewModifier
+    BubbleVariator_Preview {
+        Conversations_ReadReceiptShapesView(status: .random(), shouldAnimate: $0)
+    }
+    .previewViewModifier
 }
 
 // MARK: - EXTENSIONS

@@ -32,10 +32,12 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_ImageView: View {
 
 // MARK: - PREVIEWS
 #Preview("Conversations_VoiceRecordPrimaryPlainBubble_ImageView") {
-    Conversations_VoiceRecordPrimaryPlainBubble_ImageView(
-        urlString: "https://www.akc.org/wp-content/uploads/2018/08/nervous_lab_puppy-studio-portrait-lg-500x500.jpg",
-        direction: .random()
-    )
+    BubbleVariator_Preview {
+        Conversations_VoiceRecordPrimaryPlainBubble_ImageView(
+            urlString: "https://www.akc.org/wp-content/uploads/2018/08/nervous_lab_puppy-studio-portrait-lg-500x500.jpg",
+            direction: $0 ? .left : .right
+        )
+    }
     .previewViewModifier
 }
 

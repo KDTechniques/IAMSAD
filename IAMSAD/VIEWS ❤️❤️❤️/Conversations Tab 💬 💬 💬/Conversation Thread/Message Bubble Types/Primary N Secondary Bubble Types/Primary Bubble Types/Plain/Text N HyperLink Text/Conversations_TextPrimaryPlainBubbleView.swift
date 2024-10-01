@@ -119,9 +119,10 @@ struct Conversations_TextPrimaryPlainBubbleView: View {
 // MARK: - PREVIEWS
 #Preview("Conversations_MessageBubbleView") {
     let values = MessageBubbleValues.self
-    let obj: MessageBubbleValues.MessageBubbleModel = .getRandomMockObject(true, true)
     
-    return ScrollView(.vertical) {
+    BubbleVariator_Preview {
+        let obj: MessageBubbleValues.MessageBubbleModel = .getRandomMockObject($0, true)
+        
         Conversations_MessageBubbleView(obj) {
             Conversations_TextPrimaryPlainBubbleView(
                 model: obj,
@@ -139,21 +140,19 @@ struct Conversations_TextPrimaryPlainBubbleView: View {
                 .opacity(0)
         }
     }
-    .background {
-        Color.conversationBackground
-            .ignoresSafeArea()
-    }
     .previewViewModifier
 }
 
 #Preview("Conversations_TextPrimaryPlainBubbleView") {
-    Conversations_TextPrimaryPlainBubbleView(
-        model: .getRandomMockObject(true, true),
-        text: "Hi there 👋👋👋",
-        height: 0,
-        withSecondaryContent: false
-    )
-    .background(Color.debug.opacity(0.5))
+    BubbleVariator_Preview {
+        Conversations_TextPrimaryPlainBubbleView(
+            model: .getRandomMockObject($0, true),
+            text: "Hi there 👋👋👋",
+            height: 0,
+            withSecondaryContent: false
+        )
+        .background(Color.debug.opacity(0.5))
+    }
     .previewViewModifier
 }
 

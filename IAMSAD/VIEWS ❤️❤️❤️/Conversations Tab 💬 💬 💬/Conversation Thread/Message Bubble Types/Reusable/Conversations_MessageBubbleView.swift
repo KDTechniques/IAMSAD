@@ -63,11 +63,9 @@ struct Conversations_MessageBubbleView<T: View>: View {
 
 // MARK: - PREVIEWS
 #Preview("Conversations_MessageBubbleView") {
-    ZStack {
-        Color.conversationBackground
-            .ignoresSafeArea()
+    BubbleVariator_Preview {
+        let obj: MessageBubbleValues.MessageBubbleModel = .getRandomMockObject($0, true)
         
-        let obj: MessageBubbleValues.MessageBubbleModel = .getRandomMockObject(true, true)
         Conversations_MessageBubbleView(obj) {
             HStack {
                 Text("Hi there 👋👋👋") // don't add any more text as this will not go to a second line properly here. For testing purposes only.
@@ -76,14 +74,15 @@ struct Conversations_MessageBubbleView<T: View>: View {
             }
             .messageBubbleContentDefaultPadding
         }
-        
-        Rectangle()
-            .fill(Color.debug)
-            .frame(width: MessageBubbleValues.maxContentWidth, height: 5)
-            .frame(width: screenWidth, alignment: obj.direction == .right ? .trailing : .leading)
-            .offset(
-                x: MessageBubbleValues.screenToBubblePadding * (obj.direction == .right ? -1 : 1),
-                y: 40
-            )
+        .overlay {
+            Rectangle()
+                .fill(Color.debug)
+                .frame(width: MessageBubbleValues.maxContentWidth, height: 5)
+                .frame(width: screenWidth, alignment: obj.direction == .right ? .trailing : .leading)
+                .offset(
+                    x: MessageBubbleValues.screenToBubblePadding * (obj.direction == .right ? -1 : 1),
+                    y: 40
+                )
+        }
     }
 }

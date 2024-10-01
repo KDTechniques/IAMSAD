@@ -70,15 +70,19 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView: View {
 
 // MARK: - PREVIEWS
 #Preview("Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView") {
-    Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView(
-        sliderValue: .constant(.random(in: 0...1)),
-        isThumbTouchDown: .constant(false),
-        thumbSize: .constant(15),
-        direction: .random(),
-        spectrumFrameWidth: VoiceRecordNAudioBubbleValues.actualSpectrumWidth,
-        status: .random(),
-        heightsArray: VoiceRecordNAudioBubbleValues.getMockArrayOfHeights()
-    )
+    @Previewable @State var sliderValue: CGFloat = 0.5
+    
+    BubbleVariator_Preview {
+        Conversations_VoiceRecordPrimaryPlainBubble_SpectrumView(
+            sliderValue: $sliderValue,
+            isThumbTouchDown: .constant(false),
+            thumbSize: .constant(15),
+            direction: $0 ? .left : .right,
+            spectrumFrameWidth: VoiceRecordNAudioBubbleValues.actualSpectrumWidth,
+            status: .random(),
+            heightsArray: VoiceRecordNAudioBubbleValues.getMockArrayOfHeights()
+        )
+    }
 }
 
 // MARK: - EXTENSIONS

@@ -183,6 +183,7 @@
 		0B9974692B55D683001AD3F6 /* UIApplication+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9974682B55D682001AD3F6 /* UIApplication+EXT.swift */; };
 		0B9E806B2BA0D0B40018FDE3 /* Profile_TabContentTopClearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E806A2BA0D0B40018FDE3 /* Profile_TabContentTopClearView.swift */; };
 		0B9E806D2BA0D2250018FDE3 /* Profile_PostsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E806C2BA0D2250018FDE3 /* Profile_PostsTabView.swift */; };
+		0BA0B1F42CAC0CC5004CD617 /* BubbleVariator_Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0B1F32CAC0CC5004CD617 /* BubbleVariator_Preview.swift */; };
 		0BA4E58E2BE216B9004E7945 /* Conversations_SocialMediaInfoSecondaryPlainBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4E58D2BE216B9004E7945 /* Conversations_SocialMediaInfoSecondaryPlainBubbleView.swift */; };
 		0BA4E5902BE2177E004E7945 /* Conversations_TextSecondaryReplyBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4E58F2BE2177E004E7945 /* Conversations_TextSecondaryReplyBubbleView.swift */; };
 		0BA4E5942BE217E1004E7945 /* Conversations_LinkWithPreviewSecondaryReplyBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4E5932BE217E1004E7945 /* Conversations_LinkWithPreviewSecondaryReplyBubbleView.swift */; };
@@ -720,6 +721,7 @@
 		0B9974682B55D682001AD3F6 /* UIApplication+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+EXT.swift"; sourceTree = "<group>"; };
 		0B9E806A2BA0D0B40018FDE3 /* Profile_TabContentTopClearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_TabContentTopClearView.swift; sourceTree = "<group>"; };
 		0B9E806C2BA0D2250018FDE3 /* Profile_PostsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_PostsTabView.swift; sourceTree = "<group>"; };
+		0BA0B1F32CAC0CC5004CD617 /* BubbleVariator_Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleVariator_Preview.swift; sourceTree = "<group>"; };
 		0BA4E58D2BE216B9004E7945 /* Conversations_SocialMediaInfoSecondaryPlainBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_SocialMediaInfoSecondaryPlainBubbleView.swift; sourceTree = "<group>"; };
 		0BA4E58F2BE2177E004E7945 /* Conversations_TextSecondaryReplyBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_TextSecondaryReplyBubbleView.swift; sourceTree = "<group>"; };
 		0BA4E5932BE217E1004E7945 /* Conversations_LinkWithPreviewSecondaryReplyBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_LinkWithPreviewSecondaryReplyBubbleView.swift; sourceTree = "<group>"; };
@@ -2230,6 +2232,7 @@
 			isa = PBXGroup;
 			children = (
 				0B08F1C52BC5B4A1009E8538 /* Conversations_MessageBubbleView.swift */,
+				0BA0B1F32CAC0CC5004CD617 /* BubbleVariator_Preview.swift */,
 			);
 			path = Reusable;
 			sourceTree = "<group>";
@@ -2833,6 +2836,7 @@
 				0BA4E5902BE2177E004E7945 /* Conversations_TextSecondaryReplyBubbleView.swift in Sources */,
 				0B1CEC8B2BE4FCD7006DB5E1 /* Conversations_VoiceRecordNAudioPrimaryPlainBubble_ActionButtonsView.swift in Sources */,
 				0B1AF1702BD5185800E3825C /* TikTokInfoModel.swift in Sources */,
+				0BA0B1F42CAC0CC5004CD617 /* BubbleVariator_Preview.swift in Sources */,
 				0B89BB8B2BA6FFD0007C9721 /* GeminiAPI.swift in Sources */,
 				0BFB38112B56FDB300227CB2 /* OnboardingLastView.swift in Sources */,
 				0B0C797F2BE2BD29007C24C4 /* Conversations_DeletedPrimaryPlainBubbleView.swift in Sources */,
