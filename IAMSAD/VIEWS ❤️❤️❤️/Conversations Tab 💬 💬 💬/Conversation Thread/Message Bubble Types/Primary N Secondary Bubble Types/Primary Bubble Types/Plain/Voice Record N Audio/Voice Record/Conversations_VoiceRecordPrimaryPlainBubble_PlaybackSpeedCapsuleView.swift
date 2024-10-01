@@ -45,8 +45,10 @@ struct Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView: Vie
 
 // MARK: - PREVIEWS
 #Preview("Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView") {
-    Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView(direction: .random()) {
-        print("Clicked on Capsule!")
+    BubbleVariator_Preview {
+        Conversations_VoiceRecordPrimaryPlainBubble_PlaybackSpeedCapsuleView(direction: $0 ? .left : .right) {
+            print("Clicked on Capsule!")
+        }
     }
     .previewViewModifier
 }

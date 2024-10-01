@@ -34,5 +34,7 @@ struct Conversations_SharedAudioPrimaryPlainBubble_ImageView: View {
 
 // MARK: - PREVIEWS
 #Preview("Conversations_SharedAudioPrimaryPlainBubble_ImageView") {
-    Conversations_SharedAudioPrimaryPlainBubble_ImageView(direction: .right)
+    BubbleVariator_Preview {
+        Conversations_SharedAudioPrimaryPlainBubble_ImageView(direction: $0 ? .right : .left)
+    }
 }

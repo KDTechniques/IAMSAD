@@ -66,12 +66,9 @@ struct Conversations_SharedAudioPrimaryPlainBubbleView: View {
 
 // MARK: - PREVIEWS
 #Preview("Conversations_SharedAudioPrimaryPlainBubbleView") {
-    ZStack {
-        Color.conversationBackground
-            .ignoresSafeArea()
-        
+    BubbleVariator_Preview {
         Conversations_SharedAudioPrimaryPlainBubbleView(
-            model: .getRandomMockObject(true),
+            model: .getRandomMockObject($0),
             fileData: .getRandomObject()
         )
     }

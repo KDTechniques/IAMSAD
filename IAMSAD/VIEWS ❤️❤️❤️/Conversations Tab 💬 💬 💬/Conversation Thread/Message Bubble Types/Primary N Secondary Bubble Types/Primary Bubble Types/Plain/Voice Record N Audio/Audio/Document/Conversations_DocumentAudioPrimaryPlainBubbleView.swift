@@ -39,15 +39,13 @@ struct Conversations_DocumentAudioPrimaryPlainBubbleView: View {
 
 // MARK: - PREVIEWS
 #Preview("Conversations_DocumentAudioPrimaryPlainBubbleView") {
-    ZStack {
-        Color.conversationBackground
-            .ignoresSafeArea()
-        
+    BubbleVariator_Preview {
         Conversations_DocumentAudioPrimaryPlainBubbleView(
-            model: .getRandomMockObject(true),
+            model: .getRandomMockObject($0),
             fileData: .getRandomObject()
         )
     }
+    .previewViewModifier
 }
 
 // MARK: - EXTENSIONS

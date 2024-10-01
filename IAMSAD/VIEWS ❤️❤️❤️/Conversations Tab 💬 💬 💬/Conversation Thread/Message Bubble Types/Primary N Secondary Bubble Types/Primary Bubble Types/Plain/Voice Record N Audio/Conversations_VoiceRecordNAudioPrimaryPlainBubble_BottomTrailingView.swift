@@ -48,13 +48,16 @@ struct Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView: Vie
 
 // MARK: - PREVIEWS
 #Preview("Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView") {
-    Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView(
-        model: .getRandomMockObject(),
-        width: VoiceRecordNAudioBubbleValues.actualSpectrumWidth,
-        fileSize: "19 KB",
-        duration: .zero,
-        type: .random()
-    )
+    BubbleVariator_Preview {
+        Conversations_VoiceRecordNAudioPrimaryPlainBubble_BottomTrailingView(
+            model: .getRandomMockObject(),
+            width: VoiceRecordNAudioBubbleValues.actualSpectrumWidth,
+            fileSize: "19 KB",
+            duration: .zero,
+            type: $0 ? .fileSize : .duration
+        )
+    }
+    .previewViewModifier
 }
 
 // MARK: - EXTENSIONS

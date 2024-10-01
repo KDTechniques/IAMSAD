@@ -54,16 +54,18 @@ struct Conversations_DocumentAudioPrimaryPlainBubble_InfoView: View {
 
 // MARK: - PREVIEWS
 #Preview("Conversations_DocumentAudioPrimaryPlainBubble_InfoView") {
-    Conversations_DocumentAudioPrimaryPlainBubble_InfoView(
-        direction: .random(),
-        fileData: .init(
-            fileURLString: "",
-            fileName: "New Recording.m4a",
-            fileSize: "56 KB",
-            fileExtension: "m4a",
-            duration: .zero
+    BubbleVariator_Preview {
+        Conversations_DocumentAudioPrimaryPlainBubble_InfoView(
+            direction: $0 ? .left : .right,
+            fileData: .init(
+                fileURLString: "",
+                fileName: "New Recording.m4a",
+                fileSize: "56 KB",
+                fileExtension: "m4a",
+                duration: .zero
+            )
         )
-    )
+    }
 }
 
 // MARK: - EXTENSIONS

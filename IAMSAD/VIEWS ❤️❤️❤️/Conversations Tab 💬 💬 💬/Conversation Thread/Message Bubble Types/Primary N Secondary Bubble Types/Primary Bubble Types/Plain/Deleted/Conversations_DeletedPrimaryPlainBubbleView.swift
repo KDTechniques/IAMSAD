@@ -53,14 +53,16 @@ struct Conversations_DeletedPrimaryPlainBubbleView: View {
 
 // MARK: - PREVIEWS
 #Preview("Conversations_DeletedPrimaryPlainBubbleView") {
-    Conversations_DeletedPrimaryPlainBubbleView(
-        model: .init(
-            direction: .random(),
-            showPointer: false,
-            timestamp: "11:15 PM",
-            status: .none
-        ),
-        isDeleting: .random()
-    )
+    BubbleVariator_Preview {
+        Conversations_DeletedPrimaryPlainBubbleView(
+            model: .init(
+                direction: $0 ? .left : .right,
+                showPointer: false,
+                timestamp: "11:15 PM",
+                status: .none
+            ),
+            isDeleting: .random()
+        )
+    }
     .previewViewModifier
 }
