@@ -16,7 +16,7 @@
 		0B08F1C82BC5C291009E8538 /* CustomRoundedRectangleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08F1C72BC5C291009E8538 /* CustomRoundedRectangleShape.swift */; };
 		0B0A6E382BDCB77E0000430F /* TikTokBasedSecondaryBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0A6E372BDCB77E0000430F /* TikTokBasedSecondaryBubbleView.swift */; };
 		0B0C797F2BE2BD29007C24C4 /* Conversations_DeletedPrimaryPlainBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0C797E2BE2BD29007C24C4 /* Conversations_DeletedPrimaryPlainBubbleView.swift */; };
-		0B12FB962BCAA4F8002E0048 /* Enum + EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B12FB952BCAA4F8002E0048 /* Enum + EXT.swift */; };
+		0B12FB962BCAA4F8002E0048 /* CaseIterable + EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B12FB952BCAA4F8002E0048 /* CaseIterable + EXT.swift */; };
 		0B12FB982BCAAB2F002E0048 /* Conversations_BubbleEditedTimestampReadReceiptsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B12FB972BCAAB2F002E0048 /* Conversations_BubbleEditedTimestampReadReceiptsView.swift */; };
 		0B12FB9A2BCAD629002E0048 /* UIFont + EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B12FB992BCAD629002E0048 /* UIFont + EXT.swift */; };
 		0B185FF52C44469C00152860 /* CustomCountryCodeSearch_ListBuilderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B185FF42C44469C00152860 /* CustomCountryCodeSearch_ListBuilderView.swift */; };
@@ -560,7 +560,7 @@
 		0B08F1C72BC5C291009E8538 /* CustomRoundedRectangleShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRoundedRectangleShape.swift; sourceTree = "<group>"; };
 		0B0A6E372BDCB77E0000430F /* TikTokBasedSecondaryBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TikTokBasedSecondaryBubbleView.swift; sourceTree = "<group>"; };
 		0B0C797E2BE2BD29007C24C4 /* Conversations_DeletedPrimaryPlainBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_DeletedPrimaryPlainBubbleView.swift; sourceTree = "<group>"; };
-		0B12FB952BCAA4F8002E0048 /* Enum + EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum + EXT.swift"; sourceTree = "<group>"; };
+		0B12FB952BCAA4F8002E0048 /* CaseIterable + EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CaseIterable + EXT.swift"; sourceTree = "<group>"; };
 		0B12FB972BCAAB2F002E0048 /* Conversations_BubbleEditedTimestampReadReceiptsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations_BubbleEditedTimestampReadReceiptsView.swift; sourceTree = "<group>"; };
 		0B12FB992BCAD629002E0048 /* UIFont + EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + EXT.swift"; sourceTree = "<group>"; };
 		0B185FF42C44469C00152860 /* CustomCountryCodeSearch_ListBuilderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCountryCodeSearch_ListBuilderView.swift; sourceTree = "<group>"; };
@@ -1269,7 +1269,7 @@
 				0BBF76842B679A73000D3D40 /* CGFloat+EXT.swift */,
 				0B58AE952B6CF5730057CCFE /* String+EXT.swift */,
 				0B58AE972B6D340E0057CCFE /* Int+EXT.swift */,
-				0B12FB952BCAA4F8002E0048 /* Enum + EXT.swift */,
+				0B12FB952BCAA4F8002E0048 /* CaseIterable + EXT.swift */,
 				0B12FB992BCAD629002E0048 /* UIFont + EXT.swift */,
 				0BBB8B2F2BEC0CF300D69F93 /* CMTime+EXT.swift */,
 			);
@@ -2867,7 +2867,7 @@
 				0B4033012C41B7CB00155BE5 /* CustomSearchBar_CancelButtonView.swift in Sources */,
 				0BE75A6C2B99FAAB003C43DA /* Profile_ProgressIndicatorView.swift in Sources */,
 				0B5C492C2BADA8E600616181 /* CustomActionSheetHeadlineView.swift in Sources */,
-				0B12FB962BCAA4F8002E0048 /* Enum + EXT.swift in Sources */,
+				0B12FB962BCAA4F8002E0048 /* CaseIterable + EXT.swift in Sources */,
 				0B939B6A2BC27CD500DC5F1E /* CustomActionSheetView.swift in Sources */,
 				0BE75A682B99F88E003C43DA /* Profile_SecondaryProfilePhotoView.swift in Sources */,
 				0BED87992C3A47B200EBD961 /* SeeAllAvatarSheetScrollView.swift in Sources */,
