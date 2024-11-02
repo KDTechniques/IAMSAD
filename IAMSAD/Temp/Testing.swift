@@ -15,7 +15,11 @@ struct Testing: View {
     let storageManager: FirebaseStorageManager = .init(bucket: .mockTesting)
     
     var body: some View {
-        let fullReference: StorageReference = storageManager.getFullReference(to: .avatarIcons).child("Animals/Animals_1.png")
+        var fullReference: StorageReference {
+            get async {
+                await storageManager.getFullReference(to: .avatarIcons).child("Animals/Animals_1.png")
+            }
+        }
         
        
         VStack {

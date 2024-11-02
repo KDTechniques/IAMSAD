@@ -31,7 +31,7 @@ actor FirebaseStorageManager {
         self.bucket = bucket
     }
     
-    // MARK: - FUNCTIONS
+    // MARK: FUNCTIONS
     
     // MARK: - getFullReference
     
@@ -39,9 +39,22 @@ actor FirebaseStorageManager {
     ///
     /// - Parameter reference: The folder reference within the bucket.
     /// - Returns: A `StorageReference` pointing to the full path of the specified folder.
-    func getFullReference(to reference: BucketFolderReferences) -> StorageReference {
+    func getFullReference(to reference: BucketFolderReferences) async -> StorageReference {
         return reference.fullReference(storageRef: storageRef)
     }
+    
+    // MARK: - getFullReferenceURL
+    /// Gets the download URL for a specific folder in the Firebase storage.
+    ///
+    /// This function retrieves the full storage reference to the specified folder and then fetches its download URL.
+    ///
+    /// - Parameter reference: The folder reference within the bucket.
+    /// - Returns: A `URL` pointing to the download location of the specified folder.
+    /// - Throws: An error if the URL could not be retrieved.
+    func getFullReferenceURL(to reference: BucketFolderReferences) async throws -> URL {
+        try await getFullReference(to: reference).downloadURL()
+    }
+    
 }
 
 /// Represents the different folder references within a Firebase storage bucket.

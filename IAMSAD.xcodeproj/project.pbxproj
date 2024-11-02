@@ -135,6 +135,7 @@
 		0B4392FC2B4EF2B30075E5D1 /* ColorPaletteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4392FB2B4EF2B30075E5D1 /* ColorPaletteModel.swift */; };
 		0B4392FF2B4F0DE90075E5D1 /* CustomPageIndexIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4392FE2B4F0DE90075E5D1 /* CustomPageIndexIndicatorView.swift */; };
 		0B4434662B527C200041E8BF /* OTPVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4434652B527C200041E8BF /* OTPVerificationView.swift */; };
+		0B46879C2CD6624400094AF9 /* AvatarStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B46879B2CD6624400094AF9 /* AvatarStorageManager.swift */; };
 		0B4F90B62BA590D900C79C0A /* CustomNoProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4F90B52BA590D900C79C0A /* CustomNoProfileImageView.swift */; };
 		0B58AE942B6CF0360057CCFE /* CustomTransitioningCounterTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B58AE932B6CF0360057CCFE /* CustomTransitioningCounterTextView.swift */; };
 		0B58AE962B6CF5730057CCFE /* String+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B58AE952B6CF5730057CCFE /* String+EXT.swift */; };
@@ -685,6 +686,7 @@
 		0B4392FB2B4EF2B30075E5D1 /* ColorPaletteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPaletteModel.swift; sourceTree = "<group>"; };
 		0B4392FE2B4F0DE90075E5D1 /* CustomPageIndexIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageIndexIndicatorView.swift; sourceTree = "<group>"; };
 		0B4434652B527C200041E8BF /* OTPVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVerificationView.swift; sourceTree = "<group>"; };
+		0B46879B2CD6624400094AF9 /* AvatarStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarStorageManager.swift; sourceTree = "<group>"; };
 		0B4F90B52BA590D900C79C0A /* CustomNoProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNoProfileImageView.swift; sourceTree = "<group>"; };
 		0B58AE932B6CF0360057CCFE /* CustomTransitioningCounterTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransitioningCounterTextView.swift; sourceTree = "<group>"; };
 		0B58AE952B6CF5730057CCFE /* String+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+EXT.swift"; sourceTree = "<group>"; };
@@ -1554,6 +1556,7 @@
 			isa = PBXGroup;
 			children = (
 				0B6013502CD5E38C0036D738 /* FirebaseStorageManager.swift */,
+				0B46879B2CD6624400094AF9 /* AvatarStorageManager.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -3000,6 +3003,7 @@
 				0B08F1C82BC5C291009E8538 /* CustomRoundedRectangleShape.swift in Sources */,
 				0BED87A22C3ABBA700EBD961 /* AvatarCollectionListView.swift in Sources */,
 				0BD876A72B8CC1DB00E66184 /* Profile_CoverContentView.swift in Sources */,
+				0B46879C2CD6624400094AF9 /* AvatarStorageManager.swift in Sources */,
 				0BA96F1D2CD603B4006EF484 /* Testing.swift in Sources */,
 				0B4032F92C41A8AA00155BE5 /* CustomSearchBar_PlaceholderTextView.swift in Sources */,
 				0BD00C1B2B6294A4000C3236 /* SeeAllAvatarSheetContentView.swift in Sources */,
