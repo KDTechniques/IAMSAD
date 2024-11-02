@@ -6,18 +6,23 @@
 //
 
 import SwiftUI
-import SwiftUIIntrospect
+import FirebaseCore
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        return true
+    }
+}
 
 @main
 struct IAMSADApp: App {
+    // Register app delegate for Firebase setup
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     @State private var avatarSheetVM: AvatarSheetVM = .shared
     @StateObject private var profileVM: ProfileVM = .shared
     @StateObject private var conversationsVM: ConversationsVM = .shared
-    
-    init() {
-        
-    }
     
     var body: some Scene {
         WindowGroup {
