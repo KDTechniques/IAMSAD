@@ -1,3 +1,37 @@
-
-IAMSAD/VIEWS ❤️❤️❤️/Profile Tab/.DS_Store
+# Xcode
 .DS_Store
+build/
+DerivedData/
+xcuserdata/
+*.xccheckout
+*.xcscmblueprint
+*.xcuserstate
+
+# iOS
+Pods/
+!Podfile
+!Podfile.lock
+!Pods/
+
+# Swift Package Manager
+/.build/
+/Package.resolved
+
+# CocoaPods
+/*.xcworkspace
+
+# Carthage
+/Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# Node Modules
+/node_modules
+
+# build numbers related files
+!*.xcconfig
+!project.pbxproj
